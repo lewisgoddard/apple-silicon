@@ -10,20 +10,21 @@
       </tr>
     </thead>
     <tbody>
-      {# Assume all chips share the same group structure #}
-      {% for groupIndex in range(0, items[0].groupedSpecs | length - 1) %}
-        {% set group = items[0].groupedSpecs[groupIndex] %}
+      {# Iterate the groups and fields directly from the first item to avoid precedence bugs #}
+      {% for group in items[0].groupedSpecs %}
+        {% set groupIndex = loop.index0 %}
         <tr class="group-header">
           <td colspan="{{ items | length + 1 }}"><strong>{{ group.name }}</strong></td>
         </tr>
 
-        {% for fieldIndex in range(0, group.fields | length - 1) %}
-          {% set field = group.fields[fieldIndex] %}
+        {% for field in group.fields %}
+          {% set fieldIndex = loop.index0 %}
           <tr>
             <td>{{ field.label }}</td>
             {% for item in items %}
-              {% set groupForItem = item.groupedSpecs[groupIndex] %}
-              {% set fieldForItem = groupForItem.fields[fieldIndex] %}
+              {# Safely access the same group/field index for each item; fall back to null if missing #}
+              {% set groupForItem = item.groupedSpecs[groupIndex] if item.groupedSpecs and item.groupedSpecs[groupIndex] is defined else null %}
+              {% set fieldForItem = groupForItem and groupForItem.fields[fieldIndex] is defined and groupForItem.fields[fieldIndex] or null %}
               <td>
                 {% if fieldForItem and fieldForItem.value is iterable and fieldForItem.value is not string %}
                   {{ fieldForItem.value | join(", ") }}
