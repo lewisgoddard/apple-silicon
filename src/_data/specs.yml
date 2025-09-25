@@ -3,8 +3,6 @@ groups:
     fields:
       - key: cpu_cores
         label: "CPU Cores"
-      - key: cpu_isa
-        label: "CPU ISA"
       - key: performance_cores
         label: "Performance Cores"
       - key: performance_core_name
@@ -23,11 +21,11 @@ groups:
         label: "L2 Cache (MB)"
       - key: l3_cache_mb
         label: "L3 Cache (MB)"
+      - key: cpu_isa
+        label: "CPU ISA"
 
   - name: "GPU"
     fields:
-      - key: gpu_vendor
-        label: "GPU Vendor"
       - key: gpu_cores
         label: "GPU cores"
       - key: gpu_eus
@@ -40,6 +38,8 @@ groups:
         label: "TFLOPS"
       - key: gpu_rt
         label: "Ray Tracing"
+      - key: gpu_vendor
+        label: "GPU Vendor"
 
   - name: "NPU"
     fields:

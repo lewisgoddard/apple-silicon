@@ -9,7 +9,7 @@ permalink: "series/{{ seriesItem.id | lower }}/index.html"
 <h1>{{ seriesItem.name }}</h1>
 <p>{{ seriesItem.description }}</p>
 
-{# Show ranks (from src/_data/series.yml) with a header and list of variant ids #}
+{# Show ranks (from src/_data/series.yml) with a header and list of chip ids #}
 {% if seriesItem.ranks %}
   {% for rank in seriesItem.ranks %}
     <h2>{{ rank.name }}</h2>
@@ -18,11 +18,11 @@ permalink: "series/{{ seriesItem.id | lower }}/index.html"
     {% endif %}
     <ul>
       {% if rank.variants and rank.variants | length > 0 %}
-        {% for vid in rank.variants %}
-          <li>{{ vid }}</li>
+        {% for chip in rank.variants %}
+          <li>{{ chip }}</li>
         {% endfor %}
       {% else %}
-        <li>No variants</li>
+        <li>No chips available</li>
       {% endif %}
     </ul>
   {% endfor %}

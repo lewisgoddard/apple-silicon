@@ -31,15 +31,7 @@ export default function (eleventyConfig) {
     const specDefs = loadYAML("specs.yml");
 
     function enrichChip(chip) {
-      // Some chips may have variants, others may have specs directly
-      if (chip.variants) {
-        chip.variants = chip.variants.map(variant => ({
-          ...variant,
-          groupedSpecs: buildGroupedSpecs(variant.specs || {}, specDefs.groups),
-        }));
-      } else {
-        chip.groupedSpecs = buildGroupedSpecs(chip.specs || {}, specDefs.groups);
-      }
+      chip.groupedSpecs = buildGroupedSpecs(chip.specs || {}, specDefs.groups);
       return chip;
     }
 
@@ -65,9 +57,8 @@ export default function (eleventyConfig) {
   });
 
   // Return chip objects for a list of chip ids. The repository stores chips
-  // either as top-level entries or with nested `variants` arrays; this
-  // function finds matching chip/variant objects and returns them in the
-  // same order as `ids`.
+  // as top-level entries of arrays; this function finds matching chip
+  // objects and returns them in the same order as `ids`.
   eleventyConfig.addNunjucksGlobal("getChips", function(ids, collections) {
     const chips = collections.chipsCollection || [];
     const found = [];

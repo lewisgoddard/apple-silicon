@@ -8,7 +8,7 @@
     cpu_cores: 16
     performance_cores: 12
     performance_core_speed: 4.51
-    efficiency_core_speed: 4
+    efficiency_cores: 4
     gpu_vendor: "8th generation Apple-designed"
     gpu_cores: 40
     gpu_eus: 640
@@ -33,7 +33,7 @@
     cpu_cores: 14
     performance_cores: 10
     performance_core_speed: 4.51
-    efficiency_core_speed: 4
+    efficiency_cores: 4
     gpu_vendor: "8th generation Apple-designed"
     gpu_cores: 32
     gpu_eus: 512
