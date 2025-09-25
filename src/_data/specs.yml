@@ -15,12 +15,12 @@ groups:
         label: "Efficiency CPU Name"
       - key: efficiency_core_speed
         label: "Efficiency Core Speed (GHz)"
-      - key: l1_cache_mb
-        label: "L1 Cache (MB)"
+      - key: l1_cache_kb
+        label: "L1 Cache (KB)"
       - key: l2_cache_mb
         label: "L2 Cache (MB)"
-      - key: l3_cache_mb
-        label: "L3 Cache (MB)"
+      - key: slc_cache_mb
+        label: "SLC Cache (MB)"
       - key: cpu_isa
         label: "CPU ISA"
 

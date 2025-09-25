@@ -9,6 +9,8 @@ permalink: "series/{{ seriesItem.id | lower }}/index.html"
 <h1>{{ seriesItem.name }}</h1>
 <p>{{ seriesItem.description }}</p>
 
+{% from "macros/compare-table.njk" import compareTable %}
+
 {# Show ranks (from src/_data/series.yml) with a header and list of chip ids #}
 {% if seriesItem.ranks %}
   {% for rank in seriesItem.ranks %}
@@ -18,9 +20,9 @@ permalink: "series/{{ seriesItem.id | lower }}/index.html"
     {% endif %}
     <ul>
       {% if rank.variants and rank.variants | length > 0 %}
-        {% for chip in rank.variants %}
-          <li>{{ chip }}</li>
-        {% endfor %}
+        {# Build items from chip ids and call compareTable to render a comparison table for the variants #}
+        {% set items = getChips(rank.variants, collections) %}
+        {{ compareTable(items) }}
       {% else %}
         <li>No chips available</li>
       {% endif %}

@@ -1,10 +1,6 @@
 - id: m4-max-16-40
-  series: M
   name: "M4 Max"
   specs:
-    part_number: "T6041"
-    process_nm: "TSMC N3E"
-    cpu_isa: "ARMv9"
     cpu_cores: 16
     performance_cores: 12
     performance_core_speed: 4.51
@@ -24,12 +20,8 @@
     memory_options: [48, 64, 128]
     release_date: "2024-11-08"
 - id: m4-max-14-32
-  series: M
   name: "M4 Max"
   specs:
-    part_number: "T6041"
-    process_nm: "TSMC N3E"
-    cpu_isa: "ARMv9"
     cpu_cores: 14
     performance_cores: 10
     performance_core_speed: 4.51
@@ -48,3 +40,139 @@
     memory_bandwidth_gb_s: 409.6
     memory_options: [36]
     release_date: "2024-11-08"
+- id: m4-pro-14-20
+  name: "M4 Pro"
+  specs:
+    cpu_cores: 14
+    performance_cores: 10
+    performance_core_speed: 4.51
+    efficiency_cores: 4
+    slc_cache_mb: 36
+    gpu_vendor: "8th generation Apple-designed"
+    gpu_cores: 20
+    gpu_eus: 320
+    gpu_alus:	2560
+    gpu_frequency: 1578 # MHz
+    gpu_tflops: 8.52
+    gpu_rt: True
+    npu_cores: 16
+    npu_tops: 38
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    memory_bus_width_bits: 256
+    memory_type: "LPDDR5X-8533"
+    memory_bandwidth_gb_s: 273
+    memory_options: [24, 48, 64]
+    release_date: "2024-11-08"
+- id: m4-pro-12-16
+  name: "M4 Pro"
+  specs:
+    cpu_cores: 12
+    performance_cores: 8
+    performance_core_speed: 4.51
+    efficiency_cores: 4
+    slc_cache_mb: 36
+    gpu_vendor: "8th generation Apple-designed"
+    gpu_cores: 16
+    gpu_eus: 256
+    gpu_alus:	2048
+    gpu_frequency: 1578 # MHz
+    gpu_tflops: 6.82
+    gpu_rt: True
+    npu_cores: 16
+    npu_tops: 38
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    memory_bus_width_bits: 256
+    memory_type: "LPDDR5X-8533"
+    memory_bandwidth_gb_s: 273
+    memory_options: [24, 48, 64]
+    release_date: "2024-11-08"
+- id: m4-10-10
+  name: "M4"
+  specs:
+    cpu_cores: 10
+    performance_cores: 4
+    performance_core_speed: 4.40
+    efficiency_cores: 6
+    efficiency_core_speed: 2.85
+    slc_cache_mb: 20
+    gpu_vendor: "8th generation Apple-designed"
+    gpu_cores: 10
+    gpu_eus: 160
+    gpu_alus:	1280
+    gpu_frequency: 1470 # MHz
+    gpu_tflops: 4.26
+    gpu_rt: True
+    npu_cores: 16
+    npu_tops: 38
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    av1_decode: 1
+    memory_bus_width_bits: 128
+    memory_channels: 2
+    memory_channel_width_bits: 64
+    memory_type: "LPDDR5X-7500"
+    memory_bandwidth_gb_s: 120 
+    memory_options: [8, 16, 24, 32]
+    release_date: "2024-05-15"
+- id: m4-9-10
+  name: "M4"
+  specs:
+    cpu_cores: 9
+    performance_cores: 3
+    performance_core_speed: 4.40
+    efficiency_cores: 6
+    efficiency_core_speed: 2.85
+    slc_cache_mb: 20
+    gpu_vendor: "8th generation Apple-designed"
+    gpu_cores: 10
+    gpu_eus: 160
+    gpu_alus:	1280
+    gpu_frequency: 1470 # MHz
+    gpu_tflops: 4.26
+    gpu_rt: True
+    npu_cores: 16
+    npu_tops: 38
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    av1_decode: 1
+    memory_bus_width_bits: 128
+    memory_channels: 2
+    memory_channel_width_bits: 64
+    memory_type: "LPDDR5X-7500"
+    memory_bandwidth_gb_s: 120 
+    memory_options: [8, 16, 24, 32]
+    release_date: "2024-05-15"
+- id: m4-8-8
+  name: "M4"
+  specs:
+    cpu_cores: 8
+    performance_cores: 4
+    performance_core_speed: 4.40
+    efficiency_cores: 4
+    efficiency_core_speed: 2.85
+    slc_cache_mb: 20
+    gpu_vendor: "8th generation Apple-designed"
+    gpu_cores: 8
+    gpu_eus: 128
+    gpu_alus:	1024
+    gpu_frequency: 1470 # MHz
+    gpu_tflops: 3.41
+    gpu_rt: True
+    npu_cores: 16
+    npu_tops: 38
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    av1_decode: 1
+    memory_bus_width_bits: 128
+    memory_channels: 2
+    memory_channel_width_bits: 64
+    memory_type: "LPDDR5X-7500"
+    memory_bandwidth_gb_s: 120 
+    memory_options: [8, 16, 24, 32]
+    release_date: "2024-05-15"
