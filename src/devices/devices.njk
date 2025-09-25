@@ -1,18 +1,31 @@
 ---
 pagination:
-  data: collections.deviceCollection
+  data: collections.devicesCollection
   size: 1
   alias: deviceItem
-permalink: "device/{{ deviceItem.id | lower }}/index.html"
+permalink: "devices/{{ deviceItem.id | lower }}/index.html"
 ---
 
 <h1>{{ deviceItem.name }}</h1>
 <p>{{ deviceItem.description }}</p>
 
-<ul>
-{% for chip in collections.chipsCollection %}
-  {% if chip.device == deviceItem.device %}
-    <li><a href="/chips/{{ chip.id }}/">{{ chip.name }}</a></li>
-  {% endif %}
-{% endfor %}
-</ul>
+{% from "macros/compare-table.njk" import compareTable %}
+
+{# Show ranks (from src/_data/series.yml) with a header and list of chip ids #}
+{% if deviceItem.ranks %}
+  {% for rank in deviceItem.ranks %}
+    <h2>{{ rank.name }}</h2>
+    {% if rank.description %}
+      <p>{{ rank.description }}</p>
+    {% endif %}
+    <ul>
+      {% if rank.variants and rank.variants | length > 0 %}
+        {# Build items from chip ids and call compareTable to render a comparison table for the variants #}
+        {% set items = getChips(rank.variants, collections) %}
+        {{ compareTable(items) }}
+      {% else %}
+        <li>No chips available</li>
+      {% endif %}
+    </ul>
+  {% endfor %}
+{% endif %}

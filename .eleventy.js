@@ -17,6 +17,11 @@ export default function (eleventyConfig) {
 	// Copy `assets/` to `_site/assets/`
   eleventyConfig.addPassthroughCopy("assets");
 
+  eleventyConfig.addCollection("devicesCollection", function() {
+    const devices = loadYAML("devices.yml");
+    return devices;
+  });
+
   eleventyConfig.addCollection("seriesCollection", function() {
     const series = loadYAML("series.yml");
     return series;
@@ -49,11 +54,6 @@ export default function (eleventyConfig) {
     }
 
     return [...chipsM, ...chipsA].map(enrichChip);
-  });
-
-  eleventyConfig.addCollection("devicesCollection", function() {
-    const devices = loadYAML("devices.yml");
-    return devices;
   });
 
   // Return chip objects for a list of chip ids. The repository stores chips

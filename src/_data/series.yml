@@ -24,7 +24,7 @@
     process_nm: "TSMC N3E"
     cpu_isa: "ARMv9"
     transistor_count_billion: 28
-    variants: ["m4-8-10", "m4-9-10", "m4-8-8"]
+    variants: ["m4-10-10", "m4-9-10", "m4-8-8"]
 
 - id: A
   name: "A Series"
