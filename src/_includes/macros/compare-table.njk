@@ -5,9 +5,7 @@
   {% for g in groups or [] %}
     {% set total_fields = total_fields + (g.fields | length) %}
   {% endfor %}
-
   <!-- DEBUG: compareTable called: groups={{ groups_count }}, total_fields={{ total_fields }} -->
-  <div class="compare-debug" style="font-size:12px;color:#666;margin-bottom:8px">DEBUG: groups={{ groups_count }}, total_fields={{ total_fields }}</div>
 
   <table>
     <thead>
