@@ -4,15 +4,9 @@ title: "Chip Comparison"
 
 {% from "macros/compare-table.njk" import compareTable %}
 
-<h1>M-series Comparison</h1>
+<h1>Comparison</h1>
 
 {# Pick some variants #}
 {% set items = getChips(["m4-max-16-40", "m4-max-14-32"], collections) %}
 
-{# Debug: show whether specs and specs.groups are present #}
-<!-- DEBUG: specs defined={{ specs is defined }}, specs.groups defined={{ (specs.groups is defined) if (specs is defined) else false }} -->
-<!-- DEBUG: specs.groups length={{ specs.groups | length if specs is defined and specs.groups is defined else 'N/A' }} -->
-
-{{ compareTable(items, specs.groups) }}
-
-<div class="compare-visible-debug" style="color:#900;font-weight:bold">VISIBLE DEBUG: specs defined={{ specs is defined }}, specs.groups defined={{ (specs.groups is defined) if (specs is defined) else false }}, specs.groups length={{ specs.groups | length if specs is defined and specs.groups is defined else 'N/A' }}</div>
+{{ compareTable(items) }}

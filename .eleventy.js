@@ -22,11 +22,41 @@ export default function (eleventyConfig) {
     return series;
   });
 
-  eleventyConfig.addCollection("chipsCollection", function() {
+  eleventyConfig.addCollection("chipsCollection", function () {
     const chipsM = loadYAML("chips-m.yml");
     const chipsA = loadYAML("chips-a.yml");
+    // const chipsS = loadYAML("chips-s.yml");
+    // const chipsR = loadYAML("chips-r.yml");
 
-    return [...chipsM, ...chipsA];
+    const specDefs = loadYAML("specs.yml");
+
+    function enrichChip(chip) {
+      // Some chips may have variants, others may have specs directly
+      if (chip.variants) {
+        chip.variants = chip.variants.map(variant => ({
+          ...variant,
+          groupedSpecs: buildGroupedSpecs(variant.specs || {}, specDefs.groups),
+        }));
+      } else {
+        chip.groupedSpecs = buildGroupedSpecs(chip.specs || {}, specDefs.groups);
+      }
+      return chip;
+    }
+
+    function buildGroupedSpecs(specs, groupsDef) {
+      return groupsDef.map(group => {
+        const fields = group.fields
+          .map(field => ({
+            key: field.key,
+            label: field.label,
+            value: specs[field.key],
+          }))
+          .filter(f => f.value !== undefined && f.value !== null);
+        return fields.length ? { name: group.name, fields } : null;
+      }).filter(Boolean);
+    }
+
+    return [...chipsM, ...chipsA].map(enrichChip);
   });
 
   eleventyConfig.addCollection("devicesCollection", function() {

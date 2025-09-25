@@ -1,13 +1,6 @@
-{% macro compareTable(items, groups) %}
-  {# Debug: compute counts so we can see why rows may be missing #}
-  {% set groups_count = groups | length if groups is defined and groups is not none else 0 %}
-  {% set total_fields = 0 %}
-  {% for g in groups or [] %}
-    {% set total_fields = total_fields + (g.fields | length) %}
-  {% endfor %}
-  <!-- DEBUG: compareTable called: groups={{ groups_count }}, total_fields={{ total_fields }} -->
-
-  <table>
+{# _includes/compare-table.njk #}
+{% macro compareTable(items) %}
+  <table class="compare-table">
     <thead>
       <tr>
         <th>Spec</th>
@@ -17,43 +10,29 @@
       </tr>
     </thead>
     <tbody>
-      {% for group in groups %}
-        {# Render group header row #}
+      {# Assume all chips share the same group structure #}
+      {% for groupIndex in range(0, items[0].groupedSpecs | length - 1) %}
+        {% set group = items[0].groupedSpecs[groupIndex] %}
         <tr class="group-header">
           <td colspan="{{ items | length + 1 }}"><strong>{{ group.name }}</strong></td>
         </tr>
 
-        {# Render each field in the group #}
-        {% for field in group.fields %}
-          {% set rowValues = [] %}
-          {% for item in items %}
-            {# Support items that store specs under `specs` or directly on the item #}
-            {% set source = item.specs or item %}
-            {% set value = source[field.key] %}
-            {% set rowValues = rowValues.concat([value]) %}
-          {% endfor %}
-
-          {# Only render the row if at least one value is present/non-empty #}
-          {% set nonEmptyCount = 0 %}
-          {% for v in rowValues %}
-            {% if v is not none and not (v is string and v | trim == '') %}
-              {% set nonEmptyCount = nonEmptyCount + 1 %}
-            {% endif %}
-          {% endfor %}
-          {% if nonEmptyCount > 0 %}
-            <tr>
-              <td>{{ field.label }}</td>
-              {% for value in rowValues %}
-                <td>
-                  {% if value is iterable and value is not string %}
-                    {{ value | join(', ') }}
-                  {% else %}
-                    {{ value or "" }}
-                  {% endif %}
-                </td>
-              {% endfor %}
-            </tr>
-          {% endif %}
+        {% for fieldIndex in range(0, group.fields | length - 1) %}
+          {% set field = group.fields[fieldIndex] %}
+          <tr>
+            <td>{{ field.label }}</td>
+            {% for item in items %}
+              {% set groupForItem = item.groupedSpecs[groupIndex] %}
+              {% set fieldForItem = groupForItem.fields[fieldIndex] %}
+              <td>
+                {% if fieldForItem and fieldForItem.value is iterable and fieldForItem.value is not string %}
+                  {{ fieldForItem.value | join(", ") }}
+                {% else %}
+                  {{ fieldForItem and fieldForItem.value or "" }}
+                {% endif %}
+              </td>
+            {% endfor %}
+          </tr>
         {% endfor %}
       {% endfor %}
     </tbody>
