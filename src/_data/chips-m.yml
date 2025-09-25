@@ -1,0 +1,50 @@
+- id: m4-max-16-40
+  series: M
+  name: "M4 Max"
+  specs:
+    part_number: "T6041"
+    process_nm: "TSMC N3E"
+    cpu_isa: "ARMv9"
+    cpu_cores: 16
+    performance_cores: 12
+    performance_core_speed: 4.51
+    efficiency_core_speed: 4
+    gpu_vendor: "8th generation Apple-designed"
+    gpu_cores: 40
+    gpu_eus: 640
+    gpu_alus:	5120
+    gpu_tflops: 17.04
+    gpu_rt: True
+    npu_cores: 16
+    npu_tops: 38
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    memory_bus_width_bits: 512
+    memory_type: "LPDDR5X-8533"
+    memory_bandwidth_gb_s: 546
+    memory_options: [48, 64, 128]
+    release_date: "2024-11-08"
+- id: m4-max-14-32
+  series: M
+  name: "M4 Max"
+  specs:
+    part_number: "T6041"
+    process_nm: "TSMC N3E"
+    cpu_isa: "ARMv9"
+    cpu_cores: 14
+    performance_cores: 10
+    performance_core_speed: 4.51
+    efficiency_core_speed: 4
+    gpu_vendor: "8th generation Apple-designed"
+    gpu_cores: 32
+    gpu_eus: 512
+    gpu_alus:	4096
+    gpu_tflops: 13.64
+    gpu_rt: True
+    npu_cores: 16
+    npu_tops: 38
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    memory_bus_width_bits: 384
+    memory_type: "LPDDR5X-8533"
+    memory_bandwidth_gb_s: 409.6
+    memory_options: [36]
+    release_date: "2024-11-08"

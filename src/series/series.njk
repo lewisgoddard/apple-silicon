@@ -1,0 +1,29 @@
+---
+pagination:
+  data: collections.seriesCollection
+  size: 1
+  alias: seriesItem
+permalink: "series/{{ seriesItem.id | lower }}/index.html"
+---
+
+<h1>{{ seriesItem.name }}</h1>
+<p>{{ seriesItem.description }}</p>
+
+{# Show ranks (from src/_data/series.yml) with a header and list of variant ids #}
+{% if seriesItem.ranks %}
+  {% for rank in seriesItem.ranks %}
+    <h2>{{ rank.name }}</h2>
+    {% if rank.description %}
+      <p>{{ rank.description }}</p>
+    {% endif %}
+    <ul>
+      {% if rank.variants and rank.variants | length > 0 %}
+        {% for vid in rank.variants %}
+          <li>{{ vid }}</li>
+        {% endfor %}
+      {% else %}
+        <li>No variants</li>
+      {% endif %}
+    </ul>
+  {% endfor %}
+{% endif %}

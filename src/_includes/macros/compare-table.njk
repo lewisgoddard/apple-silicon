@@ -1,0 +1,63 @@
+{% macro compareTable(items, groups) %}
+  {# Debug: compute counts so we can see why rows may be missing #}
+  {% set groups_count = groups | length if groups is defined and groups is not none else 0 %}
+  {% set total_fields = 0 %}
+  {% for g in groups or [] %}
+    {% set total_fields = total_fields + (g.fields | length) %}
+  {% endfor %}
+
+  <!-- DEBUG: compareTable called: groups={{ groups_count }}, total_fields={{ total_fields }} -->
+  <div class="compare-debug" style="font-size:12px;color:#666;margin-bottom:8px">DEBUG: groups={{ groups_count }}, total_fields={{ total_fields }}</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Spec</th>
+        {% for item in items %}
+          <th>{{ item.name }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for group in groups %}
+        {# Render group header row #}
+        <tr class="group-header">
+          <td colspan="{{ items | length + 1 }}"><strong>{{ group.name }}</strong></td>
+        </tr>
+
+        {# Render each field in the group #}
+        {% for field in group.fields %}
+          {% set rowValues = [] %}
+          {% for item in items %}
+            {# Support items that store specs under `specs` or directly on the item #}
+            {% set source = item.specs or item %}
+            {% set value = source[field.key] %}
+            {% set rowValues = rowValues.concat([value]) %}
+          {% endfor %}
+
+          {# Only render the row if at least one value is present/non-empty #}
+          {% set nonEmptyCount = 0 %}
+          {% for v in rowValues %}
+            {% if v is not none and not (v is string and v | trim == '') %}
+              {% set nonEmptyCount = nonEmptyCount + 1 %}
+            {% endif %}
+          {% endfor %}
+          {% if nonEmptyCount > 0 %}
+            <tr>
+              <td>{{ field.label }}</td>
+              {% for value in rowValues %}
+                <td>
+                  {% if value is iterable and value is not string %}
+                    {{ value | join(', ') }}
+                  {% else %}
+                    {{ value or "" }}
+                  {% endif %}
+                </td>
+              {% endfor %}
+            </tr>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+{% endmacro %}

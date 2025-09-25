@@ -1,0 +1,92 @@
+groups:
+  - name: "CPU"
+    fields:
+      - key: cpu_cores
+        label: "CPU Cores"
+      - key: cpu_isa
+        label: "CPU ISA"
+      - key: performance_cores
+        label: "Performance Cores"
+      - key: performance_core_name
+        label: "Performance CPU Name"
+      - key: performance_core_speed
+        label: "Performance Core Speed (GHz)"
+      - key: efficiency_cores
+        label: "Efficiency Cores"
+      - key: efficiency_core_name
+        label: "Efficiency CPU Name"
+      - key: efficiency_core_speed
+        label: "Efficiency Core Speed (GHz)"
+      - key: l1_cache_mb
+        label: "L1 Cache (MB)"
+      - key: l2_cache_mb
+        label: "L2 Cache (MB)"
+      - key: l3_cache_mb
+        label: "L3 Cache (MB)"
+
+  - name: "GPU"
+    fields:
+      - key: gpu_vendor
+        label: "GPU Vendor"
+      - key: gpu_cores
+        label: "GPU cores"
+      - key: gpu_eus
+        label: "Execution Units"
+      - key: gpu_alus
+        label: "ALU Count"
+      - key: gpu_frequency
+        label: "GPU Frequency (GHz)"
+      - key: gpu_tflops
+        label: "TFLOPS"
+      - key: gpu_rt
+        label: "Ray Tracing"
+
+  - name: "NPU"
+    fields:
+      - key: npu_cores
+        label: "Neural Engine cores"
+      - key: npu_tops
+        label: "Neural Engine TOPS"
+
+  - name: "Memory"
+    fields:
+      - key: memory_bandwidth_gb_s
+        label: "Memory bandwidth (GB/s)"
+      - key: memory_bus_width_bits
+        label: "Memory bus width (bits)"
+      - key: memory_channels
+        label: "Memory channels"
+      - key: memory_channel_width_bits
+        label: "Memory channel width (bits)"
+      - key: memory_type
+        label: "Memory type"
+      - key: memory_options
+        label: "Memory options (GB)"
+
+  - name: "Media Engine"
+    fields:
+      - key: hardware_acceleration
+        label: "Hardware Acceleration"
+      - key: video_decode
+        label: "Video Decode"
+      - key: video_encode
+        label: "Video Encode"
+      - key: prores_engines
+        label: "ProRes Engines"
+      - key: av1_decode
+        label: "AV1 Decode"
+
+  - name: "Semiconductor Tech"
+    fields:
+      - key: process_nm
+        label: "Process node (nm)"
+      - key: transistor_count_billion
+        label: "Transistors (billion)"
+      - key: die_size_mm2
+        label: "Die size (mm²)"
+      - key: codename
+        label: "Codename"
+      - key: part_number
+        label: "Part number"
+      - key: release_date
+        label: "Release date"

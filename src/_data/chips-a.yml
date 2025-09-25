@@ -1,0 +1,16 @@
+- id: a17-pro-12-16
+  name: "A17 Pro (12-core CPU, 16-core GPU)"
+  specs:
+    cpu_cores: 12
+    gpu_cores: 16
+    memory_options: [16, 32, 64]
+    process_nm: 3
+    transistor_count_billion: 28
+- id: a17-pro-12-24
+  name: "A17 Pro (12-core CPU, 24-core GPU)"
+  specs:
+    cpu_cores: 12
+    gpu_cores: 24
+    memory_options: [16, 32, 64]
+    process_nm: 3
+    transistor_count_billion: 28

@@ -1,0 +1,20 @@
+- id: M
+  name: "M Series"
+  description: "Apple silicon for Macs and high-performance devices"
+  ranks:
+  - id: m4-max
+    name: "M4 Max"
+    description: "Top-tier member of the M4 family"
+    variants: ["m4-max-16-40", "m4-max-14-32"]
+  - id: m4-pro
+    name: "M4 Pro"
+    description: "Mid-tier member of the M4 family"
+    variants: []
+  - id: m4
+    name: "M4"
+    description: "Base-tier member of the M4 family"
+    variants: []
+
+- id: A
+  name: "A Series"
+  description: "Apple silicon for iPhones and iPads"
