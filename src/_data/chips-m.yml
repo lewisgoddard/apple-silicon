@@ -29,7 +29,7 @@
     gpu_vendor: "8th generation Apple-designed"
     gpu_cores: 32
     gpu_eus: 512
-    gpu_alus:	4096
+    gpu_alus: 4096
     gpu_tflops: 13.64
     gpu_rt: True
     npu_cores: 16
