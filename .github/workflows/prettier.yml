@@ -1,0 +1,22 @@
+name: Validate Formatting
+
+on:
+  push:
+  pull_request:
+
+permissions: {}
+
+jobs:
+  validate-yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+      - name: Install Node Packages
+        run: npm ci
+      - name: Check Formatting
+        run: npx prettier --check .

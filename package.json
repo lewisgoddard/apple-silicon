@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "build": "npx @11ty/eleventy",
-    "dev": "npx @11ty/eleventy --serve"
+    "dev": "npx @11ty/eleventy --serve",
+    "format": "npx prettier --write .",
+    "lint": "npx prettier --check ."
   },
   "devDependencies": {
-    "yaml-lint": "^1.7.0"
+    "prettier": "^3.6.2"
   }
 }
