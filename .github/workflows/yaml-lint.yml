@@ -1,0 +1,13 @@
+name: Validate YAML
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate-yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Validate YAML file
+        run: cd src/_data && yamllint .
