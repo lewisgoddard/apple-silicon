@@ -113,7 +113,7 @@
     memory_channels: 2
     memory_channel_width_bits: 64
     memory_type: "LPDDR5X-7500"
-    memory_bandwidth_gb_s: 120 
+    memory_bandwidth_gb_s: 120
     memory_options: [8, 16, 24, 32]
     release_date: "2024-05-15"
 - id: m4-9-10
