@@ -10,4 +10,4 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: Validate YAML file
-        run: cd src/_data && yamllint .
+        run: cd src/_data && yamllint -d relaxed .

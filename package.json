@@ -6,5 +6,8 @@
   "scripts": {
     "build": "npx @11ty/eleventy",
     "dev": "npx @11ty/eleventy --serve"
+  },
+  "devDependencies": {
+    "yaml-lint": "^1.7.0"
   }
 }
