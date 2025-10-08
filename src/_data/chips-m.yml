@@ -51,7 +51,7 @@
     gpu_vendor: "8th generation Apple-designed"
     gpu_cores: 20
     gpu_eus: 320
-    gpu_alus:	2560
+    gpu_alus: 2560
     gpu_frequency: 1578 # MHz
     gpu_tflops: 8.52
     gpu_rt: True
@@ -74,7 +74,7 @@
     gpu_vendor: "8th generation Apple-designed"
     gpu_cores: 16
     gpu_eus: 256
-    gpu_alus:	2048
+    gpu_alus: 2048
     gpu_frequency: 1578 # MHz
     gpu_tflops: 6.82
     gpu_rt: True
@@ -98,7 +98,7 @@
     gpu_vendor: "8th generation Apple-designed"
     gpu_cores: 10
     gpu_eus: 160
-    gpu_alus:	1280
+    gpu_alus: 1280
     gpu_frequency: 1470 # MHz
     gpu_tflops: 4.26
     gpu_rt: True
@@ -128,7 +128,7 @@
     gpu_vendor: "8th generation Apple-designed"
     gpu_cores: 10
     gpu_eus: 160
-    gpu_alus:	1280
+    gpu_alus: 1280
     gpu_frequency: 1470 # MHz
     gpu_tflops: 4.26
     gpu_rt: True
@@ -158,7 +158,7 @@
     gpu_vendor: "8th generation Apple-designed"
     gpu_cores: 8
     gpu_eus: 128
-    gpu_alus:	1024
+    gpu_alus: 1024
     gpu_frequency: 1470 # MHz
     gpu_tflops: 3.41
     gpu_rt: True
