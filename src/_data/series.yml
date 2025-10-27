@@ -2,6 +2,12 @@
   name: "M Series"
   description: "Apple silicon for Macs and high-performance devices"
   ranks:
+    - id: m5
+      name: "M5"
+      description: "The latest generation of Apple silicon for Macs, iPads, and Vision Pro devices."
+      process_nm: "TSMC N3P"
+      cpu_isa: "ARMv9"
+      variants: ["m5-9-10", "m5-10-10"]
     - id: m4-max
       name: "M4 Max"
       description: "Top-tier member of the M4 family"

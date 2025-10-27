@@ -1,3 +1,37 @@
+- id: m5-10-10
+  name: "M5"
+  specs:
+    cpu_cores: 10
+    performance_cores: 4
+    efficiency_cores: 6
+    gpu_vendor: "9th generation Apple-designed"
+    gpu_cores: 10
+    gpu_eus: 160
+    gpu_alus: 1280
+    gpu_rt: True
+    npu_cores: 16
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    memory_type: "LPDDR5X"
+    memory_bandwidth_gb_s: 153
+    memory_options: [16, 24, 32]
+    release_date: "2025-10-15"
+- id: m5-9-10
+  name: "M5"
+  specs:
+    cpu_cores: 9
+    performance_cores: 3
+    efficiency_cores: 6
+    gpu_vendor: "9th generation Apple-designed"
+    gpu_cores: 10
+    gpu_eus: 160
+    gpu_alus: 1280
+    gpu_rt: True
+    npu_cores: 16
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    memory_type: "LPDDR5X"
+    memory_bandwidth_gb_s: 153
+    memory_options: [12]
+    release_date: "2025-10-15"
 - id: m4-max-16-40
   name: "M4 Max"
   specs:
