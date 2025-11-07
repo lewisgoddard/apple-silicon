@@ -205,8 +205,272 @@
     av1_decode: 1
     memory_bus_width_bits: 128
     memory_channels: 2
-    memory_channel_width_bits: 64
     memory_type: "LPDDR5X-7500"
     memory_bandwidth_gb_s: 120
     memory_options: [8, 16, 24, 32]
     release_date: "2024-05-15"
+- id: m3-max-16-40
+  name: "M3 Max"
+  specs:
+    cpu_cores: 16
+    performance_cores: 12
+    performance_core_speed: 4.05
+    efficiency_cores: 4
+    efficiency_core_speed: 2.75
+    l2_cache_mb: 48
+    slc_cache_mb: 48
+    gpu_vendor: "7th generation Apple-designed"
+    gpu_cores: 40
+    gpu_eus: 640
+    gpu_alus: 5120
+    gpu_frequency: 1380
+    gpu_tflops: 14.131
+    gpu_rt: True
+    npu_cores: 16
+    npu_tops: 18
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 2
+    video_encode: 2
+    prores_engines: 2
+    av1_decode: 1
+    memory_bus_width_bits: 512
+    memory_channels: 4
+    memory_channel_width_bits: 128
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 409.6
+    memory_options: [48, 64, 128]
+    process_nm: 3
+    transistor_count_billion: 92
+    release_date: "2023-11-07"
+- id: m3-max-14-30
+  name: "M3 Max"
+  specs:
+    cpu_cores: 14
+    performance_cores: 10
+    performance_core_speed: 4.05
+    efficiency_cores: 4
+    efficiency_core_speed: 2.75
+    l2_cache_mb: 32
+    slc_cache_mb: 48
+    gpu_vendor: "7th generation Apple-designed"
+    gpu_cores: 30
+    gpu_eus: 480
+    gpu_alus: 3840
+    gpu_frequency: 1380
+    gpu_tflops: 10.598
+    gpu_rt: True
+    npu_cores: 16
+    npu_tops: 18
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 2
+    video_encode: 2
+    prores_engines: 2
+    av1_decode: 1
+    memory_bus_width_bits: 384
+    memory_channels: 3
+    memory_channel_width_bits: 128
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 307.2
+    memory_options: [36, 96]
+    process_nm: 3
+    transistor_count_billion: 92
+    release_date: "2023-11-07"
+- id: m3-pro-12-18
+  name: "M3 Pro"
+  specs:
+    cpu_cores: 12
+    performance_cores: 6
+    performance_core_speed: 4.05
+    efficiency_cores: 6
+    efficiency_core_speed: 2.75
+    l2_cache_mb: 12
+    slc_cache_mb: 24
+    gpu_vendor: "7th generation Apple-designed"
+    gpu_cores: 18
+    gpu_eus: 288
+    gpu_alus: 2304
+    gpu_frequency: 1380
+    gpu_tflops: 6.359
+    gpu_rt: True
+    npu_cores: 16
+    npu_tops: 18
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    av1_decode: 1
+    memory_bus_width_bits: 192
+    memory_channels: 3
+    memory_channel_width_bits: 64
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 153.6
+    memory_options: [18, 36]
+    process_nm: 3
+    transistor_count_billion: 37
+    release_date: "2023-11-07"
+- id: m3-pro-11-14
+  name: "M3 Pro"
+  specs:
+    cpu_cores: 11
+    performance_cores: 5
+    performance_core_speed: 4.05
+    efficiency_cores: 6
+    efficiency_core_speed: 2.75
+    l2_cache_mb: 12
+    slc_cache_mb: 24
+    gpu_vendor: "7th generation Apple-designed"
+    gpu_cores: 14
+    gpu_eus: 224
+    gpu_alus: 1792
+    gpu_frequency: 1380
+    gpu_tflops: 4.946
+    gpu_rt: True
+    npu_cores: 16
+    npu_tops: 18
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    av1_decode: 1
+    memory_bus_width_bits: 192
+    memory_channels: 3
+    memory_channel_width_bits: 64
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 153.6
+    memory_options: [18, 36]
+    process_nm: 3
+    transistor_count_billion: 37
+    release_date: "2023-11-07"
+- id: m3-8-10
+  name: "M3"
+  specs:
+    cpu_cores: 8
+    performance_cores: 4
+    performance_core_speed: 4.05
+    efficiency_cores: 4
+    efficiency_core_speed: 2.75
+    l2_cache_mb: 8
+    slc_cache_mb: 8
+    gpu_vendor: "7th generation Apple-designed"
+    gpu_cores: 10
+    gpu_eus: 160
+    gpu_alus: 1280
+    gpu_frequency: 1380
+    gpu_tflops: 3.533
+    gpu_rt: True
+    npu_cores: 16
+    npu_tops: 18
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    av1_decode: 1
+    memory_bus_width_bits: 128
+    memory_channels: 8
+    memory_channel_width_bits: 16
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 102.4
+    memory_options: [8, 16, 24]
+    process_nm: 3
+    transistor_count_billion: 25
+    release_date: "2023-11-07"
+- id: m3-8-8
+  name: "M3"
+  specs:
+    cpu_cores: 8
+    performance_cores: 4
+    performance_core_speed: 4.05
+    efficiency_cores: 4
+    efficiency_core_speed: 2.75
+    l2_cache_mb: 8
+    slc_cache_mb: 8
+    gpu_vendor: "7th generation Apple-designed"
+    gpu_cores: 8
+    gpu_eus: 128
+    gpu_alus: 1024
+    gpu_frequency: 1380
+    gpu_tflops: 2.826
+    gpu_rt: True
+    npu_cores: 16
+    npu_tops: 18
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    av1_decode: 1
+    memory_bus_width_bits: 128
+    memory_channels: 8
+    memory_channel_width_bits: 16
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 102.4
+    memory_options: [8, 16, 24]
+    process_nm: 3
+    transistor_count_billion: 25
+    release_date: "2023-11-07"
+- id: m3-ultra-32-80
+  name: "M3 Ultra"
+  specs:
+    cpu_cores: 32
+    performance_cores: 24
+    performance_core_speed: 4.0
+    efficiency_cores: 8
+    efficiency_core_speed: 2.75
+    l2_cache_mb: 96
+    slc_cache_mb: 96
+    gpu_vendor: "7th generation Apple-designed"
+    gpu_cores: 80
+    gpu_eus: 1280
+    gpu_alus: 10240
+    gpu_frequency: 1380
+    gpu_tflops: 28.262
+    gpu_rt: True
+    npu_cores: 32
+    npu_tops: 36
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 4
+    video_encode: 4
+    prores_engines: 4
+    av1_decode: 2
+    memory_bus_width_bits: 1024
+    memory_channels: 8
+    memory_channel_width_bits: 128
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 819.2
+    memory_options: [96, 256, 512]
+    process_nm: 3
+    transistor_count_billion: 184
+    release_date: "2025-03-12"
+- id: m3-ultra-28-60
+  name: "M3 Ultra"
+  specs:
+    cpu_cores: 28
+    performance_cores: 20
+    performance_core_speed: 4.0
+    efficiency_cores: 8
+    efficiency_core_speed: 2.75
+    l2_cache_mb: 80
+    slc_cache_mb: 96
+    gpu_vendor: "7th generation Apple-designed"
+    gpu_cores: 60
+    gpu_eus: 960
+    gpu_alus: 7680
+    gpu_frequency: 1380
+    gpu_tflops: 21.197
+    gpu_rt: True
+    npu_cores: 32
+    npu_tops: 36
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 4
+    video_encode: 4
+    prores_engines: 4
+    av1_decode: 2
+    memory_bus_width_bits: 1024
+    memory_channels: 8
+    memory_channel_width_bits: 128
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 819.2
+    memory_options: [96, 256]
+    process_nm: 3
+    transistor_count_billion: 184
+    release_date: "2025-03-12"
+

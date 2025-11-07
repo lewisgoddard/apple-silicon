@@ -31,6 +31,38 @@
       cpu_isa: "ARMv9"
       transistor_count_billion: 28
       variants: ["m4-10-10", "m4-9-10", "m4-8-8"]
+    - id: m3-ultra
+      name: "M3 Ultra"
+      description: "Top-tier member of the M3 family"
+      part_number: "T6032"
+      process_nm: "TSMC N3B"
+      cpu_isa: "ARMv8.6-A"
+      variants: []
+    - id: m3-max
+      name: "M3 Max"
+      description: "High-end member of the M3 family"
+      codename: "APL1204"
+      part_number: ["T6031", "T6034"]
+      process_nm: "TSMC N3B"
+      cpu_isa: "ARMv8.6-A"
+      variants: []
+    - id: m3-pro
+      name: "M3 Pro"
+      description: "Mid-tier member of the M3 family"
+      codename: "APL1203"
+      part_number: "T6030"
+      process_nm: "TSMC N3B"
+      cpu_isa: "ARMv8.6-A"
+      variants: []
+    - id: m3
+      name: "M3"
+      description: "Base-tier member of the M3 family"
+      codename: "APL1201"
+      part_number: "T8122"
+      process_nm: "TSMC N3B"
+      cpu_isa: "ARMv8.6-A"
+      transistor_count_billion: 28
+      variants: []
 
 - id: A
   name: "A Series"
