@@ -1,0 +1,63 @@
+{# _includes/macros/video-compare-table.njk #}
+{% macro videoCompareTable(items) %}
+  {% set videoSpecKeys = [
+    "cpu_cores",
+    "performance_cores",
+    "efficiency_cores",
+    "gpu_cores",
+    "memory_bandwidth_gb_s",
+    "video_decode",
+    "video_encode",
+    "prores_engines",
+    "av1_decode"
+  ] %}
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Spec</th>
+        {% for item in items %}
+          <th>{{ item.name }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for group in items[0].groupedSpecs %}
+        {# Check if any field in this group should be rendered #}
+        {% set hasVisibleField = false %}
+        {% for field in group.fields %}
+          {% if field.key in videoSpecKeys %}
+            {% set hasVisibleField = true %}
+          {% endif %}
+        {% endfor %}
+
+        {% if hasVisibleField %}
+          <tr class="group-header">
+            <td colspan="{{ items.length + 1 }}"><strong>{{ group.group }}</strong></td>
+          </tr>
+
+          {% for field in group.fields %}
+            {% if field.key in videoSpecKeys %}
+              <tr>
+                <td>{{ field.label }}</td>
+                {% for item in items %}
+                  <td>
+                    {% set value = item.specs[field.key] %}
+                    {% if value == true %}
+                      ✓
+                    {% elif value == false %}
+                      ✗
+                    {% elif value is iterable and value is not string %}
+                      {{ value | join(", ") }}
+                    {% else %}
+                      {{ value if value is defined else '–' }}
+                    {% endif %}
+                  </td>
+                {% endfor %}
+              </tr>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+{% endmacro %}

@@ -1,0 +1,31 @@
+---
+title: "Video Editing Performance"
+description: "A comparison of Apple Silicon chips focusing on video editing performance, highlighting media engines, GPU cores, and memory bandwidth."
+---
+
+<div class="container">
+  <h1 class="mt-5">Video Editing Performance on Apple Silicon</h1>
+  <p class="lead">
+    For video editing, not all specs are created equal. While CPU and GPU cores are important, the key to unlocking significant performance gains in applications like Final Cut Pro and DaVinci Resolve lies in Apple's dedicated hardware accelerators: the Media Engines. This page compares the top-tier "Max" and "Ultra" chips, which are specifically designed for professional media workflows.
+  </p>
+  <p>
+    The table below focuses on the specifications most critical for video editing, such as the number of ProRes and H.264/HEVC encode/decode engines, GPU core count, and memory bandwidth. These features directly impact timeline fluidity, export speeds, and the ability to work with high-resolution, professional-grade codecs.
+  </p>
+
+  <h2 class="mt-5">Top-Tier Chip Comparison for Video Editing</h2>
+  <p>Here are the best chips from each generation for demanding video workflows.</p>
+
+  {% set chips = getChips([
+    "m4-max-16-40",
+    "m3-ultra-32-80",
+    "m3-max-16-40",
+    "m2-ultra-76-76",
+    "m2-max-38-38",
+    "m1-ultra-20-64",
+    "m1-max-10-32"
+  ], collections) %}
+
+  {% from "macros/video-compare-table.njk" import videoCompareTable %}
+  {{ videoCompareTable(chips) }}
+
+</div>
