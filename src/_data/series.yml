@@ -102,6 +102,42 @@
       cpu_isa: "ARMv8.6-A"
       transistor_count_billion: 20
       variants: ["m2-8-10", "m2-8-9", "m2-8-8"]
+    - id: m1-ultra
+      name: "M1 Ultra"
+      description: "Top-tier member of the M1 family"
+      codename: "APL1W06"
+      part_number: "T6002"
+      process_nm: "TSMC N5"
+      cpu_isa: "ARMv8.4-A"
+      transistor_count_billion: 114
+      variants: ["m1-ultra-20-64", "m1-ultra-20-48"]
+    - id: m1-max
+      name: "M1 Max"
+      description: "High-end member of the M1 family"
+      codename: "APL1105"
+      part_number: "T6001"
+      process_nm: "TSMC N5"
+      cpu_isa: "ARMv8.4-A"
+      transistor_count_billion: 57
+      variants: ["m1-max-10-32", "m1-max-10-24"]
+    - id: m1-pro
+      name: "M1 Pro"
+      description: "Mid-tier member of the M1 family"
+      codename: "APL1103"
+      part_number: "T6000"
+      process_nm: "TSMC N5"
+      cpu_isa: "ARMv8.4-A"
+      transistor_count_billion: 33.7
+      variants: ["m1-pro-10-16", "m1-pro-10-14", "m1-pro-8-14"]
+    - id: m1
+      name: "M1"
+      description: "Base-tier member of the M1 family"
+      codename: "APL1102"
+      part_number: "T8103"
+      process_nm: "TSMC N5"
+      cpu_isa: "ARMv8.4-A"
+      transistor_count_billion: 16
+      variants: ["m1-8-8", "m1-8-7"]
 
 - id: A
   name: "A Series"

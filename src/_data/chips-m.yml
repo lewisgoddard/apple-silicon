@@ -749,4 +749,269 @@
     process_nm: 5
     transistor_count_billion: 20
     release_date: "2022-06-24"
+- id: m1-ultra-20-64
+  name: "M1 Ultra"
+  specs:
+    cpu_cores: 20
+    performance_cores: 16
+    performance_core_speed: 3.2
+    efficiency_cores: 4
+    efficiency_core_speed: 2.06
+    l2_cache_mb: 96
+    slc_cache_mb: 96
+    gpu_vendor: "4th generation Apple-designed"
+    gpu_cores: 64
+    gpu_eus: 1024
+    gpu_alus: 8192
+    gpu_tflops: 21.2
+    npu_cores: 32
+    npu_tops: 22
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 2
+    video_encode: 4
+    prores_engines: 4
+    memory_bus_width_bits: 1024
+    memory_channels: 8
+    memory_channel_width_bits: 128
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 819.2
+    memory_options: [64, 128]
+    process_nm: 5
+    transistor_count_billion: 114
+    release_date: "2022-03-18"
+- id: m1-ultra-20-48
+  name: "M1 Ultra"
+  specs:
+    cpu_cores: 20
+    performance_cores: 16
+    performance_core_speed: 3.2
+    efficiency_cores: 4
+    efficiency_core_speed: 2.06
+    l2_cache_mb: 96
+    slc_cache_mb: 96
+    gpu_vendor: "4th generation Apple-designed"
+    gpu_cores: 48
+    gpu_eus: 768
+    gpu_alus: 6144
+    gpu_tflops: 15.8
+    npu_cores: 32
+    npu_tops: 22
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 2
+    video_encode: 4
+    prores_engines: 4
+    memory_bus_width_bits: 1024
+    memory_channels: 8
+    memory_channel_width_bits: 128
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 819.2
+    memory_options: [64, 128]
+    process_nm: 5
+    transistor_count_billion: 114
+    release_date: "2022-03-18"
+- id: m1-max-10-32
+  name: "M1 Max"
+  specs:
+    cpu_cores: 10
+    performance_cores: 8
+    performance_core_speed: 3.2
+    efficiency_cores: 2
+    efficiency_core_speed: 2.06
+    l2_cache_mb: 48
+    slc_cache_mb: 48
+    gpu_vendor: "4th generation Apple-designed"
+    gpu_cores: 32
+    gpu_eus: 512
+    gpu_alus: 4096
+    gpu_tflops: 10.4
+    npu_cores: 16
+    npu_tops: 11
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 2
+    prores_engines: 2
+    memory_bus_width_bits: 512
+    memory_channels: 4
+    memory_channel_width_bits: 128
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 409.6
+    memory_options: [32, 64]
+    process_nm: 5
+    transistor_count_billion: 57
+    release_date: "2021-10-26"
+- id: m1-max-10-24
+  name: "M1 Max"
+  specs:
+    cpu_cores: 10
+    performance_cores: 8
+    performance_core_speed: 3.2
+    efficiency_cores: 2
+    efficiency_core_speed: 2.06
+    l2_cache_mb: 48
+    slc_cache_mb: 48
+    gpu_vendor: "4th generation Apple-designed"
+    gpu_cores: 24
+    gpu_eus: 384
+    gpu_alus: 3072
+    gpu_tflops: 7.8
+    npu_cores: 16
+    npu_tops: 11
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 2
+    prores_engines: 2
+    memory_bus_width_bits: 512
+    memory_channels: 4
+    memory_channel_width_bits: 128
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 409.6
+    memory_options: [32, 64]
+    process_nm: 5
+    transistor_count_billion: 57
+    release_date: "2021-10-26"
+- id: m1-pro-10-16
+  name: "M1 Pro"
+  specs:
+    cpu_cores: 10
+    performance_cores: 8
+    performance_core_speed: 3.23
+    efficiency_cores: 2
+    efficiency_core_speed: 2.06
+    l2_cache_mb: 24
+    slc_cache_mb: 24
+    gpu_vendor: "4th generation Apple-designed"
+    gpu_cores: 16
+    gpu_eus: 256
+    gpu_alus: 2048
+    gpu_tflops: 5.2
+    npu_cores: 16
+    npu_tops: 11
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    memory_bus_width_bits: 256
+    memory_channels: 2
+    memory_channel_width_bits: 128
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 204.8
+    memory_options: [16, 32]
+    process_nm: 5
+    transistor_count_billion: 33.7
+    release_date: "2021-10-26"
+- id: m1-pro-10-14
+  name: "M1 Pro"
+  specs:
+    cpu_cores: 10
+    performance_cores: 8
+    performance_core_speed: 3.23
+    efficiency_cores: 2
+    efficiency_core_speed: 2.06
+    l2_cache_mb: 24
+    slc_cache_mb: 24
+    gpu_vendor: "4th generation Apple-designed"
+    gpu_cores: 14
+    gpu_eus: 224
+    gpu_alus: 1792
+    gpu_tflops: 4.5
+    npu_cores: 16
+    npu_tops: 11
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    memory_bus_width_bits: 256
+    memory_channels: 2
+    memory_channel_width_bits: 128
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 204.8
+    memory_options: [16, 32]
+    process_nm: 5
+    transistor_count_billion: 33.7
+    release_date: "2021-10-26"
+- id: m1-pro-8-14
+  name: "M1 Pro"
+  specs:
+    cpu_cores: 8
+    performance_cores: 6
+    performance_core_speed: 3.23
+    efficiency_cores: 2
+    efficiency_core_speed: 2.06
+    l2_cache_mb: 24
+    slc_cache_mb: 24
+    gpu_vendor: "4th generation Apple-designed"
+    gpu_cores: 14
+    gpu_eus: 224
+    gpu_alus: 1792
+    gpu_tflops: 4.5
+    npu_cores: 16
+    npu_tops: 11
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    memory_bus_width_bits: 256
+    memory_channels: 2
+    memory_channel_width_bits: 128
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 204.8
+    memory_options: [16, 32]
+    process_nm: 5
+    transistor_count_billion: 33.7
+    release_date: "2021-10-26"
+- id: m1-8-8
+  name: "M1"
+  specs:
+    cpu_cores: 8
+    performance_cores: 4
+    performance_core_speed: 3.2
+    efficiency_cores: 4
+    efficiency_core_speed: 2.06
+    l2_cache_mb: 16
+    slc_cache_mb: 8
+    gpu_vendor: "4th generation Apple-designed"
+    gpu_cores: 8
+    gpu_eus: 128
+    gpu_alus: 1024
+    gpu_tflops: 2.6
+    npu_cores: 16
+    npu_tops: 11
+    hardware_acceleration: ["H264", "HEVC", "ProRes"]
+    memory_bus_width_bits: 128
+    memory_channels: 8
+    memory_channel_width_bits: 16
+    memory_type: "LPDDR4X-4266"
+    memory_bandwidth_gb_s: 68.3
+    memory_options: [8, 16]
+    process_nm: 5
+    transistor_count_billion: 16
+    release_date: "2020-11-10"
+- id: m1-8-7
+  name: "M1"
+  specs:
+    cpu_cores: 8
+    performance_cores: 4
+    performance_core_speed: 3.2
+    efficiency_cores: 4
+    efficiency_core_speed: 2.06
+    l2_cache_mb: 16
+    slc_cache_mb: 8
+    gpu_vendor: "4th generation Apple-designed"
+    gpu_cores: 7
+    gpu_eus: 112
+    gpu_alus: 896
+    gpu_tflops: 2.3
+    npu_cores: 16
+    npu_tops: 11
+    hardware_acceleration: ["H264", "HEVC", "ProRes"]
+    memory_bus_width_bits: 128
+    memory_channels: 8
+    memory_channel_width_bits: 16
+    memory_type: "LPDDR4X-4266"
+    memory_bandwidth_gb_s: 68.3
+    memory_options: [8, 16]
+    process_nm: 5
+    transistor_count_billion: 16
+    release_date: "2020-11-10"
+
 
