@@ -55,10 +55,35 @@ This project is an Eleventy (11ty) static site using Nunjucks templates and YAML
 - Recommended id pattern: `<series><gen>[-tier][-cpu]-<gpu>` (lowercase, hyphens), e.g., `m4-max-16-40`, `a17-pro-12-24`.
 - Keep `name` human-readable (e.g., `"M4 Pro"`).
 
+### Chip ordering
+
+Chips in `chips-*.yml` files should be ordered by:
+1. **Generation** (newest to oldest)
+2. **Tier** (Ultra → Max → Pro → base)
+3. **GPU cores** (most to fewest within each tier)
+
+Example M-series order: `m5-10-10`, `m4-max-16-40`, `m4-max-14-32`, `m4-pro-14-20`, `m4-pro-12-16`, `m4-10-10`, `m4-9-10`, `m4-8-8`, `m3-ultra-32-80`, `m3-ultra-28-60`, etc.
+
+### Adding chips from Wikipedia
+
+When adding chip data from Wikipedia's comparison tables:
+1. **Locate the table**: Use the "Comparison of M-series processors" or "Comparison of A-series processors" table at https://en.wikipedia.org/wiki/Apple_silicon
+2. **Extract specs systematically**:
+   - CPU: cores (P+E breakdown), clock speeds (GHz)
+   - GPU: vendor, cores, EUs, ALUs, frequency (MHz), TFLOPS, ray tracing support
+   - NPU: cores, TOPS
+   - Memory: type (e.g., "LPDDR5-6400"), bandwidth (GB/s), bus width (bits), channels, options (GB array)
+   - Media engines: hardware acceleration array, video decode/encode counts, ProRes engines, AV1 decode
+   - Semiconductor: process node (nm), transistor count (billion), die size (mm²)
+   - Release date (YYYY-MM-DD format)
+3. **Match keys to specs.yml**: Use exact keys from `specs.yml` (e.g., `performance_cores`, `gpu_tflops`, `memory_type`)
+4. **Handle variants**: Create separate chip entries for each GPU/CPU configuration (e.g., M3 has 8-core and 10-core GPU variants)
+5. **Order correctly**: Insert chips in the proper order (see "Chip ordering" above)
+
 ### Common tasks
 
 - Add a chip variant:
-  1. Append to the appropriate `chips-*.yml` with `id`, `name`, `specs`.
+  1. Append to the appropriate `chips-*.yml` with `id`, `name`, `specs` in the correct order (newest gen → highest tier → most GPU cores).
   2. Add the `id` to the correct series `ranks[*].variants` in `series.yml`.
   3. Build and verify the comparison table.
 - Add a new field:
