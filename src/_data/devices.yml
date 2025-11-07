@@ -3,14 +3,26 @@
   description: "Apple silicon for Macs and high-performance devices"
   devices:
     - id: "macbook-air-15"
+      name: "MacBook Air 15"
+      variants: ["m4-10-10", "m4-9-10", "m4-8-8"]
     - id: "macbook-air-13"
+      name: "MacBook Air 13"
+      variants: ["m4-10-10", "m4-9-10", "m4-8-8"]
     - id: "macbook-pro-16"
+      name: "MacBook Pro 16"
+      variants: ["m4-max-16-40", "m4-max-14-32", "m4-pro-14-20", "m4-pro-12-16"]
     - id: "macbook-pro-14"
       name: "MacBook Pro 14"
-      variants: ["m5-10-10", "m5-9-10"]
+      variants: ["m5-10-10", "m5-9-10", "m4-max-16-40", "m4-max-14-32", "m4-pro-14-20", "m4-pro-12-16", "m4-10-10", "m4-9-10", "m4-8-8"]
     - id: "imac"
+      name: "iMac"
+      variants: ["m4-10-10", "m4-9-10", "m4-8-8"]
     - id: "mac-mini"
+      name: "Mac mini"
+      variants: ["m4-pro-14-20", "m4-pro-12-16", "m4-10-10", "m4-9-10", "m4-8-8"]
     - id: "mac-studio"
+      name: "Mac Studio"
+      variants: ["m4-max-16-40", "m4-max-14-32"]
     - id: "mac-pro"
 - id: "ipad"
   name: "iPad"
@@ -18,10 +30,10 @@
   devices:
     - id: "ipad-pro-13"
       name: "iPad Pro 13"
-      variants: ["m5-10-10", "m5-9-10"]
+      variants: ["m5-10-10", "m5-9-10", "m4-10-10", "m4-9-10"]
     - id: "ipad-pro-11"
       name: "iPad Pro 11"
-      variants: ["m5-10-10", "m5-9-10"]
+      variants: ["m5-10-10", "m5-9-10", "m4-10-10", "m4-9-10"]
     - id: "ipad-air-13"
     - id: "ipad-air-10"
     - id: "ipad"
