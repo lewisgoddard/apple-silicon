@@ -65,7 +65,7 @@
       process_nm: "TSMC N3B"
       cpu_isa: "ARMv8.6-A"
       transistor_count_billion: 25
-      variants: ["m3-8-10", "m3-8-8"]
+      variants: ["m3-8-10", "m3-8-9", "m3-8-8"]
     - id: m2-ultra
       name: "M2 Ultra"
       description: "Top-tier member of the M2 family"

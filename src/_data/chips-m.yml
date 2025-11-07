@@ -440,6 +440,39 @@
     process_nm: 3
     transistor_count_billion: 25
     release_date: "2023-11-07"
+- id: m3-8-9
+  name: "M3"
+  specs:
+    cpu_cores: 8
+    performance_cores: 4
+    performance_core_speed: 4.05
+    efficiency_cores: 4
+    efficiency_core_speed: 2.75
+    l2_cache_mb: 8
+    slc_cache_mb: 8
+    gpu_vendor: "7th generation Apple-designed"
+    gpu_cores: 9
+    gpu_eus: 144
+    gpu_alus: 1152
+    gpu_frequency: 1380
+    gpu_tflops: 3.18
+    gpu_rt: True
+    npu_cores: 16
+    npu_tops: 18
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    av1_decode: 1
+    memory_bus_width_bits: 128
+    memory_channels: 8
+    memory_channel_width_bits: 16
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 102.4
+    memory_options: [8, 16, 24]
+    process_nm: 3
+    transistor_count_billion: 25
+    release_date: "2025-05-07"
 - id: m3-8-8
   name: "M3"
   specs:
