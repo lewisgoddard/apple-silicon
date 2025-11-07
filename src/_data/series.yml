@@ -13,14 +13,14 @@
       description: "Top-tier member of the M4 family"
       part_number: "T6041"
       process_nm: "TSMC N3E"
-      cpu_isa: "ARMv9"
+      cpu_isa: "ARMv9.2-A"
       variants: ["m4-max-16-40", "m4-max-14-32"]
     - id: m4-pro
       name: "M4 Pro"
       description: "Mid-tier member of the M4 family"
       part_number: "T6040"
       process_nm: "TSMC N3E"
-      cpu_isa: "ARMv9"
+      cpu_isa: "ARMv9.2-A"
       variants: ["m4-pro-14-20", "m4-pro-12-16"]
     - id: m4
       name: "M4"
@@ -28,7 +28,7 @@
       codename: "APL1206"
       part_number: "T8132"
       process_nm: "TSMC N3E"
-      cpu_isa: "ARMv9"
+      cpu_isa: "ARMv9.2-A"
       transistor_count_billion: 28
       variants: ["m4-10-10", "m4-9-10", "m4-8-8"]
     - id: m3-ultra

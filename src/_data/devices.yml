@@ -6,6 +6,8 @@
     - id: "macbook-air-13"
     - id: "macbook-pro-16"
     - id: "macbook-pro-14"
+      name: "MacBook Pro 14"
+      variants: ["m5-10-10", "m5-9-10"]
     - id: "imac"
     - id: "mac-mini"
     - id: "mac-studio"
@@ -15,7 +17,11 @@
   description: "Apple silicon for iPads"
   devices:
     - id: "ipad-pro-13"
+      name: "iPad Pro 13"
+      variants: ["m5-10-10", "m5-9-10"]
     - id: "ipad-pro-11"
+      name: "iPad Pro 11"
+      variants: ["m5-10-10", "m5-9-10"]
     - id: "ipad-air-13"
     - id: "ipad-air-10"
     - id: "ipad"
@@ -51,3 +57,5 @@
   description: "Apple silicon for Apple Vision products"
   devices:
     - id: "apple-vision-pro"
+      name: "Apple Vision Pro"
+      variants: ["m5-10-10", "m5-9-10"]
