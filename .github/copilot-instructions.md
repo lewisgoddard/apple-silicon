@@ -58,6 +58,7 @@ This project is an Eleventy (11ty) static site using Nunjucks templates and YAML
 ### Chip ordering
 
 Chips in `chips-*.yml` files should be ordered by:
+
 1. **Generation** (newest to oldest)
 2. **Tier** (Ultra → Max → Pro → base)
 3. **GPU cores** (most to fewest within each tier)
@@ -67,6 +68,7 @@ Example M-series order: `m5-10-10`, `m4-max-16-40`, `m4-max-14-32`, `m4-pro-14-2
 ### Adding chips from Wikipedia
 
 When adding chip data from Wikipedia's comparison tables:
+
 1. **Locate the table**: Use the "Comparison of M-series processors" or "Comparison of A-series processors" table at https://en.wikipedia.org/wiki/Apple_silicon
 2. **Extract specs systematically**:
    - CPU: cores (P+E breakdown), clock speeds (GHz)
