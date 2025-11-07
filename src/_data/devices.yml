@@ -7,22 +7,25 @@
       variants: ["m4-10-10", "m4-9-10", "m4-8-8", "m3-8-10", "m3-8-8", "m2-8-10"]
     - id: "macbook-air-13"
       name: "MacBook Air 13"
-      variants: ["m4-10-10", "m4-9-10", "m4-8-8", "m3-8-10", "m3-8-8", "m2-8-10", "m2-8-8"]
+      variants: ["m4-10-10", "m4-9-10", "m4-8-8", "m3-8-10", "m3-8-8", "m2-8-10", "m2-8-8", "m1-8-8", "m1-8-7"]
     - id: "macbook-pro-16"
       name: "MacBook Pro 16"
-      variants: ["m4-max-16-40", "m4-max-14-32", "m4-pro-14-20", "m4-pro-12-16", "m3-max-16-40", "m3-max-14-30", "m3-pro-12-18", "m3-pro-11-14", "m2-max-38-38", "m2-max-30-30", "m2-pro-12-19", "m2-pro-10-16"]
+      variants: ["m4-max-16-40", "m4-max-14-32", "m4-pro-14-20", "m4-pro-12-16", "m3-max-16-40", "m3-max-14-30", "m3-pro-12-18", "m3-pro-11-14", "m2-max-38-38", "m2-max-30-30", "m2-pro-12-19", "m2-pro-10-16", "m1-max-10-32", "m1-max-10-24", "m1-pro-10-16"]
     - id: "macbook-pro-14"
       name: "MacBook Pro 14"
-      variants: ["m5-10-10", "m5-9-10", "m4-max-16-40", "m4-max-14-32", "m4-pro-14-20", "m4-pro-12-16", "m4-10-10", "m4-9-10", "m4-8-8", "m3-max-16-40", "m3-max-14-30", "m3-pro-12-18", "m3-pro-11-14", "m3-8-10", "m2-max-38-38", "m2-max-30-30", "m2-pro-12-19", "m2-pro-10-16"]
+      variants: ["m5-10-10", "m5-9-10", "m4-max-16-40", "m4-max-14-32", "m4-pro-14-20", "m4-pro-12-16", "m4-10-10", "m4-9-10", "m4-8-8", "m3-max-16-40", "m3-max-14-30", "m3-pro-12-18", "m3-pro-11-14", "m3-8-10", "m2-max-38-38", "m2-max-30-30", "m2-pro-12-19", "m2-pro-10-16", "m1-max-10-32", "m1-max-10-24", "m1-pro-10-16", "m1-pro-10-14", "m1-pro-8-14", "m1-8-8"]
+    - id: "macbook-pro-13"
+      name: "MacBook Pro 13"
+      variants: ["m2-8-10", "m1-8-8"]
     - id: "imac"
       name: "iMac"
-      variants: ["m4-10-10", "m4-9-10", "m4-8-8", "m3-8-10"]
+      variants: ["m4-10-10", "m4-9-10", "m4-8-8", "m3-8-10", "m1-8-8", "m1-8-7"]
     - id: "mac-mini"
       name: "Mac mini"
-      variants: ["m4-pro-14-20", "m4-pro-12-16", "m4-10-10", "m4-9-10", "m4-8-8", "m2-pro-12-19", "m2-pro-10-16", "m2-8-10"]
+      variants: ["m4-pro-14-20", "m4-pro-12-16", "m4-10-10", "m4-9-10", "m4-8-8", "m2-pro-12-19", "m2-pro-10-16", "m2-8-10", "m1-8-8"]
     - id: "mac-studio"
       name: "Mac Studio"
-      variants: ["m4-max-16-40", "m4-max-14-32", "m3-ultra-32-80", "m3-ultra-28-60", "m2-ultra-76-76", "m2-ultra-60-60", "m2-max-38-38", "m2-max-30-30"]
+      variants: ["m4-max-16-40", "m4-max-14-32", "m3-ultra-32-80", "m3-ultra-28-60", "m2-ultra-76-76", "m2-ultra-60-60", "m2-max-38-38", "m2-max-30-30", "m1-ultra-20-64", "m1-ultra-20-48", "m1-max-10-32"]
     - id: "mac-pro"
       name: "Mac Pro"
       variants: ["m2-ultra-76-76", "m2-ultra-60-60"]
@@ -32,16 +35,16 @@
   devices:
     - id: "ipad-pro-13"
       name: "iPad Pro 13"
-      variants: ["m5-10-10", "m5-9-10", "m4-10-10", "m4-9-10", "m2-8-10"]
+      variants: ["m5-10-10", "m5-9-10", "m4-10-10", "m4-9-10", "m2-8-10", "m1-8-8"]
     - id: "ipad-pro-11"
       name: "iPad Pro 11"
-      variants: ["m5-10-10", "m5-9-10", "m4-10-10", "m4-9-10", "m2-8-10"]
+      variants: ["m5-10-10", "m5-9-10", "m4-10-10", "m4-9-10", "m2-8-10", "m1-8-8"]
     - id: "ipad-air-13"
       name: "iPad Air 13"
-      variants: ["m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9"]
+      variants: ["m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
     - id: "ipad-air-10"
       name: "iPad Air 10.9"
-      variants: ["m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9"]
+      variants: ["m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
     - id: "ipad"
     - id: "ipad-mini"
 - id: "iphone"
