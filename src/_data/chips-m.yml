@@ -473,4 +473,280 @@
     process_nm: 3
     transistor_count_billion: 25
     release_date: "2023-11-07"
+- id: m2-ultra-76-76
+  name: "M2 Ultra"
+  specs:
+    cpu_cores: 24
+    performance_cores: 16
+    performance_core_speed: 3.7
+    efficiency_cores: 8
+    efficiency_core_speed: 2.4
+    l2_cache_mb: 96
+    slc_cache_mb: 96
+    gpu_vendor: "5th generation Apple-designed"
+    gpu_cores: 76
+    gpu_eus: 304
+    gpu_alus: 9728
+    gpu_frequency: 1398
+    gpu_tflops: 27.199
+    npu_cores: 32
+    npu_tops: 31.6
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 4
+    video_encode: 4
+    prores_engines: 4
+    memory_bus_width_bits: 1024
+    memory_channels: 8
+    memory_channel_width_bits: 128
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 819.2
+    memory_options: [64, 128, 192]
+    process_nm: 5
+    transistor_count_billion: 134
+    release_date: "2023-06-13"
+- id: m2-ultra-60-60
+  name: "M2 Ultra"
+  specs:
+    cpu_cores: 24
+    performance_cores: 16
+    performance_core_speed: 3.7
+    efficiency_cores: 8
+    efficiency_core_speed: 2.4
+    l2_cache_mb: 96
+    slc_cache_mb: 96
+    gpu_vendor: "5th generation Apple-designed"
+    gpu_cores: 60
+    gpu_eus: 240
+    gpu_alus: 7680
+    gpu_frequency: 1398
+    gpu_tflops: 21.473
+    npu_cores: 32
+    npu_tops: 31.6
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 4
+    video_encode: 4
+    prores_engines: 4
+    memory_bus_width_bits: 1024
+    memory_channels: 8
+    memory_channel_width_bits: 128
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 819.2
+    memory_options: [64, 128, 192]
+    process_nm: 5
+    transistor_count_billion: 134
+    release_date: "2023-06-13"
+- id: m2-max-38-38
+  name: "M2 Max"
+  specs:
+    cpu_cores: 12
+    performance_cores: 8
+    performance_core_speed: 3.69
+    efficiency_cores: 4
+    efficiency_core_speed: 2.42
+    l2_cache_mb: 48
+    slc_cache_mb: 48
+    gpu_vendor: "5th generation Apple-designed"
+    gpu_cores: 38
+    gpu_eus: 152
+    gpu_alus: 4864
+    gpu_frequency: 1398
+    gpu_tflops: 13.599
+    npu_cores: 16
+    npu_tops: 15.8
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 2
+    video_encode: 2
+    prores_engines: 2
+    memory_bus_width_bits: 512
+    memory_channels: 4
+    memory_channel_width_bits: 128
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 409.6
+    memory_options: [32, 64, 96]
+    process_nm: 5
+    transistor_count_billion: 67
+    release_date: "2023-01-24"
+- id: m2-max-30-30
+  name: "M2 Max"
+  specs:
+    cpu_cores: 12
+    performance_cores: 8
+    performance_core_speed: 3.69
+    efficiency_cores: 4
+    efficiency_core_speed: 2.42
+    l2_cache_mb: 48
+    slc_cache_mb: 48
+    gpu_vendor: "5th generation Apple-designed"
+    gpu_cores: 30
+    gpu_eus: 120
+    gpu_alus: 3840
+    gpu_frequency: 1398
+    gpu_tflops: 10.736
+    npu_cores: 16
+    npu_tops: 15.8
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 2
+    video_encode: 2
+    prores_engines: 2
+    memory_bus_width_bits: 512
+    memory_channels: 4
+    memory_channel_width_bits: 128
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 409.6
+    memory_options: [32, 64, 96]
+    process_nm: 5
+    transistor_count_billion: 67
+    release_date: "2023-01-24"
+- id: m2-pro-12-19
+  name: "M2 Pro"
+  specs:
+    cpu_cores: 12
+    performance_cores: 8
+    performance_core_speed: 3.5
+    efficiency_cores: 4
+    efficiency_core_speed: 2.42
+    l2_cache_mb: 36
+    slc_cache_mb: 24
+    gpu_vendor: "5th generation Apple-designed"
+    gpu_cores: 19
+    gpu_eus: 76
+    gpu_alus: 2432
+    gpu_frequency: 1398
+    gpu_tflops: 6.799
+    npu_cores: 16
+    npu_tops: 15.8
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    memory_bus_width_bits: 256
+    memory_channels: 4
+    memory_channel_width_bits: 64
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 204.8
+    memory_options: [16, 32]
+    process_nm: 5
+    transistor_count_billion: 40
+    release_date: "2023-01-24"
+- id: m2-pro-10-16
+  name: "M2 Pro"
+  specs:
+    cpu_cores: 10
+    performance_cores: 6
+    performance_core_speed: 3.5
+    efficiency_cores: 4
+    efficiency_core_speed: 2.42
+    l2_cache_mb: 36
+    slc_cache_mb: 24
+    gpu_vendor: "5th generation Apple-designed"
+    gpu_cores: 16
+    gpu_eus: 64
+    gpu_alus: 2048
+    gpu_frequency: 1398
+    gpu_tflops: 5.726
+    npu_cores: 16
+    npu_tops: 15.8
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    memory_bus_width_bits: 256
+    memory_channels: 4
+    memory_channel_width_bits: 64
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 204.8
+    memory_options: [16, 32]
+    process_nm: 5
+    transistor_count_billion: 40
+    release_date: "2023-01-24"
+- id: m2-8-10
+  name: "M2"
+  specs:
+    cpu_cores: 8
+    performance_cores: 4
+    performance_core_speed: 3.5
+    efficiency_cores: 4
+    efficiency_core_speed: 2.42
+    l2_cache_mb: 16
+    slc_cache_mb: 8
+    gpu_vendor: "5th generation Apple-designed"
+    gpu_cores: 10
+    gpu_eus: 40
+    gpu_alus: 1280
+    gpu_frequency: 1398
+    gpu_tflops: 3.578
+    npu_cores: 16
+    npu_tops: 15.8
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    memory_bus_width_bits: 128
+    memory_channels: 8
+    memory_channel_width_bits: 16
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 102.4
+    memory_options: [8, 16, 24]
+    process_nm: 5
+    transistor_count_billion: 20
+    release_date: "2022-06-24"
+- id: m2-8-9
+  name: "M2"
+  specs:
+    cpu_cores: 8
+    performance_cores: 4
+    performance_core_speed: 3.5
+    efficiency_cores: 4
+    efficiency_core_speed: 2.42
+    l2_cache_mb: 16
+    slc_cache_mb: 8
+    gpu_vendor: "5th generation Apple-designed"
+    gpu_cores: 9
+    gpu_eus: 36
+    gpu_alus: 1152
+    gpu_frequency: 1398
+    gpu_tflops: 3.221
+    npu_cores: 16
+    npu_tops: 15.8
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    memory_bus_width_bits: 128
+    memory_channels: 8
+    memory_channel_width_bits: 16
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 102.4
+    memory_options: [8, 16, 24]
+    process_nm: 5
+    transistor_count_billion: 20
+    release_date: "2024-05-07"
+- id: m2-8-8
+  name: "M2"
+  specs:
+    cpu_cores: 8
+    performance_cores: 4
+    performance_core_speed: 3.5
+    efficiency_cores: 4
+    efficiency_core_speed: 2.42
+    l2_cache_mb: 16
+    slc_cache_mb: 8
+    gpu_vendor: "5th generation Apple-designed"
+    gpu_cores: 8
+    gpu_eus: 32
+    gpu_alus: 1024
+    gpu_frequency: 1398
+    gpu_tflops: 2.863
+    npu_cores: 16
+    npu_tops: 15.8
+    hardware_acceleration: ["H264", "HEVC"]
+    memory_bus_width_bits: 128
+    memory_channels: 8
+    memory_channel_width_bits: 16
+    memory_type: "LPDDR5-6400"
+    memory_bandwidth_gb_s: 102.4
+    memory_options: [8, 16, 24]
+    process_nm: 5
+    transistor_count_billion: 20
+    release_date: "2022-06-24"
 

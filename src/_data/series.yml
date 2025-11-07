@@ -37,7 +37,8 @@
       part_number: "T6032"
       process_nm: "TSMC N3B"
       cpu_isa: "ARMv8.6-A"
-      variants: []
+      transistor_count_billion: 184
+      variants: ["m3-ultra-32-80", "m3-ultra-28-60"]
     - id: m3-max
       name: "M3 Max"
       description: "High-end member of the M3 family"
@@ -45,7 +46,8 @@
       part_number: ["T6031", "T6034"]
       process_nm: "TSMC N3B"
       cpu_isa: "ARMv8.6-A"
-      variants: []
+      transistor_count_billion: 92
+      variants: ["m3-max-16-40", "m3-max-14-30"]
     - id: m3-pro
       name: "M3 Pro"
       description: "Mid-tier member of the M3 family"
@@ -53,7 +55,8 @@
       part_number: "T6030"
       process_nm: "TSMC N3B"
       cpu_isa: "ARMv8.6-A"
-      variants: []
+      transistor_count_billion: 37
+      variants: ["m3-pro-12-18", "m3-pro-11-14"]
     - id: m3
       name: "M3"
       description: "Base-tier member of the M3 family"
@@ -61,8 +64,44 @@
       part_number: "T8122"
       process_nm: "TSMC N3B"
       cpu_isa: "ARMv8.6-A"
-      transistor_count_billion: 28
-      variants: []
+      transistor_count_billion: 25
+      variants: ["m3-8-10", "m3-8-8"]
+    - id: m2-ultra
+      name: "M2 Ultra"
+      description: "Top-tier member of the M2 family"
+      codename: "APL1W12"
+      part_number: "T6022"
+      process_nm: "TSMC N5P"
+      cpu_isa: "ARMv8.6-A"
+      transistor_count_billion: 134
+      variants: ["m2-ultra-76-76", "m2-ultra-60-60"]
+    - id: m2-max
+      name: "M2 Max"
+      description: "High-end member of the M2 family"
+      codename: "APL1111"
+      part_number: "T6021"
+      process_nm: "TSMC N5P"
+      cpu_isa: "ARMv8.6-A"
+      transistor_count_billion: 67
+      variants: ["m2-max-38-38", "m2-max-30-30"]
+    - id: m2-pro
+      name: "M2 Pro"
+      description: "Mid-tier member of the M2 family"
+      codename: "APL1113"
+      part_number: "T6020"
+      process_nm: "TSMC N5P"
+      cpu_isa: "ARMv8.6-A"
+      transistor_count_billion: 40
+      variants: ["m2-pro-12-19", "m2-pro-10-16"]
+    - id: m2
+      name: "M2"
+      description: "Base-tier member of the M2 family"
+      codename: "APL1109"
+      part_number: "T8112"
+      process_nm: "TSMC N5P"
+      cpu_isa: "ARMv8.6-A"
+      transistor_count_billion: 20
+      variants: ["m2-8-10", "m2-8-9", "m2-8-8"]
 
 - id: A
   name: "A Series"
