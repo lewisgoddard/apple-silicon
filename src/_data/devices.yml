@@ -126,11 +126,48 @@
     - id: "ipad-air-10"
       name: "iPad Air 10.9"
       variants: ["m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
-    - id: "ipad"
-      name: "iPad"
+    - id: "ipad-a16"
+      name: "iPad (A16)"
+      variants: ["a16-6-5"]
+    - id: "ipad-10"
+      name: "iPad (10th gen)"
+      variants: ["a14-6-4"]
+    - id: "ipad-9"
+      name: "iPad (9th gen)"
+      variants: ["a13-6-4"]
+    - id: "ipad-8"
+      name: "iPad (8th gen)"
+      variants: ["a12-6-4"]
+    - id: "ipad-7"
+      name: "iPad (7th gen)"
+      variants: ["a10-4-6"]
+    - id: "ipad-6"
+      name: "iPad (6th gen)"
+      variants: ["a10-4-6"]
+    - id: "ipad-5"
+      name: "iPad (5th gen)"
+      variants: ["a9-2-6"]
     - id: "ipad-mini"
       name: "iPad mini"
       variants: ["a17-pro-6-5"]
+    - id: "ipad-mini-6"
+      name: "iPad mini (6th gen)"
+      variants: ["a15-6-5"]
+    - id: "ipad-mini-5"
+      name: "iPad mini (5th gen)"
+      variants: ["a12-6-4"]
+    - id: "ipad-mini-4"
+      name: "iPad mini 4"
+      variants: ["a8-2-4"]
+    - id: "ipad-mini-3"
+      name: "iPad mini 3"
+      variants: ["a7-2-4"]
+    - id: "ipad-mini-2"
+      name: "iPad mini 2"
+      variants: ["a7-2-4"]
+    - id: "ipad-mini-1"
+      name: "iPad mini (1st gen)"
+      variants: ["a5-2-2"]
     - id: "ipad-pro-12-9-4"
       name: "iPad Pro 12.9 (4th gen)"
       variants: ["a12-z-8-8"]
@@ -155,15 +192,30 @@
     - id: "ipad-pro-9-7"
       name: "iPad Pro 9.7"
       variants: ["a9-x-2-12"]
+    - id: "ipad-air-4"
+      name: "iPad Air (4th gen)"
+      variants: ["a14-6-4"]
+    - id: "ipad-air-3"
+      name: "iPad Air (3rd gen)"
+      variants: ["a12-6-4"]
     - id: "ipad-air-2"
       name: "iPad Air 2"
       variants: ["a8-x-3-8"]
+    - id: "ipad-air-1"
+      name: "iPad Air (1st gen)"
+      variants: ["a7-2-4"]
     - id: "ipad-4"
       name: "iPad (4th gen)"
       variants: ["a6-x-2-4"]
     - id: "ipad-3"
       name: "iPad (3rd gen)"
       variants: ["a5-x-2-4"]
+    - id: "ipad-2"
+      name: "iPad 2"
+      variants: ["a5-2-2"]
+    - id: "ipad-1"
+      name: "iPad (1st gen)"
+      variants: ["a4-1-1"]
 - id: "iphone"
   name: "iPhone"
   description: "Apple silicon for iPhones"
