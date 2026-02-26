@@ -175,3 +175,94 @@
       cpu_isa: "ARMv8.6-A"
       transistor_count_billion: 16
       variants: ["a16-6-5"]
+    - id: a15
+      name: "A15 Bionic"
+      description: "A-series chip used in iPhone 13 through iPhone 14 Plus and iPhone SE 3rd generation"
+      part_number: "APL1W07"
+      process_nm: "TSMC N5P"
+      cpu_isa: "ARMv8.6-A"
+      transistor_count_billion: 15
+      variants: ["a15-6-5", "a15-6-4"]
+    - id: a14
+      name: "A14 Bionic"
+      description: "First 5nm chip, used in iPhone 12 lineup"
+      part_number: "APL1W01"
+      process_nm: "TSMC N5"
+      cpu_isa: "ARMv8.4-A"
+      transistor_count_billion: 11.8
+      variants: ["a14-6-4"]
+    - id: a13
+      name: "A13 Bionic"
+      description: "A-series chip used in iPhone 11 lineup and iPhone SE 2nd generation"
+      process_nm: "TSMC N7P"
+      cpu_isa: "ARMv8.4-A"
+      transistor_count_billion: 8.5
+      variants: ["a13-6-4"]
+    - id: a12
+      name: "A12 Bionic"
+      description: "First 7nm chip, used in iPhone XS, XS Max, and XR"
+      part_number: "APL1W81"
+      process_nm: "TSMC N7"
+      cpu_isa: "ARMv8.3-A"
+      transistor_count_billion: 6.9
+      variants: ["a12-6-4"]
+    - id: a11
+      name: "A11 Bionic"
+      description: "First A-series with Apple-designed GPU and Neural Engine"
+      part_number: "APL1W72"
+      process_nm: "TSMC 10FF"
+      cpu_isa: "ARMv8.2-A"
+      transistor_count_billion: 4.3
+      variants: ["a11-6-3"]
+    - id: a10
+      name: "A10 Fusion"
+      description: "First A-series with big.LITTLE-style performance and efficiency cores"
+      part_number: "APL1W24"
+      process_nm: "TSMC 16FFC"
+      cpu_isa: "ARMv8.1-A"
+      transistor_count_billion: 3.28
+      variants: ["a10-4-6"]
+    - id: a9
+      name: "A9"
+      description: "Dual-sourced from Samsung 14nm and TSMC 16nm, used in iPhone 6S and iPhone SE"
+      part_number: "APL1022"
+      process_nm: "TSMC 16FFC / Samsung 14LPE"
+      cpu_isa: "ARMv8-A"
+      variants: ["a9-2-6"]
+    - id: a8
+      name: "A8"
+      description: "First A-series fabricated by TSMC, used in iPhone 6"
+      part_number: "APL1011"
+      process_nm: "TSMC 20nm"
+      cpu_isa: "ARMv8-A"
+      transistor_count_billion: 2
+      variants: ["a8-2-4"]
+    - id: a7
+      name: "A7"
+      description: "First 64-bit mobile SoC, used in iPhone 5S"
+      part_number: "APL0698"
+      process_nm: "Samsung 28nm"
+      cpu_isa: "ARMv8-A"
+      transistor_count_billion: 1
+      variants: ["a7-2-4"]
+    - id: a6
+      name: "A6"
+      description: "First A-series with Apple-designed CPU cores, used in iPhone 5 and 5C"
+      part_number: "S5L8950X"
+      process_nm: "Samsung 32nm"
+      cpu_isa: "ARMv7s"
+      variants: ["a6-2-3"]
+    - id: a5
+      name: "A5"
+      description: "Dual-core Cortex-A9 chip, used in iPhone 4S"
+      part_number: "S5L8940X"
+      process_nm: "Samsung 45nm"
+      cpu_isa: "ARMv7-A"
+      variants: ["a5-2-2"]
+    - id: a4
+      name: "A4"
+      description: "Apple's first custom SoC, used in iPhone 4"
+      part_number: "S5L8930X"
+      process_nm: "Samsung 45nm"
+      cpu_isa: "ARMv7-A"
+      variants: ["a4-1-1"]

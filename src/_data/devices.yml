@@ -170,6 +170,111 @@
     - id: "iphone-15"
       name: "iPhone 15"
       variants: ["a16-6-5"]
+    - id: "iphone-14-pro-max"
+      name: "iPhone 14 Pro Max"
+      variants: ["a16-6-5"]
+    - id: "iphone-14-pro"
+      name: "iPhone 14 Pro"
+      variants: ["a16-6-5"]
+    - id: "iphone-14-plus"
+      name: "iPhone 14 Plus"
+      variants: ["a15-6-5"]
+    - id: "iphone-14"
+      name: "iPhone 14"
+      variants: ["a15-6-5"]
+    - id: "iphone-se-3"
+      name: "iPhone SE (3rd generation)"
+      variants: ["a15-6-4"]
+    - id: "iphone-13-pro-max"
+      name: "iPhone 13 Pro Max"
+      variants: ["a15-6-5"]
+    - id: "iphone-13-pro"
+      name: "iPhone 13 Pro"
+      variants: ["a15-6-5"]
+    - id: "iphone-13"
+      name: "iPhone 13"
+      variants: ["a15-6-4"]
+    - id: "iphone-13-mini"
+      name: "iPhone 13 mini"
+      variants: ["a15-6-4"]
+    - id: "iphone-12-pro-max"
+      name: "iPhone 12 Pro Max"
+      variants: ["a14-6-4"]
+    - id: "iphone-12-pro"
+      name: "iPhone 12 Pro"
+      variants: ["a14-6-4"]
+    - id: "iphone-12"
+      name: "iPhone 12"
+      variants: ["a14-6-4"]
+    - id: "iphone-12-mini"
+      name: "iPhone 12 mini"
+      variants: ["a14-6-4"]
+    - id: "iphone-se-2"
+      name: "iPhone SE (2nd generation)"
+      variants: ["a13-6-4"]
+    - id: "iphone-11-pro-max"
+      name: "iPhone 11 Pro Max"
+      variants: ["a13-6-4"]
+    - id: "iphone-11-pro"
+      name: "iPhone 11 Pro"
+      variants: ["a13-6-4"]
+    - id: "iphone-11"
+      name: "iPhone 11"
+      variants: ["a13-6-4"]
+    - id: "iphone-xs-max"
+      name: "iPhone XS Max"
+      variants: ["a12-6-4"]
+    - id: "iphone-xs"
+      name: "iPhone XS"
+      variants: ["a12-6-4"]
+    - id: "iphone-xr"
+      name: "iPhone XR"
+      variants: ["a12-6-4"]
+    - id: "iphone-x"
+      name: "iPhone X"
+      variants: ["a11-6-3"]
+    - id: "iphone-8-plus"
+      name: "iPhone 8 Plus"
+      variants: ["a11-6-3"]
+    - id: "iphone-8"
+      name: "iPhone 8"
+      variants: ["a11-6-3"]
+    - id: "iphone-7-plus"
+      name: "iPhone 7 Plus"
+      variants: ["a10-4-6"]
+    - id: "iphone-7"
+      name: "iPhone 7"
+      variants: ["a10-4-6"]
+    - id: "iphone-se"
+      name: "iPhone SE (1st generation)"
+      variants: ["a9-2-6"]
+    - id: "iphone-6s-plus"
+      name: "iPhone 6S Plus"
+      variants: ["a9-2-6"]
+    - id: "iphone-6s"
+      name: "iPhone 6S"
+      variants: ["a9-2-6"]
+    - id: "iphone-6-plus"
+      name: "iPhone 6 Plus"
+      variants: ["a8-2-4"]
+    - id: "iphone-6"
+      name: "iPhone 6"
+      variants: ["a8-2-4"]
+    - id: "iphone-5s"
+      name: "iPhone 5S"
+      variants: ["a7-2-4"]
+    - id: "iphone-5c"
+      name: "iPhone 5C"
+      variants: ["a6-2-3"]
+    - id: "iphone-5"
+      name: "iPhone 5"
+      variants: ["a6-2-3"]
+    - id: "iphone-4s"
+      name: "iPhone 4S"
+      variants: ["a5-2-2"]
+    - id: "iphone-4"
+      name: "iPhone 4"
+      variants: ["a4-1-1"]
 - id: "watch"
   name: "Apple Watch"
   description: "Apple silicon for Apple Watches"
