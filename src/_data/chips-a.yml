@@ -313,6 +313,58 @@
     transistor_count_billion: 8.5
     die_size_mm2: 98.48
     release_date: "2019-09-10"
+- id: a12z-8-8
+  name: "A12Z Bionic"
+  specs:
+    cpu_cores: 8
+    performance_cores: 4
+    performance_core_name: "Vortex"
+    performance_core_speed: 2.49
+    efficiency_cores: 4
+    efficiency_core_name: "Tempest"
+    cpu_isa: "ARMv8.3-A"
+    gpu_vendor: "Apple-designed"
+    gpu_cores: 8
+    gpu_eus: 32
+    gpu_alus: 512
+    gpu_tflops: 1.152
+    gpu_rt: false
+    npu_cores: 8
+    memory_type: "LPDDR4X"
+    memory_bandwidth_gb_s: 68.2
+    memory_options: [4, 6, 16]
+    hardware_acceleration: ["H264", "HEVC"]
+    process_nm: 7
+    transistor_count_billion: 10
+    die_size_mm2: 135
+    part_number: "APL1083"
+    release_date: "2020-03-18"
+- id: a12x-8-7
+  name: "A12X Bionic"
+  specs:
+    cpu_cores: 8
+    performance_cores: 4
+    performance_core_name: "Vortex"
+    performance_core_speed: 2.49
+    efficiency_cores: 4
+    efficiency_core_name: "Tempest"
+    cpu_isa: "ARMv8.3-A"
+    gpu_vendor: "Apple-designed"
+    gpu_cores: 7
+    gpu_eus: 28
+    gpu_alus: 448
+    gpu_tflops: 1.008
+    gpu_rt: false
+    npu_cores: 8
+    memory_type: "LPDDR4X"
+    memory_bandwidth_gb_s: 68.2
+    memory_options: [4, 6]
+    hardware_acceleration: ["H264", "HEVC"]
+    process_nm: 7
+    transistor_count_billion: 10
+    die_size_mm2: 135
+    part_number: "APL1083"
+    release_date: "2018-10-30"
 - id: a12-6-4
   name: "A12 Bionic"
   specs:
@@ -358,6 +410,31 @@
     die_size_mm2: 87.66
     part_number: "APL1W72"
     release_date: "2017-09-12"
+- id: a10x-6-12
+  name: "A10X Fusion"
+  specs:
+    cpu_cores: 6
+    performance_cores: 3
+    performance_core_name: "Hurricane"
+    performance_core_speed: 2.38
+    efficiency_cores: 3
+    efficiency_core_name: "Zephyr"
+    efficiency_core_speed: 1.30
+    cpu_isa: "ARMv8.1-A"
+    gpu_vendor: "PowerVR"
+    gpu_cores: 12
+    gpu_frequency: 1000
+    gpu_tflops: 0.768
+    gpu_rt: false
+    memory_type: "LPDDR4"
+    memory_bandwidth_gb_s: 51.2
+    memory_options: [3, 4]
+    hardware_acceleration: ["H264", "HEVC"]
+    process_nm: 10
+    transistor_count_billion: 4
+    die_size_mm2: 96.4
+    part_number: "APL1071"
+    release_date: "2017-06-05"
 - id: a10-4-6
   name: "A10 Fusion"
   specs:
@@ -371,7 +448,7 @@
     cpu_isa: "ARMv8.1-A"
     gpu_vendor: "PowerVR"
     gpu_cores: 6
-    gpu_frequency: 0.9
+    gpu_frequency: 900
     gpu_rt: false
     memory_type: "LPDDR4"
     memory_options: [2, 3]
@@ -381,6 +458,27 @@
     die_size_mm2: 125
     part_number: "APL1W24"
     release_date: "2016-09-07"
+- id: a9x-2-12
+  name: "A9X"
+  specs:
+    cpu_cores: 2
+    performance_cores: 2
+    performance_core_name: "Twister"
+    performance_core_speed: 2.26
+    cpu_isa: "ARMv8-A"
+    gpu_vendor: "PowerVR"
+    gpu_cores: 12
+    gpu_frequency: 650
+    gpu_rt: false
+    memory_type: "LPDDR4"
+    memory_bandwidth_gb_s: 51.2
+    memory_options: [4]
+    hardware_acceleration: ["H264", "HEVC"]
+    process_nm: 16
+    transistor_count_billion: 3
+    die_size_mm2: 143.9
+    part_number: "APL1021"
+    release_date: "2015-11-11"
 - id: a9-2-6
   name: "A9"
   specs:
@@ -391,7 +489,7 @@
     cpu_isa: "ARMv8-A"
     gpu_vendor: "PowerVR"
     gpu_cores: 6
-    gpu_frequency: 0.65
+    gpu_frequency: 650
     gpu_rt: false
     memory_type: "LPDDR4"
     memory_options: [2]
@@ -399,6 +497,27 @@
     process_nm: 16
     part_number: "APL1022"
     release_date: "2015-09-09"
+- id: a8x-3-8
+  name: "A8X"
+  specs:
+    cpu_cores: 3
+    performance_cores: 3
+    performance_core_name: "Typhoon"
+    performance_core_speed: 1.5
+    cpu_isa: "ARMv8-A"
+    gpu_vendor: "PowerVR"
+    gpu_cores: 8
+    gpu_frequency: 450
+    gpu_rt: false
+    memory_type: "LPDDR3"
+    memory_bandwidth_gb_s: 25.6
+    memory_options: [2]
+    hardware_acceleration: ["H264"]
+    process_nm: 20
+    transistor_count_billion: 3
+    die_size_mm2: 128
+    part_number: "APL1021"
+    release_date: "2014-10-16"
 - id: a8-2-4
   name: "A8"
   specs:
@@ -437,6 +556,26 @@
     die_size_mm2: 102
     part_number: "APL0698"
     release_date: "2013-09-10"
+- id: a6x-2-4
+  name: "A6X"
+  specs:
+    cpu_cores: 2
+    performance_cores: 2
+    performance_core_name: "Swift"
+    performance_core_speed: 1.4
+    cpu_isa: "ARMv7s"
+    gpu_vendor: "PowerVR"
+    gpu_cores: 4
+    gpu_frequency: 300
+    gpu_rt: false
+    memory_type: "LPDDR2"
+    memory_bandwidth_gb_s: 17.0
+    memory_options: [1]
+    hardware_acceleration: ["H264"]
+    process_nm: 32
+    die_size_mm2: 123
+    part_number: "S5L8955X"
+    release_date: "2012-10-23"
 - id: a6-2-3
   name: "A6"
   specs:
@@ -455,6 +594,23 @@
     die_size_mm2: 96.71
     part_number: "S5L8950X"
     release_date: "2012-09-12"
+- id: a5x-2-4
+  name: "A5X"
+  specs:
+    cpu_cores: 2
+    performance_core_speed: 1.0
+    cpu_isa: "ARMv7-A"
+    gpu_vendor: "PowerVR"
+    gpu_cores: 4
+    gpu_rt: false
+    memory_type: "LPDDR2"
+    memory_bandwidth_gb_s: 12.8
+    memory_options: [1]
+    hardware_acceleration: ["H264"]
+    process_nm: 45
+    die_size_mm2: 165
+    part_number: "S5L8945X"
+    release_date: "2012-03-07"
 - id: a5-2-2
   name: "A5"
   specs:
