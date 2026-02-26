@@ -10,6 +10,12 @@ eleventyComputed:
   description: "{{ seriesItem.description }}"
 ---
 
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+
+{{ breadcrumbs([
+  { label: seriesItem.name }
+]) }}
+
 <h1>{{ seriesItem.name }}</h1>
 <p>{{ seriesItem.description }}</p>
 

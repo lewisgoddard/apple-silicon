@@ -1,0 +1,15 @@
+{# _includes/macros/breadcrumbs.njk #}
+{% macro breadcrumbs(crumbs) %}
+<nav aria-label="Breadcrumb" class="breadcrumbs">
+  <ol>
+    <li><a href="/">Home</a></li>
+    {% for crumb in crumbs %}
+      {% if loop.last %}
+        <li aria-current="page">{{ crumb.label }}</li>
+      {% else %}
+        <li><a href="{{ crumb.url }}">{{ crumb.label }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ol>
+</nav>
+{% endmacro %}

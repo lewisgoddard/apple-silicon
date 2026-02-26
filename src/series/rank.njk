@@ -10,7 +10,14 @@ eleventyComputed:
   description: "Compare all {{ rank.name }} chip variants."
 ---
 
-<p><a href="/chips/{{ rank.id | genId | lower }}/">← {{ rank.name | replace(" Ultra", "") | replace(" Max", "") | replace(" Pro", "") }} Family</a></p>
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+
+{% set genName = rank.name | replace(" Ultra", "") | replace(" Max", "") | replace(" Pro", "") %}
+{{ breadcrumbs([
+  { label: rank.seriesName, url: "/series/" + (rank.seriesId | lower) + "/" },
+  { label: genName + " Family", url: "/chips/" + (rank.id | genId | lower) + "/" },
+  { label: rank.name }
+]) }}
 
 <h1>{{ rank.name }}</h1>
 

@@ -10,7 +10,12 @@ eleventyComputed:
   description: "Apple Silicon chip options for the {{ device.name }}."
 ---
 
-<p><a href="/devices/{{ device.categoryId | lower }}/">← {{ device.categoryName }}</a></p>
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+
+{{ breadcrumbs([
+  { label: device.categoryName, url: "/devices/" + (device.categoryId | lower) + "/" },
+  { label: device.name }
+]) }}
 
 <h1>{{ device.name }}</h1>
 

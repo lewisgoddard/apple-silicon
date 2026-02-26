@@ -11,8 +11,14 @@ eleventyComputed:
 ---
 
 {% from "macros/device-carousel.njk" import deviceCarousel %}
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
 
-<p><a href="/chips/{{ chip.id | genId | lower }}/{{ chip.id | chipTier | lower }}/">← {{ chip.rank.rankName if chip.rank else chip.name }} Variants</a></p>
+{{ breadcrumbs([
+  { label: chip.rank.seriesId + " Series" if chip.rank else "Series", url: "/series/" + (chip.rank.seriesId | lower if chip.rank else "m") + "/" },
+  { label: (chip.id | genId | upper) + " Family", url: "/chips/" + (chip.id | genId | lower) + "/" },
+  { label: chip.rank.rankName if chip.rank else chip.name, url: "/chips/" + (chip.id | genId | lower) + "/" + (chip.id | chipTier | lower) + "/" },
+  { label: chip.name + " " + chip.specs.cpu_cores + "c/" + chip.specs.gpu_cores + "c" }
+]) }}
 
 <h1>{{ chip.name }}</h1>
 <p>{{ chip.specs.cpu_cores }}-core CPU / {{ chip.specs.gpu_cores }}-core GPU</p>

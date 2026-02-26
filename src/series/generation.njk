@@ -10,7 +10,12 @@ eleventyComputed:
   description: "Compare all tiers of the {{ gen.name }}."
 ---
 
-<p><a href="/series/{{ gen.seriesId | lower }}/">← {{ gen.seriesName }}</a></p>
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+
+{{ breadcrumbs([
+  { label: gen.seriesName, url: "/series/" + (gen.seriesId | lower) + "/" },
+  { label: gen.name }
+]) }}
 
 <h1>{{ gen.name }}</h1>
 
