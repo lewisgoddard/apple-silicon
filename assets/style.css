@@ -286,6 +286,80 @@ li {
   font-weight: 500;
 }
 
+/* ===== Cross-generation Navigation ===== */
+.gen-nav {
+  margin-bottom: 1.5rem;
+}
+
+.gen-nav-prevnext {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.gen-nav-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background 0.15s;
+  min-width: 0;
+}
+
+.gen-nav-link:hover {
+  background: var(--color-surface);
+}
+
+.gen-nav-next {
+  text-align: right;
+  margin-left: auto;
+}
+
+.gen-nav-placeholder {
+  border: none;
+}
+
+.gen-nav-dir {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.gen-nav-name {
+  font-weight: 600;
+  color: var(--color-link);
+}
+
+.gen-nav-siblings {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.gen-nav-siblings-label {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.gen-nav-sibling {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--color-link);
+  font-size: 0.85rem;
+  transition: background 0.15s;
+}
+
+.gen-nav-sibling:hover {
+  background: var(--color-surface);
+}
+
 /* ===== Spec Summary Card ===== */
 .spec-card {
   display: grid;

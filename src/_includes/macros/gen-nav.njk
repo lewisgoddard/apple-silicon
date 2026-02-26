@@ -1,0 +1,35 @@
+{# Cross-generation / sibling tier navigation #}
+{% macro genNav(prev, next, siblings) %}
+  {% if prev or next or (siblings and siblings | length) %}
+  <nav class="gen-nav" aria-label="Related chips">
+    {% if prev or next %}
+    <div class="gen-nav-prevnext">
+      {% if prev %}
+        <a href="{{ prev.url }}" class="gen-nav-link gen-nav-prev">
+          <span class="gen-nav-dir">&larr; Previous</span>
+          <span class="gen-nav-name">{{ prev.name }}</span>
+        </a>
+      {% else %}
+        <span class="gen-nav-link gen-nav-placeholder"></span>
+      {% endif %}
+      {% if next %}
+        <a href="{{ next.url }}" class="gen-nav-link gen-nav-next">
+          <span class="gen-nav-dir">Next &rarr;</span>
+          <span class="gen-nav-name">{{ next.name }}</span>
+        </a>
+      {% else %}
+        <span class="gen-nav-link gen-nav-placeholder"></span>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if siblings and siblings | length %}
+    <div class="gen-nav-siblings">
+      <span class="gen-nav-siblings-label">Same generation:</span>
+      {% for s in siblings %}
+        <a href="{{ s.url }}" class="gen-nav-sibling">{{ s.name }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </nav>
+  {% endif %}
+{% endmacro %}

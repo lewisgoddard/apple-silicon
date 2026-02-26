@@ -11,6 +11,7 @@ eleventyComputed:
 ---
 
 {% from "macros/breadcrumbs.njk" import breadcrumbs %}
+{% from "macros/gen-nav.njk" import genNav %}
 
 {{ breadcrumbs([
   { label: gen.seriesName, url: "/series/" + (gen.seriesId | lower) + "/" },
@@ -18,6 +19,8 @@ eleventyComputed:
 ]) }}
 
 <h1>{{ gen.name }}</h1>
+
+{{ genNav(gen.prevGen, gen.nextGen) }}
 
 {% from "macros/compare-table.njk" import compareTable %}
 {% from "macros/device-carousel.njk" import deviceCarousel %}

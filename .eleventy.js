@@ -111,6 +111,94 @@ export default function (eleventyConfig) {
         }
       });
     });
+    // Enrich rank pages with cross-generation and sibling links
+    // Group by series, then by generation
+    const ranksBySeriesGen = {};
+    pages.forEach((p) => {
+      const key = p.seriesId;
+      if (!ranksBySeriesGen[key]) ranksBySeriesGen[key] = {};
+      const genId = p.id.match(/^([a-z]\d+)/)?.[1] || p.id;
+      if (!ranksBySeriesGen[key][genId]) ranksBySeriesGen[key][genId] = [];
+      ranksBySeriesGen[key][genId].push(p);
+    });
+
+    // Extract tier slug from rank id (e.g. "m4-pro" → "pro", "m4" → "base")
+    function rankTier(id) {
+      const m = id.match(/^[a-z]\d+(?:-(.+))?$/);
+      return m && m[1] ? m[1] : "base";
+    }
+
+    // Build ordered list of generations per series (newest first, matching series.yml order)
+    const seriesGenOrder = {};
+    (loadYAML("series.yml") || []).forEach((s) => {
+      const seen = [];
+      (s.ranks || []).forEach((r) => {
+        const gid = r.id.match(/^([a-z]\d+)/)?.[1];
+        if (gid && !seen.includes(gid)) seen.push(gid);
+      });
+      seriesGenOrder[s.id] = seen; // newest first
+    });
+
+    pages.forEach((p) => {
+      const genId = p.id.match(/^([a-z]\d+)/)?.[1] || p.id;
+      const tier = rankTier(p.id);
+      const genOrder = seriesGenOrder[p.seriesId] || [];
+      const genIdx = genOrder.indexOf(genId);
+
+      // Siblings: other tiers in the same generation (base first, then pro, max, ultra)
+      const siblings = (ranksBySeriesGen[p.seriesId]?.[genId] || [])
+        .filter((s) => s.id !== p.id)
+        .map((s) => ({
+          id: s.id,
+          name: s.name,
+          url:
+            "/chips/" +
+            (s.id.match(/^([a-z]\d+)/)?.[1] || s.id) +
+            "/" +
+            rankTier(s.id) +
+            "/",
+        }));
+      p.siblingTiers = siblings;
+
+      // Previous generation equivalent tier (newer → older, so prev = genIdx+1)
+      // Next generation equivalent tier (older → newer, so next = genIdx-1)
+      p.prevGenTier = null;
+      p.nextGenTier = null;
+
+      if (genIdx >= 0) {
+        // Older generation (index + 1)
+        for (let i = genIdx + 1; i < genOrder.length; i++) {
+          const olderGenId = genOrder[i];
+          const match = (ranksBySeriesGen[p.seriesId]?.[olderGenId] || []).find(
+            (r) => rankTier(r.id) === tier,
+          );
+          if (match) {
+            p.prevGenTier = {
+              id: match.id,
+              name: match.name,
+              url: "/chips/" + olderGenId + "/" + rankTier(match.id) + "/",
+            };
+            break;
+          }
+        }
+        // Newer generation (index - 1)
+        for (let i = genIdx - 1; i >= 0; i--) {
+          const newerGenId = genOrder[i];
+          const match = (ranksBySeriesGen[p.seriesId]?.[newerGenId] || []).find(
+            (r) => rankTier(r.id) === tier,
+          );
+          if (match) {
+            p.nextGenTier = {
+              id: match.id,
+              name: match.name,
+              url: "/chips/" + newerGenId + "/" + rankTier(match.id) + "/",
+            };
+            break;
+          }
+        }
+      }
+    });
+
     return pages;
   });
 
@@ -237,6 +325,31 @@ export default function (eleventyConfig) {
         });
       });
     });
+
+    // Enrich generation pages with prev/next links
+    // Group pages by series, then link sequentially
+    const gensBySeries = {};
+    pages.forEach((p) => {
+      if (!gensBySeries[p.seriesId]) gensBySeries[p.seriesId] = [];
+      gensBySeries[p.seriesId].push(p);
+    });
+    // Pages are already in series.yml order (newest first)
+    Object.values(gensBySeries).forEach((gens) => {
+      gens.forEach((g, i) => {
+        g.prevGen =
+          i + 1 < gens.length
+            ? {
+                name: gens[i + 1].name,
+                url: "/chips/" + gens[i + 1].id + "/",
+              }
+            : null;
+        g.nextGen =
+          i - 1 >= 0
+            ? { name: gens[i - 1].name, url: "/chips/" + gens[i - 1].id + "/" }
+            : null;
+      });
+    });
+
     return pages;
   });
 
