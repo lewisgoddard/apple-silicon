@@ -1,0 +1,4 @@
+---
+permalink: "api/chips.json"
+---
+[{% for chip in collections.chipPagesCollection %}{"id":"{{ chip.id }}","name":"{{ chip.name }}","cpu":{{ chip.specs.cpu_cores or 0 }},"gpu":{{ chip.specs.gpu_cores or 0 }},"groupedSpecs":{{ chip.groupedSpecs | dump | safe }}}{% if not loop.last %},{% endif %}{% endfor %}]

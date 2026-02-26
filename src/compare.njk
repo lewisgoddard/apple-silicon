@@ -4,11 +4,17 @@ title: "Chip Comparison"
 description: "Compare Apple Silicon chips side by side."
 ---
 
-{% from "macros/compare-table.njk" import compareTable %}
+<h1>Chip Comparison</h1>
+<p>Select chips to compare their specifications side by side. Selections are saved in the URL — bookmark or share your comparison.</p>
 
-<h1>Comparison</h1>
+<div class="compare-controls">
+  <select id="chip-picker">
+    <option value="">Loading chips…</option>
+  </select>
+  <button id="chip-add" type="button">Add</button>
+</div>
 
-{# Pick some chips #}
-{% set items = getChips(["m4-max-16-40", "m4-max-14-32"], collections) %}
+<div id="compare-pills" class="compare-pills"></div>
+<div id="compare-output"></div>
 
-{{ compareTable(items) }}
+<script src="/assets/compare.js"></script>
