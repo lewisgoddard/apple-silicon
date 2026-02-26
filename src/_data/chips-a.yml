@@ -1,16 +1,141 @@
-- id: a17-pro-12-16
-  name: "A17 Pro (12-core CPU, 16-core GPU)"
+- id: a18-pro-6-6
+  name: "A18 Pro"
   specs:
-    cpu_cores: 12
-    gpu_cores: 16
-    memory_options: [16, 32, 64]
+    cpu_cores: 6
+    performance_cores: 2
+    performance_core_speed: 4.04
+    efficiency_cores: 4
+    efficiency_core_speed: 2.42
+    cpu_isa: "ARMv9.2-A"
+    gpu_vendor: "Apple-designed"
+    gpu_cores: 6
+    gpu_rt: true
+    npu_cores: 16
+    npu_tops: 35
+    memory_type: "LPDDR5"
+    memory_options: [8]
+    hardware_acceleration: ["H264", "HEVC", "ProRes"]
+    av1_decode: true
     process_nm: 3
-    transistor_count_billion: 28
-- id: a17-pro-12-24
-  name: "A17 Pro (12-core CPU, 24-core GPU)"
+    transistor_count_billion: 20
+    die_size_mm2: 105
+    codename: "Tahiti"
+    release_date: "2024-09-09"
+- id: a18-6-5
+  name: "A18"
   specs:
-    cpu_cores: 12
-    gpu_cores: 24
-    memory_options: [16, 32, 64]
+    cpu_cores: 6
+    performance_cores: 2
+    performance_core_speed: 4.04
+    efficiency_cores: 4
+    efficiency_core_speed: 2.42
+    cpu_isa: "ARMv9.2-A"
+    gpu_vendor: "Apple-designed"
+    gpu_cores: 5
+    gpu_rt: true
+    npu_cores: 16
+    npu_tops: 35
+    memory_type: "LPDDR5"
+    memory_options: [8]
+    hardware_acceleration: ["H264", "HEVC"]
+    av1_decode: true
     process_nm: 3
-    transistor_count_billion: 28
+    transistor_count_billion: 15.2
+    die_size_mm2: 90
+    codename: "Tupai"
+    release_date: "2024-09-09"
+- id: a18-6-4
+  name: "A18"
+  specs:
+    cpu_cores: 6
+    performance_cores: 2
+    performance_core_speed: 4.04
+    efficiency_cores: 4
+    efficiency_core_speed: 2.42
+    cpu_isa: "ARMv9.2-A"
+    gpu_vendor: "Apple-designed"
+    gpu_cores: 4
+    gpu_rt: true
+    npu_cores: 16
+    npu_tops: 35
+    memory_type: "LPDDR5"
+    memory_options: [8]
+    hardware_acceleration: ["H264", "HEVC"]
+    av1_decode: true
+    process_nm: 3
+    transistor_count_billion: 15.2
+    die_size_mm2: 90
+    codename: "Tupai"
+    release_date: "2025-02-19"
+- id: a17-pro-6-6
+  name: "A17 Pro"
+  specs:
+    cpu_cores: 6
+    performance_cores: 2
+    performance_core_speed: 3.78
+    efficiency_cores: 4
+    efficiency_core_speed: 2.11
+    cpu_isa: "ARMv8.6-A"
+    gpu_vendor: "Apple-designed"
+    gpu_cores: 6
+    gpu_eus: 96
+    gpu_alus: 768
+    gpu_rt: true
+    npu_cores: 16
+    npu_tops: 35
+    memory_type: "LPDDR5"
+    memory_options: [8]
+    hardware_acceleration: ["H264", "HEVC", "ProRes"]
+    av1_decode: true
+    process_nm: 3
+    transistor_count_billion: 19
+    part_number: "APL1V02"
+    release_date: "2023-09-12"
+- id: a17-pro-6-5
+  name: "A17 Pro"
+  specs:
+    cpu_cores: 6
+    performance_cores: 2
+    performance_core_speed: 3.78
+    efficiency_cores: 4
+    efficiency_core_speed: 2.11
+    cpu_isa: "ARMv8.6-A"
+    gpu_vendor: "Apple-designed"
+    gpu_cores: 5
+    gpu_eus: 80
+    gpu_alus: 640
+    gpu_rt: true
+    npu_cores: 16
+    npu_tops: 35
+    memory_type: "LPDDR5"
+    memory_options: [8]
+    hardware_acceleration: ["H264", "HEVC", "ProRes"]
+    av1_decode: true
+    process_nm: 3
+    transistor_count_billion: 19
+    part_number: "APL1V02"
+    release_date: "2024-10-15"
+- id: a16-6-5
+  name: "A16 Bionic"
+  specs:
+    cpu_cores: 6
+    performance_cores: 2
+    performance_core_name: "Everest"
+    performance_core_speed: 3.46
+    efficiency_cores: 4
+    efficiency_core_name: "Sawtooth"
+    efficiency_core_speed: 2.02
+    cpu_isa: "ARMv8.6-A"
+    gpu_vendor: "Apple-designed"
+    gpu_cores: 5
+    gpu_frequency: 1.398
+    gpu_rt: false
+    npu_cores: 16
+    npu_tops: 17
+    memory_type: "LPDDR5"
+    memory_options: [6]
+    hardware_acceleration: ["H264", "HEVC", "ProRes"]
+    process_nm: 4
+    transistor_count_billion: 16
+    part_number: "APL1W10"
+    release_date: "2022-09-07"

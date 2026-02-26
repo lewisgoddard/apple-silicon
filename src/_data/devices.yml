@@ -130,6 +130,7 @@
       name: "iPad"
     - id: "ipad-mini"
       name: "iPad mini"
+      variants: ["a17-pro-6-5"]
 - id: "iphone"
   name: "iPhone"
   description: "Apple silicon for iPhones"
@@ -142,12 +143,33 @@
       name: "iPhone 17 Air"
     - id: "iphone-17"
       name: "iPhone 17"
-    - id: "iphone-16e"
-      name: "iPhone 16e"
+    - id: "iphone-16-pro-max"
+      name: "iPhone 16 Pro Max"
+      variants: ["a18-pro-6-6"]
+    - id: "iphone-16-pro"
+      name: "iPhone 16 Pro"
+      variants: ["a18-pro-6-6"]
     - id: "iphone-16-plus"
       name: "iPhone 16 Plus"
+      variants: ["a18-6-5"]
     - id: "iphone-16"
       name: "iPhone 16"
+      variants: ["a18-6-5"]
+    - id: "iphone-16e"
+      name: "iPhone 16e"
+      variants: ["a18-6-4"]
+    - id: "iphone-15-pro-max"
+      name: "iPhone 15 Pro Max"
+      variants: ["a17-pro-6-6"]
+    - id: "iphone-15-pro"
+      name: "iPhone 15 Pro"
+      variants: ["a17-pro-6-6"]
+    - id: "iphone-15-plus"
+      name: "iPhone 15 Plus"
+      variants: ["a16-6-5"]
+    - id: "iphone-15"
+      name: "iPhone 15"
+      variants: ["a16-6-5"]
 - id: "watch"
   name: "Apple Watch"
   description: "Apple silicon for Apple Watches"

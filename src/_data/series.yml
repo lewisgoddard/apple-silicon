@@ -142,3 +142,36 @@
 - id: A
   name: "A Series"
   description: "Apple silicon for iPhones and iPads"
+  ranks:
+    - id: a18-pro
+      name: "A18 Pro"
+      description: "Pro-tier member of the A18 family"
+      codename: "Tahiti"
+      process_nm: "TSMC N3E"
+      cpu_isa: "ARMv9.2-A"
+      transistor_count_billion: 20
+      variants: ["a18-pro-6-6"]
+    - id: a18
+      name: "A18"
+      description: "Base-tier member of the A18 family"
+      codename: "Tupai"
+      process_nm: "TSMC N3E"
+      cpu_isa: "ARMv9.2-A"
+      transistor_count_billion: 15.2
+      variants: ["a18-6-5", "a18-6-4"]
+    - id: a17-pro
+      name: "A17 Pro"
+      description: "The first 3nm Apple SoC, with hardware ray tracing and AV1 decode"
+      part_number: "APL1V02"
+      process_nm: "TSMC N3"
+      cpu_isa: "ARMv8.6-A"
+      transistor_count_billion: 19
+      variants: ["a17-pro-6-6", "a17-pro-6-5"]
+    - id: a16
+      name: "A16 Bionic"
+      description: "A-series chip used in iPhone 14 Pro and iPhone 15"
+      part_number: "APL1W10"
+      process_nm: "TSMC N4P"
+      cpu_isa: "ARMv8.6-A"
+      transistor_count_billion: 16
+      variants: ["a16-6-5"]
