@@ -4,7 +4,7 @@ pagination:
   data: collections.devicePagesCollection
   size: 1
   alias: device
-permalink: "devices/{{ device.categoryId | lower }}/{{ device.id | lower }}/index.html"
+permalink: "{% if device.groupId %}devices/{{ device.categoryId | lower }}/{{ device.groupId | lower }}/{{ device.id | lower }}/index.html{% else %}devices/{{ device.categoryId | lower }}/{{ device.id | lower }}/index.html{% endif %}"
 eleventyComputed:
   title: "{{ device.name }}"
   description: "Apple Silicon chip options for the {{ device.name }}."
@@ -19,7 +19,7 @@ eleventyComputed:
   "name": "{{ device.name }}",
   "brand": { "@type": "Brand", "name": "Apple" },
   "description": "Apple Silicon chip options for the {{ device.name }}.",
-  "url": "{{ site.url }}/devices/{{ device.categoryId | lower }}/{{ device.id | lower }}/",
+  "url": "{{ site.url }}{% if device.groupId %}/devices/{{ device.categoryId | lower }}/{{ device.groupId | lower }}/{{ device.id | lower }}/{% else %}/devices/{{ device.categoryId | lower }}/{{ device.id | lower }}/{% endif %}",
   "category": "{{ device.categoryName }}"
 }
 </script>
@@ -28,10 +28,18 @@ eleventyComputed:
 {% from "macros/breadcrumbs.njk" import breadcrumbs %}
 {% from "macros/compare-table.njk" import compareTable %}
 
+{% if device.groupId %}
+{{ breadcrumbs([
+  { label: device.categoryName, url: "/devices/" + (device.categoryId | lower) + "/" },
+  { label: device.groupName, url: "/devices/" + (device.categoryId | lower) + "/" + (device.groupId | lower) + "/" },
+  { label: device.name }
+]) }}
+{% else %}
 {{ breadcrumbs([
   { label: device.categoryName, url: "/devices/" + (device.categoryId | lower) + "/" },
   { label: device.name }
 ]) }}
+{% endif %}
 
 <h1>{{ device.name }}</h1>
 

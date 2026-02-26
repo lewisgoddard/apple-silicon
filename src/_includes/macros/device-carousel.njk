@@ -4,7 +4,7 @@
   <h2>Available in</h2>
   <div class="device-carousel">
     {% for device in devices %}
-      <a class="device-card" href="/devices/{{ device.categoryId | lower }}/{{ device.id | lower }}/">
+      <a class="device-card" href="{{ device.url }}">
         <span class="device-card-name">{{ device.name }}</span>
         <span class="device-card-category">{{ device.categoryName }}</span>
       </a>

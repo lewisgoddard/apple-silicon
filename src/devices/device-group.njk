@@ -1,0 +1,50 @@
+---
+layout: base.njk
+pagination:
+  data: collections.deviceGroupPagesCollection
+  size: 1
+  alias: group
+permalink: "devices/{{ group.categoryId | lower }}/{{ group.id | lower }}/index.html"
+eleventyComputed:
+  title: "{{ group.name }}"
+  description: "Apple Silicon chip comparison for {{ group.name }} models."
+---
+
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+{% from "macros/compare-table.njk" import compareTable %}
+
+{{ breadcrumbs([
+  { label: group.categoryName, url: "/devices/" + (group.categoryId | lower) + "/" },
+  { label: group.name }
+]) }}
+
+<h1>{{ group.name }}</h1>
+
+{% if group.devices and group.devices | length > 0 %}
+  <div class="device-grid">
+    {% for device in group.devices %}
+      {% if device.name %}
+        <a href="/devices/{{ group.categoryId | lower }}/{{ group.id | lower }}/{{ device.id | lower }}/" class="device-grid-card{% if not device.variants or device.variants | length == 0 %} device-grid-card--empty{% endif %}">
+          <span class="device-grid-name">{{ device.name }}</span>
+          {% if device.variants and device.variants | length > 0 %}
+            {% set chips = getChips(device.variants, collections) %}
+            <span class="device-grid-chips">{{ device.variants | length }} chip{{ "s" if device.variants | length != 1 }}</span>
+            {% if chips | length == 1 %}
+              <span class="device-grid-range">{{ chips[0].name }} ({{ chips[0].specs.cpu_cores }}c CPU / {{ chips[0].specs.gpu_cores }}c GPU)</span>
+            {% else %}
+              <span class="device-grid-range">{{ getChipRange(device.variants, collections) }}</span>
+            {% endif %}
+          {% else %}
+            <span class="device-grid-chips">No chip data yet</span>
+          {% endif %}
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% if group.allVariants and group.allVariants | length > 0 %}
+    <h2>Chip Comparison</h2>
+    {% set items = getChips(group.allVariants, collections) %}
+    {{ compareTable(items) }}
+  {% endif %}
+{% endif %}

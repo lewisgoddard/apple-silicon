@@ -111,259 +111,313 @@
 - id: "ipad"
   name: "iPad"
   description: "Apple silicon for iPads"
-  devices:
-    - id: "ipad-pro-13"
-      name: "iPad Pro 13"
-      variants:
-        ["m5-10-10", "m5-9-10", "m4-10-10", "m4-9-10", "m2-8-10", "m1-8-8"]
-    - id: "ipad-pro-11"
-      name: "iPad Pro 11"
-      variants:
-        ["m5-10-10", "m5-9-10", "m4-10-10", "m4-9-10", "m2-8-10", "m1-8-8"]
-    - id: "ipad-air-13"
-      name: "iPad Air 13"
-      variants: ["m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
-    - id: "ipad-air-10"
-      name: "iPad Air 10.9"
-      variants: ["m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
-    - id: "ipad-a16"
-      name: "iPad (A16)"
-      variants: ["a16-6-5"]
-    - id: "ipad-10"
-      name: "iPad (10th gen)"
-      variants: ["a14-6-4"]
-    - id: "ipad-9"
-      name: "iPad (9th gen)"
-      variants: ["a13-6-4"]
-    - id: "ipad-8"
-      name: "iPad (8th gen)"
-      variants: ["a12-6-4"]
-    - id: "ipad-7"
-      name: "iPad (7th gen)"
-      variants: ["a10-4-6"]
-    - id: "ipad-6"
-      name: "iPad (6th gen)"
-      variants: ["a10-4-6"]
-    - id: "ipad-5"
-      name: "iPad (5th gen)"
-      variants: ["a9-2-6"]
-    - id: "ipad-mini"
+  groups:
+    - id: "pro"
+      name: "iPad Pro"
+      devices:
+        - id: "13"
+          name: "iPad Pro 13"
+          variants:
+            ["m5-10-10", "m5-9-10", "m4-10-10", "m4-9-10", "m2-8-10", "m1-8-8"]
+        - id: "11"
+          name: "iPad Pro 11"
+          variants:
+            ["m5-10-10", "m5-9-10", "m4-10-10", "m4-9-10", "m2-8-10", "m1-8-8"]
+        - id: "12-9-4"
+          name: "iPad Pro 12.9 (4th gen)"
+          variants: ["a12-z-8-8"]
+        - id: "11-2"
+          name: "iPad Pro 11 (2nd gen)"
+          variants: ["a12-z-8-8"]
+        - id: "12-9-3"
+          name: "iPad Pro 12.9 (3rd gen)"
+          variants: ["a12-x-8-7"]
+        - id: "11-1"
+          name: "iPad Pro 11 (1st gen)"
+          variants: ["a12-x-8-7"]
+        - id: "12-9-2"
+          name: "iPad Pro 12.9 (2nd gen)"
+          variants: ["a10-x-6-12"]
+        - id: "10-5"
+          name: "iPad Pro 10.5"
+          variants: ["a10-x-6-12"]
+        - id: "12-9-1"
+          name: "iPad Pro 12.9 (1st gen)"
+          variants: ["a9-x-2-12"]
+        - id: "9-7"
+          name: "iPad Pro 9.7"
+          variants: ["a9-x-2-12"]
+    - id: "air"
+      name: "iPad Air"
+      devices:
+        - id: "13"
+          name: "iPad Air 13"
+          variants: ["m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
+        - id: "10"
+          name: "iPad Air 10.9"
+          variants: ["m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
+        - id: "4"
+          name: "iPad Air (4th gen)"
+          variants: ["a14-6-4"]
+        - id: "3"
+          name: "iPad Air (3rd gen)"
+          variants: ["a12-6-4"]
+        - id: "2"
+          name: "iPad Air 2"
+          variants: ["a8-x-3-8"]
+        - id: "1"
+          name: "iPad Air (1st gen)"
+          variants: ["a7-2-4"]
+    - id: "mini"
       name: "iPad mini"
-      variants: ["a17-pro-6-5"]
-    - id: "ipad-mini-6"
-      name: "iPad mini (6th gen)"
-      variants: ["a15-6-5"]
-    - id: "ipad-mini-5"
-      name: "iPad mini (5th gen)"
-      variants: ["a12-6-4"]
-    - id: "ipad-mini-4"
-      name: "iPad mini 4"
-      variants: ["a8-2-4"]
-    - id: "ipad-mini-3"
-      name: "iPad mini 3"
-      variants: ["a7-2-4"]
-    - id: "ipad-mini-2"
-      name: "iPad mini 2"
-      variants: ["a7-2-4"]
-    - id: "ipad-mini-1"
-      name: "iPad mini (1st gen)"
-      variants: ["a5-2-2"]
-    - id: "ipad-pro-12-9-4"
-      name: "iPad Pro 12.9 (4th gen)"
-      variants: ["a12-z-8-8"]
-    - id: "ipad-pro-11-2"
-      name: "iPad Pro 11 (2nd gen)"
-      variants: ["a12-z-8-8"]
-    - id: "ipad-pro-12-9-3"
-      name: "iPad Pro 12.9 (3rd gen)"
-      variants: ["a12-x-8-7"]
-    - id: "ipad-pro-11-1"
-      name: "iPad Pro 11 (1st gen)"
-      variants: ["a12-x-8-7"]
-    - id: "ipad-pro-12-9-2"
-      name: "iPad Pro 12.9 (2nd gen)"
-      variants: ["a10-x-6-12"]
-    - id: "ipad-pro-10-5"
-      name: "iPad Pro 10.5"
-      variants: ["a10-x-6-12"]
-    - id: "ipad-pro-12-9-1"
-      name: "iPad Pro 12.9 (1st gen)"
-      variants: ["a9-x-2-12"]
-    - id: "ipad-pro-9-7"
-      name: "iPad Pro 9.7"
-      variants: ["a9-x-2-12"]
-    - id: "ipad-air-4"
-      name: "iPad Air (4th gen)"
-      variants: ["a14-6-4"]
-    - id: "ipad-air-3"
-      name: "iPad Air (3rd gen)"
-      variants: ["a12-6-4"]
-    - id: "ipad-air-2"
-      name: "iPad Air 2"
-      variants: ["a8-x-3-8"]
-    - id: "ipad-air-1"
-      name: "iPad Air (1st gen)"
-      variants: ["a7-2-4"]
-    - id: "ipad-4"
-      name: "iPad (4th gen)"
-      variants: ["a6-x-2-4"]
-    - id: "ipad-3"
-      name: "iPad (3rd gen)"
-      variants: ["a5-x-2-4"]
-    - id: "ipad-2"
-      name: "iPad 2"
-      variants: ["a5-2-2"]
-    - id: "ipad-1"
-      name: "iPad (1st gen)"
-      variants: ["a4-1-1"]
+      devices:
+        - id: "7"
+          name: "iPad mini (7th gen)"
+          variants: ["a17-pro-6-5"]
+        - id: "6"
+          name: "iPad mini (6th gen)"
+          variants: ["a15-6-5"]
+        - id: "5"
+          name: "iPad mini (5th gen)"
+          variants: ["a12-6-4"]
+        - id: "4"
+          name: "iPad mini 4"
+          variants: ["a8-2-4"]
+        - id: "3"
+          name: "iPad mini 3"
+          variants: ["a7-2-4"]
+        - id: "2"
+          name: "iPad mini 2"
+          variants: ["a7-2-4"]
+        - id: "1"
+          name: "iPad mini (1st gen)"
+          variants: ["a5-2-2"]
+    - id: "base"
+      name: "iPad"
+      devices:
+        - id: "a16"
+          name: "iPad (A16)"
+          variants: ["a16-6-5"]
+        - id: "10"
+          name: "iPad (10th gen)"
+          variants: ["a14-6-4"]
+        - id: "9"
+          name: "iPad (9th gen)"
+          variants: ["a13-6-4"]
+        - id: "8"
+          name: "iPad (8th gen)"
+          variants: ["a12-6-4"]
+        - id: "7"
+          name: "iPad (7th gen)"
+          variants: ["a10-4-6"]
+        - id: "6"
+          name: "iPad (6th gen)"
+          variants: ["a10-4-6"]
+        - id: "5"
+          name: "iPad (5th gen)"
+          variants: ["a9-2-6"]
+        - id: "4"
+          name: "iPad (4th gen)"
+          variants: ["a6-x-2-4"]
+        - id: "3"
+          name: "iPad (3rd gen)"
+          variants: ["a5-x-2-4"]
+        - id: "2"
+          name: "iPad 2"
+          variants: ["a5-2-2"]
+        - id: "1"
+          name: "iPad (1st gen)"
+          variants: ["a4-1-1"]
 - id: "iphone"
   name: "iPhone"
   description: "Apple silicon for iPhones"
-  devices:
-    - id: "iphone-17-pro-max"
-      name: "iPhone 17 Pro Max"
-      variants: ["a19-pro-6-6"]
-    - id: "iphone-17-pro"
-      name: "iPhone 17 Pro"
-      variants: ["a19-pro-6-6"]
-    - id: "iphone-17-air"
-      name: "iPhone 17 Air"
-      variants: ["a19-pro-6-5"]
-    - id: "iphone-17"
+  groups:
+    - id: "17"
       name: "iPhone 17"
-      variants: ["a19-6-5"]
-    - id: "iphone-16-pro-max"
-      name: "iPhone 16 Pro Max"
-      variants: ["a18-pro-6-6"]
-    - id: "iphone-16-pro"
-      name: "iPhone 16 Pro"
-      variants: ["a18-pro-6-6"]
-    - id: "iphone-16-plus"
-      name: "iPhone 16 Plus"
-      variants: ["a18-6-5"]
-    - id: "iphone-16"
+      devices:
+        - id: "pro-max"
+          name: "iPhone 17 Pro Max"
+          variants: ["a19-pro-6-6"]
+        - id: "pro"
+          name: "iPhone 17 Pro"
+          variants: ["a19-pro-6-6"]
+        - id: "air"
+          name: "iPhone 17 Air"
+          variants: ["a19-pro-6-5"]
+        - id: "base"
+          name: "iPhone 17"
+          variants: ["a19-6-5"]
+    - id: "16"
       name: "iPhone 16"
-      variants: ["a18-6-5"]
-    - id: "iphone-16e"
-      name: "iPhone 16e"
-      variants: ["a18-6-4"]
-    - id: "iphone-15-pro-max"
-      name: "iPhone 15 Pro Max"
-      variants: ["a17-pro-6-6"]
-    - id: "iphone-15-pro"
-      name: "iPhone 15 Pro"
-      variants: ["a17-pro-6-6"]
-    - id: "iphone-15-plus"
-      name: "iPhone 15 Plus"
-      variants: ["a16-6-5"]
-    - id: "iphone-15"
+      devices:
+        - id: "pro-max"
+          name: "iPhone 16 Pro Max"
+          variants: ["a18-pro-6-6"]
+        - id: "pro"
+          name: "iPhone 16 Pro"
+          variants: ["a18-pro-6-6"]
+        - id: "plus"
+          name: "iPhone 16 Plus"
+          variants: ["a18-6-5"]
+        - id: "base"
+          name: "iPhone 16"
+          variants: ["a18-6-5"]
+        - id: "e"
+          name: "iPhone 16e"
+          variants: ["a18-6-4"]
+    - id: "15"
       name: "iPhone 15"
-      variants: ["a16-6-5"]
-    - id: "iphone-14-pro-max"
-      name: "iPhone 14 Pro Max"
-      variants: ["a16-6-5"]
-    - id: "iphone-14-pro"
-      name: "iPhone 14 Pro"
-      variants: ["a16-6-5"]
-    - id: "iphone-14-plus"
-      name: "iPhone 14 Plus"
-      variants: ["a15-6-5"]
-    - id: "iphone-14"
+      devices:
+        - id: "pro-max"
+          name: "iPhone 15 Pro Max"
+          variants: ["a17-pro-6-6"]
+        - id: "pro"
+          name: "iPhone 15 Pro"
+          variants: ["a17-pro-6-6"]
+        - id: "plus"
+          name: "iPhone 15 Plus"
+          variants: ["a16-6-5"]
+        - id: "base"
+          name: "iPhone 15"
+          variants: ["a16-6-5"]
+    - id: "14"
       name: "iPhone 14"
-      variants: ["a15-6-5"]
-    - id: "iphone-se-3"
-      name: "iPhone SE (3rd generation)"
-      variants: ["a15-6-4"]
-    - id: "iphone-13-pro-max"
-      name: "iPhone 13 Pro Max"
-      variants: ["a15-6-5"]
-    - id: "iphone-13-pro"
-      name: "iPhone 13 Pro"
-      variants: ["a15-6-5"]
-    - id: "iphone-13"
+      devices:
+        - id: "pro-max"
+          name: "iPhone 14 Pro Max"
+          variants: ["a16-6-5"]
+        - id: "pro"
+          name: "iPhone 14 Pro"
+          variants: ["a16-6-5"]
+        - id: "plus"
+          name: "iPhone 14 Plus"
+          variants: ["a15-6-5"]
+        - id: "base"
+          name: "iPhone 14"
+          variants: ["a15-6-5"]
+    - id: "se"
+      name: "iPhone SE"
+      devices:
+        - id: "3"
+          name: "iPhone SE (3rd generation)"
+          variants: ["a15-6-4"]
+        - id: "2"
+          name: "iPhone SE (2nd generation)"
+          variants: ["a13-6-4"]
+        - id: "1"
+          name: "iPhone SE (1st generation)"
+          variants: ["a9-2-6"]
+    - id: "13"
       name: "iPhone 13"
-      variants: ["a15-6-4"]
-    - id: "iphone-13-mini"
-      name: "iPhone 13 mini"
-      variants: ["a15-6-4"]
-    - id: "iphone-12-pro-max"
-      name: "iPhone 12 Pro Max"
-      variants: ["a14-6-4"]
-    - id: "iphone-12-pro"
-      name: "iPhone 12 Pro"
-      variants: ["a14-6-4"]
-    - id: "iphone-12"
+      devices:
+        - id: "pro-max"
+          name: "iPhone 13 Pro Max"
+          variants: ["a15-6-5"]
+        - id: "pro"
+          name: "iPhone 13 Pro"
+          variants: ["a15-6-5"]
+        - id: "base"
+          name: "iPhone 13"
+          variants: ["a15-6-4"]
+        - id: "mini"
+          name: "iPhone 13 mini"
+          variants: ["a15-6-4"]
+    - id: "12"
       name: "iPhone 12"
-      variants: ["a14-6-4"]
-    - id: "iphone-12-mini"
-      name: "iPhone 12 mini"
-      variants: ["a14-6-4"]
-    - id: "iphone-se-2"
-      name: "iPhone SE (2nd generation)"
-      variants: ["a13-6-4"]
-    - id: "iphone-11-pro-max"
-      name: "iPhone 11 Pro Max"
-      variants: ["a13-6-4"]
-    - id: "iphone-11-pro"
-      name: "iPhone 11 Pro"
-      variants: ["a13-6-4"]
-    - id: "iphone-11"
+      devices:
+        - id: "pro-max"
+          name: "iPhone 12 Pro Max"
+          variants: ["a14-6-4"]
+        - id: "pro"
+          name: "iPhone 12 Pro"
+          variants: ["a14-6-4"]
+        - id: "base"
+          name: "iPhone 12"
+          variants: ["a14-6-4"]
+        - id: "mini"
+          name: "iPhone 12 mini"
+          variants: ["a14-6-4"]
+    - id: "11"
       name: "iPhone 11"
-      variants: ["a13-6-4"]
-    - id: "iphone-xs-max"
-      name: "iPhone XS Max"
-      variants: ["a12-6-4"]
-    - id: "iphone-xs"
-      name: "iPhone XS"
-      variants: ["a12-6-4"]
-    - id: "iphone-xr"
-      name: "iPhone XR"
-      variants: ["a12-6-4"]
-    - id: "iphone-x"
+      devices:
+        - id: "pro-max"
+          name: "iPhone 11 Pro Max"
+          variants: ["a13-6-4"]
+        - id: "pro"
+          name: "iPhone 11 Pro"
+          variants: ["a13-6-4"]
+        - id: "base"
+          name: "iPhone 11"
+          variants: ["a13-6-4"]
+    - id: "x"
       name: "iPhone X"
-      variants: ["a11-6-3"]
-    - id: "iphone-8-plus"
-      name: "iPhone 8 Plus"
-      variants: ["a11-6-3"]
-    - id: "iphone-8"
+      devices:
+        - id: "xs-max"
+          name: "iPhone XS Max"
+          variants: ["a12-6-4"]
+        - id: "xs"
+          name: "iPhone XS"
+          variants: ["a12-6-4"]
+        - id: "xr"
+          name: "iPhone XR"
+          variants: ["a12-6-4"]
+        - id: "base"
+          name: "iPhone X"
+          variants: ["a11-6-3"]
+    - id: "8"
       name: "iPhone 8"
-      variants: ["a11-6-3"]
-    - id: "iphone-7-plus"
-      name: "iPhone 7 Plus"
-      variants: ["a10-4-6"]
-    - id: "iphone-7"
+      devices:
+        - id: "plus"
+          name: "iPhone 8 Plus"
+          variants: ["a11-6-3"]
+        - id: "base"
+          name: "iPhone 8"
+          variants: ["a11-6-3"]
+    - id: "7"
       name: "iPhone 7"
-      variants: ["a10-4-6"]
-    - id: "iphone-se"
-      name: "iPhone SE (1st generation)"
-      variants: ["a9-2-6"]
-    - id: "iphone-6s-plus"
-      name: "iPhone 6S Plus"
-      variants: ["a9-2-6"]
-    - id: "iphone-6s"
-      name: "iPhone 6S"
-      variants: ["a9-2-6"]
-    - id: "iphone-6-plus"
-      name: "iPhone 6 Plus"
-      variants: ["a8-2-4"]
-    - id: "iphone-6"
+      devices:
+        - id: "plus"
+          name: "iPhone 7 Plus"
+          variants: ["a10-4-6"]
+        - id: "base"
+          name: "iPhone 7"
+          variants: ["a10-4-6"]
+    - id: "6"
       name: "iPhone 6"
-      variants: ["a8-2-4"]
-    - id: "iphone-5s"
-      name: "iPhone 5S"
-      variants: ["a7-2-4"]
-    - id: "iphone-5c"
-      name: "iPhone 5C"
-      variants: ["a6-2-3"]
-    - id: "iphone-5"
+      devices:
+        - id: "6s-plus"
+          name: "iPhone 6S Plus"
+          variants: ["a9-2-6"]
+        - id: "6s"
+          name: "iPhone 6S"
+          variants: ["a9-2-6"]
+        - id: "6-plus"
+          name: "iPhone 6 Plus"
+          variants: ["a8-2-4"]
+        - id: "base"
+          name: "iPhone 6"
+          variants: ["a8-2-4"]
+    - id: "5"
       name: "iPhone 5"
-      variants: ["a6-2-3"]
-    - id: "iphone-4s"
-      name: "iPhone 4S"
-      variants: ["a5-2-2"]
-    - id: "iphone-4"
+      devices:
+        - id: "5s"
+          name: "iPhone 5S"
+          variants: ["a7-2-4"]
+        - id: "5c"
+          name: "iPhone 5C"
+          variants: ["a6-2-3"]
+        - id: "base"
+          name: "iPhone 5"
+          variants: ["a6-2-3"]
+    - id: "4"
       name: "iPhone 4"
-      variants: ["a4-1-1"]
+      devices:
+        - id: "4s"
+          name: "iPhone 4S"
+          variants: ["a5-2-2"]
+        - id: "base"
+          name: "iPhone 4"
+          variants: ["a4-1-1"]
 - id: "watch"
   name: "Apple Watch"
   description: "Apple silicon for Apple Watches"

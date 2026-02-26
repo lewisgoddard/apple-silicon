@@ -69,14 +69,41 @@ export default function (eleventyConfig) {
     yaml.load(contents),
   );
 
+  // Helper: iterate all devices across both grouped and flat categories.
+  // Yields { category, group (or null), device } for every device entry.
+  function* iterateAllDevices(categories) {
+    for (const category of categories || []) {
+      if (category.groups) {
+        for (const group of category.groups) {
+          for (const device of group.devices || []) {
+            yield { category, group, device };
+          }
+        }
+      } else {
+        for (const device of category.devices || []) {
+          yield { category, group: null, device };
+        }
+      }
+    }
+  }
+
+  // Build a device URL from its category/group/id context.
+  function deviceUrl(categoryId, group, deviceId) {
+    if (group) {
+      return `/devices/${categoryId}/${group.id}/${deviceId}/`;
+    }
+    return `/devices/${categoryId}/${deviceId}/`;
+  }
+
   eleventyConfig.addCollection("devicesCollection", function () {
     const devices = loadYAML("devices.yml");
     return devices;
   });
 
   // Flatten devices into individual entries for per-device page generation.
-  // Each entry gets its parent category id so the URL can be nested, e.g.
-  // /devices/mac/macbook-air-15/
+  // Handles both flat categories (e.g. Mac) and grouped categories (e.g. iPhone, iPad).
+  // Flat:    /devices/mac/macbook-air-15/
+  // Grouped: /devices/iphone/17/air/
   eleventyConfig.addCollection("devicePagesCollection", function () {
     const categories = loadYAML("devices.yml");
     const seriesList = loadYAML("series.yml");
@@ -101,40 +128,71 @@ export default function (eleventyConfig) {
     }
 
     const pages = [];
-    (categories || []).forEach((category) => {
-      (category.devices || []).forEach((device) => {
-        if (device.name && device.variants && device.variants.length > 0) {
-          // Group variants by generation
-          const genMap = {};
-          (device.variants || []).forEach((chipId) => {
-            const gid = extractGenId(chipId);
-            if (!genMap[gid]) genMap[gid] = [];
-            genMap[gid].push(chipId);
-          });
+    for (const { category, group, device } of iterateAllDevices(categories)) {
+      if (!device.name || !device.variants || !device.variants.length) continue;
 
-          // Sort groups by genOrder (newest first); unknown gens go to end
-          const generationGroups = Object.keys(genMap)
-            .sort((a, b) => {
-              const ai = genOrder.indexOf(a);
-              const bi = genOrder.indexOf(b);
-              return (ai === -1 ? 9999 : ai) - (bi === -1 ? 9999 : bi);
-            })
-            .map((gid, idx) => ({
-              genId: gid,
-              label: genLabel(gid),
-              chipIds: genMap[gid],
-              isCurrent: idx === 0,
-            }));
-
-          pages.push({
-            ...device,
-            categoryId: category.id,
-            categoryName: category.name,
-            generationGroups,
-          });
-        }
+      // Group variants by generation
+      const genMap = {};
+      (device.variants || []).forEach((chipId) => {
+        const gid = extractGenId(chipId);
+        if (!genMap[gid]) genMap[gid] = [];
+        genMap[gid].push(chipId);
       });
-    });
+
+      // Sort groups by genOrder (newest first); unknown gens go to end
+      const generationGroups = Object.keys(genMap)
+        .sort((a, b) => {
+          const ai = genOrder.indexOf(a);
+          const bi = genOrder.indexOf(b);
+          return (ai === -1 ? 9999 : ai) - (bi === -1 ? 9999 : bi);
+        })
+        .map((gid, idx) => ({
+          genId: gid,
+          label: genLabel(gid),
+          chipIds: genMap[gid],
+          isCurrent: idx === 0,
+        }));
+
+      const entry = {
+        ...device,
+        categoryId: category.id,
+        categoryName: category.name,
+        generationGroups,
+      };
+
+      if (group) {
+        entry.groupId = group.id;
+        entry.groupName = group.name;
+      }
+
+      pages.push(entry);
+    }
+    return pages;
+  });
+
+  // Group-level pages for grouped categories (e.g. /devices/iphone/17/, /devices/ipad/pro/).
+  // Each entry contains all devices in the group for comparison rendering.
+  eleventyConfig.addCollection("deviceGroupPagesCollection", function () {
+    const categories = loadYAML("devices.yml");
+    const pages = [];
+    for (const category of categories || []) {
+      if (!category.groups) continue;
+      for (const group of category.groups) {
+        // Collect all variants from all devices in this group
+        const allVariants = [];
+        for (const device of group.devices || []) {
+          for (const v of device.variants || []) {
+            if (!allVariants.includes(v)) allVariants.push(v);
+          }
+        }
+        pages.push({
+          ...group,
+          categoryId: category.id,
+          categoryName: category.name,
+          allVariants,
+        });
+      }
+    }
     return pages;
   });
 
@@ -277,21 +335,22 @@ export default function (eleventyConfig) {
     const seriesList = loadYAML("series.yml");
     const allChips = [...chipsM, ...chipsA];
 
-    // Pre-build chip→devices lookup
+    // Pre-build chip→devices lookup (handles both flat and grouped categories)
     const chipDeviceMap = {};
-    (categories || []).forEach((category) => {
-      (category.devices || []).forEach((device) => {
-        (device.variants || []).forEach((chipId) => {
-          if (!chipDeviceMap[chipId]) chipDeviceMap[chipId] = [];
-          chipDeviceMap[chipId].push({
-            id: device.id,
-            name: device.name,
-            categoryId: category.id,
-            categoryName: category.name,
-          });
+    for (const { category, group, device } of iterateAllDevices(categories)) {
+      (device.variants || []).forEach((chipId) => {
+        if (!chipDeviceMap[chipId]) chipDeviceMap[chipId] = [];
+        chipDeviceMap[chipId].push({
+          id: device.id,
+          name: device.name,
+          categoryId: category.id,
+          categoryName: category.name,
+          groupId: group ? group.id : null,
+          groupName: group ? group.name : null,
+          url: deviceUrl(category.id, group, device.id),
         });
       });
-    });
+    }
 
     // Find the rank (tier) info for each chip so we can link back
     const chipRankMap = {};
@@ -444,27 +503,30 @@ export default function (eleventyConfig) {
 
   // Return de-duplicated list of devices for a list of chip ids.
   // Used by rank and generation pages to show the device carousel.
+  // Handles both flat and grouped category structures.
   eleventyConfig.addNunjucksGlobal("getDevicesForChips", function (ids) {
     const categories = loadYAML("devices.yml");
     const seen = new Set();
     const devices = [];
-    (categories || []).forEach((category) => {
-      (category.devices || []).forEach((device) => {
-        if (seen.has(device.id)) return;
-        const hasMatch = (device.variants || []).some((v) =>
-          (ids || []).includes(v),
-        );
-        if (hasMatch) {
-          seen.add(device.id);
-          devices.push({
-            id: device.id,
-            name: device.name,
-            categoryId: category.id,
-            categoryName: category.name,
-          });
-        }
-      });
-    });
+    for (const { category, group, device } of iterateAllDevices(categories)) {
+      const key = category.id + "/" + (group ? group.id + "/" : "") + device.id;
+      if (seen.has(key)) continue;
+      const hasMatch = (device.variants || []).some((v) =>
+        (ids || []).includes(v),
+      );
+      if (hasMatch) {
+        seen.add(key);
+        devices.push({
+          id: device.id,
+          name: device.name,
+          categoryId: category.id,
+          categoryName: category.name,
+          groupId: group ? group.id : null,
+          groupName: group ? group.name : null,
+          url: deviceUrl(category.id, group, device.id),
+        });
+      }
+    }
     return devices;
   });
 

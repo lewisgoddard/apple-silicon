@@ -19,7 +19,18 @@ eleventyComputed:
 <h1>{{ deviceItem.name }}</h1>
 <p>{{ deviceItem.description }}</p>
 
-{% if deviceItem.devices %}
+{% if deviceItem.groups %}
+  {# Grouped category (e.g. iPhone, iPad) — show groups as cards #}
+  <div class="device-grid">
+    {% for group in deviceItem.groups %}
+      <a href="/devices/{{ deviceItem.id | lower }}/{{ group.id | lower }}/" class="device-grid-card">
+        <span class="device-grid-name">{{ group.name }}</span>
+        <span class="device-grid-chips">{{ group.devices | length }} model{{ "s" if group.devices | length != 1 }}</span>
+      </a>
+    {% endfor %}
+  </div>
+{% elif deviceItem.devices %}
+  {# Flat category (e.g. Mac) — show devices directly #}
   <div class="device-grid">
     {% for device in deviceItem.devices %}
       {% if device.name %}
