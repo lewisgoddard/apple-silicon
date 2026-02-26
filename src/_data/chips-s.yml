@@ -1,0 +1,141 @@
+- id: s10
+  name: "S10"
+  specs:
+    cpu_cores: 2
+    performance_core_name: "Sawtooth"
+    cpu_isa: "ARMv8.6-A"
+    gpu_vendor: "Apple-designed"
+    npu_cores: 4
+    memory_type: "LPDDR5"
+    process_nm: 4
+    part_number: "T8310"
+    release_date: "2024-09-20"
+
+- id: s9
+  name: "S9"
+  specs:
+    cpu_cores: 2
+    performance_core_name: "Sawtooth"
+    cpu_isa: "ARMv8.6-A"
+    gpu_vendor: "Apple-designed"
+    npu_cores: 4
+    memory_type: "LPDDR5"
+    process_nm: 4
+    codename: "APL1W15"
+    part_number: "T8310"
+    release_date: "2023-09-22"
+
+- id: s8
+  name: "S8"
+  specs:
+    cpu_cores: 2
+    performance_core_name: "Thunder"
+    performance_core_speed: 1.8
+    cpu_isa: "ARMv8.4-A"
+    gpu_vendor: "Apple-designed"
+    memory_type: "LPDDR4X"
+    process_nm: 7
+    part_number: "T8301"
+    release_date: "2022-09-16"
+
+- id: s7
+  name: "S7"
+  specs:
+    cpu_cores: 2
+    performance_core_name: "Thunder"
+    performance_core_speed: 1.8
+    cpu_isa: "ARMv8.4-A"
+    gpu_vendor: "Apple-designed"
+    memory_type: "LPDDR4X"
+    process_nm: 7
+    part_number: "T8301"
+    release_date: "2021-10-15"
+
+- id: s6
+  name: "S6"
+  specs:
+    cpu_cores: 2
+    performance_core_name: "Thunder"
+    performance_core_speed: 1.8
+    cpu_isa: "ARMv8.4-A"
+    gpu_vendor: "Apple-designed"
+    memory_type: "LPDDR4X"
+    process_nm: 7
+    codename: "APL1W86"
+    part_number: "T8301"
+    release_date: "2020-09-18"
+
+- id: s5
+  name: "S5"
+  specs:
+    cpu_cores: 2
+    performance_core_name: "Tempest"
+    performance_core_speed: 1.59
+    cpu_isa: "ARMv8.3-A"
+    gpu_vendor: "Apple-designed"
+    memory_type: "LPDDR4X"
+    process_nm: 7
+    part_number: "T8006"
+    release_date: "2019-09-20"
+
+- id: s4
+  name: "S4"
+  specs:
+    cpu_cores: 2
+    performance_core_name: "Tempest"
+    performance_core_speed: 1.59
+    cpu_isa: "ARMv8.3-A"
+    gpu_vendor: "Apple-designed"
+    memory_type: "LPDDR4X"
+    process_nm: 7
+    codename: "APL1W82"
+    part_number: "T8006"
+    release_date: "2018-09-21"
+
+- id: s3
+  name: "S3"
+  specs:
+    cpu_cores: 2
+    cpu_isa: "ARMv7k"
+    memory_type: "LPDDR4"
+    part_number: "T8004"
+    release_date: "2017-09-22"
+
+- id: s2
+  name: "S2"
+  specs:
+    cpu_cores: 2
+    performance_core_name: "Cortex-A7"
+    performance_core_speed: 0.52
+    cpu_isa: "ARMv7k"
+    gpu_vendor: "PowerVR Series 6"
+    memory_type: "LPDDR3"
+    part_number: "T8002"
+    release_date: "2016-09-12"
+
+- id: s1p
+  name: "S1P"
+  specs:
+    cpu_cores: 2
+    performance_core_name: "Cortex-A7"
+    performance_core_speed: 0.52
+    cpu_isa: "ARMv7k"
+    gpu_vendor: "PowerVR Series 6"
+    memory_type: "LPDDR3"
+    part_number: "T8002"
+    release_date: "2016-09-12"
+
+- id: s1
+  name: "S1"
+  specs:
+    cpu_cores: 1
+    performance_core_name: "Cortex-A7"
+    performance_core_speed: 0.52
+    cpu_isa: "ARMv7k"
+    gpu_vendor: "PowerVR Series 5"
+    memory_type: "LPDDR3"
+    process_nm: 28
+    die_size_mm2: 32
+    codename: "APL0778"
+    part_number: "S7002"
+    release_date: "2015-04-24"
