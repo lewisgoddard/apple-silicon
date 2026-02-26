@@ -34,21 +34,36 @@ eleventyComputed:
   </thead>
   <tbody>
     {% for group in chip.groupedSpecs %}
+      {# Only show groups that have at least one non-null field #}
+      {% set groupHasData = false %}
+      {% for field in group.fields %}
+        {% if field.value is not none and field.value is defined %}
+          {% set groupHasData = true %}
+        {% endif %}
+      {% endfor %}
+      {% if groupHasData %}
       <tr class="group-header">
         <td colspan="2"><strong>{{ group.name }}</strong></td>
       </tr>
       {% for field in group.fields %}
+        {% if field.value is not none and field.value is defined %}
         <tr>
           <td>{{ field.label }}</td>
           <td>
             {% if field.value is iterable and field.value is not string %}
               {{ field.value | join(", ") }}
+            {% elif field.value == true %}
+              ✓
+            {% elif field.value == false %}
+              ✗
             {% else %}
               {{ field.value }}
             {% endif %}
           </td>
         </tr>
+        {% endif %}
       {% endfor %}
+      {% endif %}
     {% endfor %}
   </tbody>
 </table>

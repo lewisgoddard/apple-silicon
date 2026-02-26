@@ -11,31 +11,60 @@
       </tr>
     </thead>
     <tbody>
-      {# Iterate the groups and fields directly from the first item to avoid precedence bugs #}
+      {# Iterate groups/fields by index — all items share the same structure from specs.yml #}
       {% for group in items[0].groupedSpecs %}
         {% set groupIndex = loop.index0 %}
+
+        {# Check if any item has at least one non-null field in this group #}
+        {% set groupHasData = false %}
+        {% for field in group.fields %}
+          {% set fieldIndex = loop.index0 %}
+          {% for item in items %}
+            {% set f = item.groupedSpecs[groupIndex].fields[fieldIndex] %}
+            {% if f.value is not none and f.value is defined %}
+              {% set groupHasData = true %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+
+        {% if groupHasData %}
         <tr class="group-header">
           <td colspan="{{ items | length + 1 }}"><strong>{{ group.name }}</strong></td>
         </tr>
 
         {% for field in group.fields %}
           {% set fieldIndex = loop.index0 %}
+          {# Only show rows where at least one item has a value #}
+          {% set rowHasData = false %}
+          {% for item in items %}
+            {% set f = item.groupedSpecs[groupIndex].fields[fieldIndex] %}
+            {% if f.value is not none and f.value is defined %}
+              {% set rowHasData = true %}
+            {% endif %}
+          {% endfor %}
+          {% if rowHasData %}
           <tr>
             <td>{{ field.label }}</td>
             {% for item in items %}
-              {# Safely access the same group/field index for each item; fall back to null if missing #}
-              {% set groupForItem = item.groupedSpecs[groupIndex] if item.groupedSpecs and item.groupedSpecs[groupIndex] is defined else null %}
-              {% set fieldForItem = groupForItem and groupForItem.fields[fieldIndex] is defined and groupForItem.fields[fieldIndex] or null %}
+              {% set f = item.groupedSpecs[groupIndex].fields[fieldIndex] %}
               <td>
-                {% if fieldForItem and fieldForItem.value is iterable and fieldForItem.value is not string %}
-                  {{ fieldForItem.value | join(", ") }}
+                {% if f.value is none or f.value is not defined %}
+                  –
+                {% elif f.value is iterable and f.value is not string %}
+                  {{ f.value | join(", ") }}
+                {% elif f.value == true %}
+                  ✓
+                {% elif f.value == false %}
+                  ✗
                 {% else %}
-                  {{ fieldForItem and fieldForItem.value or "" }}
+                  {{ f.value }}
                 {% endif %}
               </td>
             {% endfor %}
           </tr>
+          {% endif %}
         {% endfor %}
+        {% endif %}
       {% endfor %}
     </tbody>
   </table>

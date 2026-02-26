@@ -14,18 +14,17 @@ function loadYAML(filename) {
 }
 
 function buildGroupedSpecs(specs, groupsDef) {
-  return groupsDef
-    .map((group) => {
-      const fields = group.fields
-        .map((field) => ({
-          key: field.key,
-          label: field.label,
-          value: specs[field.key],
-        }))
-        .filter((f) => f.value !== undefined && f.value !== null);
-      return fields.length ? { name: group.name, fields } : null;
-    })
-    .filter(Boolean);
+  return groupsDef.map((group) => {
+    const fields = group.fields.map((field) => ({
+      key: field.key,
+      label: field.label,
+      value:
+        specs[field.key] !== undefined && specs[field.key] !== null
+          ? specs[field.key]
+          : null,
+    }));
+    return { name: group.name, fields };
+  });
 }
 
 // Merge specs from multiple chip variants into a single object.

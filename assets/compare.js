@@ -91,6 +91,16 @@
     html += "</tr></thead><tbody>";
 
     ref.forEach(function (group, gi) {
+      // Check if any chip has data in this group
+      var groupHasData = group.fields.some(function (field, fi) {
+        return chips.some(function (c) {
+          var g = c.groupedSpecs[gi];
+          var f = g && g.fields[fi];
+          return f && f.value !== null && f.value !== undefined;
+        });
+      });
+      if (!groupHasData) return;
+
       html +=
         '<tr class="group-header"><td colspan="' +
         (chips.length + 1) +
@@ -98,11 +108,23 @@
         group.name +
         "</strong></td></tr>";
       group.fields.forEach(function (field, fi) {
+        // Only show rows where at least one chip has a value
+        var rowHasData = chips.some(function (c) {
+          var g = c.groupedSpecs[gi];
+          var f = g && g.fields[fi];
+          return f && f.value !== null && f.value !== undefined;
+        });
+        if (!rowHasData) return;
+
         html += "<tr><td>" + field.label + "</td>";
         chips.forEach(function (c) {
           var g = c.groupedSpecs[gi];
           var f = g && g.fields[fi];
-          html += "<td>" + (f ? formatValue(f.value) : "") + "</td>";
+          var val = f ? f.value : null;
+          html +=
+            "<td>" +
+            (val !== null && val !== undefined ? formatValue(val) : "–") +
+            "</td>";
         });
         html += "</tr>";
       });
