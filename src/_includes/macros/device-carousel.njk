@@ -1,40 +1,5 @@
 {# _includes/macros/device-carousel.njk #}
 {% macro deviceCarousel(devices) %}
-<style>
-  .device-carousel {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 0.5rem 0 1rem;
-    -webkit-overflow-scrolling: touch;
-  }
-  .device-card {
-    flex: 0 0 auto;
-    min-width: 160px;
-    padding: 1rem 1.25rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    text-decoration: none;
-    color: inherit;
-    scroll-snap-align: start;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    transition: background 0.15s;
-  }
-  .device-card:hover {
-    background: #f5f5f5;
-  }
-  .device-card-name {
-    font-weight: 600;
-  }
-  .device-card-category {
-    font-size: 0.85em;
-    opacity: 0.65;
-  }
-</style>
-
 {% if devices and devices | length > 0 %}
   <h2>Available in</h2>
   <div class="device-carousel">

@@ -18,6 +18,7 @@ eleventyComputed:
 <p>{{ chip.specs.cpu_cores }}-core CPU / {{ chip.specs.gpu_cores }}-core GPU</p>
 
 {# Specs table (single chip, no comparison) #}
+<div class="compare-table-wrapper">
 <table class="compare-table">
   <thead>
     <tr>
@@ -45,5 +46,6 @@ eleventyComputed:
     {% endfor %}
   </tbody>
 </table>
+</div>
 
 {{ deviceCarousel(chip.devices) }}
