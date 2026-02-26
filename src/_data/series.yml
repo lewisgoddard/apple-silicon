@@ -336,3 +336,11 @@
       process_nm: "Samsung 45nm"
       cpu_isa: "ARMv7-A"
       variants: ["a4-1-1"]
+- id: R
+  name: "R Series"
+  description: "Low-latency Apple silicon for real-time sensor processing"
+  ranks:
+    - id: r1
+      name: "R1"
+      description: "Dedicated to real-time processing of sensor inputs in Apple Vision Pro"
+      variants: ["r1"]
