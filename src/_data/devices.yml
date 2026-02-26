@@ -237,16 +237,16 @@
       devices:
         - id: "pro-max"
           name: "iPhone 17 Pro Max"
-          variants: ["a19-pro-6-6"]
+          variants: ["a19-pro-6-6", "n1"]
         - id: "pro"
           name: "iPhone 17 Pro"
-          variants: ["a19-pro-6-6"]
+          variants: ["a19-pro-6-6", "n1"]
         - id: "air"
           name: "iPhone 17 Air"
-          variants: ["a19-pro-6-5"]
+          variants: ["a19-pro-6-5", "n1"]
         - id: "base"
           name: "iPhone 17"
-          variants: ["a19-6-5"]
+          variants: ["a19-6-5", "n1"]
     - id: "16"
       name: "iPhone 16"
       devices:
@@ -482,16 +482,35 @@
   devices:
     - id: "airpods-max"
       name: "AirPods Max"
+      variants: ["h1"]
     - id: "airpods-pro-3"
       name: "AirPods Pro 3"
+      variants: ["h2"]
     - id: "airpods-4-with-active-noise-cancellation"
       name: "AirPods 4 with Active Noise Cancellation"
+      variants: ["h2"]
     - id: "airpods-4"
       name: "AirPods 4"
+      variants: ["h2"]
+    - id: "airpods-pro-2"
+      name: "AirPods Pro 2"
+      variants: ["h2"]
+    - id: "airpods-pro"
+      name: "AirPods Pro (1st gen)"
+      variants: ["h1"]
+    - id: "airpods-3"
+      name: "AirPods (3rd gen)"
+      variants: ["h1"]
+    - id: "airpods-2"
+      name: "AirPods (2nd gen)"
+      variants: ["h1"]
+    - id: "airpods-1"
+      name: "AirPods (1st gen)"
+      variants: ["w1"]
 - id: "vision"
   name: "Apple Vision"
   description: "Apple silicon for Apple Vision products"
   devices:
     - id: "apple-vision-pro"
       name: "Apple Vision Pro"
-      variants: ["m5-10-10", "m5-9-10", "m2-8-10", "r1"]
+      variants: ["m5-10-10", "m5-9-10", "m2-8-10", "r1", "h2"]

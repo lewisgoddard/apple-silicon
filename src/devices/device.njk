@@ -44,22 +44,33 @@ eleventyComputed:
 <h1>{{ device.name }}</h1>
 
 {% if device.variants and device.variants | length > 0 %}
-  <p>{{ device.variants | length }} chip option{{ "s" if device.variants | length != 1 }}
-  ({{ getChipRange(device.variants, collections) }})</p>
+  {% set socVariants = device.variants | primaryChips %}
+  <p>{{ socVariants | length }} chip option{{ "s" if socVariants | length != 1 }}
+  ({{ getChipRange(socVariants, collections) }})</p>
 
   {% if device.generationGroups and device.generationGroups | length > 1 %}
     {# Multiple generations — show grouped sections #}
     {% for gen in device.generationGroups %}
+      {% set genSocIds = gen.chipIds | primaryChips(device.variants) %}
+      {% if genSocIds | length > 0 %}
       <h2>
         {{ gen.label }} Generation
         {% if gen.isCurrent %}<span class="badge-current">Current</span>{% endif %}
       </h2>
-      {% set items = getChips(gen.chipIds, collections) %}
+      {% set items = getChips(genSocIds, collections) %}
       {{ compareTable(items) }}
+      {% endif %}
     {% endfor %}
   {% else %}
     {# Single generation — show flat table #}
-    {% set items = getChips(device.variants, collections) %}
+    {% set items = getChips(socVariants, collections) %}
     {{ compareTable(items) }}
+  {% endif %}
+
+  {% set companionVariants = device.variants | companionChips %}
+  {% if companionVariants | length > 0 %}
+    <h2>Companion Silicon</h2>
+    {% set companionItems = getChips(companionVariants, collections) %}
+    {{ compareTable(companionItems) }}
   {% endif %}
 {% endif %}

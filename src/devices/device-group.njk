@@ -27,12 +27,13 @@ eleventyComputed:
         <a href="/devices/{{ group.categoryId | lower }}/{{ group.id | lower }}/{{ device.id | lower }}/" class="device-grid-card{% if not device.variants or device.variants | length == 0 %} device-grid-card--empty{% endif %}">
           <span class="device-grid-name">{{ device.name }}</span>
           {% if device.variants and device.variants | length > 0 %}
-            {% set chips = getChips(device.variants, collections) %}
-            <span class="device-grid-chips">{{ device.variants | length }} chip{{ "s" if device.variants | length != 1 }}</span>
+            {% set deviceSocVariants = device.variants | primaryChips %}
+            {% set chips = getChips(deviceSocVariants, collections) %}
+            <span class="device-grid-chips">{{ deviceSocVariants | length }} chip{{ "s" if deviceSocVariants | length != 1 }}</span>
             {% if chips | length == 1 %}
               <span class="device-grid-range">{{ chips[0].name }} ({{ chips[0].specs.cpu_cores }}c CPU / {{ chips[0].specs.gpu_cores }}c GPU)</span>
             {% else %}
-              <span class="device-grid-range">{{ getChipRange(device.variants, collections) }}</span>
+              <span class="device-grid-range">{{ getChipRange(deviceSocVariants, collections) }}</span>
             {% endif %}
           {% else %}
             <span class="device-grid-chips">No chip data yet</span>
@@ -43,8 +44,9 @@ eleventyComputed:
   </div>
 
   {% if group.allVariants and group.allVariants | length > 0 %}
+    {% set socVariants = group.allVariants | primaryChips %}
     <h2>Chip Comparison</h2>
-    {% set items = getChips(group.allVariants, collections) %}
+    {% set items = getChips(socVariants, collections) %}
     {{ compareTable(items) }}
   {% endif %}
 {% endif %}

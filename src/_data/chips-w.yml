@@ -1,0 +1,14 @@
+- id: w3
+  name: "W3"
+  specs:
+    release_date: "2018-09-21"
+
+- id: w2
+  name: "W2"
+  specs:
+    release_date: "2017-09-22"
+
+- id: w1
+  name: "W1"
+  specs:
+    release_date: "2016-12-13"

@@ -317,6 +317,9 @@ export default function (eleventyConfig) {
     const chipsT = loadYAML("chips-t.yml");
     const chipsC = loadYAML("chips-c.yml");
     const chipsU = loadYAML("chips-u.yml");
+    const chipsW = loadYAML("chips-w.yml");
+    const chipsH = loadYAML("chips-h.yml");
+    const chipsN = loadYAML("chips-n.yml");
 
     const specDefs = loadYAML("specs.yml");
 
@@ -333,6 +336,9 @@ export default function (eleventyConfig) {
       ...chipsT,
       ...chipsC,
       ...chipsU,
+      ...chipsW,
+      ...chipsH,
+      ...chipsN,
     ].map(enrichChip);
   });
 
@@ -346,6 +352,9 @@ export default function (eleventyConfig) {
     const chipsT = loadYAML("chips-t.yml");
     const chipsC = loadYAML("chips-c.yml");
     const chipsU = loadYAML("chips-u.yml");
+    const chipsW = loadYAML("chips-w.yml");
+    const chipsH = loadYAML("chips-h.yml");
+    const chipsN = loadYAML("chips-n.yml");
     const specDefs = loadYAML("specs.yml");
     const categories = loadYAML("devices.yml");
     const seriesList = loadYAML("series.yml");
@@ -357,6 +366,9 @@ export default function (eleventyConfig) {
       ...chipsT,
       ...chipsC,
       ...chipsU,
+      ...chipsW,
+      ...chipsH,
+      ...chipsN,
     ];
 
     // Pre-build chip→devices lookup (handles both flat and grouped categories)
@@ -409,6 +421,9 @@ export default function (eleventyConfig) {
     const chipsT = loadYAML("chips-t.yml");
     const chipsC = loadYAML("chips-c.yml");
     const chipsU = loadYAML("chips-u.yml");
+    const chipsW = loadYAML("chips-w.yml");
+    const chipsH = loadYAML("chips-h.yml");
+    const chipsN = loadYAML("chips-n.yml");
     const allChips = [
       ...chipsM,
       ...chipsA,
@@ -417,6 +432,9 @@ export default function (eleventyConfig) {
       ...chipsT,
       ...chipsC,
       ...chipsU,
+      ...chipsW,
+      ...chipsH,
+      ...chipsN,
     ];
     const specDefs = loadYAML("specs.yml");
 
@@ -587,6 +605,36 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("map", function (array, property) {
     return (array || []).map((item) => item[property]);
+  });
+
+  // Three-tier chip classification for device pages:
+  //   Primary:   A + M + S (main SoCs — shown in group tables, device top, cards)
+  //   Secondary: H (promoted to primary when no A/M/S present, otherwise tertiary)
+  //   Tertiary:  R + U + W + T + N + C (companion silicon — device page only)
+  //
+  // primaryChips: returns the "main" chips for tables / cards / headings.
+  // When referenceIds is provided the tier check uses that list instead,
+  // keeping per-generation-group filtering consistent with the full device.
+  eleventyConfig.addFilter("primaryChips", function (ids, referenceIds) {
+    if (!ids || !ids.length) return ids;
+    const ref = referenceIds || ids;
+    const hasPrimary = ref.some((id) => /^[ams]\d/.test(id));
+    if (hasPrimary) return ids.filter((id) => /^[ams]\d/.test(id));
+    const hasSecondary = ref.some((id) => /^h\d/.test(id));
+    if (hasSecondary) return ids.filter((id) => /^h\d/.test(id));
+    return ids;
+  });
+
+  // companionChips: returns non-primary chips (tertiary + demoted secondary)
+  // for the "Companion Silicon" section on individual device pages.
+  eleventyConfig.addFilter("companionChips", function (ids, referenceIds) {
+    if (!ids || !ids.length) return [];
+    const ref = referenceIds || ids;
+    const hasPrimary = ref.some((id) => /^[ams]\d/.test(id));
+    if (hasPrimary) return ids.filter((id) => !/^[ams]\d/.test(id));
+    const hasSecondary = ref.some((id) => /^h\d/.test(id));
+    if (hasSecondary) return ids.filter((id) => !/^h\d/.test(id));
+    return [];
   });
 
   // Extract generation prefix from a rank id, e.g. "m4-pro" → "m4", "m4" → "m4"

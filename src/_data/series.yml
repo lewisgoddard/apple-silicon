@@ -377,6 +377,42 @@
       name: "U1"
       description: "First-generation Ultra Wideband chip, used in iPhone 11 through 14, Apple Watch Series 6-8, AirTag 1st gen, HomePod Mini"
       variants: ["u1"]
+- id: W
+  name: "W Series"
+  description: "Apple-designed wireless connectivity SoCs for Apple Watch and AirPods"
+  ranks:
+    - id: w3
+      name: "W3"
+      description: "Wireless connectivity chip with Bluetooth 5.0/5.3, integrated into Apple Watch Series 4 and newer"
+      variants: ["w3"]
+    - id: w2
+      name: "W2"
+      description: "Wireless connectivity chip with Bluetooth 4.2, integrated into Apple Watch Series 3"
+      variants: ["w2"]
+    - id: w1
+      name: "W1"
+      description: "Bluetooth 4.2 SoC for AirPods (1st gen) and select Beats headphones"
+      variants: ["w1"]
+- id: H
+  name: "H Series"
+  description: "Apple-designed Bluetooth and audio processing SoCs for AirPods and headphones"
+  ranks:
+    - id: h2
+      name: "H2"
+      description: "Bluetooth 5.3 audio SoC with hardware noise reduction, used in AirPods 4, AirPods Pro 2/3, and Apple Vision Pro"
+      variants: ["h2"]
+    - id: h1
+      name: "H1"
+      description: "Bluetooth 5.0 audio SoC with hands-free Siri, used in AirPods 2nd/3rd gen, AirPods Pro, and AirPods Max"
+      variants: ["h1"]
+- id: N
+  name: "N Series"
+  description: "Apple-designed Wi-Fi, Bluetooth, and Thread wireless connectivity SoCs"
+  ranks:
+    - id: n1
+      name: "N1"
+      description: "Wi-Fi 7, Bluetooth 6, and Thread chip for iPhone 17 series and M5 iPad Pro"
+      variants: ["n1"]
 - id: R
   name: "R Series"
   description: "Low-latency Apple silicon for real-time sensor processing"
