@@ -120,24 +120,21 @@ export default function (eleventyConfig) {
 
   // Return a human-readable chip range string for a list of chip ids.
   // E.g. ["m4-10-10","m3-8-10","m2-8-10"] → "M2 – M4"
-  eleventyConfig.addNunjucksGlobal(
-    "getChipRange",
-    function (ids, collections) {
-      const chips = collections.chipsCollection || [];
-      const uniqueNames = [];
-      (ids || []).forEach((id) => {
-        const chip = chips.find((c) => c.id === id);
-        if (chip && !uniqueNames.includes(chip.name)) {
-          uniqueNames.push(chip.name);
-        }
-      });
-      if (uniqueNames.length === 0) return "";
-      if (uniqueNames.length === 1) return uniqueNames[0];
-      // First entry is newest/highest, last is oldest/lowest.
-      // Display as "oldest – newest".
-      return `${uniqueNames[uniqueNames.length - 1]} – ${uniqueNames[0]}`;
-    },
-  );
+  eleventyConfig.addNunjucksGlobal("getChipRange", function (ids, collections) {
+    const chips = collections.chipsCollection || [];
+    const uniqueNames = [];
+    (ids || []).forEach((id) => {
+      const chip = chips.find((c) => c.id === id);
+      if (chip && !uniqueNames.includes(chip.name)) {
+        uniqueNames.push(chip.name);
+      }
+    });
+    if (uniqueNames.length === 0) return "";
+    if (uniqueNames.length === 1) return uniqueNames[0];
+    // First entry is newest/highest, last is oldest/lowest.
+    // Display as "oldest – newest".
+    return `${uniqueNames[uniqueNames.length - 1]} – ${uniqueNames[0]}`;
+  });
 
   eleventyConfig.addFilter("map", function (array, property) {
     return (array || []).map((item) => item[property]);
