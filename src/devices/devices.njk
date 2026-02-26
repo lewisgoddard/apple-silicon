@@ -37,8 +37,9 @@ eleventyComputed:
         <a href="/devices/{{ deviceItem.id | lower }}/{{ device.id | lower }}/" class="device-grid-card{% if not device.variants or device.variants | length == 0 %} device-grid-card--empty{% endif %}">
           <span class="device-grid-name">{{ device.name }}</span>
           {% if device.variants and device.variants | length > 0 %}
-            <span class="device-grid-chips">{{ device.variants | length }} chip{{ "s" if device.variants | length != 1 }}</span>
-            <span class="device-grid-range">{{ getChipRange(device.variants, collections) }}</span>
+            {% set deviceSocVariants = device.variants | primaryChips %}
+            <span class="device-grid-chips">{{ deviceSocVariants | length }} chip{{ "s" if deviceSocVariants | length != 1 }}</span>
+            <span class="device-grid-range">{{ getChipRange(deviceSocVariants, collections) }}</span>
           {% else %}
             <span class="device-grid-chips">No chip data yet</span>
           {% endif %}
