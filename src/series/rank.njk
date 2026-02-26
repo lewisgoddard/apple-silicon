@@ -1,9 +1,13 @@
 ---
+layout: base.njk
 pagination:
   data: collections.rankPagesCollection
   size: 1
   alias: rank
 permalink: "chips/{{ rank.id | genId | lower }}/{{ rank.id | tierSlug | lower }}/index.html"
+eleventyComputed:
+  title: "{{ rank.name }} Variants"
+  description: "Compare all {{ rank.name }} chip variants."
 ---
 
 <p><a href="/chips/{{ rank.id | genId | lower }}/">← {{ rank.name | replace(" Ultra", "") | replace(" Max", "") | replace(" Pro", "") }} Family</a></p>

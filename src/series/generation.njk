@@ -1,9 +1,13 @@
 ---
+layout: base.njk
 pagination:
   data: collections.generationPagesCollection
   size: 1
   alias: gen
 permalink: "chips/{{ gen.id | lower }}/index.html"
+eleventyComputed:
+  title: "{{ gen.name }}"
+  description: "Compare all tiers of the {{ gen.name }}."
 ---
 
 <p><a href="/series/{{ gen.seriesId | lower }}/">← {{ gen.seriesName }}</a></p>

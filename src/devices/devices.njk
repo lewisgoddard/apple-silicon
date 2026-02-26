@@ -1,9 +1,13 @@
 ---
+layout: base.njk
 pagination:
   data: collections.devicesCollection
   size: 1
   alias: deviceItem
 permalink: "devices/{{ deviceItem.id | lower }}/index.html"
+eleventyComputed:
+  title: "{{ deviceItem.name }}"
+  description: "{{ deviceItem.description }}"
 ---
 
 <h1>{{ deviceItem.name }}</h1>

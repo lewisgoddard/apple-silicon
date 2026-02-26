@@ -1,9 +1,13 @@
 ---
+layout: base.njk
 pagination:
   data: collections.seriesCollection
   size: 1
   alias: seriesItem
 permalink: "series/{{ seriesItem.id | lower }}/index.html"
+eleventyComputed:
+  title: "{{ seriesItem.name }}"
+  description: "{{ seriesItem.description }}"
 ---
 
 <h1>{{ seriesItem.name }}</h1>

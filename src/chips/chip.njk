@@ -1,9 +1,13 @@
 ---
+layout: base.njk
 pagination:
   data: collections.chipPagesCollection
   size: 1
   alias: chip
 permalink: "chips/{{ chip.id | genId | lower }}/{{ chip.id | chipTier | lower }}/{{ chip.id | chipVariant }}/index.html"
+eleventyComputed:
+  title: "{{ chip.name }} ({{ chip.specs.cpu_cores }}c CPU / {{ chip.specs.gpu_cores }}c GPU)"
+  description: "Technical specifications for the {{ chip.name }} with {{ chip.specs.cpu_cores }}-core CPU and {{ chip.specs.gpu_cores }}-core GPU."
 ---
 
 {% from "macros/device-carousel.njk" import deviceCarousel %}
