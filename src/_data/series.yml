@@ -365,6 +365,18 @@
       description: "Apple's first in-house cellular modem, supporting 5G sub-6 GHz, Gigabit LTE, and UMTS/HSPA+"
       process_nm: "TSMC N4"
       variants: ["c1"]
+- id: U
+  name: "U Series"
+  description: "Apple-designed ultra-wideband (UWB) radio systems in package"
+  ranks:
+    - id: u2
+      name: "U2"
+      description: "Second-generation Ultra Wideband chip, used in iPhone 15 and newer, Apple Watch Series 9 and newer, AirTag 2nd gen"
+      variants: ["u2"]
+    - id: u1
+      name: "U1"
+      description: "First-generation Ultra Wideband chip, used in iPhone 11 through 14, Apple Watch Series 6-8, AirTag 1st gen, HomePod Mini"
+      variants: ["u1"]
 - id: R
   name: "R Series"
   description: "Low-latency Apple silicon for real-time sensor processing"

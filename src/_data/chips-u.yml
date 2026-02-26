@@ -1,0 +1,11 @@
+- id: u2
+  name: "U2"
+  specs:
+    process_nm: 7
+    release_date: "2023-09-22"
+
+- id: u1
+  name: "U1"
+  specs:
+    process_nm: 16
+    release_date: "2019-09-20"
