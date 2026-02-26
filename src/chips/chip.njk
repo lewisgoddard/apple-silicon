@@ -8,7 +8,39 @@ permalink: "chips/{{ chip.id | genId | lower }}/{{ chip.id | chipTier | lower }}
 eleventyComputed:
   title: "{{ chip.name }} ({{ chip.specs.cpu_cores }}c CPU / {{ chip.specs.gpu_cores }}c GPU)"
   description: "Technical specifications for the {{ chip.name }} with {{ chip.specs.cpu_cores }}-core CPU and {{ chip.specs.gpu_cores }}-core GPU."
+  ogType: "product"
 ---
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ chip.name }} ({{ chip.specs.cpu_cores }}-core CPU / {{ chip.specs.gpu_cores }}-core GPU)",
+  "brand": { "@type": "Brand", "name": "Apple" },
+  "description": "{{ chip.name }} Apple Silicon chip with {{ chip.specs.cpu_cores }}-core CPU and {{ chip.specs.gpu_cores }}-core GPU.",
+  "url": "{{ site.url }}/chips/{{ chip.id | genId | lower }}/{{ chip.id | chipTier | lower }}/{{ chip.id | chipVariant }}/",
+  "category": "Processor",
+  "additionalProperty": [
+    {% set comma = false %}
+    {% for group in chip.groupedSpecs %}
+      {% for field in group.fields %}
+        {% if field.value is not none and field.value is defined %}
+          {% if comma %},{% endif %}
+          {
+            "@type": "PropertyValue",
+            "propertyID": "{{ field.label }}",
+            "name": "{{ field.label }}",
+            "value": "{% if field.value is iterable and field.value is not string %}{{ field.value | join(', ') }}{% elif field.value == true %}Yes{% elif field.value == false %}No{% else %}{{ field.value }}{% endif %}"
+          }
+          {% set comma = true %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
 
 {% from "macros/device-carousel.njk" import deviceCarousel %}
 {% from "macros/breadcrumbs.njk" import breadcrumbs %}

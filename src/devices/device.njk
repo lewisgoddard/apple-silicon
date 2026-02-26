@@ -8,7 +8,22 @@ permalink: "devices/{{ device.categoryId | lower }}/{{ device.id | lower }}/inde
 eleventyComputed:
   title: "{{ device.name }}"
   description: "Apple Silicon chip options for the {{ device.name }}."
+  ogType: "product"
 ---
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ device.name }}",
+  "brand": { "@type": "Brand", "name": "Apple" },
+  "description": "Apple Silicon chip options for the {{ device.name }}.",
+  "url": "{{ site.url }}/devices/{{ device.categoryId | lower }}/{{ device.id | lower }}/",
+  "category": "{{ device.categoryName }}"
+}
+</script>
+{% endblock %}
 
 {% from "macros/breadcrumbs.njk" import breadcrumbs %}
 {% from "macros/compare-table.njk" import compareTable %}

@@ -64,6 +64,11 @@ export default function (eleventyConfig) {
   // Copy `assets/` to `_site/assets/`
   eleventyConfig.addPassthroughCopy("assets");
 
+  // Allow YAML files in _data/ to be auto-loaded as global data
+  eleventyConfig.addDataExtension("yml,yaml", (contents) =>
+    yaml.load(contents),
+  );
+
   eleventyConfig.addCollection("devicesCollection", function () {
     const devices = loadYAML("devices.yml");
     return devices;

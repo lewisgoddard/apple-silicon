@@ -1,0 +1,30 @@
+---
+permalink: "sitemap.xml"
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{{ site.url }}/</loc></url>
+  <url><loc>{{ site.url }}/compare/</loc></url>
+  <url><loc>{{ site.url }}/video-editing/</loc></url>
+  <url><loc>{{ site.url }}/ml-ai/</loc></url>
+  <url><loc>{{ site.url }}/gaming/</loc></url>
+  {% for s in collections.seriesCollection %}
+  <url><loc>{{ site.url }}/series/{{ s.id | lower }}/</loc></url>
+  {% endfor %}
+  {% for gen in collections.generationPagesCollection %}
+  <url><loc>{{ site.url }}/chips/{{ gen.id | lower }}/</loc></url>
+  {% endfor %}
+  {% for rank in collections.rankPagesCollection %}
+  <url><loc>{{ site.url }}/chips/{{ rank.id | genId | lower }}/{{ rank.id | tierSlug | lower }}/</loc></url>
+  {% endfor %}
+  {% for chip in collections.chipPagesCollection %}
+  <url><loc>{{ site.url }}/chips/{{ chip.id | genId | lower }}/{{ chip.id | chipTier | lower }}/{{ chip.id | chipVariant }}/</loc></url>
+  {% endfor %}
+  {% for cat in collections.devicesCollection %}
+  <url><loc>{{ site.url }}/devices/{{ cat.id | lower }}/</loc></url>
+  {% endfor %}
+  {% for d in collections.devicePagesCollection %}
+  <url><loc>{{ site.url }}/devices/{{ d.categoryId | lower }}/{{ d.id | lower }}/</loc></url>
+  {% endfor %}
+</urlset>
