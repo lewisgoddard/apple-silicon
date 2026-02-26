@@ -100,6 +100,94 @@ nav {
   background: var(--color-surface);
 }
 
+/* ===== Search ===== */
+.search-wrapper {
+  position: relative;
+  margin-left: auto;
+}
+
+#site-search {
+  width: 200px;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.85rem;
+  outline: none;
+  transition:
+    border-color 0.15s,
+    width 0.2s;
+}
+
+#site-search:focus {
+  border-color: var(--color-link);
+  width: 280px;
+}
+
+#site-search::placeholder {
+  color: var(--color-text-muted);
+}
+
+.search-results {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 360px;
+  max-height: 420px;
+  overflow-y: auto;
+  margin-top: 0.35rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 200;
+}
+
+.search-result {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.1s;
+}
+
+.search-result:hover,
+.search-result--active {
+  background: var(--color-surface);
+}
+
+.search-result-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.search-result-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.search-result-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-result-detail {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* ===== Main Content ===== */
 main {
   max-width: var(--max-width);
@@ -501,6 +589,25 @@ footer {
   .compare-table th,
   .compare-table td {
     padding: 0.4rem 0.5rem;
+  }
+
+  .search-wrapper {
+    width: 100%;
+    order: 99;
+  }
+
+  #site-search {
+    width: 100%;
+  }
+
+  #site-search:focus {
+    width: 100%;
+  }
+
+  .search-results {
+    width: 100%;
+    left: 0;
+    right: 0;
   }
 }
 
