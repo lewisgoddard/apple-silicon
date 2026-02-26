@@ -222,22 +222,22 @@
       cpu_isa: "ARMv8.3-A"
       transistor_count_billion: 6.9
       variants: ["a12-6-4"]
-    - id: a12z
+    - id: a12-z
       name: "A12Z Bionic"
       description: "Enhanced A12X with 8th GPU core enabled, used in iPad Pro 4th gen"
       part_number: "APL1083"
       process_nm: "TSMC N7"
       cpu_isa: "ARMv8.3-A"
       transistor_count_billion: 10
-      variants: ["a12z-8-8"]
-    - id: a12x
+      variants: ["a12-z-8-8"]
+    - id: a12-x
       name: "A12X Bionic"
       description: "High-performance A12 variant with 8-core CPU, used in iPad Pro 3rd gen"
       part_number: "APL1083"
       process_nm: "TSMC N7"
       cpu_isa: "ARMv8.3-A"
       transistor_count_billion: 10
-      variants: ["a12x-8-7"]
+      variants: ["a12-x-8-7"]
     - id: a11
       name: "A11 Bionic"
       description: "First A-series with Apple-designed GPU and Neural Engine"
@@ -254,14 +254,14 @@
       cpu_isa: "ARMv8.1-A"
       transistor_count_billion: 3.28
       variants: ["a10-4-6"]
-    - id: a10x
+    - id: a10-x
       name: "A10X Fusion"
       description: "High-performance A10 variant with 6-core CPU and 12-core GPU, used in iPad Pro 2nd gen"
       part_number: "APL1071"
       process_nm: "TSMC 10FF"
       cpu_isa: "ARMv8.1-A"
       transistor_count_billion: 4
-      variants: ["a10x-6-12"]
+      variants: ["a10-x-6-12"]
     - id: a9
       name: "A9"
       description: "Dual-sourced from Samsung 14nm and TSMC 16nm, used in iPhone 6S and iPhone SE"
@@ -269,14 +269,14 @@
       process_nm: "TSMC 16FFC / Samsung 14LPE"
       cpu_isa: "ARMv8-A"
       variants: ["a9-2-6"]
-    - id: a9x
+    - id: a9-x
       name: "A9X"
       description: "High-performance A9 variant with 12-core GPU, used in iPad Pro 1st gen"
       part_number: "APL1021"
       process_nm: "TSMC 16FFC"
       cpu_isa: "ARMv8-A"
       transistor_count_billion: 3
-      variants: ["a9x-2-12"]
+      variants: ["a9-x-2-12"]
     - id: a8
       name: "A8"
       description: "First A-series fabricated by TSMC, used in iPhone 6"
@@ -285,14 +285,14 @@
       cpu_isa: "ARMv8-A"
       transistor_count_billion: 2
       variants: ["a8-2-4"]
-    - id: a8x
+    - id: a8-x
       name: "A8X"
       description: "High-performance A8 variant with triple-core CPU and octa-core GPU, used in iPad Air 2"
       part_number: "APL1021"
       process_nm: "TSMC 20nm"
       cpu_isa: "ARMv8-A"
       transistor_count_billion: 3
-      variants: ["a8x-3-8"]
+      variants: ["a8-x-3-8"]
     - id: a7
       name: "A7"
       description: "First 64-bit mobile SoC, used in iPhone 5S"
@@ -308,13 +308,13 @@
       process_nm: "Samsung 32nm"
       cpu_isa: "ARMv7s"
       variants: ["a6-2-3"]
-    - id: a6x
+    - id: a6-x
       name: "A6X"
       description: "High-performance A6 variant with quad-core GPU, used in iPad 4th gen"
       part_number: "S5L8955X"
       process_nm: "Samsung 32nm"
       cpu_isa: "ARMv7s"
-      variants: ["a6x-2-4"]
+      variants: ["a6-x-2-4"]
     - id: a5
       name: "A5"
       description: "Dual-core Cortex-A9 chip, used in iPhone 4S"
@@ -322,13 +322,13 @@
       process_nm: "Samsung 45nm"
       cpu_isa: "ARMv7-A"
       variants: ["a5-2-2"]
-    - id: a5x
+    - id: a5-x
       name: "A5X"
       description: "High-performance A5 variant with quad-core GPU, used in iPad 3rd gen"
       part_number: "S5L8945X"
       process_nm: "Samsung 45nm"
       cpu_isa: "ARMv7-A"
-      variants: ["a5x-2-4"]
+      variants: ["a5-x-2-4"]
     - id: a4
       name: "A4"
       description: "Apple's first custom SoC, used in iPhone 4"

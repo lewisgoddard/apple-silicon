@@ -313,7 +313,7 @@
     transistor_count_billion: 8.5
     die_size_mm2: 98.48
     release_date: "2019-09-10"
-- id: a12z-8-8
+- id: a12-z-8-8
   name: "A12Z Bionic"
   specs:
     cpu_cores: 8
@@ -339,7 +339,7 @@
     die_size_mm2: 135
     part_number: "APL1083"
     release_date: "2020-03-18"
-- id: a12x-8-7
+- id: a12-x-8-7
   name: "A12X Bionic"
   specs:
     cpu_cores: 8
@@ -410,7 +410,7 @@
     die_size_mm2: 87.66
     part_number: "APL1W72"
     release_date: "2017-09-12"
-- id: a10x-6-12
+- id: a10-x-6-12
   name: "A10X Fusion"
   specs:
     cpu_cores: 6
@@ -458,7 +458,7 @@
     die_size_mm2: 125
     part_number: "APL1W24"
     release_date: "2016-09-07"
-- id: a9x-2-12
+- id: a9-x-2-12
   name: "A9X"
   specs:
     cpu_cores: 2
@@ -497,7 +497,7 @@
     process_nm: 16
     part_number: "APL1022"
     release_date: "2015-09-09"
-- id: a8x-3-8
+- id: a8-x-3-8
   name: "A8X"
   specs:
     cpu_cores: 3
@@ -556,7 +556,7 @@
     die_size_mm2: 102
     part_number: "APL0698"
     release_date: "2013-09-10"
-- id: a6x-2-4
+- id: a6-x-2-4
   name: "A6X"
   specs:
     cpu_cores: 2
@@ -594,7 +594,7 @@
     die_size_mm2: 96.71
     part_number: "S5L8950X"
     release_date: "2012-09-12"
-- id: a5x-2-4
+- id: a5-x-2-4
   name: "A5X"
   specs:
     cpu_cores: 2

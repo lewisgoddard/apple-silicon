@@ -133,37 +133,37 @@
       variants: ["a17-pro-6-5"]
     - id: "ipad-pro-12-9-4"
       name: "iPad Pro 12.9 (4th gen)"
-      variants: ["a12z-8-8"]
+      variants: ["a12-z-8-8"]
     - id: "ipad-pro-11-2"
       name: "iPad Pro 11 (2nd gen)"
-      variants: ["a12z-8-8"]
+      variants: ["a12-z-8-8"]
     - id: "ipad-pro-12-9-3"
       name: "iPad Pro 12.9 (3rd gen)"
-      variants: ["a12x-8-7"]
+      variants: ["a12-x-8-7"]
     - id: "ipad-pro-11-1"
       name: "iPad Pro 11 (1st gen)"
-      variants: ["a12x-8-7"]
+      variants: ["a12-x-8-7"]
     - id: "ipad-pro-12-9-2"
       name: "iPad Pro 12.9 (2nd gen)"
-      variants: ["a10x-6-12"]
+      variants: ["a10-x-6-12"]
     - id: "ipad-pro-10-5"
       name: "iPad Pro 10.5"
-      variants: ["a10x-6-12"]
+      variants: ["a10-x-6-12"]
     - id: "ipad-pro-12-9-1"
       name: "iPad Pro 12.9 (1st gen)"
-      variants: ["a9x-2-12"]
+      variants: ["a9-x-2-12"]
     - id: "ipad-pro-9-7"
       name: "iPad Pro 9.7"
-      variants: ["a9x-2-12"]
+      variants: ["a9-x-2-12"]
     - id: "ipad-air-2"
       name: "iPad Air 2"
-      variants: ["a8x-3-8"]
+      variants: ["a8-x-3-8"]
     - id: "ipad-4"
       name: "iPad (4th gen)"
-      variants: ["a6x-2-4"]
+      variants: ["a6-x-2-4"]
     - id: "ipad-3"
       name: "iPad (3rd gen)"
-      variants: ["a5x-2-4"]
+      variants: ["a5-x-2-4"]
 - id: "iphone"
   name: "iPhone"
   description: "Apple silicon for iPhones"

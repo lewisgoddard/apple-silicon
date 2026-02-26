@@ -505,7 +505,7 @@ export default function (eleventyConfig) {
   // Extract tier from a chip id, e.g. "m4-pro-14-20" → "pro", "m1-8-8" → "base"
   eleventyConfig.addFilter("chipTier", function (chipId) {
     const match = (chipId || "").match(
-      /^[a-z]\d+(?:-(ultra|max|pro))?-\d+-\d+$/,
+      /^[a-z]\d+(?:-(ultra|max|pro|x|z))?-\d+-\d+$/,
     );
     if (!match) return "base";
     return match[1] || "base";
