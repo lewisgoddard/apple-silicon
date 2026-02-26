@@ -132,6 +132,12 @@
 
     html += "</tbody></table></div>";
     tableArea.innerHTML = html;
+
+    /* Activate sorting & highlighting from table-sort.js */
+    var tbl = tableArea.querySelector(".compare-table");
+    if (tbl && window.initTableEnhancements) {
+      window.initTableEnhancements(tbl);
+    }
   }
 
   function update() {

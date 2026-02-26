@@ -292,6 +292,57 @@ li {
   background: var(--color-group-header);
 }
 
+/* ===== Table Sorting & Highlighting ===== */
+
+/* Best / worst value cells */
+.cell-best {
+  background: color-mix(in srgb, #22c55e 12%, transparent);
+}
+
+.cell-worst {
+  background: color-mix(in srgb, #ef4444 8%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  .cell-best {
+    background: color-mix(in srgb, #22c55e 15%, transparent);
+  }
+
+  .cell-worst {
+    background: color-mix(in srgb, #ef4444 10%, transparent);
+  }
+}
+
+/* Sortable row labels */
+.sortable-label {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sortable-label:hover {
+  color: var(--color-accent, #0071e3);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+}
+
+/* Sort direction indicator */
+.sort-active {
+  font-weight: 700;
+}
+
+.sort-asc::after {
+  content: " ▲";
+  font-size: 0.7em;
+  opacity: 0.7;
+}
+
+.sort-desc::after {
+  content: " ▼";
+  font-size: 0.7em;
+  opacity: 0.7;
+}
+
 /* ===== Device Carousel ===== */
 .device-carousel {
   display: flex;
