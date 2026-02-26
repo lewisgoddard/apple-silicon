@@ -12,6 +12,7 @@ eleventyComputed:
 
 {% from "macros/device-carousel.njk" import deviceCarousel %}
 {% from "macros/breadcrumbs.njk" import breadcrumbs %}
+{% from "macros/spec-card.njk" import specCard %}
 
 {{ breadcrumbs([
   { label: chip.rank.seriesId + " Series" if chip.rank else "Series", url: "/series/" + (chip.rank.seriesId | lower if chip.rank else "m") + "/" },
@@ -22,6 +23,8 @@ eleventyComputed:
 
 <h1>{{ chip.name }}</h1>
 <p>{{ chip.specs.cpu_cores }}-core CPU / {{ chip.specs.gpu_cores }}-core GPU</p>
+
+{{ specCard(chip) }}
 
 {# Specs table (single chip, no comparison) #}
 <div class="compare-table-wrapper">

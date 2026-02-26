@@ -1,0 +1,41 @@
+{# Quick specs summary card — shows key highlights at a glance #}
+{% macro specCard(chip) %}
+  {% set s = chip.specs %}
+  {% set items = [] %}
+
+  {% if s.cpu_cores %}
+    {% set items = items.concat([{ value: s.cpu_cores, label: "CPU Cores", sub: (s.performance_cores ~ "P + " ~ s.efficiency_cores ~ "E") if s.performance_cores and s.efficiency_cores else "" }]) %}
+  {% endif %}
+
+  {% if s.gpu_cores %}
+    {% set items = items.concat([{ value: s.gpu_cores, label: "GPU Cores", sub: (s.gpu_tflops ~ " TFLOPS") if s.gpu_tflops else "" }]) %}
+  {% endif %}
+
+  {% if s.npu_cores %}
+    {% set items = items.concat([{ value: s.npu_cores ~ "-core", label: "Neural Engine", sub: (s.npu_tops ~ " TOPS") if s.npu_tops else "" }]) %}
+  {% endif %}
+
+  {% if s.memory_bandwidth_gb_s %}
+    {% set items = items.concat([{ value: s.memory_bandwidth_gb_s ~ " GB/s", label: "Memory Bandwidth", sub: s.memory_type if s.memory_type else "" }]) %}
+  {% endif %}
+
+  {% if s.memory_options %}
+    {% set items = items.concat([{ value: (s.memory_options | join(", ")) ~ " GB", label: "Memory Options", sub: "" }]) %}
+  {% endif %}
+
+  {% if s.process_nm %}
+    {% set items = items.concat([{ value: s.process_nm ~ " nm", label: "Process Node", sub: (s.transistor_count_billion ~ "B transistors") if s.transistor_count_billion else "" }]) %}
+  {% endif %}
+
+  {% if items | length %}
+  <div class="spec-card">
+    {% for item in items %}
+    <div class="spec-card-item">
+      <span class="spec-card-value">{{ item.value }}</span>
+      <span class="spec-card-label">{{ item.label }}</span>
+      {% if item.sub %}<span class="spec-card-sub">{{ item.sub }}</span>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+{% endmacro %}
