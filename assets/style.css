@@ -264,6 +264,14 @@ li {
   top: 0;
 }
 
+.compare-table thead th .th-variant {
+  font-weight: 400;
+  font-size: 0.85em;
+  display: block;
+  text-align: right;
+  color: var(--color-text-muted);
+}
+
 .compare-table .group-header td {
   background: var(--color-group-header);
   font-weight: 600;
