@@ -131,6 +131,54 @@ export default function (eleventyConfig) {
     return [...chipsM, ...chipsA].map(enrichChip);
   });
 
+  // Individual chip variant pages, e.g. /chips/m4/pro/14-20/
+  // Each chip is enriched with the list of devices that use it.
+  eleventyConfig.addCollection("chipPagesCollection", function () {
+    const chipsM = loadYAML("chips-m.yml");
+    const chipsA = loadYAML("chips-a.yml");
+    const specDefs = loadYAML("specs.yml");
+    const categories = loadYAML("devices.yml");
+    const seriesList = loadYAML("series.yml");
+    const allChips = [...chipsM, ...chipsA];
+
+    // Pre-build chip→devices lookup
+    const chipDeviceMap = {};
+    (categories || []).forEach((category) => {
+      (category.devices || []).forEach((device) => {
+        (device.variants || []).forEach((chipId) => {
+          if (!chipDeviceMap[chipId]) chipDeviceMap[chipId] = [];
+          chipDeviceMap[chipId].push({
+            id: device.id,
+            name: device.name,
+            categoryId: category.id,
+            categoryName: category.name,
+          });
+        });
+      });
+    });
+
+    // Find the rank (tier) info for each chip so we can link back
+    const chipRankMap = {};
+    (seriesList || []).forEach((series) => {
+      (series.ranks || []).forEach((rank) => {
+        (rank.variants || []).forEach((chipId) => {
+          chipRankMap[chipId] = {
+            rankId: rank.id,
+            rankName: rank.name,
+            seriesId: series.id,
+          };
+        });
+      });
+    });
+
+    return allChips.map((chip) => ({
+      ...chip,
+      groupedSpecs: buildGroupedSpecs(chip.specs || {}, specDefs.groups),
+      devices: chipDeviceMap[chip.id] || [],
+      rank: chipRankMap[chip.id] || null,
+    }));
+  });
+
   // Build per-generation comparison pages (e.g. "M4 Family" with M4, M4 Pro,
   // M4 Max columns, each merging variant specs into ranges).
   eleventyConfig.addCollection("generationPagesCollection", function () {
@@ -183,6 +231,7 @@ export default function (eleventyConfig) {
           seriesId: series.id,
           seriesName: series.name,
           mergedChips,
+          allVariants: gen.tiers.flatMap((t) => t.variants || []),
         });
       });
     });
@@ -229,6 +278,30 @@ export default function (eleventyConfig) {
     return found;
   });
 
+  // Return de-duplicated list of devices for a list of chip ids.
+  // Used by rank and generation pages to show the device carousel.
+  eleventyConfig.addNunjucksGlobal("getDevicesForChips", function (ids) {
+    const categories = loadYAML("devices.yml");
+    const seen = new Set();
+    const devices = [];
+    (categories || []).forEach((category) => {
+      (category.devices || []).forEach((device) => {
+        if (seen.has(device.id)) return;
+        const hasMatch = (device.variants || []).some((v) => (ids || []).includes(v));
+        if (hasMatch) {
+          seen.add(device.id);
+          devices.push({
+            id: device.id,
+            name: device.name,
+            categoryId: category.id,
+            categoryName: category.name,
+          });
+        }
+      });
+    });
+    return devices;
+  });
+
   // Return a human-readable chip range string for a list of chip ids.
   // E.g. ["m4-10-10","m3-8-10","m2-8-10"] → "M2 – M4"
   eleventyConfig.addNunjucksGlobal("getChipRange", function (ids, collections) {
@@ -261,6 +334,19 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("tierSlug", function (rankId) {
     const match = (rankId || "").match(/^[a-z]\d+-(.+)$/);
     return match ? match[1] : "base";
+  });
+
+  // Extract tier from a chip id, e.g. "m4-pro-14-20" → "pro", "m1-8-8" → "base"
+  eleventyConfig.addFilter("chipTier", function (chipId) {
+    const match = (chipId || "").match(/^[a-z]\d+(?:-(ultra|max|pro))?-\d+-\d+$/);
+    if (!match) return "base";
+    return match[1] || "base";
+  });
+
+  // Extract variant suffix from a chip id, e.g. "m4-pro-14-20" → "14-20", "m1-8-8" → "8-8"
+  eleventyConfig.addFilter("chipVariant", function (chipId) {
+    const match = (chipId || "").match(/(\d+-\d+)$/);
+    return match ? match[1] : chipId;
   });
 
   // Return directory configuration so Eleventy processes files from `src/`

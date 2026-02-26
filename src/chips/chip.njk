@@ -1,0 +1,45 @@
+---
+pagination:
+  data: collections.chipPagesCollection
+  size: 1
+  alias: chip
+permalink: "chips/{{ chip.id | genId | lower }}/{{ chip.id | chipTier | lower }}/{{ chip.id | chipVariant }}/index.html"
+---
+
+{% from "macros/device-carousel.njk" import deviceCarousel %}
+
+<p><a href="/chips/{{ chip.id | genId | lower }}/{{ chip.id | chipTier | lower }}/">← {{ chip.rank.rankName if chip.rank else chip.name }} Variants</a></p>
+
+<h1>{{ chip.name }}</h1>
+<p>{{ chip.specs.cpu_cores }}-core CPU / {{ chip.specs.gpu_cores }}-core GPU</p>
+
+{# Specs table (single chip, no comparison) #}
+<table class="compare-table">
+  <thead>
+    <tr>
+      <th>Spec</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for group in chip.groupedSpecs %}
+      <tr class="group-header">
+        <td colspan="2"><strong>{{ group.name }}</strong></td>
+      </tr>
+      {% for field in group.fields %}
+        <tr>
+          <td>{{ field.label }}</td>
+          <td>
+            {% if field.value is iterable and field.value is not string %}
+              {{ field.value | join(", ") }}
+            {% else %}
+              {{ field.value }}
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    {% endfor %}
+  </tbody>
+</table>
+
+{{ deviceCarousel(chip.devices) }}

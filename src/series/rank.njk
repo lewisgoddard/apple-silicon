@@ -15,9 +15,13 @@ permalink: "chips/{{ rank.id | genId | lower }}/{{ rank.id | tierSlug | lower }}
 {% endif %}
 
 {% from "macros/compare-table.njk" import compareTable %}
+{% from "macros/device-carousel.njk" import deviceCarousel %}
 
 {% if rank.variants and rank.variants | length > 0 %}
   <p>{{ rank.variants | length }} variant{{ "s" if rank.variants | length != 1 }}</p>
   {% set items = getChips(rank.variants, collections) %}
   {{ compareTable(items) }}
+
+  {% set devices = getDevicesForChips(rank.variants) %}
+  {{ deviceCarousel(devices) }}
 {% endif %}
