@@ -143,6 +143,22 @@
   name: "A Series"
   description: "Apple silicon for iPhones and iPads"
   ranks:
+    - id: a19-pro
+      name: "A19 Pro"
+      description: "Pro-tier member of the A19 family, used in iPhone 17 Pro, Pro Max, and iPhone Air"
+      codename: "Thera"
+      part_number: "T8150"
+      process_nm: "TSMC N3P"
+      cpu_isa: "ARMv9.4-A"
+      variants: ["a19-pro-6-6", "a19-pro-6-5"]
+    - id: a19
+      name: "A19"
+      description: "Base-tier member of the A19 family, used in iPhone 17"
+      codename: "Tilos"
+      part_number: "T8150a"
+      process_nm: "TSMC N3P"
+      cpu_isa: "ARMv9.4-A"
+      variants: ["a19-6-5"]
     - id: a18-pro
       name: "A18 Pro"
       description: "Pro-tier member of the A18 family"

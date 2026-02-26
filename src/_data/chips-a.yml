@@ -1,3 +1,81 @@
+- id: a19-pro-6-6
+  name: "A19 Pro"
+  specs:
+    cpu_cores: 6
+    performance_cores: 2
+    performance_core_speed: 4.26
+    efficiency_cores: 4
+    efficiency_core_speed: 2.60
+    cpu_isa: "ARMv9.4-A"
+    gpu_vendor: "Apple-designed"
+    gpu_cores: 6
+    gpu_eus: 24
+    gpu_alus: 768
+    gpu_frequency: 1620
+    gpu_tflops: 2.488
+    gpu_rt: true
+    npu_cores: 16
+    memory_type: "LPDDR5X-9600"
+    memory_bandwidth_gb_s: 76.8
+    memory_options: [12]
+    hardware_acceleration: ["H264", "HEVC", "ProRes"]
+    av1_decode: true
+    process_nm: 3
+    codename: "Thera"
+    part_number: "T8150"
+    release_date: "2025-09-19"
+- id: a19-pro-6-5
+  name: "A19 Pro"
+  specs:
+    cpu_cores: 6
+    performance_cores: 2
+    performance_core_speed: 4.26
+    efficiency_cores: 4
+    efficiency_core_speed: 2.60
+    cpu_isa: "ARMv9.4-A"
+    gpu_vendor: "Apple-designed"
+    gpu_cores: 5
+    gpu_eus: 20
+    gpu_alus: 640
+    gpu_frequency: 1620
+    gpu_tflops: 2.074
+    gpu_rt: true
+    npu_cores: 16
+    memory_type: "LPDDR5X-8533"
+    memory_bandwidth_gb_s: 68.3
+    memory_options: [12]
+    hardware_acceleration: ["H264", "HEVC", "ProRes"]
+    av1_decode: true
+    process_nm: 3
+    codename: "Thera"
+    part_number: "T8150"
+    release_date: "2025-09-19"
+- id: a19-6-5
+  name: "A19"
+  specs:
+    cpu_cores: 6
+    performance_cores: 2
+    performance_core_speed: 4.26
+    efficiency_cores: 4
+    efficiency_core_speed: 2.60
+    cpu_isa: "ARMv9.4-A"
+    gpu_vendor: "Apple-designed"
+    gpu_cores: 5
+    gpu_eus: 20
+    gpu_alus: 640
+    gpu_frequency: 1620
+    gpu_tflops: 2.074
+    gpu_rt: true
+    npu_cores: 16
+    memory_type: "LPDDR5X-8533"
+    memory_bandwidth_gb_s: 68.3
+    memory_options: [8]
+    hardware_acceleration: ["H264", "HEVC"]
+    av1_decode: true
+    process_nm: 3
+    codename: "Tilos"
+    part_number: "T8150a"
+    release_date: "2025-09-19"
 - id: a18-pro-6-6
   name: "A18 Pro"
   specs:
