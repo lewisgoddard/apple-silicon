@@ -1,0 +1,20 @@
+---
+pagination:
+  data: collections.devicePagesCollection
+  size: 1
+  alias: device
+permalink: "devices/{{ device.categoryId | lower }}/{{ device.id | lower }}/index.html"
+---
+
+<p><a href="/devices/{{ device.categoryId | lower }}/">← {{ device.categoryName }}</a></p>
+
+<h1>{{ device.name }}</h1>
+
+{% from "macros/compare-table.njk" import compareTable %}
+
+{% if device.variants and device.variants | length > 0 %}
+  <p>{{ device.variants | length }} chip option{{ "s" if device.variants | length != 1 }}
+  ({{ getChipRange(device.variants, collections) }})</p>
+  {% set items = getChips(device.variants, collections) %}
+  {{ compareTable(items) }}
+{% endif %}

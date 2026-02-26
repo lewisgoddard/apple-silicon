@@ -9,17 +9,20 @@ permalink: "devices/{{ deviceItem.id | lower }}/index.html"
 <h1>{{ deviceItem.name }}</h1>
 <p>{{ deviceItem.description }}</p>
 
-{% from "macros/compare-table.njk" import compareTable %}
-
-{# Show devices (from src/_data/devices.yml) with a header and comparison table #}
 {% if deviceItem.devices %}
-  {% for device in deviceItem.devices %}
-    {% if device.name %}
-      <h2>{{ device.name }}</h2>
-    {% endif %}
-    {% if device.variants and device.variants | length > 0 %}
-      {% set items = getChips(device.variants, collections) %}
-      {{ compareTable(items) }}
-    {% endif %}
-  {% endfor %}
+  <ul>
+    {% for device in deviceItem.devices %}
+      {% if device.name %}
+        <li>
+          <a href="/devices/{{ deviceItem.id | lower }}/{{ device.id | lower }}/">
+            <strong>{{ device.name }}</strong>
+          </a>
+          {% if device.variants and device.variants | length > 0 %}
+            — {{ device.variants | length }} chip option{{ "s" if device.variants | length != 1 }}
+            ({{ getChipRange(device.variants, collections) }})
+          {% endif %}
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
 {% endif %}

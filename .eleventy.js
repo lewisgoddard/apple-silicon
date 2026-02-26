@@ -22,6 +22,26 @@ export default function (eleventyConfig) {
     return devices;
   });
 
+  // Flatten devices into individual entries for per-device page generation.
+  // Each entry gets its parent category id so the URL can be nested, e.g.
+  // /devices/mac/macbook-air-15/
+  eleventyConfig.addCollection("devicePagesCollection", function () {
+    const categories = loadYAML("devices.yml");
+    const pages = [];
+    (categories || []).forEach((category) => {
+      (category.devices || []).forEach((device) => {
+        if (device.name && device.variants && device.variants.length > 0) {
+          pages.push({
+            ...device,
+            categoryId: category.id,
+            categoryName: category.name,
+          });
+        }
+      });
+    });
+    return pages;
+  });
+
   eleventyConfig.addCollection("seriesCollection", function () {
     const series = loadYAML("series.yml");
     return series;
@@ -97,6 +117,27 @@ export default function (eleventyConfig) {
 
     return found;
   });
+
+  // Return a human-readable chip range string for a list of chip ids.
+  // E.g. ["m4-10-10","m3-8-10","m2-8-10"] → "M2 – M4"
+  eleventyConfig.addNunjucksGlobal(
+    "getChipRange",
+    function (ids, collections) {
+      const chips = collections.chipsCollection || [];
+      const uniqueNames = [];
+      (ids || []).forEach((id) => {
+        const chip = chips.find((c) => c.id === id);
+        if (chip && !uniqueNames.includes(chip.name)) {
+          uniqueNames.push(chip.name);
+        }
+      });
+      if (uniqueNames.length === 0) return "";
+      if (uniqueNames.length === 1) return uniqueNames[0];
+      // First entry is newest/highest, last is oldest/lowest.
+      // Display as "oldest – newest".
+      return `${uniqueNames[uniqueNames.length - 1]} – ${uniqueNames[0]}`;
+    },
+  );
 
   eleventyConfig.addFilter("map", function (array, property) {
     return (array || []).map((item) => item[property]);
