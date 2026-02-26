@@ -1,0 +1,23 @@
+- id: t2
+  name: "T2"
+  specs:
+    cpu_cores: 4
+    performance_cores: 2
+    performance_core_name: "Hurricane"
+    efficiency_cores: 2
+    efficiency_core_name: "Zephyr"
+    cpu_isa: "ARMv8-A"
+    gpu_cores: 3
+    gpu_vendor: "Apple-designed"
+    memory_type: "LPDDR4"
+    process_nm: 16
+    die_size_mm2: 104
+    codename: "APL1027"
+    release_date: "2017-12-14"
+
+- id: t1
+  name: "T1"
+  specs:
+    cpu_isa: "ARMv7"
+    codename: "APL1023"
+    release_date: "2016-11-12"
