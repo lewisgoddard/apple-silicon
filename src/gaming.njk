@@ -1,0 +1,89 @@
+---
+layout: base.njk
+title: "Gaming Performance"
+description: "Compare Apple Silicon chips for gaming — GPU cores, TFLOPS, ray tracing support, memory bandwidth, and CPU performance."
+---
+
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+{% from "macros/focused-compare-table.njk" import focusedCompareTable %}
+
+{{ breadcrumbs([
+  { label: "Gaming" }
+]) }}
+
+<h1>Gaming on Apple Silicon</h1>
+<p>
+  Apple Silicon's unified memory architecture and increasingly powerful GPUs have brought credible gaming performance to Mac. Ray tracing support (M3 and later), high GPU core counts, and fast memory bandwidth are the key specs to look for.
+</p>
+
+<h2>High-End — Max &amp; Ultra</h2>
+<p>The most GPU-heavy chips for AAA gaming at high settings.</p>
+
+{% set highChips = getChips([
+  "m4-max-16-40",
+  "m4-max-14-32",
+  "m3-ultra-32-80",
+  "m3-max-16-40",
+  "m2-ultra-76-76",
+  "m2-max-38-38",
+  "m1-ultra-20-64",
+  "m1-max-10-32"
+], collections) %}
+
+{{ focusedCompareTable(highChips, [
+  "gpu_cores",
+  "gpu_eus",
+  "gpu_tflops",
+  "gpu_rt",
+  "cpu_cores",
+  "performance_cores",
+  "memory_bandwidth_gb_s",
+  "memory_type",
+  "memory_options"
+]) }}
+
+<h2>Mid-Range — Pro Tier</h2>
+<p>Solid gaming performance with a balance of CPU and GPU power.</p>
+
+{% set proChips = getChips([
+  "m4-pro-14-20",
+  "m4-pro-12-16",
+  "m3-pro-12-18",
+  "m3-pro-11-14",
+  "m2-pro-12-19",
+  "m2-pro-10-16",
+  "m1-pro-10-16"
+], collections) %}
+
+{{ focusedCompareTable(proChips, [
+  "gpu_cores",
+  "gpu_eus",
+  "gpu_tflops",
+  "gpu_rt",
+  "cpu_cores",
+  "memory_bandwidth_gb_s",
+  "memory_type",
+  "memory_options"
+]) }}
+
+<h2>Base Tier — Casual Gaming</h2>
+<p>Entry-level chips for lighter games and older titles.</p>
+
+{% set baseChips = getChips([
+  "m5-10-10",
+  "m4-10-10",
+  "m3-8-10",
+  "m2-8-10",
+  "m1-8-8"
+], collections) %}
+
+{{ focusedCompareTable(baseChips, [
+  "gpu_cores",
+  "gpu_eus",
+  "gpu_tflops",
+  "gpu_rt",
+  "cpu_cores",
+  "memory_bandwidth_gb_s",
+  "memory_type",
+  "memory_options"
+]) }}

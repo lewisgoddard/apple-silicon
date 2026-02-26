@@ -1,0 +1,66 @@
+---
+layout: base.njk
+title: "Machine Learning & AI"
+description: "Compare Apple Silicon chips for ML and AI workloads — Neural Engine TOPS, CPU cores, memory bandwidth, and unified memory."
+---
+
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+{% from "macros/focused-compare-table.njk" import focusedCompareTable %}
+
+{{ breadcrumbs([
+  { label: "Machine Learning & AI" }
+]) }}
+
+<h1>Machine Learning &amp; AI on Apple Silicon</h1>
+<p>
+  Apple's Neural Engine, combined with unified memory architecture and high bandwidth, makes Apple Silicon well-suited for on-device ML inference and training. Key specs include Neural Engine TOPS (trillion operations per second), memory bandwidth, and available memory.
+</p>
+
+<h2>Pro / Max / Ultra — Heavy ML Workloads</h2>
+<p>Top-tier chips with the most Neural Engine throughput and memory capacity for model training and large inference tasks.</p>
+
+{% set proChips = getChips([
+  "m4-max-16-40",
+  "m4-pro-14-20",
+  "m3-ultra-32-80",
+  "m3-max-16-40",
+  "m2-ultra-76-76",
+  "m2-max-38-38",
+  "m1-ultra-20-64",
+  "m1-max-10-32"
+], collections) %}
+
+{{ focusedCompareTable(proChips, [
+  "npu_cores",
+  "npu_tops",
+  "cpu_cores",
+  "performance_cores",
+  "gpu_cores",
+  "gpu_tflops",
+  "memory_bandwidth_gb_s",
+  "memory_type",
+  "memory_options"
+]) }}
+
+<h2>Base-Tier — On-Device Inference</h2>
+<p>Everyday chips still capable of running Core ML models, Stable Diffusion, and other on-device AI.</p>
+
+{% set baseChips = getChips([
+  "m5-10-10",
+  "m4-10-10",
+  "m3-8-10",
+  "m2-8-10",
+  "m1-8-8",
+  "a18-pro-6-6",
+  "a17-pro-6-6"
+], collections) %}
+
+{{ focusedCompareTable(baseChips, [
+  "npu_cores",
+  "npu_tops",
+  "cpu_cores",
+  "gpu_cores",
+  "memory_bandwidth_gb_s",
+  "memory_type",
+  "memory_options"
+]) }}

@@ -1,0 +1,67 @@
+{# Focused comparison table — renders a subset of spec keys for a group of chips.
+   specKeys: array of spec key strings (from specs.yml)
+   items: array of enriched chip objects (from getChips)
+   The macro looks up labels from groupedSpecs of the first item. #}
+{% macro focusedCompareTable(items, specKeys) %}
+  {# Build a flat label lookup from the first item's groupedSpecs #}
+  {% set _labels = {} %}
+  {% for group in items[0].groupedSpecs %}
+    {% for field in group.fields %}
+      {% set _labels = _labels.constructor(field.key, field.label) if false else _labels %}
+    {% endfor %}
+  {% endfor %}
+
+  <div class="compare-table-wrapper">
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Spec</th>
+        {% for item in items %}
+          <th>{{ item.name }}{% if item.specs and item.specs.cpu_cores and item.specs.gpu_cores %} {{ item.specs.cpu_cores }}c&nbsp;CPU / {{ item.specs.gpu_cores }}c&nbsp;GPU{% endif %}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for key in specKeys %}
+        {# Only show row if at least one item has data for this key #}
+        {% set rowHasData = false %}
+        {% for item in items %}
+          {% if item.specs[key] is defined and item.specs[key] is not none %}
+            {% set rowHasData = true %}
+          {% endif %}
+        {% endfor %}
+        {% if rowHasData %}
+        <tr>
+          <td>
+            {# Look up the label from groupedSpecs #}
+            {% set keyLabel = key %}
+            {% for group in items[0].groupedSpecs %}
+              {% for field in group.fields %}
+                {% if field.key == key %}{% set keyLabel = field.label %}{% endif %}
+              {% endfor %}
+            {% endfor %}
+            {{ keyLabel }}
+          </td>
+          {% for item in items %}
+            {% set value = item.specs[key] %}
+            <td>
+              {% if value is not defined or value is none %}
+                –
+              {% elif value == true %}
+                ✓
+              {% elif value == false %}
+                ✗
+              {% elif value is iterable and value is not string %}
+                {{ value | join(", ") }}
+              {% else %}
+                {{ value }}
+              {% endif %}
+            </td>
+          {% endfor %}
+        </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+{% endmacro %}
