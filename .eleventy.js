@@ -210,7 +210,9 @@ export default function (eleventyConfig) {
             const chipObjects = tier.variants
               .map((id) => allChips.find((c) => c.id === id))
               .filter(Boolean);
-            const merged = mergeChipSpecs(chipObjects.map((c) => c.specs || {}));
+            const merged = mergeChipSpecs(
+              chipObjects.map((c) => c.specs || {}),
+            );
             return {
               id: tier.id,
               name: tier.name,
@@ -223,7 +225,8 @@ export default function (eleventyConfig) {
 
         // Derive a readable generation name from the first tier
         const genName =
-          gen.tiers[0]?.name?.match(/^(M\d+|A\d+)/i)?.[0] || gen.id.toUpperCase();
+          gen.tiers[0]?.name?.match(/^(M\d+|A\d+)/i)?.[0] ||
+          gen.id.toUpperCase();
 
         pages.push({
           id: gen.id,
@@ -287,7 +290,9 @@ export default function (eleventyConfig) {
     (categories || []).forEach((category) => {
       (category.devices || []).forEach((device) => {
         if (seen.has(device.id)) return;
-        const hasMatch = (device.variants || []).some((v) => (ids || []).includes(v));
+        const hasMatch = (device.variants || []).some((v) =>
+          (ids || []).includes(v),
+        );
         if (hasMatch) {
           seen.add(device.id);
           devices.push({
@@ -338,7 +343,9 @@ export default function (eleventyConfig) {
 
   // Extract tier from a chip id, e.g. "m4-pro-14-20" → "pro", "m1-8-8" → "base"
   eleventyConfig.addFilter("chipTier", function (chipId) {
-    const match = (chipId || "").match(/^[a-z]\d+(?:-(ultra|max|pro))?-\d+-\d+$/);
+    const match = (chipId || "").match(
+      /^[a-z]\d+(?:-(ultra|max|pro))?-\d+-\d+$/,
+    );
     if (!match) return "base";
     return match[1] || "base";
   });
