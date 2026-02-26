@@ -315,6 +315,7 @@ export default function (eleventyConfig) {
     const chipsS = loadYAML("chips-s.yml");
     const chipsR = loadYAML("chips-r.yml");
     const chipsT = loadYAML("chips-t.yml");
+    const chipsC = loadYAML("chips-c.yml");
 
     const specDefs = loadYAML("specs.yml");
 
@@ -323,9 +324,14 @@ export default function (eleventyConfig) {
       return chip;
     }
 
-    return [...chipsM, ...chipsA, ...chipsS, ...chipsR, ...chipsT].map(
-      enrichChip,
-    );
+    return [
+      ...chipsM,
+      ...chipsA,
+      ...chipsS,
+      ...chipsR,
+      ...chipsT,
+      ...chipsC,
+    ].map(enrichChip);
   });
 
   // Individual chip variant pages, e.g. /chips/m4/pro/14-20/
@@ -336,10 +342,18 @@ export default function (eleventyConfig) {
     const chipsS = loadYAML("chips-s.yml");
     const chipsR = loadYAML("chips-r.yml");
     const chipsT = loadYAML("chips-t.yml");
+    const chipsC = loadYAML("chips-c.yml");
     const specDefs = loadYAML("specs.yml");
     const categories = loadYAML("devices.yml");
     const seriesList = loadYAML("series.yml");
-    const allChips = [...chipsM, ...chipsA, ...chipsS, ...chipsR, ...chipsT];
+    const allChips = [
+      ...chipsM,
+      ...chipsA,
+      ...chipsS,
+      ...chipsR,
+      ...chipsT,
+      ...chipsC,
+    ];
 
     // Pre-build chip→devices lookup (handles both flat and grouped categories)
     const chipDeviceMap = {};
@@ -389,7 +403,15 @@ export default function (eleventyConfig) {
     const chipsS = loadYAML("chips-s.yml");
     const chipsR = loadYAML("chips-r.yml");
     const chipsT = loadYAML("chips-t.yml");
-    const allChips = [...chipsM, ...chipsA, ...chipsS, ...chipsR, ...chipsT];
+    const chipsC = loadYAML("chips-c.yml");
+    const allChips = [
+      ...chipsM,
+      ...chipsA,
+      ...chipsS,
+      ...chipsR,
+      ...chipsT,
+      ...chipsC,
+    ];
     const specDefs = loadYAML("specs.yml");
 
     const pages = [];

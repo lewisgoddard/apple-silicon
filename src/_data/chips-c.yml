@@ -1,0 +1,11 @@
+- id: c1x
+  name: "C1X"
+  specs:
+    process_nm: 4
+    release_date: "2025-09-19"
+
+- id: c1
+  name: "C1"
+  specs:
+    process_nm: 4
+    release_date: "2025-02-28"
