@@ -9,23 +9,40 @@ permalink: "series/{{ seriesItem.id | lower }}/index.html"
 <h1>{{ seriesItem.name }}</h1>
 <p>{{ seriesItem.description }}</p>
 
-{% from "macros/compare-table.njk" import compareTable %}
-
-{# Show ranks (from src/_data/series.yml) with a header and list of chip ids #}
 {% if seriesItem.ranks %}
-  {% for rank in seriesItem.ranks %}
-    <h2>{{ rank.name }}</h2>
-    {% if rank.description %}
-      <p>{{ rank.description }}</p>
-    {% endif %}
-    <ul>
-      {% if rank.variants and rank.variants | length > 0 %}
-        {# Build items from chip ids and call compareTable to render a comparison table for the variants #}
-        {% set items = getChips(rank.variants, collections) %}
-        {{ compareTable(items) }}
-      {% else %}
-        <li>No chips available</li>
+  {% set currentGen = "" %}
+  <ul>
+    {% for rank in seriesItem.ranks %}
+      {% if rank.name %}
+        {% set thisGen = rank.id | genId %}
+        {% if thisGen != currentGen %}
+          {% if currentGen != "" %}
+            </ul></li>
+          {% endif %}
+          {% set currentGen = thisGen %}
+          <li>
+            <a href="/chips/{{ thisGen | lower }}/">
+              <strong>{{ rank.name | replace(" Ultra", "") | replace(" Max", "") | replace(" Pro", "") }} Family</strong>
+            </a>
+            <ul>
+        {% endif %}
+        <li>
+          {% if rank.variants and rank.variants | length > 0 %}
+            <a href="/chips/{{ rank.id | genId | lower }}/{{ rank.id | tierSlug | lower }}/">
+              <strong>{{ rank.name }}</strong>
+            </a>
+            — {{ rank.variants | length }} variant{{ "s" if rank.variants | length != 1 }}
+          {% else %}
+            <strong>{{ rank.name }}</strong>
+          {% endif %}
+          {% if rank.description %}
+            <br>{{ rank.description }}
+          {% endif %}
+        </li>
       {% endif %}
-    </ul>
-  {% endfor %}
+    {% endfor %}
+    {% if currentGen != "" %}
+      </ul></li>
+    {% endif %}
+  </ul>
 {% endif %}

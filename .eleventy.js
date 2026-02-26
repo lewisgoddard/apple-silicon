@@ -13,6 +13,54 @@ function loadYAML(filename) {
   }
 }
 
+function buildGroupedSpecs(specs, groupsDef) {
+  return groupsDef
+    .map((group) => {
+      const fields = group.fields
+        .map((field) => ({
+          key: field.key,
+          label: field.label,
+          value: specs[field.key],
+        }))
+        .filter((f) => f.value !== undefined && f.value !== null);
+      return fields.length ? { name: group.name, fields } : null;
+    })
+    .filter(Boolean);
+}
+
+// Merge specs from multiple chip variants into a single object.
+// Numbers that vary become "min – max", arrays are unioned, etc.
+function mergeChipSpecs(specsArray) {
+  const allKeys = new Set();
+  specsArray.forEach((s) => Object.keys(s).forEach((k) => allKeys.add(k)));
+
+  const merged = {};
+  allKeys.forEach((key) => {
+    const values = specsArray
+      .map((s) => s[key])
+      .filter((v) => v !== undefined && v !== null);
+    if (values.length === 0) return;
+
+    // All identical → keep as-is
+    if (values.every((v) => JSON.stringify(v) === JSON.stringify(values[0]))) {
+      merged[key] = values[0];
+      return;
+    }
+
+    if (values.every((v) => typeof v === "number")) {
+      const min = Math.min(...values);
+      const max = Math.max(...values);
+      merged[key] = `${min} – ${max}`;
+    } else if (values.every((v) => Array.isArray(v))) {
+      merged[key] = [...new Set(values.flat())];
+    } else {
+      const unique = [...new Set(values.map(String))];
+      merged[key] = unique.join(" / ");
+    }
+  });
+  return merged;
+}
+
 export default function (eleventyConfig) {
   // Copy `assets/` to `_site/assets/`
   eleventyConfig.addPassthroughCopy("assets");
@@ -47,6 +95,26 @@ export default function (eleventyConfig) {
     return series;
   });
 
+  // Flatten series ranks into individual entries for per-rank page generation.
+  // Each entry gets its parent series id so the URL can be nested, e.g.
+  // /series/m/m4-pro/
+  eleventyConfig.addCollection("rankPagesCollection", function () {
+    const seriesList = loadYAML("series.yml");
+    const pages = [];
+    (seriesList || []).forEach((series) => {
+      (series.ranks || []).forEach((rank) => {
+        if (rank.name && rank.variants && rank.variants.length > 0) {
+          pages.push({
+            ...rank,
+            seriesId: series.id,
+            seriesName: series.name,
+          });
+        }
+      });
+    });
+    return pages;
+  });
+
   eleventyConfig.addCollection("chipsCollection", function () {
     const chipsM = loadYAML("chips-m.yml");
     const chipsA = loadYAML("chips-a.yml");
@@ -60,22 +128,65 @@ export default function (eleventyConfig) {
       return chip;
     }
 
-    function buildGroupedSpecs(specs, groupsDef) {
-      return groupsDef
-        .map((group) => {
-          const fields = group.fields
-            .map((field) => ({
-              key: field.key,
-              label: field.label,
-              value: specs[field.key],
-            }))
-            .filter((f) => f.value !== undefined && f.value !== null);
-          return fields.length ? { name: group.name, fields } : null;
-        })
-        .filter(Boolean);
-    }
-
     return [...chipsM, ...chipsA].map(enrichChip);
+  });
+
+  // Build per-generation comparison pages (e.g. "M4 Family" with M4, M4 Pro,
+  // M4 Max columns, each merging variant specs into ranges).
+  eleventyConfig.addCollection("generationPagesCollection", function () {
+    const seriesList = loadYAML("series.yml");
+    const chipsM = loadYAML("chips-m.yml");
+    const chipsA = loadYAML("chips-a.yml");
+    const allChips = [...chipsM, ...chipsA];
+    const specDefs = loadYAML("specs.yml");
+
+    const pages = [];
+    (seriesList || []).forEach((series) => {
+      // Group ranks by generation prefix, e.g. "m4-pro" → "m4"
+      const genMap = {};
+      (series.ranks || []).forEach((rank) => {
+        const match = rank.id.match(/^([a-z]\d+)/);
+        if (!match) return;
+        const genId = match[1];
+        if (!genMap[genId]) {
+          genMap[genId] = { id: genId, tiers: [] };
+        }
+        genMap[genId].tiers.push(rank);
+      });
+
+      Object.values(genMap).forEach((gen) => {
+        // Create one merged-chip column per tier
+        const mergedChips = gen.tiers
+          .filter((t) => t.variants && t.variants.length > 0)
+          .map((tier) => {
+            const chipObjects = tier.variants
+              .map((id) => allChips.find((c) => c.id === id))
+              .filter(Boolean);
+            const merged = mergeChipSpecs(chipObjects.map((c) => c.specs || {}));
+            return {
+              id: tier.id,
+              name: tier.name,
+              specs: merged,
+              groupedSpecs: buildGroupedSpecs(merged, specDefs.groups),
+            };
+          });
+
+        if (mergedChips.length === 0) return;
+
+        // Derive a readable generation name from the first tier
+        const genName =
+          gen.tiers[0]?.name?.match(/^(M\d+|A\d+)/i)?.[0] || gen.id.toUpperCase();
+
+        pages.push({
+          id: gen.id,
+          name: `${genName} Family`,
+          seriesId: series.id,
+          seriesName: series.name,
+          mergedChips,
+        });
+      });
+    });
+    return pages;
   });
 
   // Return chip objects for a list of chip ids. The repository stores chips
@@ -138,6 +249,18 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("map", function (array, property) {
     return (array || []).map((item) => item[property]);
+  });
+
+  // Extract generation prefix from a rank id, e.g. "m4-pro" → "m4", "m4" → "m4"
+  eleventyConfig.addFilter("genId", function (rankId) {
+    const match = (rankId || "").match(/^([a-z]\d+)/);
+    return match ? match[1] : rankId;
+  });
+
+  // Extract tier slug from a rank id, e.g. "m1-pro" → "pro", "m1" → "base"
+  eleventyConfig.addFilter("tierSlug", function (rankId) {
+    const match = (rankId || "").match(/^[a-z]\d+-(.+)$/);
+    return match ? match[1] : "base";
   });
 
   // Return directory configuration so Eleventy processes files from `src/`

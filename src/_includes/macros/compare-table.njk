@@ -1,11 +1,11 @@
 {# _includes/compare-table.njk #}
-{% macro compareTable(items) %}
+{% macro compareTable(items, shortHeaders) %}
   <table class="compare-table">
     <thead>
       <tr>
         <th>Spec</th>
         {% for item in items %}
-          <th>{{ item.name }}{% if item.specs and item.specs.cpu_cores and item.specs.gpu_cores %} {{ item.specs.cpu_cores }}c&nbsp;CPU / {{ item.specs.gpu_cores }}c&nbsp;GPU{% endif %}</th>
+          <th>{{ item.name }}{% if not shortHeaders and item.specs and item.specs.cpu_cores and item.specs.gpu_cores %} {{ item.specs.cpu_cores }}c&nbsp;CPU / {{ item.specs.gpu_cores }}c&nbsp;GPU{% endif %}</th>
         {% endfor %}
       </tr>
     </thead>

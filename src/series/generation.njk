@@ -1,0 +1,18 @@
+---
+pagination:
+  data: collections.generationPagesCollection
+  size: 1
+  alias: gen
+permalink: "chips/{{ gen.id | lower }}/index.html"
+---
+
+<p><a href="/series/{{ gen.seriesId | lower }}/">← {{ gen.seriesName }}</a></p>
+
+<h1>{{ gen.name }}</h1>
+
+{% from "macros/compare-table.njk" import compareTable %}
+
+{% if gen.mergedChips and gen.mergedChips | length > 0 %}
+  <p>Comparing {{ gen.mergedChips | length }} tier{{ "s" if gen.mergedChips | length != 1 }}. Where a tier has multiple variants, values show the range across all configurations.</p>
+  {{ compareTable(gen.mergedChips, true) }}
+{% endif %}

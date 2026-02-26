@@ -1,0 +1,23 @@
+---
+pagination:
+  data: collections.rankPagesCollection
+  size: 1
+  alias: rank
+permalink: "chips/{{ rank.id | genId | lower }}/{{ rank.id | tierSlug | lower }}/index.html"
+---
+
+<p><a href="/chips/{{ rank.id | genId | lower }}/">← {{ rank.name | replace(" Ultra", "") | replace(" Max", "") | replace(" Pro", "") }} Family</a></p>
+
+<h1>{{ rank.name }}</h1>
+
+{% if rank.description %}
+  <p>{{ rank.description }}</p>
+{% endif %}
+
+{% from "macros/compare-table.njk" import compareTable %}
+
+{% if rank.variants and rank.variants | length > 0 %}
+  <p>{{ rank.variants | length }} variant{{ "s" if rank.variants | length != 1 }}</p>
+  {% set items = getChips(rank.variants, collections) %}
+  {{ compareTable(items) }}
+{% endif %}
