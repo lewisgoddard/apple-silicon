@@ -243,6 +243,66 @@ li {
   color: var(--color-text-muted);
 }
 
+/* ===== Device Grid (category listing) ===== */
+.device-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.device-grid-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+}
+
+.device-grid-card:hover {
+  background: var(--color-surface);
+}
+
+.device-grid-card--empty {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.device-grid-name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--color-text);
+}
+
+.device-grid-chips {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.device-grid-range {
+  font-size: 0.8rem;
+  color: var(--color-link);
+}
+
+/* ===== Current Generation Badge ===== */
+.badge-current {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--color-link);
+  color: #fff;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
 /* ===== Breadcrumbs ===== */
 .breadcrumbs {
   margin-bottom: 1rem;

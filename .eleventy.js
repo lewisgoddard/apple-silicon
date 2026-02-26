@@ -74,14 +74,58 @@ export default function (eleventyConfig) {
   // /devices/mac/macbook-air-15/
   eleventyConfig.addCollection("devicePagesCollection", function () {
     const categories = loadYAML("devices.yml");
+    const seriesList = loadYAML("series.yml");
+
+    // Build an ordered list of generation ids (newest first) across all series
+    const genOrder = [];
+    (seriesList || []).forEach((s) => {
+      (s.ranks || []).forEach((r) => {
+        const gid = (r.id || "").match(/^([a-z]\d+)/)?.[1];
+        if (gid && !genOrder.includes(gid)) genOrder.push(gid);
+      });
+    });
+
+    function extractGenId(chipId) {
+      const m = (chipId || "").match(/^([a-z]\d+)/);
+      return m ? m[1] : chipId;
+    }
+
+    // Build a human-readable generation label, e.g. "m4" → "M4"
+    function genLabel(genId) {
+      return genId.replace(/^([a-z])/, (c) => c.toUpperCase());
+    }
+
     const pages = [];
     (categories || []).forEach((category) => {
       (category.devices || []).forEach((device) => {
         if (device.name && device.variants && device.variants.length > 0) {
+          // Group variants by generation
+          const genMap = {};
+          (device.variants || []).forEach((chipId) => {
+            const gid = extractGenId(chipId);
+            if (!genMap[gid]) genMap[gid] = [];
+            genMap[gid].push(chipId);
+          });
+
+          // Sort groups by genOrder (newest first); unknown gens go to end
+          const generationGroups = Object.keys(genMap)
+            .sort((a, b) => {
+              const ai = genOrder.indexOf(a);
+              const bi = genOrder.indexOf(b);
+              return (ai === -1 ? 9999 : ai) - (bi === -1 ? 9999 : bi);
+            })
+            .map((gid, idx) => ({
+              genId: gid,
+              label: genLabel(gid),
+              chipIds: genMap[gid],
+              isCurrent: idx === 0,
+            }));
+
           pages.push({
             ...device,
             categoryId: category.id,
             categoryName: category.name,
+            generationGroups,
           });
         }
       });

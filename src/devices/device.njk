@@ -11,6 +11,7 @@ eleventyComputed:
 ---
 
 {% from "macros/breadcrumbs.njk" import breadcrumbs %}
+{% from "macros/compare-table.njk" import compareTable %}
 
 {{ breadcrumbs([
   { label: device.categoryName, url: "/devices/" + (device.categoryId | lower) + "/" },
@@ -19,11 +20,23 @@ eleventyComputed:
 
 <h1>{{ device.name }}</h1>
 
-{% from "macros/compare-table.njk" import compareTable %}
-
 {% if device.variants and device.variants | length > 0 %}
   <p>{{ device.variants | length }} chip option{{ "s" if device.variants | length != 1 }}
   ({{ getChipRange(device.variants, collections) }})</p>
-  {% set items = getChips(device.variants, collections) %}
-  {{ compareTable(items) }}
+
+  {% if device.generationGroups and device.generationGroups | length > 1 %}
+    {# Multiple generations — show grouped sections #}
+    {% for gen in device.generationGroups %}
+      <h2>
+        {{ gen.label }} Generation
+        {% if gen.isCurrent %}<span class="badge-current">Current</span>{% endif %}
+      </h2>
+      {% set items = getChips(gen.chipIds, collections) %}
+      {{ compareTable(items) }}
+    {% endfor %}
+  {% else %}
+    {# Single generation — show flat table #}
+    {% set items = getChips(device.variants, collections) %}
+    {{ compareTable(items) }}
+  {% endif %}
 {% endif %}
