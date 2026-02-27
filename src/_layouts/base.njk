@@ -27,7 +27,13 @@
   <body>
     <header>
       <nav>
-        <a href="/" class="nav-home">Apple Silicon Specs</a>
+        <div class="nav-top">
+          <a href="/" class="nav-home">Apple Silicon Specs</a>
+          <div class="search-wrapper">
+            <input type="search" id="site-search" placeholder="Search chips & devices…  /" autocomplete="off" />
+            <div id="search-results" class="search-results"></div>
+          </div>
+        </div>
         <ul class="nav-links">
           <li><a href="/series/m/">M Series</a></li>
           <li><a href="/series/a/">A Series</a></li>
@@ -39,10 +45,6 @@
           <li><a href="/ml-ai/">ML/AI</a></li>
           <li><a href="/gaming/">Gaming</a></li>
         </ul>
-        <div class="search-wrapper">
-          <input type="search" id="site-search" placeholder="Search chips & devices…  /" autocomplete="off" />
-          <div id="search-results" class="search-results"></div>
-        </div>
       </nav>
     </header>
     <main>
