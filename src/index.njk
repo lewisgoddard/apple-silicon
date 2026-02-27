@@ -10,30 +10,6 @@ description: "A comprehensive reference for Apple Silicon technical specificatio
   chip — from the M1 to the latest generation.
 </p>
 
-<h2>Browse by Series</h2>
-<ul>
-  {% for seriesItem in collections.seriesCollection %}
-    <li>
-      <a href="/series/{{ seriesItem.id | lower }}/">
-        <strong>{{ seriesItem.name }}</strong>
-      </a>
-      — {{ seriesItem.description }}
-    </li>
-  {% endfor %}
-</ul>
-
-<h2>Browse by Device</h2>
-<ul>
-  {% for category in collections.devicesCollection %}
-    <li>
-      <a href="/devices/{{ category.id | lower }}/">
-        <strong>{{ category.name }}</strong>
-      </a>
-      — {{ category.description }}
-    </li>
-  {% endfor %}
-</ul>
-
 <h2>Tools</h2>
 <ul>
   <li>
@@ -54,4 +30,28 @@ description: "A comprehensive reference for Apple Silicon technical specificatio
     <a href="/gaming/"><strong>Gaming Performance</strong></a>
     — GPU cores, TFLOPS, ray tracing, and memory bandwidth
   </li>
+</ul>
+
+<h2>Browse by Device</h2>
+<ul>
+  {% for category in collections.devicesCollection %}
+    <li>
+      <a href="/devices/{{ category.id | lower }}/">
+        <strong>{{ category.name }}</strong>
+      </a>
+      — {{ category.description }}
+    </li>
+  {% endfor %}
+</ul>
+
+<h2>Browse by Series</h2>
+<ul>
+  {% for seriesItem in collections.seriesCollection %}
+    <li>
+      <a href="/series/{{ seriesItem.id | lower }}/">
+        <strong>{{ seriesItem.name }}</strong>
+      </a>
+      — {{ seriesItem.description }}
+    </li>
+  {% endfor %}
 </ul>
