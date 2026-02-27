@@ -6,7 +6,7 @@
     performance_core_speed: 4.61
     efficiency_cores: 6
     efficiency_core_speed: 2.95
-    gpu_vendor: "9th generation Apple-designed"
+    gpu_vendor: "9th-gen Apple-designed"
     gpu_cores: 10
     gpu_eus: 160
     gpu_alus: 1280
@@ -31,7 +31,7 @@
     performance_core_speed: 4.61
     efficiency_cores: 6
     efficiency_core_speed: 2.95
-    gpu_vendor: "9th generation Apple-designed"
+    gpu_vendor: "9th-gen Apple-designed"
     gpu_cores: 10
     gpu_eus: 160
     gpu_alus: 1280
@@ -55,7 +55,7 @@
     performance_cores: 12
     performance_core_speed: 4.51
     efficiency_cores: 4
-    gpu_vendor: "8th generation Apple-designed"
+    gpu_vendor: "8th-gen Apple-designed"
     gpu_cores: 40
     gpu_eus: 640
     gpu_alus: 5120
@@ -76,7 +76,7 @@
     performance_cores: 10
     performance_core_speed: 4.51
     efficiency_cores: 4
-    gpu_vendor: "8th generation Apple-designed"
+    gpu_vendor: "8th-gen Apple-designed"
     gpu_cores: 32
     gpu_eus: 512
     gpu_alus: 4096
@@ -98,7 +98,7 @@
     performance_core_speed: 4.51
     efficiency_cores: 4
     slc_cache_mb: 36
-    gpu_vendor: "8th generation Apple-designed"
+    gpu_vendor: "8th-gen Apple-designed"
     gpu_cores: 20
     gpu_eus: 320
     gpu_alus: 2560
@@ -121,7 +121,7 @@
     performance_core_speed: 4.51
     efficiency_cores: 4
     slc_cache_mb: 36
-    gpu_vendor: "8th generation Apple-designed"
+    gpu_vendor: "8th-gen Apple-designed"
     gpu_cores: 16
     gpu_eus: 256
     gpu_alus: 2048
@@ -145,7 +145,7 @@
     efficiency_cores: 6
     efficiency_core_speed: 2.85
     slc_cache_mb: 20
-    gpu_vendor: "8th generation Apple-designed"
+    gpu_vendor: "8th-gen Apple-designed"
     gpu_cores: 10
     gpu_eus: 160
     gpu_alus: 1280
@@ -175,7 +175,7 @@
     efficiency_cores: 6
     efficiency_core_speed: 2.85
     slc_cache_mb: 20
-    gpu_vendor: "8th generation Apple-designed"
+    gpu_vendor: "8th-gen Apple-designed"
     gpu_cores: 10
     gpu_eus: 160
     gpu_alus: 1280
@@ -205,7 +205,7 @@
     efficiency_cores: 4
     efficiency_core_speed: 2.85
     slc_cache_mb: 20
-    gpu_vendor: "8th generation Apple-designed"
+    gpu_vendor: "8th-gen Apple-designed"
     gpu_cores: 8
     gpu_eus: 128
     gpu_alus: 1024
@@ -235,7 +235,7 @@
     efficiency_core_speed: 2.75
     l2_cache_mb: 96
     slc_cache_mb: 96
-    gpu_vendor: "7th generation Apple-designed"
+    gpu_vendor: "7th-gen Apple-designed"
     gpu_cores: 80
     gpu_eus: 1280
     gpu_alus: 10240
@@ -268,7 +268,7 @@
     efficiency_core_speed: 2.75
     l2_cache_mb: 80
     slc_cache_mb: 96
-    gpu_vendor: "7th generation Apple-designed"
+    gpu_vendor: "7th-gen Apple-designed"
     gpu_cores: 60
     gpu_eus: 960
     gpu_alus: 7680
@@ -301,7 +301,7 @@
     efficiency_core_speed: 2.75
     l2_cache_mb: 48
     slc_cache_mb: 48
-    gpu_vendor: "7th generation Apple-designed"
+    gpu_vendor: "7th-gen Apple-designed"
     gpu_cores: 40
     gpu_eus: 640
     gpu_alus: 5120
@@ -334,7 +334,7 @@
     efficiency_core_speed: 2.75
     l2_cache_mb: 32
     slc_cache_mb: 48
-    gpu_vendor: "7th generation Apple-designed"
+    gpu_vendor: "7th-gen Apple-designed"
     gpu_cores: 30
     gpu_eus: 480
     gpu_alus: 3840
@@ -367,7 +367,7 @@
     efficiency_core_speed: 2.75
     l2_cache_mb: 12
     slc_cache_mb: 24
-    gpu_vendor: "7th generation Apple-designed"
+    gpu_vendor: "7th-gen Apple-designed"
     gpu_cores: 18
     gpu_eus: 288
     gpu_alus: 2304
@@ -400,7 +400,7 @@
     efficiency_core_speed: 2.75
     l2_cache_mb: 12
     slc_cache_mb: 24
-    gpu_vendor: "7th generation Apple-designed"
+    gpu_vendor: "7th-gen Apple-designed"
     gpu_cores: 14
     gpu_eus: 224
     gpu_alus: 1792
@@ -433,7 +433,7 @@
     efficiency_core_speed: 2.75
     l2_cache_mb: 8
     slc_cache_mb: 8
-    gpu_vendor: "7th generation Apple-designed"
+    gpu_vendor: "7th-gen Apple-designed"
     gpu_cores: 10
     gpu_eus: 160
     gpu_alus: 1280
@@ -466,7 +466,7 @@
     efficiency_core_speed: 2.75
     l2_cache_mb: 8
     slc_cache_mb: 8
-    gpu_vendor: "7th generation Apple-designed"
+    gpu_vendor: "7th-gen Apple-designed"
     gpu_cores: 9
     gpu_eus: 144
     gpu_alus: 1152
@@ -499,7 +499,7 @@
     efficiency_core_speed: 2.75
     l2_cache_mb: 8
     slc_cache_mb: 8
-    gpu_vendor: "7th generation Apple-designed"
+    gpu_vendor: "7th-gen Apple-designed"
     gpu_cores: 8
     gpu_eus: 128
     gpu_alus: 1024
@@ -532,7 +532,7 @@
     efficiency_core_speed: 2.4
     l2_cache_mb: 96
     slc_cache_mb: 96
-    gpu_vendor: "5th generation Apple-designed"
+    gpu_vendor: "5th-gen Apple-designed"
     gpu_cores: 76
     gpu_eus: 304
     gpu_alus: 9728
@@ -563,7 +563,7 @@
     efficiency_core_speed: 2.4
     l2_cache_mb: 96
     slc_cache_mb: 96
-    gpu_vendor: "5th generation Apple-designed"
+    gpu_vendor: "5th-gen Apple-designed"
     gpu_cores: 60
     gpu_eus: 240
     gpu_alus: 7680
@@ -594,7 +594,7 @@
     efficiency_core_speed: 2.42
     l2_cache_mb: 48
     slc_cache_mb: 48
-    gpu_vendor: "5th generation Apple-designed"
+    gpu_vendor: "5th-gen Apple-designed"
     gpu_cores: 38
     gpu_eus: 152
     gpu_alus: 4864
@@ -625,7 +625,7 @@
     efficiency_core_speed: 2.42
     l2_cache_mb: 48
     slc_cache_mb: 48
-    gpu_vendor: "5th generation Apple-designed"
+    gpu_vendor: "5th-gen Apple-designed"
     gpu_cores: 30
     gpu_eus: 120
     gpu_alus: 3840
@@ -656,7 +656,7 @@
     efficiency_core_speed: 2.42
     l2_cache_mb: 36
     slc_cache_mb: 24
-    gpu_vendor: "5th generation Apple-designed"
+    gpu_vendor: "5th-gen Apple-designed"
     gpu_cores: 19
     gpu_eus: 76
     gpu_alus: 2432
@@ -687,7 +687,7 @@
     efficiency_core_speed: 2.42
     l2_cache_mb: 36
     slc_cache_mb: 24
-    gpu_vendor: "5th generation Apple-designed"
+    gpu_vendor: "5th-gen Apple-designed"
     gpu_cores: 16
     gpu_eus: 64
     gpu_alus: 2048
@@ -718,7 +718,7 @@
     efficiency_core_speed: 2.42
     l2_cache_mb: 16
     slc_cache_mb: 8
-    gpu_vendor: "5th generation Apple-designed"
+    gpu_vendor: "5th-gen Apple-designed"
     gpu_cores: 10
     gpu_eus: 40
     gpu_alus: 1280
@@ -749,7 +749,7 @@
     efficiency_core_speed: 2.42
     l2_cache_mb: 16
     slc_cache_mb: 8
-    gpu_vendor: "5th generation Apple-designed"
+    gpu_vendor: "5th-gen Apple-designed"
     gpu_cores: 9
     gpu_eus: 36
     gpu_alus: 1152
@@ -780,7 +780,7 @@
     efficiency_core_speed: 2.42
     l2_cache_mb: 16
     slc_cache_mb: 8
-    gpu_vendor: "5th generation Apple-designed"
+    gpu_vendor: "5th-gen Apple-designed"
     gpu_cores: 8
     gpu_eus: 32
     gpu_alus: 1024
@@ -808,7 +808,7 @@
     efficiency_core_speed: 2.06
     l2_cache_mb: 96
     slc_cache_mb: 96
-    gpu_vendor: "4th generation Apple-designed"
+    gpu_vendor: "4th-gen Apple-designed"
     gpu_cores: 64
     gpu_eus: 1024
     gpu_alus: 8192
@@ -838,7 +838,7 @@
     efficiency_core_speed: 2.06
     l2_cache_mb: 96
     slc_cache_mb: 96
-    gpu_vendor: "4th generation Apple-designed"
+    gpu_vendor: "4th-gen Apple-designed"
     gpu_cores: 48
     gpu_eus: 768
     gpu_alus: 6144
@@ -868,7 +868,7 @@
     efficiency_core_speed: 2.06
     l2_cache_mb: 48
     slc_cache_mb: 48
-    gpu_vendor: "4th generation Apple-designed"
+    gpu_vendor: "4th-gen Apple-designed"
     gpu_cores: 32
     gpu_eus: 512
     gpu_alus: 4096
@@ -898,7 +898,7 @@
     efficiency_core_speed: 2.06
     l2_cache_mb: 48
     slc_cache_mb: 48
-    gpu_vendor: "4th generation Apple-designed"
+    gpu_vendor: "4th-gen Apple-designed"
     gpu_cores: 24
     gpu_eus: 384
     gpu_alus: 3072
@@ -928,7 +928,7 @@
     efficiency_core_speed: 2.06
     l2_cache_mb: 24
     slc_cache_mb: 24
-    gpu_vendor: "4th generation Apple-designed"
+    gpu_vendor: "4th-gen Apple-designed"
     gpu_cores: 16
     gpu_eus: 256
     gpu_alus: 2048
@@ -958,7 +958,7 @@
     efficiency_core_speed: 2.06
     l2_cache_mb: 24
     slc_cache_mb: 24
-    gpu_vendor: "4th generation Apple-designed"
+    gpu_vendor: "4th-gen Apple-designed"
     gpu_cores: 14
     gpu_eus: 224
     gpu_alus: 1792
@@ -988,7 +988,7 @@
     efficiency_core_speed: 2.06
     l2_cache_mb: 24
     slc_cache_mb: 24
-    gpu_vendor: "4th generation Apple-designed"
+    gpu_vendor: "4th-gen Apple-designed"
     gpu_cores: 14
     gpu_eus: 224
     gpu_alus: 1792
@@ -1018,7 +1018,7 @@
     efficiency_core_speed: 2.06
     l2_cache_mb: 16
     slc_cache_mb: 8
-    gpu_vendor: "4th generation Apple-designed"
+    gpu_vendor: "4th-gen Apple-designed"
     gpu_cores: 8
     gpu_eus: 128
     gpu_alus: 1024
@@ -1045,7 +1045,7 @@
     efficiency_core_speed: 2.06
     l2_cache_mb: 16
     slc_cache_mb: 8
-    gpu_vendor: "4th generation Apple-designed"
+    gpu_vendor: "4th-gen Apple-designed"
     gpu_cores: 7
     gpu_eus: 112
     gpu_alus: 896

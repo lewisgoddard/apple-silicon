@@ -112,6 +112,7 @@ nav {
 
 .nav-dropdown-toggle {
   all: unset;
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   cursor: pointer;
@@ -181,6 +182,15 @@ nav {
   align-self: stretch;
   background: var(--color-border);
   margin: 0.15rem 0.25rem;
+}
+
+/* Items that collapse into dropdowns on narrow screens */
+.nav-collapse {
+  display: list-item;
+}
+
+.nav-show-narrow {
+  display: none;
 }
 
 /* ===== Search ===== */
@@ -716,12 +726,27 @@ footer {
     padding: 0.5rem 1rem;
     gap: 0.5rem;
     flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-home {
+    text-align: center;
   }
 
   .nav-links {
     gap: 0;
-    order: 99;
+    order: unset;
     width: 100%;
+    justify-content: center;
+  }
+
+  .nav-collapse {
+    display: none;
+  }
+
+  .nav-show-narrow {
+    display: block;
   }
 
   main {
