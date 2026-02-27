@@ -72,13 +72,14 @@ Example: chip `m4-pro-14-20` → `/chips/m4/pro/14-20/`; chip `m1-8-8` → `/chi
   - Import: `{% from "macros/compare-table.njk" import compareTable %}`
   - Usage: `{% set items = getChips(["m4-max-16-40"], collections) %} {{ compareTable(items) }}`
   - Renders fields based on `items[0].groupedSpecs` and aligns columns by index across items.
+- **Focused comparison table**: `src/_includes/macros/focused-compare-table.njk`
+  - Import: `{% from "macros/focused-compare-table.njk" import focusedCompareTable %}`
+  - Usage: `{% set items = getChips(["m4-max-16-40"], collections) %} {{ focusedCompareTable(items, ["cpu_cores", "gpu_cores", "memory_bandwidth_gb_s"]) }}`
+  - Renders a subset of spec keys for a group of chips. Skips rows where no item has data.
 - **Device carousel**: `src/_includes/macros/device-carousel.njk`
   - Import: `{% from "macros/device-carousel.njk" import deviceCarousel %}`
   - Usage: `{% set devices = getDevicesForChips(chipIds) %} {{ deviceCarousel(devices) }}`
   - Renders a horizontally-scrolling row of device cards linking to device pages. Used on chip, rank, and generation pages.
-- **Video comparison table**: `src/_includes/macros/video-compare-table.njk`
-  - Import: `{% from "macros/video-compare-table.njk" import videoCompareTable %}`
-  - Renders a subset of specs relevant to video editing workflows.
 
 ### Page templates
 

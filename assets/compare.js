@@ -82,11 +82,11 @@
       html +=
         "<th>" +
         c.name +
-        " " +
+        '<br><span class="th-variant">' +
         c.cpu +
-        "c&nbsp;CPU&nbsp;/&nbsp;" +
+        "c&nbsp;CPU / " +
         c.gpu +
-        "c&nbsp;GPU</th>";
+        "c&nbsp;GPU</span></th>";
     });
     html += "</tr></thead><tbody>";
 
