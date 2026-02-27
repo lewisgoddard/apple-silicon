@@ -70,7 +70,12 @@ eleventyComputed:
   {% set companionVariants = device.variants | companionChips %}
   {% if companionVariants | length > 0 %}
     <h2>Companion Silicon</h2>
-    {% set companionItems = getChips(companionVariants, collections) %}
-    {{ compareTable(companionItems) }}
+    {% set companionGroups = groupCompanionsBySeries(companionVariants) %}
+    {% for cgroup in companionGroups %}
+      <h3>{{ cgroup.seriesName }}</h3>
+      {% if cgroup.seriesDescription %}<p>{{ cgroup.seriesDescription }}</p>{% endif %}
+      {% set companionItems = getChips(cgroup.chipIds, collections) %}
+      {{ compareTable(companionItems) }}
+    {% endfor %}
   {% endif %}
 {% endif %}

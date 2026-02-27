@@ -637,6 +637,42 @@ export default function (eleventyConfig) {
     return [];
   });
 
+  // groupCompanionsBySeries: takes a list of companion chip IDs and returns
+  // an array of { seriesId, seriesName, seriesDescription, chipIds } objects
+  // ordered by the series.yml definition order.
+  eleventyConfig.addNunjucksGlobal("groupCompanionsBySeries", function (ids) {
+    if (!ids || !ids.length) return [];
+    const seriesList = loadYAML("series.yml") || [];
+    const groups = [];
+    const used = new Set();
+    for (const series of seriesList) {
+      const matching = ids.filter((id) => {
+        const prefix = (id.match(/^([a-z]+)/) || [])[1];
+        return prefix && prefix === series.id.toLowerCase();
+      });
+      if (matching.length > 0) {
+        groups.push({
+          seriesId: series.id,
+          seriesName: series.name,
+          seriesDescription: series.description,
+          chipIds: matching,
+        });
+        matching.forEach((id) => used.add(id));
+      }
+    }
+    // Catch any chips that didn't match a series
+    const remainder = ids.filter((id) => !used.has(id));
+    if (remainder.length) {
+      groups.push({
+        seriesId: "other",
+        seriesName: "Other",
+        seriesDescription: "",
+        chipIds: remainder,
+      });
+    }
+    return groups;
+  });
+
   // Extract generation prefix from a rank id, e.g. "m4-pro" → "m4", "m4" → "m4"
   eleventyConfig.addFilter("genId", function (rankId) {
     const match = (rankId || "").match(/^([a-z]\d+)/);
