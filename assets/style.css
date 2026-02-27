@@ -184,6 +184,61 @@ nav {
   margin: 0.15rem 0.25rem;
 }
 
+/* Comparison nav highlights */
+.nav-links a.nav-hl-custom {
+  color: #0071e3;
+}
+.nav-links a.nav-hl-video {
+  color: #9b59b6;
+}
+.nav-links a.nav-hl-mlai {
+  color: #e67e22;
+}
+.nav-links a.nav-hl-gaming {
+  color: #27ae60;
+}
+
+.nav-links a.nav-hl-custom:hover {
+  color: #0077ed;
+}
+.nav-links a.nav-hl-video:hover {
+  color: #a96bc8;
+}
+.nav-links a.nav-hl-mlai:hover {
+  color: #f39c12;
+}
+.nav-links a.nav-hl-gaming:hover {
+  color: #2ecc71;
+}
+
+@media (prefers-color-scheme: dark) {
+  .nav-links a.nav-hl-custom {
+    color: #2997ff;
+  }
+  .nav-links a.nav-hl-video {
+    color: #bf7ddc;
+  }
+  .nav-links a.nav-hl-mlai {
+    color: #f0a94e;
+  }
+  .nav-links a.nav-hl-gaming {
+    color: #5de89d;
+  }
+
+  .nav-links a.nav-hl-custom:hover {
+    color: #66b3ff;
+  }
+  .nav-links a.nav-hl-video:hover {
+    color: #d4a3ec;
+  }
+  .nav-links a.nav-hl-mlai:hover {
+    color: #f7c77e;
+  }
+  .nav-links a.nav-hl-gaming:hover {
+    color: #88f0ba;
+  }
+}
+
 /* Items that collapse into dropdowns on narrow screens */
 .nav-collapse {
   display: list-item;
