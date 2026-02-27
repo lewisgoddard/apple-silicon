@@ -765,6 +765,9 @@ footer {
   .search-wrapper {
     flex: 1;
     min-width: 0;
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
   }
 
   #site-search {
