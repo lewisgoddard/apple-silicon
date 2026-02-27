@@ -528,7 +528,7 @@
   devices:
     - id: "apple-vision-pro"
       name: "Apple Vision Pro"
-      variants: ["m5-10-10", "m5-9-10", "m2-8-10", "r1", "h2"]
+      variants: ["m5-10-10", "m2-8-10", "r1", "h2"]
 - id: "homepod"
   name: "HomePod"
   description: "Apple silicon for HomePod speakers"

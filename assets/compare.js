@@ -152,6 +152,7 @@
     picker.innerHTML = '<option value="">Add a chip…</option>';
     allChips.forEach(function (chip) {
       if (selectedIds.indexOf(chip.id) !== -1) return;
+      if (!chip.cpu || !chip.gpu) return;
       var opt = document.createElement("option");
       opt.value = chip.id;
       opt.textContent =

@@ -169,6 +169,7 @@ When adding chip data from Wikipedia's comparison tables:
   - Add ad-hoc fields not declared in `specs.yml`.
   - Modify `groupedSpecs` in templates.
   - Hardcode device lists — use `getDevicesForChips` instead.
+  - Assume a lower-binned chip variant is available in a device just because a higher-binned variant is. Only add chip IDs to `devices[*].variants` when confirmed by Apple's website or other authoritative sources.
 
 ### Quick checks
 
