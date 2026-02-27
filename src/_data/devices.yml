@@ -530,3 +530,41 @@
     - id: "apple-vision-pro"
       name: "Apple Vision Pro"
       variants: ["m5-10-10", "m5-9-10", "m2-8-10", "r1", "h2"]
+- id: "homepod"
+  name: "HomePod"
+  description: "Apple silicon for HomePod speakers"
+  devices:
+    - id: "homepod-2"
+      name: "HomePod (2nd generation)"
+      variants: ["s7", "u1"]
+    - id: "homepod-1"
+      name: "HomePod (1st generation)"
+      variants: ["a8-2-4"]
+    - id: "homepod-mini"
+      name: "HomePod mini"
+      variants: ["s5", "u1"]
+- id: "apple-tv"
+  name: "Apple TV"
+  description: "Apple silicon for Apple TV media players"
+  devices:
+    - id: "apple-tv-4k-3"
+      name: "Apple TV 4K (3rd generation)"
+      variants: ["a15-6-5"]
+    - id: "apple-tv-4k-2"
+      name: "Apple TV 4K (2nd generation)"
+      variants: ["a12-6-4"]
+    - id: "apple-tv-4k-1"
+      name: "Apple TV 4K (1st generation)"
+      variants: ["a10-x-6-12"]
+    - id: "apple-tv-hd"
+      name: "Apple TV HD"
+      variants: ["a8-2-4"]
+    - id: "apple-tv-3"
+      name: "Apple TV (3rd generation)"
+      variants: ["a5-2-2"]
+    - id: "apple-tv-2"
+      name: "Apple TV (2nd generation)"
+      variants: ["a4-1-1"]
+    - id: "apple-tv-1"
+      name: "Apple TV (1st generation)"
+      variants: []
