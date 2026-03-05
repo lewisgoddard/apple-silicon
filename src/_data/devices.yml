@@ -184,22 +184,10 @@
           name: 'iPad Air 10.9"'
           variants:
             ["m4-8-9", "m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
-        - id: "4"
-          name: "iPad Air (4th gen)"
+        - id: "9.7"
+          name: 'iPad Air 9.7"'
           deprecated: true
-          variants: ["a14-6-4"]
-        - id: "3"
-          name: "iPad Air (3rd gen)"
-          deprecated: true
-          variants: ["a12-6-4"]
-        - id: "2"
-          name: "iPad Air 2"
-          deprecated: true
-          variants: ["a8-x-3-8"]
-        - id: "1"
-          name: "iPad Air (1st gen)"
-          deprecated: true
-          variants: ["a7-2-4"]
+          variants: ["a14-6-4", "a12-6-4", "a8-x-3-8", "a7-2-4"]
     - id: "mini"
       name: "iPad mini"
       devices:
