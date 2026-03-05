@@ -592,3 +592,13 @@
     - id: "apple-tv-1"
       name: "Apple TV (1st generation)"
       variants: []
+- id: "display"
+  name: "Display"
+  description: "Apple silicon for Apple displays"
+  devices:
+    - id: "studio-display"
+      name: "Studio Display"
+      variants: ["a19-6-5", "a13-6-4"]
+    - id: "studio-display-xdr"
+      name: "Studio Display XDR"
+      variants: ["a19-pro-6-6"]
