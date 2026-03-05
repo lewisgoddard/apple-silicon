@@ -22,15 +22,10 @@ permalink: "compare/video-editing/"
 </p>
 
 <h2>Laptops</h2>
-<p>Current-generation MacBook lineup (M5 series), from MacBook Air to MacBook Pro Max.</p>
+<p>Every chip available in a currently-sold MacBook, from MacBook Air to MacBook Pro Max.</p>
 
-{% set laptopChips = getChips([
-  "m5-max-18-40",
-  "m5-max-18-32",
-  "m5-pro-18-20",
-  "m5-pro-15-16",
-  "m5-10-10"
-], collections) %}
+{% set laptopChipIds = getCurrentChips("mac", "laptop") %}
+{% set laptopChips = getChips(laptopChipIds, collections) %}
 
 {{ focusedCompareTable(laptopChips, [
   "cpu_cores",
@@ -48,15 +43,10 @@ permalink: "compare/video-editing/"
 ]) }}
 
 <h2>Desktops</h2>
-<p>Current-generation Mac desktop lineup (M4 series), covering Mac mini, iMac, and Mac Studio.</p>
+<p>Every chip available in a currently-sold desktop Mac, from iMac through Mac Studio and Mac Pro.</p>
 
-{% set desktopChips = getChips([
-  "m4-max-16-40",
-  "m4-max-14-32",
-  "m4-pro-14-20",
-  "m4-pro-12-16",
-  "m4-10-10"
-], collections) %}
+{% set desktopChipIds = getCurrentChips("mac", "desktop") %}
+{% set desktopChips = getChips(desktopChipIds, collections) %}
 
 {{ focusedCompareTable(desktopChips, [
   "cpu_cores",
