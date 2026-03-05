@@ -14,6 +14,10 @@
     gpu_rt: true
     npu_cores: 16
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 2
+    video_encode: 2
+    prores_engines: 2
+    av1_decode: 2
     memory_bus_width_bits: 512
     memory_channels: 32
     memory_channel_width_bits: 16
@@ -38,6 +42,10 @@
     gpu_rt: true
     npu_cores: 16
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 2
+    video_encode: 2
+    prores_engines: 2
+    av1_decode: 2
     memory_bus_width_bits: 384
     memory_channels: 24
     memory_channel_width_bits: 16
@@ -62,6 +70,10 @@
     gpu_rt: true
     npu_cores: 16
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    av1_decode: 1
     memory_bus_width_bits: 256
     memory_channels: 16
     memory_channel_width_bits: 16
@@ -86,6 +98,10 @@
     gpu_rt: true
     npu_cores: 16
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    av1_decode: 1
     memory_bus_width_bits: 256
     memory_channels: 16
     memory_channel_width_bits: 16
@@ -111,6 +127,10 @@
     gpu_rt: true
     npu_cores: 16
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    av1_decode: 1
     memory_bus_width_bits: 128
     memory_channels: 8
     memory_channel_width_bits: 16
@@ -136,6 +156,10 @@
     gpu_rt: true
     npu_cores: 16
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    av1_decode: 1
     memory_bus_width_bits: 128
     memory_channels: 8
     memory_channel_width_bits: 16
@@ -161,6 +185,10 @@
     gpu_rt: true
     npu_cores: 16
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    av1_decode: 1
     memory_bus_width_bits: 128
     memory_channels: 8
     memory_channel_width_bits: 16
