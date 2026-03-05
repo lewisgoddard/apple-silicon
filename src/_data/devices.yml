@@ -619,17 +619,23 @@
 - id: "homepod"
   name: "HomePod"
   description: "Apple silicon for HomePod speakers"
-  devices:
-    - id: "homepod-2"
-      name: "HomePod (2nd generation)"
-      variants: ["s7", "u1"]
-    - id: "homepod-1"
-      name: "HomePod (1st generation)"
-      deprecated: true
-      variants: ["a8-2-4"]
-    - id: "homepod-mini"
+  groups:
+    - id: "base"
+      name: "HomePod"
+      devices:
+        - id: "2"
+          name: "HomePod (2nd generation)"
+          variants: ["s7", "u1"]
+        - id: "1"
+          name: "HomePod (1st generation)"
+          deprecated: true
+          variants: ["a8-2-4"]
+    - id: "mini"
       name: "HomePod mini"
-      variants: ["s5", "u1"]
+      devices:
+        - id: "1"
+          name: "HomePod mini"
+          variants: ["s5", "u1"]
 - id: "apple-tv"
   name: "Apple TV"
   description: "Apple silicon for Apple TV media players"
