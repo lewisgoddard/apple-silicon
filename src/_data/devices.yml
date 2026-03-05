@@ -563,40 +563,52 @@
 - id: "airpods"
   name: "AirPods"
   description: "Apple silicon for AirPods"
-  devices:
-    - id: "airpods-max"
+  groups:
+    - id: "base"
+      name: "AirPods"
+      devices:
+        - id: "4"
+          name: "AirPods 4"
+          variants: ["h2"]
+        - id: "3"
+          name: "AirPods (3rd gen)"
+          deprecated: true
+          variants: ["h1"]
+        - id: "2"
+          name: "AirPods (2nd gen)"
+          deprecated: true
+          variants: ["h1"]
+        - id: "1"
+          name: "AirPods (1st gen)"
+          deprecated: true
+          variants: ["w1"]
+    - id: "with-active-noise-cancellation"
+      name: "AirPods with Active Noise Cancellation"
+      devices:
+        - id: "4"
+          name: "AirPods 4 with Active Noise Cancellation"
+          variants: ["h2"]
+    - id: "pro"
+      name: "AirPods Pro"
+      devices:
+        - id: "3"
+          name: "AirPods Pro 3"
+          variants: ["h2", "u2"]
+        - id: "2"
+          name: "AirPods Pro 2"
+          deprecated: true
+          variants: ["h2"]
+        - id: "1"
+          name: "AirPods Pro (1st gen)"
+          deprecated: true
+          variants: ["h1"]
+    - id: "max"
       name: "AirPods Max"
-      deprecated: true
-      variants: ["h1"]
-    - id: "airpods-pro-3"
-      name: "AirPods Pro 3"
-      variants: ["h2", "u2"]
-    - id: "airpods-4-with-active-noise-cancellation"
-      name: "AirPods 4 with Active Noise Cancellation"
-      variants: ["h2"]
-    - id: "airpods-4"
-      name: "AirPods 4"
-      variants: ["h2"]
-    - id: "airpods-pro-2"
-      name: "AirPods Pro 2"
-      deprecated: true
-      variants: ["h2"]
-    - id: "airpods-pro"
-      name: "AirPods Pro (1st gen)"
-      deprecated: true
-      variants: ["h1"]
-    - id: "airpods-3"
-      name: "AirPods (3rd gen)"
-      deprecated: true
-      variants: ["h1"]
-    - id: "airpods-2"
-      name: "AirPods (2nd gen)"
-      deprecated: true
-      variants: ["h1"]
-    - id: "airpods-1"
-      name: "AirPods (1st gen)"
-      deprecated: true
-      variants: ["w1"]
+      devices:
+        - id: "1"
+          name: "AirPods Max"
+          deprecated: true
+          variants: ["h1"]
 - id: "vision"
   name: "Apple Vision"
   description: "Apple silicon for Apple Vision products"
