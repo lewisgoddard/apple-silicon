@@ -8,7 +8,7 @@
       name: "Desktop Mac"
   devices:
     - id: "macbook-air-15"
-      name: 'MacBook Air 15"'
+      name: "MacBook Air 15″"
       section: "laptop"
       variants:
         [
@@ -21,7 +21,7 @@
           "m2-8-10",
         ]
     - id: "macbook-air-13"
-      name: 'MacBook Air 13"'
+      name: "MacBook Air 13″"
       section: "laptop"
       variants:
         [
@@ -42,7 +42,7 @@
       section: "laptop"
       variants: ["a18-pro-6-5"]
     - id: "macbook-pro-16"
-      name: 'MacBook Pro 16"'
+      name: "MacBook Pro 16″"
       section: "laptop"
       variants:
         [
@@ -66,7 +66,7 @@
           "m1-pro-10-16",
         ]
     - id: "macbook-pro-14"
-      name: 'MacBook Pro 14"'
+      name: "MacBook Pro 14″"
       section: "laptop"
       variants:
         [
@@ -99,7 +99,7 @@
           "m1-8-8",
         ]
     - id: "macbook-pro-13"
-      name: 'MacBook Pro 13"'
+      name: "MacBook Pro 13″"
       section: "laptop"
       deprecated: true
       variants: ["m2-8-10", "m1-8-8"]
@@ -151,7 +151,7 @@
       name: "iPad Pro"
       devices:
         - id: "13"
-          name: 'iPad Pro 13"'
+          name: "iPad Pro 13″"
           variants:
             [
               "m5-10-10",
@@ -163,7 +163,7 @@
               "n1",
             ]
         - id: "11"
-          name: 'iPad Pro 11"'
+          name: "iPad Pro 11″"
           variants:
             [
               "m5-10-10",
@@ -177,30 +177,30 @@
               "a12-x-8-7",
             ]
         - id: "12-9"
-          name: 'iPad Pro 12.9"'
+          name: "iPad Pro 12.9″"
           deprecated: true
           variants: ["a12-z-8-8", "a12-x-8-7", "a10-x-6-12", "a9-x-2-12"]
         - id: "10-5"
-          name: 'iPad Pro 10.5"'
+          name: "iPad Pro 10.5″"
           deprecated: true
           variants: ["a10-x-6-12"]
         - id: "9-7"
-          name: 'iPad Pro 9.7"'
+          name: "iPad Pro 9.7″"
           deprecated: true
           variants: ["a9-x-2-12"]
     - id: "air"
       name: "iPad Air"
       devices:
         - id: "13"
-          name: 'iPad Air 13"'
+          name: "iPad Air 13″"
           variants:
             ["m4-8-9", "m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
         - id: "10"
-          name: 'iPad Air 10.9"'
+          name: "iPad Air 10.9″"
           variants:
             ["m4-8-9", "m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
         - id: "9.7"
-          name: 'iPad Air 9.7"'
+          name: "iPad Air 9.7″"
           deprecated: true
           variants: ["a14-6-4", "a12-6-4", "a8-x-3-8", "a7-2-4"]
     - id: "mini"

@@ -290,7 +290,6 @@ nav {
 
 #site-search:focus {
   border-color: var(--color-link);
-  width: 280px;
 }
 
 #site-search::placeholder {
