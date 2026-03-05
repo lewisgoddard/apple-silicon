@@ -289,9 +289,6 @@
         - id: "pro-max"
           name: "iPhone 17 Pro Max"
           variants: ["a19-pro-6-6", "c1x", "n1", "u2"]
-        - id: "e"
-          name: "iPhone 17e"
-          variants: ["a19-6-4", "c1x"]
         - id: "pro"
           name: "iPhone 17 Pro"
           variants: ["a19-pro-6-6", "c1x", "n1", "u2"]
@@ -301,6 +298,9 @@
         - id: "base"
           name: "iPhone 17"
           variants: ["a19-6-5", "c1x", "n1", "u2"]
+        - id: "e"
+          name: "iPhone 17e"
+          variants: ["a19-6-4", "c1x"]
     - id: "16"
       name: "iPhone 16"
       devices:
