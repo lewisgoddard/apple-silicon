@@ -252,7 +252,7 @@
       variants: ["a12-x-8-7"]
     - id: a11
       name: "A11 Bionic"
-      description: "First A-series with Apple-designed GPU and Neural Engine"
+      description: "First A-series with Apple GPU and Neural Engine"
       part_number: "APL1W72"
       process_nm: "TSMC 10FF"
       cpu_isa: "ARMv8.2-A"
@@ -315,7 +315,7 @@
       variants: ["a7-2-4"]
     - id: a6
       name: "A6"
-      description: "First A-series with Apple-designed CPU cores, used in iPhone 5 and 5C"
+      description: "First A-series with Apple CPU cores, used in iPhone 5 and 5C"
       part_number: "S5L8950X"
       process_nm: "Samsung 32nm"
       cpu_isa: "ARMv7s"
@@ -365,7 +365,7 @@
       variants: ["t1"]
 - id: C
   name: "C Series"
-  description: "Apple-designed cellular modem chips for iPhone and iPad"
+  description: "Apple cellular modem chips for iPhone and iPad"
   ranks:
     - id: c1-x
       name: "C1X"
@@ -379,7 +379,7 @@
       variants: ["c1"]
 - id: U
   name: "U Series"
-  description: "Apple-designed ultra-wideband (UWB) radio systems in package"
+  description: "Apple ultra-wideband (UWB) radio systems in package"
   ranks:
     - id: u2
       name: "U2"
@@ -391,7 +391,7 @@
       variants: ["u1"]
 - id: W
   name: "W Series"
-  description: "Apple-designed wireless connectivity SoCs for Apple Watch and AirPods"
+  description: "Apple wireless connectivity SoCs for Apple Watch and AirPods"
   ranks:
     - id: w3
       name: "W3"
@@ -407,7 +407,7 @@
       variants: ["w1"]
 - id: H
   name: "H Series"
-  description: "Apple-designed Bluetooth and audio processing SoCs for AirPods and headphones"
+  description: "Apple Bluetooth and audio processing SoCs for AirPods and headphones"
   ranks:
     - id: h2
       name: "H2"
@@ -419,7 +419,7 @@
       variants: ["h1"]
 - id: N
   name: "N Series"
-  description: "Apple-designed Wi-Fi, Bluetooth, and Thread wireless connectivity SoCs"
+  description: "Apple Wi-Fi, Bluetooth, and Thread wireless connectivity SoCs"
   ranks:
     - id: n1
       name: "N1"

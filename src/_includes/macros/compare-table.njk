@@ -51,7 +51,7 @@
                 {% if f.value is none or f.value is not defined %}
                   –
                 {% elif f.value is iterable and f.value is not string %}
-                  {{ f.value | join(", ") }}
+                  {{ f.value | join("<br>") }}
                 {% elif f.value == true %}
                   ✓
                 {% elif f.value == false %}

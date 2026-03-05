@@ -7,7 +7,7 @@
     efficiency_cores: 4
     efficiency_core_speed: 2.60
     cpu_isa: "ARMv9.4-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 6
     gpu_eus: 24
     gpu_alus: 768
@@ -33,7 +33,7 @@
     efficiency_cores: 4
     efficiency_core_speed: 2.60
     cpu_isa: "ARMv9.4-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 5
     gpu_eus: 20
     gpu_alus: 640
@@ -59,7 +59,7 @@
     efficiency_cores: 4
     efficiency_core_speed: 2.60
     cpu_isa: "ARMv9.4-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 5
     gpu_eus: 20
     gpu_alus: 640
@@ -85,7 +85,7 @@
     efficiency_cores: 4
     efficiency_core_speed: 2.60
     cpu_isa: "ARMv9.4-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 4
     gpu_eus: 16
     gpu_alus: 512
@@ -111,7 +111,7 @@
     efficiency_cores: 4
     efficiency_core_speed: 2.42
     cpu_isa: "ARMv9.2-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 6
     gpu_rt: true
     npu_cores: 16
@@ -134,7 +134,7 @@
     efficiency_cores: 4
     efficiency_core_speed: 2.42
     cpu_isa: "ARMv9.2-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 5
     gpu_rt: true
     npu_cores: 16
@@ -158,7 +158,7 @@
     efficiency_cores: 4
     efficiency_core_speed: 2.42
     cpu_isa: "ARMv9.2-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 5
     gpu_rt: true
     npu_cores: 16
@@ -181,7 +181,7 @@
     efficiency_cores: 4
     efficiency_core_speed: 2.42
     cpu_isa: "ARMv9.2-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 4
     gpu_rt: true
     npu_cores: 16
@@ -204,7 +204,7 @@
     efficiency_cores: 4
     efficiency_core_speed: 2.11
     cpu_isa: "ARMv8.6-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 6
     gpu_eus: 96
     gpu_alus: 768
@@ -228,7 +228,7 @@
     efficiency_cores: 4
     efficiency_core_speed: 2.11
     cpu_isa: "ARMv8.6-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 5
     gpu_eus: 80
     gpu_alus: 640
@@ -254,7 +254,7 @@
     efficiency_core_name: "Sawtooth"
     efficiency_core_speed: 2.02
     cpu_isa: "ARMv8.6-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 5
     gpu_frequency: 1.398
     gpu_rt: false
@@ -278,7 +278,7 @@
     efficiency_core_name: "Blizzard"
     efficiency_core_speed: 2.01
     cpu_isa: "ARMv8.6-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 5
     gpu_eus: 80
     gpu_alus: 640
@@ -303,7 +303,7 @@
     efficiency_core_name: "Blizzard"
     efficiency_core_speed: 2.01
     cpu_isa: "ARMv8.6-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 4
     gpu_eus: 64
     gpu_alus: 512
@@ -327,7 +327,7 @@
     efficiency_cores: 4
     efficiency_core_name: "Icestorm"
     cpu_isa: "ARMv8.4-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 4
     gpu_eus: 64
     gpu_alus: 512
@@ -352,7 +352,7 @@
     efficiency_cores: 4
     efficiency_core_name: "Thunder"
     cpu_isa: "ARMv8.4-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 4
     gpu_rt: false
     npu_cores: 8
@@ -373,7 +373,7 @@
     efficiency_cores: 4
     efficiency_core_name: "Tempest"
     cpu_isa: "ARMv8.3-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 8
     gpu_eus: 32
     gpu_alus: 512
@@ -399,7 +399,7 @@
     efficiency_cores: 4
     efficiency_core_name: "Tempest"
     cpu_isa: "ARMv8.3-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 7
     gpu_eus: 28
     gpu_alus: 448
@@ -425,7 +425,7 @@
     efficiency_cores: 4
     efficiency_core_name: "Tempest"
     cpu_isa: "ARMv8.3-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 4
     gpu_rt: false
     npu_cores: 8
@@ -448,7 +448,7 @@
     efficiency_cores: 4
     efficiency_core_name: "Mistral"
     cpu_isa: "ARMv8.2-A"
-    gpu_vendor: "Apple-designed"
+    gpu_vendor: "Apple"
     gpu_cores: 3
     gpu_rt: false
     npu_cores: 2

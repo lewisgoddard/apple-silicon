@@ -322,9 +322,27 @@ export default function (eleventyConfig) {
     const chipsN = loadYAML("chips-n.yml");
 
     const specDefs = loadYAML("specs.yml");
+    const categories = loadYAML("devices.yml");
+
+    const chipDeviceMap = {};
+    for (const { category, group, device } of iterateAllDevices(categories)) {
+      (device.variants || []).forEach((chipId) => {
+        if (!chipDeviceMap[chipId]) chipDeviceMap[chipId] = [];
+        chipDeviceMap[chipId].push({
+          id: device.id,
+          name: device.name,
+          categoryId: category.id,
+          categoryName: category.name,
+          groupId: group ? group.id : null,
+          groupName: group ? group.name : null,
+          url: deviceUrl(category.id, group, device.id),
+        });
+      });
+    }
 
     function enrichChip(chip) {
       chip.groupedSpecs = buildGroupedSpecs(chip.specs || {}, specDefs.groups);
+      chip.devices = chipDeviceMap[chip.id] || [];
       return chip;
     }
 
@@ -437,6 +455,25 @@ export default function (eleventyConfig) {
       ...chipsN,
     ];
     const specDefs = loadYAML("specs.yml");
+    const genCategories = loadYAML("devices.yml");
+
+    const genChipDeviceMap = {};
+    for (const { category, group, device } of iterateAllDevices(
+      genCategories,
+    )) {
+      (device.variants || []).forEach((chipId) => {
+        if (!genChipDeviceMap[chipId]) genChipDeviceMap[chipId] = [];
+        genChipDeviceMap[chipId].push({
+          id: device.id,
+          name: device.name,
+          categoryId: category.id,
+          categoryName: category.name,
+          groupId: group ? group.id : null,
+          groupName: group ? group.name : null,
+          url: deviceUrl(category.id, group, device.id),
+        });
+      });
+    }
 
     const pages = [];
     (seriesList || []).forEach((series) => {
@@ -463,11 +500,22 @@ export default function (eleventyConfig) {
             const merged = mergeChipSpecs(
               chipObjects.map((c) => c.specs || {}),
             );
+            const tierDevices = [];
+            const seenUrls = new Set();
+            tier.variants.forEach((chipId) => {
+              (genChipDeviceMap[chipId] || []).forEach((d) => {
+                if (!seenUrls.has(d.url)) {
+                  seenUrls.add(d.url);
+                  tierDevices.push(d);
+                }
+              });
+            });
             return {
               id: tier.id,
               name: tier.name,
               specs: merged,
               groupedSpecs: buildGroupedSpecs(merged, specDefs.groups),
+              devices: tierDevices,
             };
           });
 
