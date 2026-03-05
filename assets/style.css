@@ -185,6 +185,17 @@ nav {
   font-size: 0.8rem !important;
 }
 
+.nav-dropdown-section {
+  grid-column: 1 / -1;
+  padding: 0.35rem 0.75rem 0.1rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
 .nav-divider {
   width: 1px;
   align-self: stretch;

@@ -19,7 +19,43 @@ eleventyComputed:
 <h1>{{ deviceItem.name }}</h1>
 <p>{{ deviceItem.description }}</p>
 
-{% if deviceItem.groups %}
+{% if deviceItem.sections %}
+  {# Sectioned flat category (e.g. Mac with laptops/desktops) #}
+  {% for section in deviceItem.sections %}
+    <h2>{{ section.name }}</h2>
+    <div class="device-grid">
+      {% for device in deviceItem.devices %}
+        {% if device.section == section.id and not device.deprecated %}
+          <a href="/devices/{{ deviceItem.id | lower }}/{{ device.id | lower }}/" class="device-grid-card{% if not device.variants or device.variants | length == 0 %} device-grid-card--empty{% endif %}">
+            <span class="device-grid-name">{{ device.name }}</span>
+            {% if device.variants and device.variants | length > 0 %}
+              {% set deviceSocVariants = device.variants | primaryChips %}
+              <span class="device-grid-chips">{{ deviceSocVariants | length }} chip{{ "s" if deviceSocVariants | length != 1 }}</span>
+              <span class="device-grid-range">{{ getChipRange(deviceSocVariants, collections) }}</span>
+            {% else %}
+              <span class="device-grid-chips">No chip data yet</span>
+            {% endif %}
+          </a>
+        {% endif %}
+      {% endfor %}
+      {% for device in deviceItem.devices %}
+        {% if device.section == section.id and device.deprecated %}
+          <a href="/devices/{{ deviceItem.id | lower }}/{{ device.id | lower }}/" class="device-grid-card device-grid-card--deprecated{% if not device.variants or device.variants | length == 0 %} device-grid-card--empty{% endif %}">
+            <span class="device-grid-name">{{ device.name }}</span>
+            {% if device.variants and device.variants | length > 0 %}
+              {% set deviceSocVariants = device.variants | primaryChips %}
+              <span class="device-grid-chips">{{ deviceSocVariants | length }} chip{{ "s" if deviceSocVariants | length != 1 }}</span>
+              <span class="device-grid-range">{{ getChipRange(deviceSocVariants, collections) }}</span>
+            {% else %}
+              <span class="device-grid-chips">No chip data yet</span>
+            {% endif %}
+            <span class="device-grid-discontinued">Discontinued</span>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+{% elif deviceItem.groups %}
   {# Grouped category (e.g. iPhone, iPad) — show groups as cards #}
   <div class="device-grid">
     {% for group in deviceItem.groups %}

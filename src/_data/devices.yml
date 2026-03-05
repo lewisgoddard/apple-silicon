@@ -1,9 +1,15 @@
 - id: "mac"
   name: "Mac"
   description: "Apple silicon for Macs and high-performance devices"
+  sections:
+    - id: "laptop"
+      name: "MacBook"
+    - id: "desktop"
+      name: "Desktop Mac"
   devices:
     - id: "macbook-air-15"
       name: 'MacBook Air 15"'
+      section: "laptop"
       variants:
         [
           "m5-10-10",
@@ -16,6 +22,7 @@
         ]
     - id: "macbook-air-13"
       name: 'MacBook Air 13"'
+      section: "laptop"
       variants:
         [
           "m5-10-10",
@@ -32,9 +39,11 @@
         ]
     - id: "macbook-neo"
       name: "MacBook Neo"
+      section: "laptop"
       variants: ["a18-pro-6-5"]
     - id: "macbook-pro-16"
       name: 'MacBook Pro 16"'
+      section: "laptop"
       variants:
         [
           "m5-max-18-40",
@@ -58,6 +67,7 @@
         ]
     - id: "macbook-pro-14"
       name: 'MacBook Pro 14"'
+      section: "laptop"
       variants:
         [
           "m5-max-18-40",
@@ -90,13 +100,16 @@
         ]
     - id: "macbook-pro-13"
       name: 'MacBook Pro 13"'
+      section: "laptop"
       deprecated: true
       variants: ["m2-8-10", "m1-8-8"]
     - id: "imac"
       name: "iMac"
+      section: "desktop"
       variants: ["m4-10-10", "m4-9-10", "m4-8-8", "m3-8-10", "m1-8-8", "m1-8-7"]
     - id: "mac-mini"
       name: "Mac mini"
+      section: "desktop"
       variants:
         [
           "m4-pro-14-20",
@@ -111,6 +124,7 @@
         ]
     - id: "mac-studio"
       name: "Mac Studio"
+      section: "desktop"
       variants:
         [
           "m4-max-16-40",
@@ -127,6 +141,7 @@
         ]
     - id: "mac-pro"
       name: "Mac Pro"
+      section: "desktop"
       variants: ["m2-ultra-76-76", "m2-ultra-60-60"]
 - id: "ipad"
   name: "iPad"

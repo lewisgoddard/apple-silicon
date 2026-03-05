@@ -61,15 +61,17 @@
             <button class="nav-dropdown-toggle" aria-expanded="false">Mac <span aria-hidden="true">&#9662;</span></button>
             <div class="nav-dropdown-panel nav-dropdown-2col">
               <a href="/devices/mac/" class="nav-dropdown-all">All Macs</a>
-              {% for category in devices %}
-                {% if category.id == "mac" %}
-                  {% for device in category.devices %}
-                    {% if not device.deprecated %}
-                      <a href="/devices/mac/{{ device.id }}/">{{ device.name }}</a>
-                    {% endif %}
-                  {% endfor %}
-                {% endif %}
-              {% endfor %}
+              <span class="nav-dropdown-section">MacBook</span>
+              <a href="/devices/mac/macbook-pro-16/">MacBook Pro 16"</a>
+              <a href="/devices/mac/macbook-pro-14/">MacBook Pro 14"</a>
+              <a href="/devices/mac/macbook-air-15/">MacBook Air 15"</a>
+              <a href="/devices/mac/macbook-air-13/">MacBook Air 13"</a>
+              <a href="/devices/mac/macbook-neo/">MacBook Neo</a>
+              <span class="nav-dropdown-section">Desktop Mac</span>
+              <a href="/devices/mac/imac/">iMac</a>
+              <a href="/devices/mac/mac-mini/">Mac mini</a>
+              <a href="/devices/mac/mac-studio/">Mac Studio</a>
+              <a href="/devices/mac/mac-pro/">Mac Pro</a>
             </div>
           </li>
           <li class="nav-dropdown nav-collapse">
