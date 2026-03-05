@@ -7,11 +7,17 @@
   /**
    * Try to extract a numeric value from a table-cell string.
    * Returns null for empty, dash, or non-numeric content.
+   * ISO dates (YYYY-MM-DD) are converted to a numeric timestamp.
    */
   function parseNumeric(text) {
     if (!text) return null;
     var t = text.trim();
     if (t === "" || t === "–" || t === "✓" || t === "✗") return null;
+    /* ISO date: convert to timestamp so full date is compared, not just year. */
+    if (/^\d{4}-\d{2}-\d{2}$/.test(t)) {
+      var ts = Date.parse(t);
+      return isNaN(ts) ? null : ts;
+    }
     var cleaned = t.replace(/,/g, "");
     var num = parseFloat(cleaned);
     return isNaN(num) ? null : num;
