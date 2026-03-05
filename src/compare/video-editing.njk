@@ -13,16 +13,16 @@ permalink: "compare/video-editing/"
   { label: "Video Editing" }
 ]) }}
 
-<h1>Video Editing Performance on Apple Silicon</h1>
+<h1>Video Editing on Apple Silicon</h1>
 <p>
-  For video editing, not all specs are created equal. While CPU and GPU cores are important, the key to significant performance gains in Final Cut Pro and DaVinci Resolve lies in Apple's dedicated hardware accelerators: the Media Engines.
+  For video editing, the most impactful specs are the dedicated media engines—not raw CPU or GPU cores. ProRes engines handle Apple's professional codec in hardware, dramatically speeding up timeline scrubbing and exports in Final Cut Pro and DaVinci Resolve. Video decode/encode engine counts determine how many simultaneous H.264/HEVC streams you can process. AV1 hardware decode (1 engine on Pro and Max, 2 on Ultra) accelerates playback of AV1 content from streaming sources.
 </p>
 <p>
-  The table below focuses on the specifications most critical for video editing: ProRes and H.264/HEVC encode/decode engines, GPU core count, and memory bandwidth. These directly impact timeline fluidity, export speeds, and the ability to work with high-resolution, professional-grade codecs.
+  GPU TFLOPS and memory bandwidth still matter for effects-heavy timelines, colour grading, and Fusion compositing. If you work primarily with ProRes or multicam workflows, prioritise ProRes engine count above all else.
 </p>
 
 <h2>Laptops</h2>
-<p>Every chip available in a currently-sold MacBook, from MacBook Air to MacBook Pro Max.</p>
+<p>The M5 Max is the laptop video editing champion: 2 ProRes engines, 2 video encode/decode engines, and 614 GB/s memory bandwidth for buttery 8K ProRes timelines. The M5 Pro halves the media engines but is more than enough for 4K ProRes and multicam H.264/HEVC. The base M5 and A18 Pro have a single engine each—fine for straightforward 4K editing but slower on heavy exports.</p>
 
 {% set laptopChipIds = getCurrentChips("mac", "laptop") %}
 {% set laptopChips = getChips(laptopChipIds, collections) %}
@@ -43,7 +43,7 @@ permalink: "compare/video-editing/"
 ]) }}
 
 <h2>Desktops</h2>
-<p>Every chip available in a currently-sold desktop Mac, from iMac through Mac Studio and Mac Pro.</p>
+<p>The M3 Ultra in the Mac Studio doubles up to 4 ProRes engines and 4 video encode/decode engines—the best option for 8K multicam or high-volume ProRes rendering. The M4 Max in the Mac Studio is the sweet spot for most professional 4K–6K workflows with 2 of each engine. The M4 in the iMac and Mac mini handles casual editing well but will bottleneck on ProRes-heavy exports. The Mac Pro's M2 Ultra matches the M3 Ultra's engine count.</p>
 
 {% set desktopChipIds = getCurrentChips("mac", "desktop") %}
 {% set desktopChips = getChips(desktopChipIds, collections) %}

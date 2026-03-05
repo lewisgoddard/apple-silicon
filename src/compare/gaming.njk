@@ -15,11 +15,11 @@ permalink: "compare/gaming/"
 
 <h1>Gaming on Apple Silicon</h1>
 <p>
-  Apple Silicon's unified memory architecture and increasingly powerful GPUs have brought credible gaming performance to Mac. Ray tracing support (M3 and later), high GPU core counts, and fast memory bandwidth are the key specs to look for.
+  GPU TFLOPS and memory bandwidth are the two numbers that matter most for gaming on Apple Silicon. Ray tracing arrived with M3 and improves each generation—look for <code>gpu_rt: true</code> in the table. More GPU cores push higher frame rates at higher resolutions, while memory bandwidth determines how fast textures and assets stream in. If you plan to game at external-display resolutions (1440p+), aim for a Pro tier or above.
 </p>
 
 <h2>Laptops</h2>
-<p>Every chip available in a currently-sold MacBook, from MacBook Air to MacBook Pro Max.</p>
+<p>The M5 Max 40-core GPU tops the laptop lineup at 20.5 TFLOPS and 614 GB/s bandwidth—ideal for AAA titles at native resolution. The M5 Pro is a solid mid-range pick for 1080p–1440p gaming. The base M5 and MacBook Neo's A18 Pro handle casual and older titles well, but lack the bandwidth for demanding games.</p>
 
 {% set laptopChipIds = getCurrentChips("mac", "laptop") %}
 {% set laptopChips = getChips(laptopChipIds, collections) %}
@@ -38,7 +38,7 @@ permalink: "compare/gaming/"
 ]) }}
 
 <h2>Desktops</h2>
-<p>Every chip available in a currently-sold desktop Mac, from iMac through Mac Studio and Mac Pro.</p>
+<p>Desktop Macs range from the M4's 10-core GPU in the iMac and Mac mini up to the M3 Ultra's 80-core GPU in the Mac Studio. The M4 Max in the Mac Studio is the sweet spot for serious gaming—its 40-core GPU outperforms the base M4 by roughly 3× in GPU TFLOPS. The Mac Pro's M2 Ultra remains powerful but is a generation behind on ray tracing efficiency.</p>
 
 {% set desktopChipIds = getCurrentChips("mac", "desktop") %}
 {% set desktopChips = getChips(desktopChipIds, collections) %}

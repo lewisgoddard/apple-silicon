@@ -15,11 +15,11 @@ permalink: "compare/ml-ai/"
 
 <h1>Machine Learning &amp; AI on Apple Silicon</h1>
 <p>
-  Apple's Neural Engine, combined with unified memory architecture and high bandwidth, makes Apple Silicon well-suited for on-device ML inference and training. Key specs include Neural Engine TOPS (trillion operations per second), memory bandwidth, and available memory.
+  For on-device ML inference, Neural Engine TOPS is the headline number—it determines how quickly models like Stable Diffusion or local LLMs generate output. For training and fine-tuning, unified memory size is often the bottleneck: larger models need more RAM, and Apple Silicon's unified architecture lets the GPU and NPU share the full pool. Memory bandwidth governs how fast weights move through the system, directly impacting tokens-per-second for LLM inference.
 </p>
 
 <h2>Laptops</h2>
-<p>Every chip available in a currently-sold MacBook, from MacBook Air to MacBook Pro Max.</p>
+<p>The M5 Max delivers 61 NPU TOPS and up to 128 GB of unified memory with 614 GB/s bandwidth—enough to run 70B-parameter LLMs on a laptop. The M5 Pro is a practical choice for models up to ~30B parameters. The base M5 handles smaller models and inference workloads well but tops out at 32 GB.</p>
 
 {% set laptopChipIds = getCurrentChips("mac", "laptop") %}
 {% set laptopChips = getChips(laptopChipIds, collections) %}
@@ -38,7 +38,7 @@ permalink: "compare/ml-ai/"
 ]) }}
 
 <h2>Desktops</h2>
-<p>Every chip available in a currently-sold desktop Mac, from iMac through Mac Studio and Mac Pro.</p>
+<p>For larger models and training workloads, desktop Macs offer more memory headroom. The M3 Ultra in the Mac Studio supports up to 192 GB unified memory, and the Mac Pro's M2 Ultra goes to 192 GB as well. If your models fit in 64–128 GB, the M4 Max delivers better per-TOPS performance at a lower price. The M4 in the iMac and Mac mini is suitable for inference on smaller models (up to ~13B parameters).</p>
 
 {% set desktopChipIds = getCurrentChips("mac", "desktop") %}
 {% set desktopChips = getChips(desktopChipIds, collections) %}
