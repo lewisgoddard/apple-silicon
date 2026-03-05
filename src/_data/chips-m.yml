@@ -220,6 +220,10 @@
     npu_cores: 16
     npu_tops: 38
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 2
+    video_encode: 2
+    prores_engines: 2
+    av1_decode: 2
     memory_bus_width_bits: 512
     memory_type: "LPDDR5X-8533"
     memory_bandwidth_gb_s: 546
@@ -241,6 +245,10 @@
     npu_cores: 16
     npu_tops: 38
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 2
+    video_encode: 2
+    prores_engines: 2
+    av1_decode: 2
     memory_bus_width_bits: 384
     memory_type: "LPDDR5X-8533"
     memory_bandwidth_gb_s: 409.6
@@ -264,6 +272,10 @@
     npu_cores: 16
     npu_tops: 38
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    av1_decode: 1
     memory_bus_width_bits: 256
     memory_type: "LPDDR5X-8533"
     memory_bandwidth_gb_s: 273
@@ -287,6 +299,10 @@
     npu_cores: 16
     npu_tops: 38
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    av1_decode: 1
     memory_bus_width_bits: 256
     memory_type: "LPDDR5X-8533"
     memory_bandwidth_gb_s: 273
