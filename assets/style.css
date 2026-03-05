@@ -568,6 +568,18 @@ li {
   pointer-events: none;
 }
 
+.device-grid-card--deprecated {
+  opacity: 0.6;
+}
+
+.device-grid-discontinued {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
 .device-grid-name {
   font-weight: 600;
   font-size: 1.05rem;

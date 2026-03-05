@@ -23,7 +23,7 @@ eleventyComputed:
 {% if group.devices and group.devices | length > 0 %}
   <div class="device-grid">
     {% for device in group.devices %}
-      {% if device.name %}
+      {% if device.name and not device.deprecated %}
         <a href="/devices/{{ group.categoryId | lower }}/{{ group.id | lower }}/{{ device.id | lower }}/" class="device-grid-card{% if not device.variants or device.variants | length == 0 %} device-grid-card--empty{% endif %}">
           <span class="device-grid-name">{{ device.name }}</span>
           {% if device.variants and device.variants | length > 0 %}
@@ -38,6 +38,26 @@ eleventyComputed:
           {% else %}
             <span class="device-grid-chips">No chip data yet</span>
           {% endif %}
+        </a>
+      {% endif %}
+    {% endfor %}
+    {% for device in group.devices %}
+      {% if device.name and device.deprecated %}
+        <a href="/devices/{{ group.categoryId | lower }}/{{ group.id | lower }}/{{ device.id | lower }}/" class="device-grid-card device-grid-card--deprecated{% if not device.variants or device.variants | length == 0 %} device-grid-card--empty{% endif %}">
+          <span class="device-grid-name">{{ device.name }}</span>
+          {% if device.variants and device.variants | length > 0 %}
+            {% set deviceSocVariants = device.variants | primaryChips %}
+            {% set chips = getChips(deviceSocVariants, collections) %}
+            <span class="device-grid-chips">{{ deviceSocVariants | length }} chip{{ "s" if deviceSocVariants | length != 1 }}</span>
+            {% if chips | length == 1 %}
+              <span class="device-grid-range">{{ chips[0].name }} ({{ chips[0].specs.cpu_cores }}c CPU / {{ chips[0].specs.gpu_cores }}c GPU)</span>
+            {% else %}
+              <span class="device-grid-range">{{ getChipRange(deviceSocVariants, collections) }}</span>
+            {% endif %}
+          {% else %}
+            <span class="device-grid-chips">No chip data yet</span>
+          {% endif %}
+          <span class="device-grid-discontinued">Discontinued</span>
         </a>
       {% endif %}
     {% endfor %}
