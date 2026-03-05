@@ -158,37 +158,19 @@
               "m2-8-10",
               "m1-8-8",
               "n1",
+              "a12-z-8-8",
+              "a12-x-8-7",
             ]
-        - id: "12-9-4"
-          name: "iPad Pro 12.9 (4th gen)"
+        - id: "12-9"
+          name: 'iPad Pro 12.9"'
           deprecated: true
-          variants: ["a12-z-8-8"]
-        - id: "11-2"
-          name: "iPad Pro 11 (2nd gen)"
-          deprecated: true
-          variants: ["a12-z-8-8"]
-        - id: "12-9-3"
-          name: "iPad Pro 12.9 (3rd gen)"
-          deprecated: true
-          variants: ["a12-x-8-7"]
-        - id: "11-1"
-          name: "iPad Pro 11 (1st gen)"
-          deprecated: true
-          variants: ["a12-x-8-7"]
-        - id: "12-9-2"
-          name: "iPad Pro 12.9 (2nd gen)"
-          deprecated: true
-          variants: ["a10-x-6-12"]
+          variants: ["a12-z-8-8", "a12-x-8-7", "a10-x-6-12", "a9-x-2-12"]
         - id: "10-5"
-          name: "iPad Pro 10.5"
+          name: 'iPad Pro 10.5"'
           deprecated: true
           variants: ["a10-x-6-12"]
-        - id: "12-9-1"
-          name: "iPad Pro 12.9 (1st gen)"
-          deprecated: true
-          variants: ["a9-x-2-12"]
         - id: "9-7"
-          name: "iPad Pro 9.7"
+          name: 'iPad Pro 9.7"'
           deprecated: true
           variants: ["a9-x-2-12"]
     - id: "air"
