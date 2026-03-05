@@ -21,18 +21,44 @@ permalink: "compare/video-editing/"
   The table below focuses on the specifications most critical for video editing: ProRes and H.264/HEVC encode/decode engines, GPU core count, and memory bandwidth. These directly impact timeline fluidity, export speeds, and the ability to work with high-resolution, professional-grade codecs.
 </p>
 
-<h2>Top-Tier Chip Comparison for Video Editing</h2>
-<p>The best chips from each generation for demanding video workflows.</p>
+<h2>Laptops</h2>
+<p>Current-generation MacBook lineup (M5 series), from MacBook Air to MacBook Pro Max.</p>
 
-{% set chips = getChips([
+{% set laptopChips = getChips([
   "m5-max-18-40",
   "m5-max-18-32",
-  "m4-max-16-40",
-  "m3-ultra-32-80",
-  "m2-ultra-76-76"
+  "m5-pro-18-20",
+  "m5-pro-15-16",
+  "m5-10-10"
 ], collections) %}
 
-{{ focusedCompareTable(chips, [
+{{ focusedCompareTable(laptopChips, [
+  "cpu_cores",
+  "super_cores",
+  "performance_cores",
+  "efficiency_cores",
+  "gpu_cores",
+  "gpu_tflops",
+  "memory_bandwidth_gb_s",
+  "hardware_acceleration",
+  "video_decode",
+  "video_encode",
+  "prores_engines",
+  "av1_decode"
+]) }}
+
+<h2>Desktops</h2>
+<p>Current-generation Mac desktop lineup (M4 series), covering Mac mini, iMac, and Mac Studio.</p>
+
+{% set desktopChips = getChips([
+  "m4-max-16-40",
+  "m4-max-14-32",
+  "m4-pro-14-20",
+  "m4-pro-12-16",
+  "m4-10-10"
+], collections) %}
+
+{{ focusedCompareTable(desktopChips, [
   "cpu_cores",
   "super_cores",
   "performance_cores",

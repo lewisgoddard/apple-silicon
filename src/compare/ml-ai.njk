@@ -18,18 +18,18 @@ permalink: "compare/ml-ai/"
   Apple's Neural Engine, combined with unified memory architecture and high bandwidth, makes Apple Silicon well-suited for on-device ML inference and training. Key specs include Neural Engine TOPS (trillion operations per second), memory bandwidth, and available memory.
 </p>
 
-<h2>Pro / Max / Ultra — Heavy ML Workloads</h2>
-<p>Top-tier chips with the most Neural Engine throughput and memory capacity for model training and large inference tasks.</p>
+<h2>Laptops</h2>
+<p>Current-generation MacBook lineup (M5 series), from MacBook Air to MacBook Pro Max.</p>
 
-{% set proChips = getChips([
+{% set laptopChips = getChips([
   "m5-max-18-40",
   "m5-max-18-32",
   "m5-pro-18-20",
-  "m4-max-16-40",
-  "m3-ultra-32-80"
+  "m5-pro-15-16",
+  "m5-10-10"
 ], collections) %}
 
-{{ focusedCompareTable(proChips, [
+{{ focusedCompareTable(laptopChips, [
   "npu_cores",
   "npu_tops",
   "cpu_cores",
@@ -42,20 +42,25 @@ permalink: "compare/ml-ai/"
   "memory_options"
 ]) }}
 
-<h2>Base-Tier — On-Device Inference</h2>
-<p>Everyday chips still capable of running Core ML models, Stable Diffusion, and other on-device AI.</p>
+<h2>Desktops</h2>
+<p>Current-generation Mac desktop lineup (M4 series), covering Mac mini, iMac, and Mac Studio.</p>
 
-{% set baseChips = getChips([
-  "m5-10-10",
-  "a19-pro-6-5",
-  "a18-pro-6-6"
+{% set desktopChips = getChips([
+  "m4-max-16-40",
+  "m4-max-14-32",
+  "m4-pro-14-20",
+  "m4-pro-12-16",
+  "m4-10-10"
 ], collections) %}
 
-{{ focusedCompareTable(baseChips, [
+{{ focusedCompareTable(desktopChips, [
   "npu_cores",
   "npu_tops",
   "cpu_cores",
+  "super_cores",
+  "performance_cores",
   "gpu_cores",
+  "gpu_tflops",
   "memory_bandwidth_gb_s",
   "memory_type",
   "memory_options"

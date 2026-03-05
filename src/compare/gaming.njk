@@ -18,18 +18,18 @@ permalink: "compare/gaming/"
   Apple Silicon's unified memory architecture and increasingly powerful GPUs have brought credible gaming performance to Mac. Ray tracing support (M3 and later), high GPU core counts, and fast memory bandwidth are the key specs to look for.
 </p>
 
-<h2>High-End — Max &amp; Ultra</h2>
-<p>The most GPU-heavy chips for AAA gaming at high settings.</p>
+<h2>Laptops</h2>
+<p>Current-generation MacBook lineup (M5 series), from MacBook Air to MacBook Pro Max.</p>
 
-{% set highChips = getChips([
+{% set laptopChips = getChips([
   "m5-max-18-40",
   "m5-max-18-32",
-  "m4-max-16-40",
-  "m3-ultra-32-80",
-  "m2-ultra-76-76"
+  "m5-pro-18-20",
+  "m5-pro-15-16",
+  "m5-10-10"
 ], collections) %}
 
-{{ focusedCompareTable(highChips, [
+{{ focusedCompareTable(laptopChips, [
   "gpu_cores",
   "gpu_eus",
   "gpu_tflops",
@@ -42,17 +42,18 @@ permalink: "compare/gaming/"
   "memory_options"
 ]) }}
 
-<h2>Mid-Range — Pro Tier</h2>
-<p>Solid gaming performance with a balance of CPU and GPU power.</p>
+<h2>Desktops</h2>
+<p>Current-generation Mac desktop lineup (M4 series), covering Mac mini, iMac, and Mac Studio.</p>
 
-{% set proChips = getChips([
-  "m5-pro-18-20",
-  "m5-pro-15-16",
+{% set desktopChips = getChips([
+  "m4-max-16-40",
+  "m4-max-14-32",
   "m4-pro-14-20",
-  "m4-pro-12-16"
+  "m4-pro-12-16",
+  "m4-10-10"
 ], collections) %}
 
-{{ focusedCompareTable(proChips, [
+{{ focusedCompareTable(desktopChips, [
   "gpu_cores",
   "gpu_eus",
   "gpu_tflops",
