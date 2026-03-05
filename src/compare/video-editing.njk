@@ -29,9 +29,7 @@ permalink: "compare/video-editing/"
   "m5-max-18-32",
   "m4-max-16-40",
   "m3-ultra-32-80",
-  "m3-max-16-40",
-  "m2-ultra-76-76",
-  "m2-max-38-38"
+  "m2-ultra-76-76"
 ], collections) %}
 
 {{ focusedCompareTable(chips, [
@@ -49,25 +47,4 @@ permalink: "compare/video-editing/"
   "av1_decode"
 ]) }}
 
-<h2>Base-Tier Comparison</h2>
-<p>Budget-friendly options still capable of casual video editing.</p>
 
-{% set baseChips = getChips([
-  "m5-10-10",
-  "m4-10-10",
-  "m3-8-10",
-  "m2-8-10"
-], collections) %}
-
-{{ focusedCompareTable(baseChips, [
-  "cpu_cores",
-  "gpu_cores",
-  "gpu_tflops",
-  "memory_bandwidth_gb_s",
-  "memory_options",
-  "hardware_acceleration",
-  "video_decode",
-  "video_encode",
-  "prores_engines",
-  "av1_decode"
-]) }}

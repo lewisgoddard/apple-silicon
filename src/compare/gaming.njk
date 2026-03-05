@@ -25,11 +25,8 @@ permalink: "compare/gaming/"
   "m5-max-18-40",
   "m5-max-18-32",
   "m4-max-16-40",
-  "m4-max-14-32",
   "m3-ultra-32-80",
-  "m3-max-16-40",
-  "m2-ultra-76-76",
-  "m2-max-38-38"
+  "m2-ultra-76-76"
 ], collections) %}
 
 {{ focusedCompareTable(highChips, [
@@ -52,11 +49,7 @@ permalink: "compare/gaming/"
   "m5-pro-18-20",
   "m5-pro-15-16",
   "m4-pro-14-20",
-  "m4-pro-12-16",
-  "m3-pro-12-18",
-  "m3-pro-11-14",
-  "m2-pro-12-19",
-  "m2-pro-10-16"
+  "m4-pro-12-16"
 ], collections) %}
 
 {{ focusedCompareTable(proChips, [
@@ -72,23 +65,4 @@ permalink: "compare/gaming/"
   "memory_options"
 ]) }}
 
-<h2>Base Tier — Casual Gaming</h2>
-<p>Entry-level chips for lighter games and older titles.</p>
 
-{% set baseChips = getChips([
-  "m5-10-10",
-  "m4-10-10",
-  "m3-8-10",
-  "m2-8-10"
-], collections) %}
-
-{{ focusedCompareTable(baseChips, [
-  "gpu_cores",
-  "gpu_eus",
-  "gpu_tflops",
-  "gpu_rt",
-  "cpu_cores",
-  "memory_bandwidth_gb_s",
-  "memory_type",
-  "memory_options"
-]) }}

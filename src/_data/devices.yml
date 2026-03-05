@@ -3,7 +3,7 @@
   description: "Apple silicon for Macs and high-performance devices"
   devices:
     - id: "macbook-air-15"
-      name: "MacBook Air 15"
+      name: 'MacBook Air 15"'
       variants:
         [
           "m5-10-10",
@@ -15,7 +15,7 @@
           "m2-8-10",
         ]
     - id: "macbook-air-13"
-      name: "MacBook Air 13"
+      name: 'MacBook Air 13"'
       variants:
         [
           "m5-10-10",
@@ -34,7 +34,7 @@
       name: "MacBook Neo"
       variants: ["a18-pro-6-5"]
     - id: "macbook-pro-16"
-      name: "MacBook Pro 16"
+      name: 'MacBook Pro 16"'
       variants:
         [
           "m5-max-18-40",
@@ -57,7 +57,7 @@
           "m1-pro-10-16",
         ]
     - id: "macbook-pro-14"
-      name: "MacBook Pro 14"
+      name: 'MacBook Pro 14"'
       variants:
         [
           "m5-max-18-40",
@@ -89,7 +89,7 @@
           "m1-8-8",
         ]
     - id: "macbook-pro-13"
-      name: "MacBook Pro 13"
+      name: 'MacBook Pro 13"'
       deprecated: true
       variants: ["m2-8-10", "m1-8-8"]
     - id: "imac"
@@ -136,7 +136,7 @@
       name: "iPad Pro"
       devices:
         - id: "13"
-          name: "iPad Pro 13"
+          name: 'iPad Pro 13"'
           variants:
             [
               "m5-10-10",
@@ -148,7 +148,7 @@
               "n1",
             ]
         - id: "11"
-          name: "iPad Pro 11"
+          name: 'iPad Pro 11"'
           variants:
             [
               "m5-10-10",
@@ -195,11 +195,11 @@
       name: "iPad Air"
       devices:
         - id: "13"
-          name: "iPad Air 13"
+          name: 'iPad Air 13"'
           variants:
             ["m4-8-9", "m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
         - id: "10"
-          name: "iPad Air 10.9"
+          name: 'iPad Air 10.9"'
           variants:
             ["m4-8-9", "m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
         - id: "4"
