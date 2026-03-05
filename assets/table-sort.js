@@ -25,12 +25,14 @@
    */
   function parseChipId(id) {
     if (!id) return null;
-    var m = id.match(/^([a-z])(\d+)(?:-(ultra|max|pro|x|z))?/);
+    var m = id.match(/^([a-z])(\d+)(?:-(ultra|max|pro|x|z))?(?:-(\d+)-(\d+))?/);
     if (!m) return null;
     return {
       series: seriesOrder[m[1]] !== undefined ? seriesOrder[m[1]] : 99,
       gen: parseInt(m[2], 10),
       tier: m[3] ? (tierOrder[m[3]] !== undefined ? tierOrder[m[3]] : 3) : 5,
+      cpu: m[4] ? parseInt(m[4], 10) : 0,
+      gpu: m[5] ? parseInt(m[5], 10) : 0,
     };
   }
 
@@ -213,7 +215,9 @@
           var pb = b.parsed || { series: 99, gen: 0, tier: 99 };
           if (pa.series !== pb.series) return pa.series - pb.series;
           if (pa.gen !== pb.gen) return pb.gen - pa.gen; /* newest first */
-          return pa.tier - pb.tier;
+          if (pa.tier !== pb.tier) return pa.tier - pb.tier;
+          if (pa.cpu !== pb.cpu) return pb.cpu - pa.cpu; /* more CPU cores first */
+          return pb.gpu - pa.gpu; /* more GPU cores first */
         });
         var alreadySorted = chipCols.every(function (c, i) {
           return c.pos === original[i];
