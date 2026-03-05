@@ -57,9 +57,46 @@
               <a href="/devices/display/">Studio Display</a>
             </div>
           </li>
-          <li class="nav-collapse"><a href="/devices/mac/">Mac</a></li>
-          <li class="nav-collapse"><a href="/devices/ipad/">iPad</a></li>
-          <li class="nav-collapse"><a href="/devices/iphone/">iPhone</a></li>
+          <li class="nav-dropdown nav-collapse">
+            <button class="nav-dropdown-toggle" aria-expanded="false">Mac <span aria-hidden="true">&#9662;</span></button>
+            <div class="nav-dropdown-panel nav-dropdown-2col">
+              <a href="/devices/mac/" class="nav-dropdown-all">All Macs</a>
+              {% for category in devices %}
+                {% if category.id == "mac" %}
+                  {% for device in category.devices %}
+                    {% if not device.deprecated %}
+                      <a href="/devices/mac/{{ device.id }}/">{{ device.name }}</a>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </li>
+          <li class="nav-dropdown nav-collapse">
+            <button class="nav-dropdown-toggle" aria-expanded="false">iPad <span aria-hidden="true">&#9662;</span></button>
+            <div class="nav-dropdown-panel">
+              <a href="/devices/ipad/" class="nav-dropdown-all">All iPads</a>
+              <a href="/devices/ipad/pro/13/">iPad Pro 13"</a>
+              <a href="/devices/ipad/pro/11/">iPad Pro 11"</a>
+              <a href="/devices/ipad/air/13/">iPad Air 13"</a>
+              <a href="/devices/ipad/air/10/">iPad Air 10.9"</a>
+              <a href="/devices/ipad/base/a16/">iPad</a>
+              <a href="/devices/ipad/mini/7/">iPad mini</a>
+            </div>
+          </li>
+          <li class="nav-dropdown nav-collapse">
+            <button class="nav-dropdown-toggle" aria-expanded="false">iPhone <span aria-hidden="true">&#9662;</span></button>
+            <div class="nav-dropdown-panel">
+              <a href="/devices/iphone/" class="nav-dropdown-all">All iPhones</a>
+              <a href="/devices/iphone/17/pro-max/">iPhone 17 Pro Max</a>
+              <a href="/devices/iphone/17/pro/">iPhone 17 Pro</a>
+              <a href="/devices/iphone/17/air/">iPhone 17 Air</a>
+              <a href="/devices/iphone/17/base/">iPhone 17</a>
+              <a href="/devices/iphone/17/e/">iPhone 17e</a>
+              <a href="/devices/iphone/16/plus/">iPhone 16 Plus</a>
+              <a href="/devices/iphone/16/base/">iPhone 16</a>
+            </div>
+          </li>
           <li class="nav-divider" aria-hidden="true"></li>
           <li class="nav-dropdown">
             <button class="nav-dropdown-toggle" aria-expanded="false">Series <span aria-hidden="true">&#9662;</span></button>

@@ -177,6 +177,14 @@ nav {
   background: var(--color-surface);
 }
 
+.nav-dropdown-all {
+  grid-column: 1 / -1;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 0.15rem;
+  padding-bottom: 0.45rem !important;
+  font-size: 0.8rem !important;
+}
+
 .nav-divider {
   width: 1px;
   align-self: stretch;
