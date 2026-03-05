@@ -76,6 +76,32 @@
     codename: "Tilos"
     part_number: "T8150a"
     release_date: "2025-09-19"
+- id: a19-6-4
+  name: "A19"
+  specs:
+    cpu_cores: 6
+    performance_cores: 2
+    performance_core_speed: 4.26
+    efficiency_cores: 4
+    efficiency_core_speed: 2.60
+    cpu_isa: "ARMv9.4-A"
+    gpu_vendor: "Apple-designed"
+    gpu_cores: 4
+    gpu_eus: 16
+    gpu_alus: 512
+    gpu_frequency: 1620
+    gpu_tflops: 1.659
+    gpu_rt: true
+    npu_cores: 16
+    memory_type: "LPDDR5X-8533"
+    memory_bandwidth_gb_s: 68.3
+    memory_options: [8]
+    hardware_acceleration: ["H264", "HEVC"]
+    av1_decode: true
+    process_nm: 3
+    codename: "Tilos"
+    part_number: "T8150a"
+    release_date: "2026-03-02"
 - id: a18-pro-6-6
   name: "A18 Pro"
   specs:
@@ -99,6 +125,30 @@
     die_size_mm2: 105
     codename: "Tahiti"
     release_date: "2024-09-09"
+- id: a18-pro-6-5
+  name: "A18 Pro"
+  specs:
+    cpu_cores: 6
+    performance_cores: 2
+    performance_core_speed: 4.04
+    efficiency_cores: 4
+    efficiency_core_speed: 2.42
+    cpu_isa: "ARMv9.2-A"
+    gpu_vendor: "Apple-designed"
+    gpu_cores: 5
+    gpu_rt: true
+    npu_cores: 16
+    npu_tops: 35
+    memory_type: "LPDDR5"
+    memory_bandwidth_gb_s: 60
+    memory_options: [8]
+    hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
+    video_decode: 1
+    video_encode: 1
+    prores_engines: 1
+    av1_decode: true
+    process_nm: 3
+    release_date: "2026-03-04"
 - id: a18-6-5
   name: "A18"
   specs:

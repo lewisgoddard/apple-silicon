@@ -2,12 +2,24 @@
   name: "M Series"
   description: "Apple silicon for Macs and high-performance devices"
   ranks:
+    - id: m5-max
+      name: "M5 Max"
+      description: "Top-tier member of the M5 family"
+      process_nm: "TSMC N3P"
+      cpu_isa: "ARMv9"
+      variants: ["m5-max-18-40", "m5-max-18-32"]
+    - id: m5-pro
+      name: "M5 Pro"
+      description: "Mid-tier member of the M5 family"
+      process_nm: "TSMC N3P"
+      cpu_isa: "ARMv9"
+      variants: ["m5-pro-18-20", "m5-pro-15-16"]
     - id: m5
       name: "M5"
       description: "The latest generation of Apple silicon for Macs, iPads, and Vision Pro devices."
       process_nm: "TSMC N3P"
       cpu_isa: "ARMv9"
-      variants: ["m5-9-10", "m5-10-10"]
+      variants: ["m5-10-10", "m5-9-10", "m5-10-8"]
     - id: m4-max
       name: "M4 Max"
       description: "Top-tier member of the M4 family"
@@ -30,7 +42,7 @@
       process_nm: "TSMC N3E"
       cpu_isa: "ARMv9.2-A"
       transistor_count_billion: 28
-      variants: ["m4-10-10", "m4-9-10", "m4-8-8"]
+      variants: ["m4-10-10", "m4-9-10", "m4-8-9", "m4-8-8"]
     - id: m3-ultra
       name: "M3 Ultra"
       description: "Top-tier member of the M3 family"
@@ -158,7 +170,7 @@
       part_number: "T8150a"
       process_nm: "TSMC N3P"
       cpu_isa: "ARMv9.4-A"
-      variants: ["a19-6-5"]
+      variants: ["a19-6-5", "a19-6-4"]
     - id: a18-pro
       name: "A18 Pro"
       description: "Pro-tier member of the A18 family"
@@ -166,7 +178,7 @@
       process_nm: "TSMC N3E"
       cpu_isa: "ARMv9.2-A"
       transistor_count_billion: 20
-      variants: ["a18-pro-6-6"]
+      variants: ["a18-pro-6-6", "a18-pro-6-5"]
     - id: a18
       name: "A18"
       description: "Base-tier member of the A18 family"

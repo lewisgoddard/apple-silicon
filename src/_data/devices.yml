@@ -5,11 +5,21 @@
     - id: "macbook-air-15"
       name: "MacBook Air 15"
       variants:
-        ["m4-10-10", "m4-9-10", "m4-8-8", "m3-8-10", "m3-8-8", "m2-8-10"]
+        [
+          "m5-10-10",
+          "m4-10-10",
+          "m4-9-10",
+          "m4-8-8",
+          "m3-8-10",
+          "m3-8-8",
+          "m2-8-10",
+        ]
     - id: "macbook-air-13"
       name: "MacBook Air 13"
       variants:
         [
+          "m5-10-10",
+          "m5-10-8",
           "m4-10-10",
           "m4-9-10",
           "m4-8-8",
@@ -20,10 +30,16 @@
           "m1-8-8",
           "m1-8-7",
         ]
+    - id: "macbook-neo"
+      name: "MacBook Neo"
+      variants: ["a18-pro-6-5"]
     - id: "macbook-pro-16"
       name: "MacBook Pro 16"
       variants:
         [
+          "m5-max-18-40",
+          "m5-max-18-32",
+          "m5-pro-18-20",
           "m4-max-16-40",
           "m4-max-14-32",
           "m4-pro-14-20",
@@ -44,6 +60,10 @@
       name: "MacBook Pro 14"
       variants:
         [
+          "m5-max-18-40",
+          "m5-max-18-32",
+          "m5-pro-18-20",
+          "m5-pro-15-16",
           "m5-10-10",
           "m4-max-16-40",
           "m4-max-14-32",
@@ -167,10 +187,12 @@
       devices:
         - id: "13"
           name: "iPad Air 13"
-          variants: ["m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
+          variants:
+            ["m4-8-9", "m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
         - id: "10"
           name: "iPad Air 10.9"
-          variants: ["m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
+          variants:
+            ["m4-8-9", "m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
         - id: "4"
           name: "iPad Air (4th gen)"
           variants: ["a14-6-4"]
@@ -253,6 +275,9 @@
         - id: "pro-max"
           name: "iPhone 17 Pro Max"
           variants: ["a19-pro-6-6", "c1x", "n1", "u2"]
+        - id: "e"
+          name: "iPhone 17e"
+          variants: ["a19-6-4", "c1x"]
         - id: "pro"
           name: "iPhone 17 Pro"
           variants: ["a19-pro-6-6", "c1x", "n1", "u2"]
