@@ -840,7 +840,7 @@ export default function (eleventyConfig) {
     }
 
     function extractTier(id) {
-      const m = (id || "").match(/^[a-z]\d+-(ultra|max|pro|x|z)-/);
+      const m = (id || "").match(/^[a-z]\d+-(ultra|max|pro)-/);
       return m ? m[1] : "base";
     }
 
