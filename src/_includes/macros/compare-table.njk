@@ -75,9 +75,9 @@
                   –
                 {% elif f.value is iterable and f.value is not string %}
                   {{ f.value | join("<br>") | safe }}
-                {% elif f.value is sameas true %}
+                {% elif f.value is sameas(true) %}
                   ✓
-                {% elif f.value is sameas false %}
+                {% elif f.value is sameas(false) %}
                   ✗
                 {% else %}
                   {{ f.value }}

@@ -70,9 +70,9 @@
             <td>
               {% if value is not defined or value is none %}
                 –
-              {% elif value is sameas true %}
+              {% elif value is sameas(true) %}
                 ✓
-              {% elif value is sameas false %}
+              {% elif value is sameas(false) %}
                 ✗
               {% elif value is iterable and value is not string %}
                 {{ value | join("<br>") | safe }}
