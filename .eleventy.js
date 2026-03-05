@@ -335,6 +335,7 @@ export default function (eleventyConfig) {
 
     const chipDeviceMap = {};
     for (const { category, group, device } of iterateAllDevices(categories)) {
+      const isDeprecated = !!(device.deprecated || (group && group.deprecated));
       (device.variants || []).forEach((chipId) => {
         if (!chipDeviceMap[chipId]) chipDeviceMap[chipId] = [];
         chipDeviceMap[chipId].push({
@@ -345,6 +346,7 @@ export default function (eleventyConfig) {
           groupId: group ? group.id : null,
           groupName: group ? group.name : null,
           url: deviceUrl(category.id, group, device.id),
+          deprecated: isDeprecated,
         });
       });
     }
@@ -361,6 +363,7 @@ export default function (eleventyConfig) {
     function enrichChip(chip) {
       chip.groupedSpecs = buildGroupedSpecs(chip.specs || {}, specDefs.groups);
       chip.devices = (chipDeviceMap[chip.id] || []).filter((d) => {
+        if (d.deprecated) return false;
         const key =
           d.categoryId + "/" + (d.groupId ? d.groupId + "/" : "") + d.id;
         return (
@@ -417,6 +420,7 @@ export default function (eleventyConfig) {
     // Pre-build chip→devices lookup (handles both flat and grouped categories)
     const chipDeviceMap = {};
     for (const { category, group, device } of iterateAllDevices(categories)) {
+      const isDeprecated = !!(device.deprecated || (group && group.deprecated));
       (device.variants || []).forEach((chipId) => {
         if (!chipDeviceMap[chipId]) chipDeviceMap[chipId] = [];
         chipDeviceMap[chipId].push({
@@ -427,6 +431,7 @@ export default function (eleventyConfig) {
           groupId: group ? group.id : null,
           groupName: group ? group.name : null,
           url: deviceUrl(category.id, group, device.id),
+          deprecated: isDeprecated,
         });
       });
     }
@@ -466,6 +471,7 @@ export default function (eleventyConfig) {
       ...chip,
       groupedSpecs: buildGroupedSpecs(chip.specs || {}, specDefs.groups),
       devices: (chipDeviceMap[chip.id] || []).filter((d) => {
+        if (d.deprecated) return false;
         const key =
           d.categoryId + "/" + (d.groupId ? d.groupId + "/" : "") + d.id;
         return (
