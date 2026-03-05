@@ -323,6 +323,15 @@ export default function (eleventyConfig) {
 
     const specDefs = loadYAML("specs.yml");
     const categories = loadYAML("devices.yml");
+    const seriesListForChips = loadYAML("series.yml");
+
+    const genOrderForChips = [];
+    (seriesListForChips || []).forEach((s) => {
+      (s.ranks || []).forEach((r) => {
+        const gid = (r.id || "").match(/^([a-z]\d+)/)?.[1];
+        if (gid && !genOrderForChips.includes(gid)) genOrderForChips.push(gid);
+      });
+    });
 
     const chipDeviceMap = {};
     for (const { category, group, device } of iterateAllDevices(categories)) {
@@ -340,9 +349,25 @@ export default function (eleventyConfig) {
       });
     }
 
+    // Build per-device set of current chip IDs (latest gen per tier)
+    const deviceCurrentMapForChips = {};
+    for (const { category, group, device } of iterateAllDevices(categories)) {
+      const key = category.id + "/" + (group ? group.id + "/" : "") + device.id;
+      deviceCurrentMapForChips[key] = new Set(
+        currentGenPrimaryChips(device.variants || [], genOrderForChips),
+      );
+    }
+
     function enrichChip(chip) {
       chip.groupedSpecs = buildGroupedSpecs(chip.specs || {}, specDefs.groups);
-      chip.devices = chipDeviceMap[chip.id] || [];
+      chip.devices = (chipDeviceMap[chip.id] || []).filter((d) => {
+        const key =
+          d.categoryId + "/" + (d.groupId ? d.groupId + "/" : "") + d.id;
+        return (
+          deviceCurrentMapForChips[key] &&
+          deviceCurrentMapForChips[key].has(chip.id)
+        );
+      });
       return chip;
     }
 
@@ -420,10 +445,34 @@ export default function (eleventyConfig) {
       });
     });
 
+    const genOrderForPages = [];
+    (seriesList || []).forEach((s) => {
+      (s.ranks || []).forEach((r) => {
+        const gid = (r.id || "").match(/^([a-z]\d+)/)?.[1];
+        if (gid && !genOrderForPages.includes(gid)) genOrderForPages.push(gid);
+      });
+    });
+
+    // Build per-device set of current chip IDs (latest gen per tier)
+    const deviceCurrentMapForPages = {};
+    for (const { category, group, device } of iterateAllDevices(categories)) {
+      const key = category.id + "/" + (group ? group.id + "/" : "") + device.id;
+      deviceCurrentMapForPages[key] = new Set(
+        currentGenPrimaryChips(device.variants || [], genOrderForPages),
+      );
+    }
+
     return allChips.map((chip) => ({
       ...chip,
       groupedSpecs: buildGroupedSpecs(chip.specs || {}, specDefs.groups),
-      devices: chipDeviceMap[chip.id] || [],
+      devices: (chipDeviceMap[chip.id] || []).filter((d) => {
+        const key =
+          d.categoryId + "/" + (d.groupId ? d.groupId + "/" : "") + d.id;
+        return (
+          deviceCurrentMapForPages[key] &&
+          deviceCurrentMapForPages[key].has(chip.id)
+        );
+      }),
       rank: chipRankMap[chip.id] || null,
     }));
   });
@@ -475,6 +524,25 @@ export default function (eleventyConfig) {
       });
     }
 
+    const genOrderForGen = [];
+    (seriesList || []).forEach((s) => {
+      (s.ranks || []).forEach((r) => {
+        const gid = (r.id || "").match(/^([a-z]\d+)/)?.[1];
+        if (gid && !genOrderForGen.includes(gid)) genOrderForGen.push(gid);
+      });
+    });
+
+    // Build per-device set of current chip IDs (latest gen per tier)
+    const deviceCurrentMapForGen = {};
+    for (const { category, group, device } of iterateAllDevices(
+      genCategories,
+    )) {
+      const key = category.id + "/" + (group ? group.id + "/" : "") + device.id;
+      deviceCurrentMapForGen[key] = new Set(
+        currentGenPrimaryChips(device.variants || [], genOrderForGen),
+      );
+    }
+
     const pages = [];
     (seriesList || []).forEach((series) => {
       // Group ranks by generation prefix, e.g. "m4-pro" → "m4"
@@ -505,8 +573,18 @@ export default function (eleventyConfig) {
             tier.variants.forEach((chipId) => {
               (genChipDeviceMap[chipId] || []).forEach((d) => {
                 if (!seenUrls.has(d.url)) {
-                  seenUrls.add(d.url);
-                  tierDevices.push(d);
+                  const key =
+                    d.categoryId +
+                    "/" +
+                    (d.groupId ? d.groupId + "/" : "") +
+                    d.id;
+                  if (
+                    deviceCurrentMapForGen[key] &&
+                    deviceCurrentMapForGen[key].has(chipId)
+                  ) {
+                    seenUrls.add(d.url);
+                    tierDevices.push(d);
+                  }
                 }
               });
             });
