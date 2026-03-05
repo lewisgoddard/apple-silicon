@@ -2,9 +2,9 @@
   name: "M5 Max"
   specs:
     cpu_cores: 18
-    performance_cores: 6
-    performance_core_speed: 4.61
-    efficiency_cores: 12
+    super_cores: 6
+    super_core_speed: 4.61
+    performance_cores: 12
     gpu_vendor: "9th-gen Apple-designed"
     gpu_cores: 40
     gpu_eus: 640
@@ -26,9 +26,9 @@
   name: "M5 Max"
   specs:
     cpu_cores: 18
-    performance_cores: 6
-    performance_core_speed: 4.61
-    efficiency_cores: 12
+    super_cores: 6
+    super_core_speed: 4.61
+    performance_cores: 12
     gpu_vendor: "9th-gen Apple-designed"
     gpu_cores: 32
     gpu_eus: 512
@@ -50,9 +50,9 @@
   name: "M5 Pro"
   specs:
     cpu_cores: 18
-    performance_cores: 6
-    performance_core_speed: 4.61
-    efficiency_cores: 12
+    super_cores: 6
+    super_core_speed: 4.61
+    performance_cores: 12
     gpu_vendor: "9th-gen Apple-designed"
     gpu_cores: 20
     gpu_eus: 320
@@ -74,9 +74,9 @@
   name: "M5 Pro"
   specs:
     cpu_cores: 15
-    performance_cores: 5
-    performance_core_speed: 4.61
-    efficiency_cores: 10
+    super_cores: 5
+    super_core_speed: 4.61
+    performance_cores: 10
     gpu_vendor: "9th-gen Apple-designed"
     gpu_cores: 16
     gpu_eus: 256
@@ -98,8 +98,8 @@
   name: "M5"
   specs:
     cpu_cores: 10
-    performance_cores: 4
-    performance_core_speed: 4.61
+    super_cores: 4
+    super_core_speed: 4.61
     efficiency_cores: 6
     efficiency_core_speed: 2.95
     gpu_vendor: "9th-gen Apple-designed"
@@ -123,8 +123,8 @@
   name: "M5"
   specs:
     cpu_cores: 9
-    performance_cores: 3
-    performance_core_speed: 4.61
+    super_cores: 3
+    super_core_speed: 4.61
     efficiency_cores: 6
     efficiency_core_speed: 2.95
     gpu_vendor: "9th-gen Apple-designed"
@@ -148,8 +148,8 @@
   name: "M5"
   specs:
     cpu_cores: 10
-    performance_cores: 4
-    performance_core_speed: 4.61
+    super_cores: 4
+    super_core_speed: 4.61
     efficiency_cores: 6
     efficiency_core_speed: 2.95
     gpu_vendor: "9th-gen Apple-designed"

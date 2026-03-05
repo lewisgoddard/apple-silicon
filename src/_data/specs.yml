@@ -3,6 +3,12 @@ groups:
     fields:
       - key: cpu_cores
         label: "CPU Cores"
+      - key: super_cores
+        label: "Super Cores"
+      - key: super_core_name
+        label: "Super CPU Name"
+      - key: super_core_speed
+        label: "Super Core Speed (GHz)"
       - key: performance_cores
         label: "Performance Cores"
       - key: performance_core_name
