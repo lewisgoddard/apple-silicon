@@ -700,32 +700,70 @@ export default function (eleventyConfig) {
     return match ? match[1] : chipId;
   });
 
+  // Shared helper: given a list of chip IDs, returns only the primary chips
+  // (M/A/S, falling back to H) from the single newest generation present.
+  // This is used by getCurrentChips and getCurrentDevices so that devices
+  // whose variants list spans multiple historical generations (e.g. iMac,
+  // MacBook Air) only contribute their current-gen chips.
+  function currentGenPrimaryChips(variants, genOrder) {
+    if (!variants || !variants.length) return [];
+
+    function extractGenId(id) {
+      const m = (id || "").match(/^([a-z]\d+)/);
+      return m ? m[1] : id;
+    }
+
+    // Isolate primary SoCs (same tier logic as the primaryChips filter)
+    const hasPrimary = variants.some((id) => /^[ams]\d/.test(id));
+    let primary;
+    if (hasPrimary) {
+      primary = variants.filter((id) => /^[ams]\d/.test(id));
+    } else {
+      const hasH = variants.some((id) => /^h\d/.test(id));
+      primary = hasH ? variants.filter((id) => /^h\d/.test(id)) : variants;
+    }
+    if (!primary.length) return [];
+
+    // Find the newest generation among those primary chips
+    const genIds = [...new Set(primary.map(extractGenId))];
+    genIds.sort((a, b) => {
+      const ai = genOrder.indexOf(a);
+      const bi = genOrder.indexOf(b);
+      return (ai === -1 ? 9999 : ai) - (bi === -1 ? 9999 : bi);
+    });
+
+    // Return only chips from that newest generation
+    return primary.filter((id) => extractGenId(id) === genIds[0]);
+  }
+
   // Return deduplicated primary chip IDs from all non-deprecated devices in a
   // given category. For Mac (section-based), pass the section id ("laptop" or
   // "desktop") as the second argument.  For grouped categories (iPad, iPhone,
   // Watch, AirPods) the second argument filters by group id; omit it to include
   // all non-deprecated groups.
+  // Only the newest generation of chips within each device is included, so
+  // historical variants stored in devices.yml do not appear.
   eleventyConfig.addNunjucksGlobal(
     "getCurrentChips",
     function (categoryId, sectionId) {
       const categories = loadYAML("devices.yml");
+      const seriesList = loadYAML("series.yml");
       const category = (categories || []).find((c) => c.id === categoryId);
       if (!category) return [];
+
+      const genOrder = [];
+      (seriesList || []).forEach((s) => {
+        (s.ranks || []).forEach((r) => {
+          const gid = (r.id || "").match(/^([a-z]\d+)/)?.[1];
+          if (gid && !genOrder.includes(gid)) genOrder.push(gid);
+        });
+      });
 
       const seen = new Set();
       const chipIds = [];
 
-      function addPrimaryChips(variants) {
-        if (!variants || !variants.length) return;
-        const hasPrimary = variants.some((id) => /^[ams]\d/.test(id));
-        let primary;
-        if (hasPrimary) {
-          primary = variants.filter((id) => /^[ams]\d/.test(id));
-        } else {
-          const hasH = variants.some((id) => /^h\d/.test(id));
-          primary = hasH ? variants.filter((id) => /^h\d/.test(id)) : variants;
-        }
-        primary.forEach((id) => {
+      function addChips(variants) {
+        currentGenPrimaryChips(variants, genOrder).forEach((id) => {
           if (!seen.has(id)) {
             seen.add(id);
             chipIds.push(id);
@@ -739,14 +777,14 @@ export default function (eleventyConfig) {
           if (sectionId && group.id !== sectionId) continue;
           for (const device of group.devices || []) {
             if (device.deprecated) continue;
-            addPrimaryChips(device.variants);
+            addChips(device.variants);
           }
         }
       } else {
         for (const device of category.devices || []) {
           if (device.deprecated) continue;
           if (sectionId && device.section !== sectionId) continue;
-          addPrimaryChips(device.variants);
+          addChips(device.variants);
         }
       }
 
@@ -755,14 +793,24 @@ export default function (eleventyConfig) {
   );
 
   // Return non-deprecated device objects (with URLs) for a given category and
-  // optional section/group filter. Intended for the device-carousel macro on
-  // /current/* pages.
+  // optional section/group filter. Intended for the device-grid macro on
+  // /current/* pages. The variants field is trimmed to current-gen primary
+  // chips only, matching the behaviour of getCurrentChips.
   eleventyConfig.addNunjucksGlobal(
     "getCurrentDevices",
     function (categoryId, sectionId) {
       const categories = loadYAML("devices.yml");
+      const seriesList = loadYAML("series.yml");
       const category = (categories || []).find((c) => c.id === categoryId);
       if (!category) return [];
+
+      const genOrder = [];
+      (seriesList || []).forEach((s) => {
+        (s.ranks || []).forEach((r) => {
+          const gid = (r.id || "").match(/^([a-z]\d+)/)?.[1];
+          if (gid && !genOrder.includes(gid)) genOrder.push(gid);
+        });
+      });
 
       const devices = [];
 
@@ -775,7 +823,7 @@ export default function (eleventyConfig) {
             devices.push({
               id: device.id,
               name: device.name,
-              variants: device.variants || [],
+              variants: currentGenPrimaryChips(device.variants, genOrder),
               categoryId: category.id,
               categoryName: category.name,
               groupId: group.id,
@@ -791,7 +839,7 @@ export default function (eleventyConfig) {
           devices.push({
             id: device.id,
             name: device.name,
-            variants: device.variants || [],
+            variants: currentGenPrimaryChips(device.variants, genOrder),
             categoryId: category.id,
             categoryName: category.name,
             groupId: null,
