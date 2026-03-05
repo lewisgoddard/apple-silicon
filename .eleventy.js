@@ -761,6 +761,11 @@ export default function (eleventyConfig) {
       return m ? m[1] : id;
     }
 
+    function extractTier(id) {
+      const m = (id || "").match(/^[a-z]\d+-(ultra|max|pro|x|z)-/);
+      return m ? m[1] : "base";
+    }
+
     // Isolate primary SoCs (same tier logic as the primaryChips filter)
     const hasPrimary = variants.some((id) => /^[ams]\d/.test(id));
     let primary;
@@ -772,16 +777,28 @@ export default function (eleventyConfig) {
     }
     if (!primary.length) return [];
 
-    // Find the newest generation among those primary chips
-    const genIds = [...new Set(primary.map(extractGenId))];
-    genIds.sort((a, b) => {
-      const ai = genOrder.indexOf(a);
-      const bi = genOrder.indexOf(b);
-      return (ai === -1 ? 9999 : ai) - (bi === -1 ? 9999 : bi);
-    });
+    // For each tier (ultra/max/pro/base), find the newest generation present.
+    // This handles devices like Mac Studio that ship M4 Max + M3 Ultra simultaneously.
+    const tierLatestGen = {};
+    for (const id of primary) {
+      const tier = extractTier(id);
+      const genId = extractGenId(id);
+      const existing = tierLatestGen[tier];
+      if (!existing) {
+        tierLatestGen[tier] = genId;
+      } else {
+        const ai = genOrder.indexOf(genId);
+        const bi = genOrder.indexOf(existing);
+        if ((ai === -1 ? 9999 : ai) < (bi === -1 ? 9999 : bi)) {
+          tierLatestGen[tier] = genId;
+        }
+      }
+    }
 
-    // Return only chips from that newest generation
-    return primary.filter((id) => extractGenId(id) === genIds[0]);
+    // Return chips that are from the newest generation for their tier
+    return primary.filter(
+      (id) => extractGenId(id) === tierLatestGen[extractTier(id)],
+    );
   }
 
   // Return deduplicated primary chip IDs from all non-deprecated devices in a
