@@ -22,6 +22,29 @@
       </tr>
     </thead>
     <tbody>
+      {# Devices row — list devices that use each chip #}
+      {% set devicesRowHasData = false %}
+      {% for item in items %}
+        {% if item.devices and item.devices | length > 0 %}
+          {% set devicesRowHasData = true %}
+        {% endif %}
+      {% endfor %}
+      {% if devicesRowHasData %}
+      <tr>
+        <td>Devices</td>
+        {% for item in items %}
+          <td>
+            {% if item.devices and item.devices | length > 0 %}
+              {% for device in item.devices %}
+                <a href="{{ device.url }}">{{ device.name }}</a>{% if not loop.last %}<br>{% endif %}
+              {% endfor %}
+            {% else %}
+              –
+            {% endif %}
+          </td>
+        {% endfor %}
+      </tr>
+      {% endif %}
       {% for key in specKeys %}
         {# Only show row if at least one item has data for this key #}
         {% set rowHasData = false %}
@@ -52,7 +75,7 @@
               {% elif value == false %}
                 ✗
               {% elif value is iterable and value is not string %}
-                {{ value | join("<br>") }}
+                {{ value | join("<br>") | safe }}
               {% else %}
                 {{ value }}
               {% endif %}

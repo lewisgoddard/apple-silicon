@@ -11,6 +11,29 @@
       </tr>
     </thead>
     <tbody>
+      {# Devices row — list devices that use each chip #}
+      {% set devicesRowHasData = false %}
+      {% for item in items %}
+        {% if item.devices and item.devices | length > 0 %}
+          {% set devicesRowHasData = true %}
+        {% endif %}
+      {% endfor %}
+      {% if devicesRowHasData %}
+      <tr>
+        <td>Devices</td>
+        {% for item in items %}
+          <td>
+            {% if item.devices and item.devices | length > 0 %}
+              {% for device in item.devices %}
+                <a href="{{ device.url }}">{{ device.name }}</a>{% if not loop.last %}<br>{% endif %}
+              {% endfor %}
+            {% else %}
+              –
+            {% endif %}
+          </td>
+        {% endfor %}
+      </tr>
+      {% endif %}
       {# Iterate groups/fields by index — all items share the same structure from specs.yml #}
       {% for group in items[0].groupedSpecs %}
         {% set groupIndex = loop.index0 %}
@@ -51,7 +74,7 @@
                 {% if f.value is none or f.value is not defined %}
                   –
                 {% elif f.value is iterable and f.value is not string %}
-                  {{ f.value | join("<br>") }}
+                  {{ f.value | join("<br>") | safe }}
                 {% elif f.value == true %}
                   ✓
                 {% elif f.value == false %}
