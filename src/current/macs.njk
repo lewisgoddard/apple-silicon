@@ -7,7 +7,7 @@ permalink: "current/macs/index.html"
 
 {% from "macros/breadcrumbs.njk" import breadcrumbs %}
 {% from "macros/compare-table.njk" import compareTable %}
-{% from "macros/device-carousel.njk" import deviceCarousel %}
+{% from "macros/device-grid.njk" import deviceGrid %}
 
 {{ breadcrumbs([
   { label: "Current Mac Desktop" }
@@ -21,9 +21,10 @@ permalink: "current/macs/index.html"
   the M4 generation.
 </p>
 
+{% set devices = getCurrentDevices("mac", "desktop") %}
+{{ deviceGrid(devices, collections) }}
+
+<h2>Chip Comparison</h2>
 {% set chipIds = getCurrentChips("mac", "desktop") %}
 {% set chips = getChips(chipIds, collections) %}
 {{ compareTable(chips) }}
-
-{% set devices = getCurrentDevices("mac", "desktop") %}
-{{ deviceCarousel(devices) }}

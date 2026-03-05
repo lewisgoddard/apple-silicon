@@ -7,7 +7,7 @@ permalink: "current/macbooks/index.html"
 
 {% from "macros/breadcrumbs.njk" import breadcrumbs %}
 {% from "macros/compare-table.njk" import compareTable %}
-{% from "macros/device-carousel.njk" import deviceCarousel %}
+{% from "macros/device-grid.njk" import deviceGrid %}
 
 {{ breadcrumbs([
   { label: "Current MacBooks" }
@@ -22,9 +22,10 @@ permalink: "current/macbooks/index.html"
   points.
 </p>
 
+{% set devices = getCurrentDevices("mac", "laptop") %}
+{{ deviceGrid(devices, collections) }}
+
+<h2>Chip Comparison</h2>
 {% set chipIds = getCurrentChips("mac", "laptop") %}
 {% set chips = getChips(chipIds, collections) %}
 {{ compareTable(chips) }}
-
-{% set devices = getCurrentDevices("mac", "laptop") %}
-{{ deviceCarousel(devices) }}

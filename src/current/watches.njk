@@ -7,7 +7,7 @@ permalink: "current/watches/index.html"
 
 {% from "macros/breadcrumbs.njk" import breadcrumbs %}
 {% from "macros/compare-table.njk" import compareTable %}
-{% from "macros/device-carousel.njk" import deviceCarousel %}
+{% from "macros/device-grid.njk" import deviceGrid %}
 
 {{ breadcrumbs([
   { label: "Current Apple Watches" }
@@ -20,9 +20,10 @@ permalink: "current/watches/index.html"
   sensors, and wireless into a single package optimised for the wrist.
 </p>
 
+{% set devices = getCurrentDevices("watch") %}
+{{ deviceGrid(devices, collections) }}
+
+<h2>Chip Comparison</h2>
 {% set chipIds = getCurrentChips("watch") %}
 {% set chips = getChips(chipIds, collections) %}
 {{ compareTable(chips) }}
-
-{% set devices = getCurrentDevices("watch") %}
-{{ deviceCarousel(devices) }}

@@ -7,7 +7,7 @@ permalink: "current/iphones/index.html"
 
 {% from "macros/breadcrumbs.njk" import breadcrumbs %}
 {% from "macros/compare-table.njk" import compareTable %}
-{% from "macros/device-carousel.njk" import deviceCarousel %}
+{% from "macros/device-grid.njk" import deviceGrid %}
 
 {{ breadcrumbs([
   { label: "Current iPhones" }
@@ -20,9 +20,10 @@ permalink: "current/iphones/index.html"
   iPhone 16 Plus and iPhone 16 remain available with the A18.
 </p>
 
+{% set devices = getCurrentDevices("iphone") %}
+{{ deviceGrid(devices, collections) }}
+
+<h2>Chip Comparison</h2>
 {% set chipIds = getCurrentChips("iphone") %}
 {% set chips = getChips(chipIds, collections) %}
 {{ compareTable(chips) }}
-
-{% set devices = getCurrentDevices("iphone") %}
-{{ deviceCarousel(devices) }}

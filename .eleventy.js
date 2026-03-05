@@ -775,6 +775,7 @@ export default function (eleventyConfig) {
             devices.push({
               id: device.id,
               name: device.name,
+              variants: device.variants || [],
               categoryId: category.id,
               categoryName: category.name,
               groupId: group.id,
@@ -790,6 +791,7 @@ export default function (eleventyConfig) {
           devices.push({
             id: device.id,
             name: device.name,
+            variants: device.variants || [],
             categoryId: category.id,
             categoryName: category.name,
             groupId: null,

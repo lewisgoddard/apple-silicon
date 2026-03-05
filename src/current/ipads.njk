@@ -7,7 +7,7 @@ permalink: "current/ipads/index.html"
 
 {% from "macros/breadcrumbs.njk" import breadcrumbs %}
 {% from "macros/compare-table.njk" import compareTable %}
-{% from "macros/device-carousel.njk" import deviceCarousel %}
+{% from "macros/device-grid.njk" import deviceGrid %}
 
 {{ breadcrumbs([
   { label: "Current iPads" }
@@ -20,9 +20,10 @@ permalink: "current/ipads/index.html"
   down to M4, while the iPad mini runs the A17 Pro and the base iPad uses the A16.
 </p>
 
+{% set devices = getCurrentDevices("ipad") %}
+{{ deviceGrid(devices, collections) }}
+
+<h2>Chip Comparison</h2>
 {% set chipIds = getCurrentChips("ipad") %}
 {% set chips = getChips(chipIds, collections) %}
 {{ compareTable(chips) }}
-
-{% set devices = getCurrentDevices("ipad") %}
-{{ deviceCarousel(devices) }}
