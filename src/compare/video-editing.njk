@@ -25,17 +25,18 @@ permalink: "compare/video-editing/"
 <p>The best chips from each generation for demanding video workflows.</p>
 
 {% set chips = getChips([
+  "m5-max-18-40",
+  "m5-max-18-32",
   "m4-max-16-40",
   "m3-ultra-32-80",
   "m3-max-16-40",
   "m2-ultra-76-76",
-  "m2-max-38-38",
-  "m1-ultra-20-64",
-  "m1-max-10-32"
+  "m2-max-38-38"
 ], collections) %}
 
 {{ focusedCompareTable(chips, [
   "cpu_cores",
+  "super_cores",
   "performance_cores",
   "efficiency_cores",
   "gpu_cores",
@@ -52,10 +53,10 @@ permalink: "compare/video-editing/"
 <p>Budget-friendly options still capable of casual video editing.</p>
 
 {% set baseChips = getChips([
+  "m5-10-10",
   "m4-10-10",
   "m3-8-10",
-  "m2-8-10",
-  "m1-8-8"
+  "m2-8-10"
 ], collections) %}
 
 {{ focusedCompareTable(baseChips, [

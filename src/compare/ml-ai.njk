@@ -22,20 +22,21 @@ permalink: "compare/ml-ai/"
 <p>Top-tier chips with the most Neural Engine throughput and memory capacity for model training and large inference tasks.</p>
 
 {% set proChips = getChips([
+  "m5-max-18-40",
+  "m5-pro-18-20",
   "m4-max-16-40",
   "m4-pro-14-20",
   "m3-ultra-32-80",
   "m3-max-16-40",
   "m2-ultra-76-76",
-  "m2-max-38-38",
-  "m1-ultra-20-64",
-  "m1-max-10-32"
+  "m2-max-38-38"
 ], collections) %}
 
 {{ focusedCompareTable(proChips, [
   "npu_cores",
   "npu_tops",
   "cpu_cores",
+  "super_cores",
   "performance_cores",
   "gpu_cores",
   "gpu_tflops",
@@ -52,9 +53,8 @@ permalink: "compare/ml-ai/"
   "m4-10-10",
   "m3-8-10",
   "m2-8-10",
-  "m1-8-8",
-  "a18-pro-6-6",
-  "a17-pro-6-6"
+  "a19-pro-6-5",
+  "a18-pro-6-6"
 ], collections) %}
 
 {{ focusedCompareTable(baseChips, [
