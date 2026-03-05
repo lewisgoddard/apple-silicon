@@ -1,0 +1,30 @@
+---
+layout: base.njk
+title: "Current MacBook Lineup"
+description: "Compare the chips available in every current MacBook — MacBook Air and MacBook Pro across all available configurations."
+permalink: "current/macbooks/index.html"
+---
+
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+{% from "macros/compare-table.njk" import compareTable %}
+{% from "macros/device-carousel.njk" import deviceCarousel %}
+
+{{ breadcrumbs([
+  { label: "Current MacBooks" }
+]) }}
+
+<h1>Current MacBook Lineup</h1>
+<p>
+  Every chip available in a current (non-discontinued) MacBook. The lineup runs
+  from the entry-level M4 MacBook Air through to M5 Max in the MacBook Pro, with
+  the MacBook Neo offering the A18 Pro for an ultra-thin form factor. MacBook Air
+  models are also available in M4, M3, and M2 configurations at lower price
+  points.
+</p>
+
+{% set chipIds = getCurrentChips("mac", "laptop") %}
+{% set chips = getChips(chipIds, collections) %}
+{{ compareTable(chips) }}
+
+{% set devices = getCurrentDevices("mac", "laptop") %}
+{{ deviceCarousel(devices) }}

@@ -700,6 +700,109 @@ export default function (eleventyConfig) {
     return match ? match[1] : chipId;
   });
 
+  // Return deduplicated primary chip IDs from all non-deprecated devices in a
+  // given category. For Mac (section-based), pass the section id ("laptop" or
+  // "desktop") as the second argument.  For grouped categories (iPad, iPhone,
+  // Watch, AirPods) the second argument filters by group id; omit it to include
+  // all non-deprecated groups.
+  eleventyConfig.addNunjucksGlobal(
+    "getCurrentChips",
+    function (categoryId, sectionId) {
+      const categories = loadYAML("devices.yml");
+      const category = (categories || []).find((c) => c.id === categoryId);
+      if (!category) return [];
+
+      const seen = new Set();
+      const chipIds = [];
+
+      function addPrimaryChips(variants) {
+        if (!variants || !variants.length) return;
+        const hasPrimary = variants.some((id) => /^[ams]\d/.test(id));
+        let primary;
+        if (hasPrimary) {
+          primary = variants.filter((id) => /^[ams]\d/.test(id));
+        } else {
+          const hasH = variants.some((id) => /^h\d/.test(id));
+          primary = hasH ? variants.filter((id) => /^h\d/.test(id)) : variants;
+        }
+        primary.forEach((id) => {
+          if (!seen.has(id)) {
+            seen.add(id);
+            chipIds.push(id);
+          }
+        });
+      }
+
+      if (category.groups) {
+        for (const group of category.groups || []) {
+          if (group.deprecated) continue;
+          if (sectionId && group.id !== sectionId) continue;
+          for (const device of group.devices || []) {
+            if (device.deprecated) continue;
+            addPrimaryChips(device.variants);
+          }
+        }
+      } else {
+        for (const device of category.devices || []) {
+          if (device.deprecated) continue;
+          if (sectionId && device.section !== sectionId) continue;
+          addPrimaryChips(device.variants);
+        }
+      }
+
+      return chipIds;
+    },
+  );
+
+  // Return non-deprecated device objects (with URLs) for a given category and
+  // optional section/group filter. Intended for the device-carousel macro on
+  // /current/* pages.
+  eleventyConfig.addNunjucksGlobal(
+    "getCurrentDevices",
+    function (categoryId, sectionId) {
+      const categories = loadYAML("devices.yml");
+      const category = (categories || []).find((c) => c.id === categoryId);
+      if (!category) return [];
+
+      const devices = [];
+
+      if (category.groups) {
+        for (const group of category.groups || []) {
+          if (group.deprecated) continue;
+          if (sectionId && group.id !== sectionId) continue;
+          for (const device of group.devices || []) {
+            if (device.deprecated) continue;
+            devices.push({
+              id: device.id,
+              name: device.name,
+              categoryId: category.id,
+              categoryName: category.name,
+              groupId: group.id,
+              groupName: group.name,
+              url: deviceUrl(category.id, group, device.id),
+            });
+          }
+        }
+      } else {
+        for (const device of category.devices || []) {
+          if (device.deprecated) continue;
+          if (sectionId && device.section !== sectionId) continue;
+          devices.push({
+            id: device.id,
+            name: device.name,
+            categoryId: category.id,
+            categoryName: category.name,
+            groupId: null,
+            groupName: null,
+            url: deviceUrl(category.id, null, device.id),
+          });
+        }
+      }
+
+      return devices;
+    },
+  );
+
   // Return directory configuration so Eleventy processes files from `src/`
   return {
     dir: {

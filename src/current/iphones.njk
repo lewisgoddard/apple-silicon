@@ -1,0 +1,28 @@
+---
+layout: base.njk
+title: "Current iPhone Lineup"
+description: "Compare the chips available in every current iPhone — iPhone 17 and iPhone 16."
+permalink: "current/iphones/index.html"
+---
+
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+{% from "macros/compare-table.njk" import compareTable %}
+{% from "macros/device-carousel.njk" import deviceCarousel %}
+
+{{ breadcrumbs([
+  { label: "Current iPhones" }
+]) }}
+
+<h1>Current iPhone Lineup</h1>
+<p>
+  Every chip available in a current (non-discontinued) iPhone. The iPhone 17 Pro
+  lineup uses the A19 Pro, while the iPhone 17 and iPhone 17e carry the A19. The
+  iPhone 16 Plus and iPhone 16 remain available with the A18.
+</p>
+
+{% set chipIds = getCurrentChips("iphone") %}
+{% set chips = getChips(chipIds, collections) %}
+{{ compareTable(chips) }}
+
+{% set devices = getCurrentDevices("iphone") %}
+{{ deviceCarousel(devices) }}

@@ -1,0 +1,28 @@
+---
+layout: base.njk
+title: "Current Apple Watch Lineup"
+description: "Compare the chips available in every current Apple Watch — Apple Watch Series, Ultra, and SE."
+permalink: "current/watches/index.html"
+---
+
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+{% from "macros/compare-table.njk" import compareTable %}
+{% from "macros/device-carousel.njk" import deviceCarousel %}
+
+{{ breadcrumbs([
+  { label: "Current Apple Watches" }
+]) }}
+
+<h1>Current Apple Watch Lineup</h1>
+<p>
+  Every chip available in a current (non-discontinued) Apple Watch. The Series
+  11, Ultra 3, and SE 3 all share the S10 SiP, which integrates the processor,
+  sensors, and wireless into a single package optimised for the wrist.
+</p>
+
+{% set chipIds = getCurrentChips("watch") %}
+{% set chips = getChips(chipIds, collections) %}
+{{ compareTable(chips) }}
+
+{% set devices = getCurrentDevices("watch") %}
+{{ deviceCarousel(devices) }}

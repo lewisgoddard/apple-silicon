@@ -1,0 +1,29 @@
+---
+layout: base.njk
+title: "Current Mac Desktop Lineup"
+description: "Compare the chips available in every current Mac desktop — iMac, Mac mini, Mac Studio, and Mac Pro."
+permalink: "current/macs/index.html"
+---
+
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+{% from "macros/compare-table.njk" import compareTable %}
+{% from "macros/device-carousel.njk" import deviceCarousel %}
+
+{{ breadcrumbs([
+  { label: "Current Mac Desktop" }
+]) }}
+
+<h1>Current Mac Desktop Lineup</h1>
+<p>
+  Every chip available in a current (non-discontinued) desktop Mac. The lineup
+  spans from the entry-level M4 in the iMac and Mac mini through to M4 Max in
+  the Mac Studio. The Mac Pro uses the M2 Ultra and has not yet been updated to
+  the M4 generation.
+</p>
+
+{% set chipIds = getCurrentChips("mac", "desktop") %}
+{% set chips = getChips(chipIds, collections) %}
+{{ compareTable(chips) }}
+
+{% set devices = getCurrentDevices("mac", "desktop") %}
+{{ deviceCarousel(devices) }}

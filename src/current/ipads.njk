@@ -1,0 +1,28 @@
+---
+layout: base.njk
+title: "Current iPad Lineup"
+description: "Compare the chips available in every current iPad — iPad Pro, iPad Air, iPad mini, and iPad."
+permalink: "current/ipads/index.html"
+---
+
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+{% from "macros/compare-table.njk" import compareTable %}
+{% from "macros/device-carousel.njk" import deviceCarousel %}
+
+{{ breadcrumbs([
+  { label: "Current iPads" }
+]) }}
+
+<h1>Current iPad Lineup</h1>
+<p>
+  Every chip available in a current (non-discontinued) iPad. The iPad Pro uses
+  the M5, giving it the same compute power as a MacBook Air. The iPad Air steps
+  down to M4, while the iPad mini runs the A17 Pro and the base iPad uses the A16.
+</p>
+
+{% set chipIds = getCurrentChips("ipad") %}
+{% set chips = getChips(chipIds, collections) %}
+{{ compareTable(chips) }}
+
+{% set devices = getCurrentDevices("ipad") %}
+{{ deviceCarousel(devices) }}

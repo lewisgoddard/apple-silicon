@@ -1,0 +1,29 @@
+---
+layout: base.njk
+title: "Current AirPods Lineup"
+description: "Compare the chips available in every current AirPods model — AirPods 4, AirPods Pro 3, and AirPods Max."
+permalink: "current/airpods/index.html"
+---
+
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+{% from "macros/compare-table.njk" import compareTable %}
+{% from "macros/device-carousel.njk" import deviceCarousel %}
+
+{{ breadcrumbs([
+  { label: "Current AirPods" }
+]) }}
+
+<h1>Current AirPods Lineup</h1>
+<p>
+  Every chip available in a current (non-discontinued) AirPods model. AirPods 4
+  (with and without Active Noise Cancellation) and AirPods Pro 3 all use the H2
+  chip. The AirPods Max uses the H1, which remains on sale alongside the newer
+  lineup.
+</p>
+
+{% set chipIds = getCurrentChips("airpods") %}
+{% set chips = getChips(chipIds, collections) %}
+{{ compareTable(chips) }}
+
+{% set devices = getCurrentDevices("airpods") %}
+{{ deviceCarousel(devices) }}
