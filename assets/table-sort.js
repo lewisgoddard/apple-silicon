@@ -154,6 +154,14 @@
         label.classList.add("sort-active");
         label.classList.add(sortDirection === "asc" ? "sort-asc" : "sort-desc");
       });
+
+      /* Default sort: GPU cores descending on first load. */
+      if (label.textContent.trim() === "GPU cores") {
+        activeSortLabel = "GPU cores";
+        sortDirection = "desc";
+        sortColumnsByRow(table, row, sortDirection);
+        label.classList.add("sort-active", "sort-desc");
+      }
     });
   }
 
