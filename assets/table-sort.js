@@ -4,6 +4,36 @@
   /* Specs where a lower number is better */
   var lowerIsBetter = ["Process (nm)", "Die Size (mm²)"];
 
+  /* Series priority for default column ordering (lower = shown first) */
+  var seriesOrder = {
+    m: 0,
+    a: 1,
+    s: 2,
+    c: 3,
+    r: 4,
+    t: 5,
+    u: 6,
+    w: 7,
+    h: 8,
+    n: 9,
+  };
+  var tierOrder = { ultra: 0, max: 1, pro: 2, x: 3, z: 4 }; /* base = 5 */
+
+  /**
+   * Parse a chip id (e.g. "m5-max-16-40", "a19-pro-6-6", "m4") into
+   * { series, gen, tier } for ordering. Returns null if unrecognised.
+   */
+  function parseChipId(id) {
+    if (!id) return null;
+    var m = id.match(/^([a-z])(\d+)(?:-(ultra|max|pro|x|z))?/);
+    if (!m) return null;
+    return {
+      series: seriesOrder[m[1]] !== undefined ? seriesOrder[m[1]] : 99,
+      gen: parseInt(m[2], 10),
+      tier: m[3] ? (tierOrder[m[3]] !== undefined ? tierOrder[m[3]] : 3) : 5,
+    };
+  }
+
   /**
    * Try to extract a numeric value from a table-cell string.
    * Returns null for empty, dash, or non-numeric content.
@@ -161,12 +191,43 @@
         label.classList.add(sortDirection === "asc" ? "sort-asc" : "sort-desc");
       });
 
-      /* Default sort: Release date descending on first load. */
-      if (label.textContent.trim() === "Release date") {
-        activeSortLabel = "Release date";
-        sortDirection = "desc";
-        sortColumnsByRow(table, row, sortDirection);
-        label.classList.add("sort-active", "sort-desc");
+      /* Default sort: by chip identity (series, gen descending, tier) on first load. */
+      var headerCells = Array.from(table.querySelectorAll("thead th"));
+      var chipCols = [];
+      for (var ci = 1; ci < headerCells.length; ci++) {
+        chipCols.push({
+          pos: ci,
+          parsed: parseChipId(headerCells[ci].getAttribute("data-chip-id")),
+        });
+      }
+      if (
+        chipCols.some(function (c) {
+          return c.parsed !== null;
+        })
+      ) {
+        var original = chipCols.map(function (c) {
+          return c.pos;
+        });
+        chipCols.sort(function (a, b) {
+          var pa = a.parsed || { series: 99, gen: 0, tier: 99 };
+          var pb = b.parsed || { series: 99, gen: 0, tier: 99 };
+          if (pa.series !== pb.series) return pa.series - pb.series;
+          if (pa.gen !== pb.gen) return pb.gen - pa.gen; /* newest first */
+          return pa.tier - pb.tier;
+        });
+        var alreadySorted = chipCols.every(function (c, i) {
+          return c.pos === original[i];
+        });
+        if (!alreadySorted) {
+          table.querySelectorAll("tr").forEach(function (row) {
+            var rc = Array.from(row.children);
+            if (rc.length < headerCells.length) return;
+            chipCols.forEach(function (c) {
+              row.appendChild(rc[c.pos]);
+            });
+          });
+          highlightBestWorst(table);
+        }
       }
     });
   }

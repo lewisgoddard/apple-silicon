@@ -6,7 +6,7 @@
       <tr>
         <th>Spec</th>
         {% for item in items %}
-          <th>{{ item.name }}{% if not shortHeaders and item.specs and item.specs.cpu_cores and item.specs.gpu_cores %}<br><span class="th-variant">{{ item.specs.cpu_cores }}c&nbsp;CPU / {{ item.specs.gpu_cores }}c&nbsp;GPU</span>{% endif %}</th>
+          <th data-chip-id="{{ item.id }}">{{ item.name }}{% if not shortHeaders and item.specs and item.specs.cpu_cores and item.specs.gpu_cores %}<br><span class="th-variant">{{ item.specs.cpu_cores }}c&nbsp;CPU / {{ item.specs.gpu_cores }}c&nbsp;GPU</span>{% endif %}</th>
         {% endfor %}
       </tr>
     </thead>
