@@ -27,36 +27,55 @@ This project is an Eleventy (11ty) static site using Nunjucks templates and YAML
 
 `.eleventy.js` loads YAML and creates the following collections:
 
-| Collection                  | Source                           | Purpose                                                             |
-| --------------------------- | -------------------------------- | ------------------------------------------------------------------- |
-| `devicesCollection`         | `devices.yml`                    | Raw device categories for listing pages                             |
-| `devicePagesCollection`     | `devices.yml` (flattened)        | One entry per device, enriched with `categoryId`/`categoryName`     |
-| `seriesCollection`          | `series.yml`                     | Raw series for listing pages                                        |
-| `rankPagesCollection`       | `series.yml` (flattened ranks)   | One entry per rank/tier, enriched with `seriesId`/`seriesName`      |
-| `chipsCollection`           | `chips-*.yml`                    | All chips enriched with `groupedSpecs`                              |
-| `chipPagesCollection`       | `chips-*.yml` + devices + series | All chips enriched with `groupedSpecs`, `devices` list, `rank` info |
-| `generationPagesCollection` | `series.yml` + `chips-*.yml`     | One entry per generation with merged tier specs and `allVariants`   |
+| Collection                   | Source                             | Purpose                                                                                                      |
+| ---------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `devicesCollection`          | `devices.yml`                      | Raw device categories for listing pages                                                                      |
+| `devicePagesCollection`      | `devices.yml` (flattened)          | One entry per device, enriched with `categoryId`/`categoryName`, `generationGroups`                          |
+| `deviceGroupPagesCollection` | `devices.yml` (grouped categories) | One entry per group (e.g. iPhone 17, iPad Pro), with `allVariants`                                           |
+| `seriesCollection`           | `series.yml`                       | Raw series for listing pages                                                                                 |
+| `rankPagesCollection`        | `series.yml` (flattened ranks)     | One entry per rank/tier, enriched with `seriesId`/`seriesName`, `siblingTiers`, `prevGenTier`, `nextGenTier` |
+| `chipsCollection`            | `chips-*.yml`                      | All chips enriched with `groupedSpecs`                                                                       |
+| `chipPagesCollection`        | `chips-*.yml` + devices + series   | All chips enriched with `groupedSpecs`, `devices` list, `rank` info                                          |
+| `generationPagesCollection`  | `series.yml` + `chips-*.yml`       | One entry per generation with merged tier specs and `allVariants`                                            |
 
 Each chip is enriched with `groupedSpecs` computed from `specs.yml`. Templates read from `groupedSpecs` — don't recompute in templates.
 
+`rankPagesCollection` entries include navigation helpers computed at build time:
+
+- `siblingTiers` — other tiers in the same generation (e.g. Pro alongside Max)
+- `prevGenTier` / `nextGenTier` — equivalent tier in the previous/next generation
+
+`devicePagesCollection` entries include `generationGroups` — an array of `{ genId, label, chipIds, isCurrent }` grouping variants by generation, newest first.
+
 ### URL structure
 
-| URL pattern                        | Template                | Collection                  |
-| ---------------------------------- | ----------------------- | --------------------------- |
-| `/series/<series>/`                | `series/series.njk`     | `seriesCollection`          |
-| `/chips/<gen>/`                    | `series/generation.njk` | `generationPagesCollection` |
-| `/chips/<gen>/<tier>/`             | `series/rank.njk`       | `rankPagesCollection`       |
-| `/chips/<gen>/<tier>/<cpu>-<gpu>/` | `chips/chip.njk`        | `chipPagesCollection`       |
-| `/devices/<category>/`             | `devices/devices.njk`   | `devicesCollection`         |
-| `/devices/<category>/<device>/`    | `devices/device.njk`    | `devicePagesCollection`     |
+| URL pattern                             | Template                    | Collection                   |
+| --------------------------------------- | --------------------------- | ---------------------------- |
+| `/series/<series>/`                     | `series/series.njk`         | `seriesCollection`           |
+| `/chips/<gen>/`                         | `series/generation.njk`     | `generationPagesCollection`  |
+| `/chips/<gen>/<tier>/`                  | `series/rank.njk`           | `rankPagesCollection`        |
+| `/chips/<gen>/<tier>/<cpu>-<gpu>/`      | `chips/chip.njk`            | `chipPagesCollection`        |
+| `/devices/<category>/`                  | `devices/devices.njk`       | `devicesCollection`          |
+| `/devices/<category>/<group>/`          | `devices/device-group.njk`  | `deviceGroupPagesCollection` |
+| `/devices/<category>/<device>/`         | `devices/device.njk`        | `devicePagesCollection`      |
+| `/devices/<category>/<group>/<device>/` | `devices/device.njk`        | `devicePagesCollection`      |
+| `/current/<subset>/`                    | `current/*.njk`             | (static pages)               |
+| `/compare/custom/`                      | `compare/custom.njk`        | (static page)                |
+| `/compare/gaming/`                      | `compare/gaming.njk`        | (static page)                |
+| `/compare/ml-ai/`                       | `compare/ml-ai.njk`         | (static page)                |
+| `/compare/video-editing/`               | `compare/video-editing.njk` | (static page)                |
 
 Example: chip `m4-pro-14-20` → `/chips/m4/pro/14-20/`; chip `m1-8-8` → `/chips/m1/base/8-8/`.
+
+For grouped device categories (iPhone, iPad, Watch, AirPods), devices nest under their group slug, e.g. `/devices/iphone/17/air/`. For flat categories (Mac), devices sit directly under the category, e.g. `/devices/mac/macbook-pro-16/`.
 
 ### Global helpers (Nunjucks)
 
 - `getChips(ids, collections)` — returns enriched chip objects for the given list of `id`s in order.
 - `getDevicesForChips(ids)` — returns de-duplicated list of `{id, name, categoryId, categoryName}` for devices that use any of the given chip IDs.
 - `getChipRange(ids, collections)` — returns a human-readable range string, e.g. `"M2 – M4"`.
+- `getCurrentChips(categoryId, sectionOrGroupId?)` — returns current-gen primary chip IDs for non-deprecated devices in a category. Pass a `section` ID for Mac (`"laptop"` / `"desktop"`), a `group` ID for grouped categories, or omit for all. Historical variants are excluded — only the newest generation per device is returned.
+- `getCurrentDevices(categoryId, sectionOrGroupId?)` — same filtering as `getCurrentChips`, but returns device objects `{id, name, variants, categoryId, categoryName, url}` suitable for passing to `deviceGrid`. The `variants` field is trimmed to current-gen primary chips.
 
 ### Filters (Nunjucks)
 
@@ -65,6 +84,7 @@ Example: chip `m4-pro-14-20` → `/chips/m4/pro/14-20/`; chip `m1-8-8` → `/chi
 - `chipTier` — extracts tier from a chip ID (`"m4-pro-14-20"` → `"pro"`, `"m1-8-8"` → `"base"`).
 - `chipVariant` — extracts variant suffix from a chip ID (`"m4-pro-14-20"` → `"14-20"`).
 - `map` — maps an array by a property name.
+- `primaryChips(ids, referenceIds?)` — filters a list of chip IDs to keep only "primary" SoCs (A, M, S series). When H-series chips are present and no A/M/S chips exist, H is promoted to primary. All other series (R, U, W, T, N, C) are tertiary and filtered out. Used to derive what shows in tables, cards, and headings on device pages.
 
 ### Macros
 
@@ -80,17 +100,42 @@ Example: chip `m4-pro-14-20` → `/chips/m4/pro/14-20/`; chip `m1-8-8` → `/chi
   - Import: `{% from "macros/device-carousel.njk" import deviceCarousel %}`
   - Usage: `{% set devices = getDevicesForChips(chipIds) %} {{ deviceCarousel(devices) }}`
   - Renders a horizontally-scrolling row of device cards linking to device pages. Used on chip, rank, and generation pages.
+- **Device grid**: `src/_includes/macros/device-grid.njk`
+  - Import: `{% from "macros/device-grid.njk" import deviceGrid %}`
+  - Usage: `{{ deviceGrid(devices, collections) }}` or `{{ deviceGrid(devices, collections, "/devices/mac/") }}`
+  - Renders a grid of device cards with chip count and range summary. Active devices first, `deprecated` devices last with a "Discontinued" badge. Pass `baseUrl` when device URLs aren't pre-computed. Used on `/current/*` and device-group pages.
+- **Spec card**: `src/_includes/macros/spec-card.njk`
+  - Import: `{% from "macros/spec-card.njk" import specCard %}`
+  - Usage: `{{ specCard(chip) }}`
+  - Renders a summary card of key chip highlights (CPU/GPU/NPU cores, memory bandwidth, memory options, process node). Used on individual chip pages.
+- **Generation nav**: `src/_includes/macros/gen-nav.njk`
+  - Import: `{% from "macros/gen-nav.njk" import genNav %}`
+  - Usage: `{{ genNav(prevGenTier, nextGenTier, siblingTiers) }}`
+  - Renders previous/next generation links and same-generation sibling tier links. Used on rank pages.
+- **Breadcrumbs**: `src/_includes/macros/breadcrumbs.njk`
+  - Import: `{% from "macros/breadcrumbs.njk" import breadcrumbs %}`
+  - Usage: `{{ breadcrumbs([{ label: "Mac", url: "/devices/mac/" }, { label: "MacBook Air 13″" }]) }}`
+  - Renders an accessible `<nav>` breadcrumb trail. The last crumb has `aria-current="page"` and no link. Always prepends a "Home" crumb automatically.
 
 ### Page templates
 
 - `src/series/series.njk` — series listing (e.g. M Series)
 - `src/series/generation.njk` — generation family comparison (e.g. M4 Family) with device carousel
-- `src/series/rank.njk` — rank/tier variant comparison (e.g. M4 Pro) with device carousel
-- `src/chips/chip.njk` — individual chip variant spec sheet with device carousel
+- `src/series/rank.njk` — rank/tier variant comparison (e.g. M4 Pro) with device carousel and gen-nav
+- `src/chips/chip.njk` — individual chip variant spec sheet with spec card and device carousel
 - `src/devices/devices.njk` — device category listing (e.g. Mac)
-- `src/devices/device.njk` — individual device chip comparison (e.g. MacBook Pro 14)
-- `src/compare.njk` — ad-hoc comparison page
-- `src/video-editing.njk` — video editing focused comparison
+- `src/devices/device-group.njk` — group-level device listing for grouped categories (e.g. iPhone 17)
+- `src/devices/device.njk` — individual device chip comparison (e.g. MacBook Pro 14); shows multi-generation sections when `generationGroups` has more than one entry
+- `src/compare/custom.njk` — ad-hoc chip comparison (JS-driven, URL-shareable)
+- `src/compare/gaming.njk` — gaming-focused chip comparison using `focusedCompareTable`
+- `src/compare/ml-ai.njk` — ML/AI-focused chip comparison using `focusedCompareTable`
+- `src/compare/video-editing.njk` — video editing focused chip comparison using `focusedCompareTable`
+- `src/current/macbooks.njk` — current MacBook lineup using `getCurrentChips`/`getCurrentDevices`
+- `src/current/macs.njk` — current desktop Mac lineup
+- `src/current/iphones.njk` — current iPhone lineup
+- `src/current/ipads.njk` — current iPad lineup
+- `src/current/watches.njk` — current Apple Watch lineup
+- `src/current/airpods.njk` — current AirPods lineup
 
 ### Specs conventions
 
@@ -102,6 +147,13 @@ Example: chip `m4-pro-14-20` → `/chips/m4/pro/14-20/`; chip `m1-8-8` → `/chi
   - Strings for names/types (e.g., `memory_type: "LPDDR5X-8533"`).
 - Units: encode values to match labels (e.g., GHz if label says "(GHz)"). Avoid conflicting inline comments.
 - Display order is controlled solely by `specs.yml`.
+
+### Device data conventions
+
+- `deprecated: true` on a device marks it as discontinued. It still appears in its category listing (sorted last) and keeps its page, but is excluded from `/current/*` pages and `getCurrentChips`/`getCurrentDevices` results.
+- `section` on a flat-category device (e.g. Mac) allows filtering by sub-group: `"laptop"` or `"desktop"`. Pass the section id as the second argument to `getCurrentChips`/`getCurrentDevices`.
+- Grouped categories (iPhone, iPad, Watch, AirPods) use `groups` instead of `devices` at the top level. Each group has an `id`, `name`, and `devices` array. A `deprecated: true` group is excluded from `/current/*` pages.
+- `variants` should list every chip configuration ever offered, newest first. Historical variants are filtered at build time so only the newest generation appears in `getCurrentChips` results.
 
 ### IDs and naming
 
@@ -183,3 +235,16 @@ When adding chip data from Wikipedia's comparison tables:
 - Propose concise, file-scoped changes (YAML entries or small Nunjucks edits).
 - Respect existing patterns for IDs, specs keys, and macro usage.
 - When introducing a new series, remember to include it in `.eleventy.js` so chips appear in `chipsCollection` and `chipPagesCollection`.
+
+### Keeping these instructions up to date
+
+When making structural changes to the project, update `.github/copilot-instructions.md` in the same session:
+
+- **New macro added** → add an entry under "Macros" with import path, usage example, and purpose.
+- **New global helper or filter added** → add an entry under "Global helpers" or "Filters".
+- **New collection added** → add a row to the Build-time behavior table and describe the enrichment.
+- **New URL pattern or template added** → add a row to the URL structure table and a line under "Page templates".
+- **New YAML convention introduced** (e.g. a new top-level field on devices) → document under "Device data conventions" or "Specs conventions".
+- **Common task changes** → update the relevant step in "Common tasks".
+
+Keep descriptions short and grounded in actual code — the instructions are a quick reference, not prose documentation.
