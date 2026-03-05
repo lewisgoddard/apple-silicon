@@ -216,7 +216,8 @@
           if (pa.series !== pb.series) return pa.series - pb.series;
           if (pa.gen !== pb.gen) return pb.gen - pa.gen; /* newest first */
           if (pa.tier !== pb.tier) return pa.tier - pb.tier;
-          if (pa.cpu !== pb.cpu) return pb.cpu - pa.cpu; /* more CPU cores first */
+          if (pa.cpu !== pb.cpu)
+            return pb.cpu - pa.cpu; /* more CPU cores first */
           return pb.gpu - pa.gpu; /* more GPU cores first */
         });
         var alreadySorted = chipCols.every(function (c, i) {
