@@ -516,6 +516,7 @@ export default function (eleventyConfig) {
     for (const { category, group, device } of iterateAllDevices(
       genCategories,
     )) {
+      if (device.deprecated) continue;
       (device.variants || []).forEach((chipId) => {
         if (!genChipDeviceMap[chipId]) genChipDeviceMap[chipId] = [];
         genChipDeviceMap[chipId].push({
