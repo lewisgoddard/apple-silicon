@@ -155,9 +155,9 @@
         label.classList.add(sortDirection === "asc" ? "sort-asc" : "sort-desc");
       });
 
-      /* Default sort: GPU cores descending on first load. */
-      if (label.textContent.trim() === "GPU cores") {
-        activeSortLabel = "GPU cores";
+      /* Default sort: Release date descending on first load. */
+      if (label.textContent.trim() === "Release date") {
+        activeSortLabel = "Release date";
         sortDirection = "desc";
         sortColumnsByRow(table, row, sortDirection);
         label.classList.add("sort-active", "sort-desc");
