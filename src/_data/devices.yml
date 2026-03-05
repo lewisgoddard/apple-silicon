@@ -604,10 +604,10 @@
           variants: ["h1"]
     - id: "max"
       name: "AirPods Max"
+      deprecated: true
       devices:
         - id: "1"
           name: "AirPods Max"
-          deprecated: true
           variants: ["h1"]
 - id: "vision"
   name: "Apple Vision"
@@ -639,34 +639,41 @@
 - id: "apple-tv"
   name: "Apple TV"
   description: "Apple silicon for Apple TV media players"
-  devices:
-    - id: "apple-tv-4k-3"
-      name: "Apple TV 4K (3rd generation)"
-      variants: ["a15-6-5"]
-    - id: "apple-tv-4k-2"
-      name: "Apple TV 4K (2nd generation)"
-      deprecated: true
-      variants: ["a12-6-4"]
-    - id: "apple-tv-4k-1"
-      name: "Apple TV 4K (1st generation)"
-      deprecated: true
-      variants: ["a10-x-6-12"]
-    - id: "apple-tv-hd"
+  groups:
+    - id: "4k"
+      name: "Apple TV 4K"
+      devices:
+        - id: "3"
+          name: "Apple TV 4K (3rd generation)"
+          variants: ["a15-6-5"]
+        - id: "2"
+          name: "Apple TV 4K (2nd generation)"
+          deprecated: true
+          variants: ["a12-6-4"]
+        - id: "1"
+          name: "Apple TV 4K (1st generation)"
+          deprecated: true
+          variants: ["a10-x-6-12"]
+    - id: "hd"
       name: "Apple TV HD"
       deprecated: true
-      variants: ["a8-2-4"]
-    - id: "apple-tv-3"
-      name: "Apple TV (3rd generation)"
+      devices:
+        - id: "1"
+          name: "Apple TV HD"
+          variants: ["a8-2-4"]
+    - id: "base"
+      name: "Apple TV"
       deprecated: true
-      variants: ["a5-2-2"]
-    - id: "apple-tv-2"
-      name: "Apple TV (2nd generation)"
-      deprecated: true
-      variants: ["a4-1-1"]
-    - id: "apple-tv-1"
-      name: "Apple TV (1st generation)"
-      deprecated: true
-      variants: []
+      devices:
+        - id: "3"
+          name: "Apple TV (3rd generation)"
+          variants: ["a5-2-2"]
+        - id: "2"
+          name: "Apple TV (2nd generation)"
+          variants: ["a4-1-1"]
+        - id: "1"
+          name: "Apple TV (1st generation)"
+          variants: []
 - id: "display"
   name: "Display"
   description: "Apple silicon for Apple displays"
