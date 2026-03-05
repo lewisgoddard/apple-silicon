@@ -13,6 +13,7 @@
     gpu_tflops: 20.53
     gpu_rt: true
     npu_cores: 16
+    npu_tops: 61
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
     video_decode: 2
     video_encode: 2
@@ -41,6 +42,7 @@
     gpu_tflops: 16.42
     gpu_rt: true
     npu_cores: 16
+    npu_tops: 61
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
     video_decode: 2
     video_encode: 2
@@ -69,6 +71,7 @@
     gpu_tflops: 10.27
     gpu_rt: true
     npu_cores: 16
+    npu_tops: 61
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
     video_decode: 1
     video_encode: 1
@@ -97,6 +100,7 @@
     gpu_tflops: 8.21
     gpu_rt: true
     npu_cores: 16
+    npu_tops: 61
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
     video_decode: 1
     video_encode: 1
@@ -126,6 +130,7 @@
     gpu_tflops: 5.13
     gpu_rt: true
     npu_cores: 16
+    npu_tops: 61
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
     video_decode: 1
     video_encode: 1
@@ -155,6 +160,7 @@
     gpu_tflops: 5.13
     gpu_rt: true
     npu_cores: 16
+    npu_tops: 61
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
     video_decode: 1
     video_encode: 1
@@ -184,6 +190,7 @@
     gpu_tflops: 4.11
     gpu_rt: true
     npu_cores: 16
+    npu_tops: 61
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
     video_decode: 1
     video_encode: 1
