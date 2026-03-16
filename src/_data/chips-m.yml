@@ -457,7 +457,7 @@
     memory_channel_width_bits: 128
     memory_type: "LPDDR5-6400"
     memory_bandwidth_gb_s: 819.2
-    memory_options: [96, 256, 512]
+    memory_options: [96, 256]
     process_nm: 3
     transistor_count_billion: 184
     release_date: "2025-03-12"
