@@ -193,8 +193,8 @@
           name: "iPad Air 13″"
           variants:
             ["m4-8-9", "m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
-        - id: "10"
-          name: "iPad Air 10.9″"
+        - id: "11"
+          name: "iPad Air 11″"
           variants:
             ["m4-8-9", "m3-8-10", "m3-8-9", "m3-8-8", "m2-8-9", "m1-8-8"]
         - id: "9.7"
@@ -612,6 +612,9 @@
     - id: "max"
       name: "AirPods Max"
       devices:
+        - id: "2"
+          name: "AirPods Max 2"
+          variants: ["h2"]
         - id: "1"
           name: "AirPods Max"
           variants: ["h1"]
