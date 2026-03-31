@@ -140,6 +140,7 @@
     - id: "mac-pro"
       name: "Mac Pro"
       section: "desktop"
+      deprecated: true
       variants: ["m2-ultra-76-76", "m2-ultra-60-60"]
 - id: "ipad"
   name: "iPad"
@@ -617,6 +618,7 @@
           variants: ["h2"]
         - id: "1"
           name: "AirPods Max"
+          deprecated: true
           variants: ["h1"]
 - id: "vision"
   name: "Apple Vision"

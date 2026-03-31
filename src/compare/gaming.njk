@@ -15,7 +15,7 @@ permalink: "compare/gaming/"
 
 <h1>Gaming on Apple Silicon</h1>
 <p>
-  GPU TFLOPS and memory bandwidth are the two numbers that matter most for gaming on Apple Silicon. Ray tracing arrived with M3 and improves each generation—look for <code>gpu_rt: true</code> in the table. More GPU cores push higher frame rates at higher resolutions, while memory bandwidth determines how fast textures and assets stream in. If you plan to game at external-display resolutions (1440p+), aim for a Pro tier or above.
+  GPU TFLOPS and memory bandwidth are the two numbers that matter most for gaming on Apple Silicon. Ray tracing arrived with M3 and improves each generation. More GPU cores push higher frame rates at higher resolutions, while memory bandwidth determines how fast textures and assets stream in.
 </p>
 
 <h2>Laptops</h2>
@@ -38,7 +38,7 @@ permalink: "compare/gaming/"
 ]) }}
 
 <h2>Desktops</h2>
-<p>Desktop Macs range from the M4's 10-core GPU in the iMac and Mac mini up to the M3 Ultra's 80-core GPU in the Mac Studio. The M4 Max in the Mac Studio is the sweet spot for serious gaming—its 40-core GPU outperforms the base M4 by roughly 3× in GPU TFLOPS. The Mac Pro's M2 Ultra remains powerful but is a generation behind on ray tracing efficiency.</p>
+<p>Desktop Macs range from the M4's 10-core GPU in the iMac and Mac mini up to the M3 Ultra's 80-core GPU in the Mac Studio. The M4 Max in the Mac Studio is the sweet spot for serious gaming — its 40-core GPU outperforms the base M4 by roughly 3× in GPU TFLOPS.</p>
 
 {% set desktopChipIds = getCurrentChips("mac", "desktop") %}
 {% set desktopChips = getChips(desktopChipIds, collections) %}
@@ -55,5 +55,3 @@ permalink: "compare/gaming/"
   "memory_type",
   "memory_options"
 ]) }}
-
-
