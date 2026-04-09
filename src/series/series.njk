@@ -20,39 +20,78 @@ eleventyComputed:
 <p>{{ seriesItem.description }}</p>
 
 {% if seriesItem.ranks %}
-  {% set currentGen = "" %}
-  <ul>
+  {# Detect if any generation has multiple tiers #}
+  {% set uniqueGens = [] %}
+  {% set ranksWithNames = [] %}
+  {% for rank in seriesItem.ranks %}
+    {% if rank.name %}
+      {% set _ = ranksWithNames.push(rank) %}
+      {% set thisGen = rank.id | genId %}
+      {% if not (thisGen in uniqueGens) %}
+        {% set _ = uniqueGens.push(thisGen) %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  {% set hasMultipleTiers = ((ranksWithNames | length) - (uniqueGens | length)) >= 2 %}
+
+  {% if hasMultipleTiers %}
+    {# Grouped layout: generation headings with tier cards (base → ultra) #}
+    {% set processedGens = [] %}
     {% for rank in seriesItem.ranks %}
       {% if rank.name %}
         {% set thisGen = rank.id | genId %}
-        {% if thisGen != currentGen %}
-          {% if currentGen != "" %}
-            </ul></li>
-          {% endif %}
-          {% set currentGen = thisGen %}
-          <li>
-            <a href="/chips/{{ thisGen | lower }}/">
-              <strong>{{ rank.name | replace(" Ultra", "") | replace(" Max", "") | replace(" Pro", "") }} Family</strong>
-            </a>
-            <ul>
+        {% if not (thisGen in processedGens) %}
+          {% set _ = processedGens.push(thisGen) %}
+          {% set genRanks = [] %}
+          {% for r in seriesItem.ranks %}
+            {% if r.name and (r.id | genId) == thisGen %}
+              {% set _ = genRanks.push(r) %}
+            {% endif %}
+          {% endfor %}
+          {% set familyLabel = genRanks[0].name | replace(" Ultra", "") | replace(" Max", "") | replace(" Pro", "") | replace(" Bionic", "") | replace("X", "") | replace("Z", "") | trim %}
+          <h2>{{ familyLabel }} Family</h2>
+          <div class="device-grid">
+            {% for r in genRanks | reverse %}
+              <a href="/chips/{{ r.id | genId | lower }}/{{ r.id | tierSlug | lower }}/" class="device-grid-card{% if not r.variants or r.variants | length == 0 %} device-grid-card--empty{% endif %}">
+                <span class="device-grid-name">{{ r.name }}</span>
+                {% if r.variants and r.variants | length > 0 %}
+                  <span class="device-grid-chips">{{ r.variants | length }} variant{{ "s" if r.variants | length != 1 }}</span>
+                {% else %}
+                  <span class="device-grid-chips">No chip data yet</span>
+                {% endif %}
+                {% if r.process_nm %}
+                  <span class="device-grid-range">{{ r.process_nm }}</span>
+                {% endif %}
+              </a>
+            {% endfor %}
+            {% if genRanks | length > 1 %}
+              <a href="/chips/{{ thisGen | lower }}/" class="device-grid-card device-grid-card--deprecated">
+                <span class="device-grid-name">Compare All</span>
+                <span class="device-grid-chips">{{ genRanks | length }} tiers</span>
+              </a>
+            {% endif %}
+          </div>
         {% endif %}
-        <li>
-          {% if rank.variants and rank.variants | length > 0 %}
-            <a href="/chips/{{ rank.id | genId | lower }}/{{ rank.id | tierSlug | lower }}/">
-              <strong>{{ rank.name }}</strong>
-            </a>
-            — {{ rank.variants | length }} variant{{ "s" if rank.variants | length != 1 }}
-          {% else %}
-            <strong>{{ rank.name }}</strong>
-          {% endif %}
-          {% if rank.description %}
-            <br>{{ rank.description }}
-          {% endif %}
-        </li>
       {% endif %}
     {% endfor %}
-    {% if currentGen != "" %}
-      </ul></li>
-    {% endif %}
-  </ul>
+  {% else %}
+    {# Flat layout: all ranks in a single grid #}
+    <div class="device-grid">
+      {% for rank in seriesItem.ranks %}
+        {% if rank.name %}
+          <a href="/chips/{{ rank.id | genId | lower }}/{{ rank.id | tierSlug | lower }}/" class="device-grid-card{% if not rank.variants or rank.variants | length == 0 %} device-grid-card--empty{% endif %}">
+            <span class="device-grid-name">{{ rank.name }}</span>
+            {% if rank.variants and rank.variants | length > 0 %}
+              <span class="device-grid-chips">{{ rank.variants | length }} variant{{ "s" if rank.variants | length != 1 }}</span>
+            {% else %}
+              <span class="device-grid-chips">No chip data yet</span>
+            {% endif %}
+            {% if rank.process_nm %}
+              <span class="device-grid-range">{{ rank.process_nm }}</span>
+            {% endif %}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
 {% endif %}
