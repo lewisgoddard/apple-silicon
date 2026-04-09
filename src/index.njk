@@ -10,52 +10,74 @@ description: "A comprehensive reference for Apple Silicon technical specificatio
   chip — from the M1 to the latest generation.
 </p>
 
-<h2>Tools</h2>
-<ul>
-  <li>
-    <a href="/compare/custom/"><strong>Chip Comparison</strong></a> — compare any chips
-    side by side
-  </li>
-  <li>
-    <a href="/compare/video-editing/"
-      ><strong>Video Editing Performance</strong></a
-    >
-    — specs that matter for professional media workflows
-  </li>
-  <li>
-    <a href="/compare/ml-ai/"><strong>Machine Learning &amp; AI</strong></a>
-    — Neural Engine, memory, and inference performance
-  </li>
-  <li>
-    <a href="/compare/gaming/"><strong>Gaming Performance</strong></a>
-    — GPU cores, TFLOPS, ray tracing, and memory bandwidth
-  </li>
-  <li>
-    <a href="/compare/gen-gains/"><strong>Generational Gains</strong></a>
-    — CPU, GPU, neural, and efficiency trends from M1 to M5 and A14 to A19
-  </li>
-</ul>
+<h2>Compare</h2>
+<div class="home-grid">
+  <a href="/compare/custom/" class="home-card">
+    <span class="home-card-name">Custom</span>
+    <span class="home-card-desc">Compare any chips side by side</span>
+  </a>
+  <a href="/compare/video-editing/" class="home-card nav-hl-video">
+    <span class="home-card-name">Video Editing</span>
+    <span class="home-card-desc">Specs for professional media workflows</span>
+  </a>
+  <a href="/compare/ml-ai/" class="home-card nav-hl-mlai">
+    <span class="home-card-name">ML / AI</span>
+    <span class="home-card-desc">Neural Engine, memory, and inference</span>
+  </a>
+  <a href="/compare/gaming/" class="home-card nav-hl-gaming">
+    <span class="home-card-name">Gaming</span>
+    <span class="home-card-desc">GPU cores, TFLOPS, ray tracing, bandwidth</span>
+  </a>
+  <a href="/compare/gen-gains/" class="home-card">
+    <span class="home-card-name">Generational Gains</span>
+    <span class="home-card-desc">CPU, GPU, neural, and efficiency trends</span>
+  </a>
+</div>
 
-<h2>Browse by Device</h2>
-<ul>
+<h2>Current Lineup</h2>
+<div class="home-grid">
+  <a href="/current/macbooks/" class="home-card">
+    <span class="home-card-name">MacBooks</span>
+    <span class="home-card-desc">Current MacBook lineup</span>
+  </a>
+  <a href="/current/macs/" class="home-card">
+    <span class="home-card-name">Macs</span>
+    <span class="home-card-desc">Current desktop Mac lineup</span>
+  </a>
+  <a href="/current/iphones/" class="home-card">
+    <span class="home-card-name">iPhones</span>
+    <span class="home-card-desc">Current iPhone lineup</span>
+  </a>
+  <a href="/current/ipads/" class="home-card">
+    <span class="home-card-name">iPads</span>
+    <span class="home-card-desc">Current iPad lineup</span>
+  </a>
+  <a href="/current/watches/" class="home-card">
+    <span class="home-card-name">Watches</span>
+    <span class="home-card-desc">Current Apple Watch lineup</span>
+  </a>
+  <a href="/current/airpods/" class="home-card">
+    <span class="home-card-name">AirPods</span>
+    <span class="home-card-desc">Current AirPods lineup</span>
+  </a>
+</div>
+
+<h2>All Devices</h2>
+<div class="home-grid">
   {% for category in collections.devicesCollection %}
-    <li>
-      <a href="/devices/{{ category.id | lower }}/">
-        <strong>{{ category.name }}</strong>
-      </a>
-      — {{ category.description }}
-    </li>
+    <a href="/devices/{{ category.id | lower }}/" class="home-card">
+      <span class="home-card-name">{{ category.name }}</span>
+      <span class="home-card-desc">{{ category.description }}</span>
+    </a>
   {% endfor %}
-</ul>
+</div>
 
-<h2>Browse by Series</h2>
-<ul>
+<h2>Chip Series</h2>
+<div class="home-grid">
   {% for seriesItem in collections.seriesCollection %}
-    <li>
-      <a href="/series/{{ seriesItem.id | lower }}/">
-        <strong>{{ seriesItem.name }}</strong>
-      </a>
-      — {{ seriesItem.description }}
-    </li>
+    <a href="/series/{{ seriesItem.id | lower }}/" class="home-card">
+      <span class="home-card-name">{{ seriesItem.name }}</span>
+      <span class="home-card-desc">{{ seriesItem.description }}</span>
+    </a>
   {% endfor %}
-</ul>
+</div>

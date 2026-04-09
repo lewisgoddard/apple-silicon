@@ -614,6 +614,41 @@ li {
   color: var(--color-link);
 }
 
+/* ===== Home Page Grid ===== */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+}
+
+.home-card:hover {
+  background: var(--color-surface);
+}
+
+.home-card-name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--color-text);
+}
+
+.home-card-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
 /* ===== Current Generation Badge ===== */
 .badge-current {
   display: inline-block;
