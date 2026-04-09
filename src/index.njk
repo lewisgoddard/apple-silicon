@@ -10,31 +10,35 @@ description: "A comprehensive reference for Apple Silicon technical specificatio
   chip — from the M1 to the latest generation.
 </p>
 
-<h2>Compare</h2>
-<div class="home-grid">
-  <a href="/compare/custom/" class="home-card">
-    <span class="home-card-name">Custom</span>
-    <span class="home-card-desc">Compare any chips side by side</span>
-  </a>
-  <a href="/compare/video-editing/" class="home-card nav-hl-video">
-    <span class="home-card-name">Video Editing</span>
-    <span class="home-card-desc">Specs for professional media workflows</span>
-  </a>
-  <a href="/compare/ml-ai/" class="home-card nav-hl-mlai">
-    <span class="home-card-name">ML / AI</span>
-    <span class="home-card-desc">Neural Engine, memory, and inference</span>
-  </a>
-  <a href="/compare/gaming/" class="home-card nav-hl-gaming">
-    <span class="home-card-name">Gaming</span>
-    <span class="home-card-desc">GPU cores, TFLOPS, ray tracing, bandwidth</span>
-  </a>
+<h2>Generational Gains</h2>
+<div class="home-grid home-grid--wide">
   <a href="/gen-gains/m-series/" class="home-card">
-    <span class="home-card-name">M-Series Gains</span>
-    <span class="home-card-desc">CPU, GPU, neural, and efficiency trends</span>
+    <span class="home-card-name">M-Series Trends</span>
+    <span class="home-card-desc">Track how CPU, GPU, Neural Engine, and efficiency cores have evolved across every M-series generation from the M1 through to today.</span>
   </a>
   <a href="/gen-gains/a-series/" class="home-card">
-    <span class="home-card-name">A-Series Gains</span>
-    <span class="home-card-desc">CPU, GPU, neural, and efficiency trends</span>
+    <span class="home-card-name">A-Series Trends</span>
+    <span class="home-card-desc">See how iPhone and iPad performance has scaled generation over generation — from the A14 Bionic through the latest A-series chips.</span>
+  </a>
+</div>
+
+<h2>Compare</h2>
+<div class="home-grid home-grid--featured">
+  <a href="/compare/video-editing/" class="home-card home-card--video">
+    <span class="home-card-name">Video Editing</span>
+    <span class="home-card-desc">Compare the specs that matter for professional media workflows — media engines, ProRes hardware, memory bandwidth, and video encode/decode capabilities.</span>
+  </a>
+  <a href="/compare/ml-ai/" class="home-card home-card--mlai">
+    <span class="home-card-name">Machine Learning &amp; AI</span>
+    <span class="home-card-desc">Neural Engine TOPS, unified memory capacity, bandwidth, and the hardware that drives on-device inference and model training.</span>
+  </a>
+  <a href="/compare/gaming/" class="home-card home-card--gaming">
+    <span class="home-card-name">Gaming Performance</span>
+    <span class="home-card-desc">GPU core counts, theoretical TFLOPS, ray tracing support, memory bandwidth, and everything that affects frame rates and visual quality.</span>
+  </a>
+  <a href="/compare/custom/" class="home-card home-card--custom">
+    <span class="home-card-name">Custom Comparison</span>
+    <span class="home-card-desc">Pick any Apple Silicon chips and compare their full specifications side by side. Build your own comparison from every M, A, S, and supporting chip.</span>
   </a>
 </div>
 
@@ -67,7 +71,7 @@ description: "A comprehensive reference for Apple Silicon technical specificatio
 </div>
 
 <h2>All Devices</h2>
-<div class="home-grid">
+<div class="home-grid home-grid--faded">
   {% for category in collections.devicesCollection %}
     <a href="/devices/{{ category.id | lower }}/" class="home-card">
       <span class="home-card-name">{{ category.name }}</span>
@@ -77,7 +81,7 @@ description: "A comprehensive reference for Apple Silicon technical specificatio
 </div>
 
 <h2>Chip Series</h2>
-<div class="home-grid">
+<div class="home-grid home-grid--faded">
   {% for seriesItem in collections.seriesCollection %}
     <a href="/series/{{ seriesItem.id | lower }}/" class="home-card">
       <span class="home-card-name">{{ seriesItem.name }}</span>

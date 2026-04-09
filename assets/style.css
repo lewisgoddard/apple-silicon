@@ -622,6 +622,32 @@ li {
   margin-top: 1rem;
 }
 
+.home-grid--featured {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.home-grid--wide {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.home-grid--faded {
+  opacity: 0.55;
+  transition: opacity 0.2s;
+}
+
+.home-grid--faded:hover {
+  opacity: 1;
+}
+
+@media (max-width: 720px) {
+  .home-grid--featured {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .home-grid--wide {
+    grid-template-columns: 1fr;
+  }
+}
+
 .home-card {
   display: flex;
   flex-direction: column;
@@ -631,7 +657,9 @@ li {
   border-radius: var(--radius);
   text-decoration: none;
   color: inherit;
-  transition: background 0.15s;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
 }
 
 .home-card:hover {
@@ -647,6 +675,115 @@ li {
 .home-card-desc {
   font-size: 0.85rem;
   color: var(--color-text-muted);
+}
+
+/* Featured card variants */
+.home-grid--featured .home-card,
+.home-grid--wide .home-card {
+  padding: 2rem;
+  min-height: 180px;
+}
+
+.home-grid--featured .home-card-name,
+.home-grid--wide .home-card-name {
+  font-size: 1.25rem;
+}
+
+.home-grid--featured .home-card-desc,
+.home-grid--wide .home-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Compare card color tints */
+.home-card--custom {
+  border-color: #0071e3;
+  background: rgba(0, 113, 227, 0.06);
+}
+.home-card--custom:hover {
+  background: rgba(0, 113, 227, 0.12);
+}
+.home-card--custom .home-card-name {
+  color: #0071e3;
+}
+
+.home-card--video {
+  border-color: #9b59b6;
+  background: rgba(155, 89, 182, 0.06);
+}
+.home-card--video:hover {
+  background: rgba(155, 89, 182, 0.12);
+}
+.home-card--video .home-card-name {
+  color: #9b59b6;
+}
+
+.home-card--mlai {
+  border-color: #e67e22;
+  background: rgba(230, 126, 34, 0.06);
+}
+.home-card--mlai:hover {
+  background: rgba(230, 126, 34, 0.12);
+}
+.home-card--mlai .home-card-name {
+  color: #e67e22;
+}
+
+.home-card--gaming {
+  border-color: #27ae60;
+  background: rgba(39, 174, 96, 0.06);
+}
+.home-card--gaming:hover {
+  background: rgba(39, 174, 96, 0.12);
+}
+.home-card--gaming .home-card-name {
+  color: #27ae60;
+}
+
+@media (prefers-color-scheme: dark) {
+  .home-card--custom {
+    border-color: #2997ff;
+    background: rgba(41, 151, 255, 0.1);
+  }
+  .home-card--custom:hover {
+    background: rgba(41, 151, 255, 0.18);
+  }
+  .home-card--custom .home-card-name {
+    color: #2997ff;
+  }
+
+  .home-card--video {
+    border-color: #bf7ddc;
+    background: rgba(191, 125, 220, 0.1);
+  }
+  .home-card--video:hover {
+    background: rgba(191, 125, 220, 0.18);
+  }
+  .home-card--video .home-card-name {
+    color: #bf7ddc;
+  }
+
+  .home-card--mlai {
+    border-color: #f0a94e;
+    background: rgba(240, 169, 78, 0.1);
+  }
+  .home-card--mlai:hover {
+    background: rgba(240, 169, 78, 0.18);
+  }
+  .home-card--mlai .home-card-name {
+    color: #f0a94e;
+  }
+
+  .home-card--gaming {
+    border-color: #5de89d;
+    background: rgba(93, 232, 157, 0.1);
+  }
+  .home-card--gaming:hover {
+    background: rgba(93, 232, 157, 0.18);
+  }
+  .home-card--gaming .home-card-name {
+    color: #5de89d;
+  }
 }
 
 /* ===== Current Generation Badge ===== */
