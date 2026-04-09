@@ -1,0 +1,61 @@
+---
+layout: base.njk
+title: "M-Series Generational Gains"
+description: "Track M-series Apple Silicon performance gains across generations — CPU single/multi-thread, GPU raster and ray tracing, neural engine, power efficiency, and die size."
+permalink: "gen-gains/m-series/"
+---
+
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+
+{{ breadcrumbs([
+  { label: "Compare", url: "/compare/custom/" },
+  { label: "M-Series Generational Gains" }
+]) }}
+
+<h1>M-Series Generational Gains</h1>
+<p>
+  How much faster is each generation of Apple Silicon? These charts track
+  CPU, GPU, neural engine, efficiency, and die-size trends across the
+  M-series family. Data comes from
+  <a href="https://browser.geekbench.com/mac-benchmarks">Geekbench 6</a>
+  averages and published specifications. Each bar is annotated with the
+  percentage gain over the previous generation.
+</p>
+<p>
+  Also available: <a href="/gen-gains/a-series/">A-Series Generational Gains</a>
+</p>
+
+<p>
+  Base-tier M-series chips (M1 through M5) compared in a consistent
+  form factor. CPU and GPU scores use the top base-chip configuration
+  (e.g. M4 with 10 CPU / 10 GPU cores). Efficiency is estimated as
+  Geekbench 6 single-core score per watt at the MacBook Air's ~15 W
+  thermal envelope.
+</p>
+
+<div class="gen-gains-grid">
+  <div class="gen-gains-card"><canvas id="m-single-core"></canvas></div>
+  <div class="gen-gains-card"><canvas id="m-multi-core"></canvas></div>
+  <div class="gen-gains-card"><canvas id="m-efficiency"></canvas></div>
+  <div class="gen-gains-card"><canvas id="m-die-size"></canvas></div>
+  <div class="gen-gains-card"><canvas id="m-gpu-raster"></canvas></div>
+  <div class="gen-gains-card"><canvas id="m-gpu-rt"></canvas></div>
+  <div class="gen-gains-card"><canvas id="m-neural"></canvas></div>
+  <div class="gen-gains-card"><canvas id="m-mem-bw"></canvas></div>
+</div>
+
+<details>
+  <summary>Data sources &amp; methodology</summary>
+  <ul>
+    <li><strong>CPU scores</strong> — Geekbench 6 averages from <a href="https://browser.geekbench.com/mac-benchmarks">browser.geekbench.com</a>.</li>
+    <li><strong>GPU Raster</strong> — Geekbench 6 Metal compute score.</li>
+    <li><strong>GPU RT</strong> — Relative score. M3 is the baseline (100). M1/M2 lacked hardware ray tracing. Gains based on Apple's published claims and independent benchmarks.</li>
+    <li><strong>Power Efficiency</strong> — Single-core score divided by estimated sustained power draw (15 W for fanless MacBook Air).</li>
+    <li><strong>Die Size</strong> — Published die area in mm² from teardown reports and Apple disclosures. M5 is estimated.</li>
+    <li><strong>Neural Engine</strong> — Peak TOPS as published by Apple.</li>
+  </ul>
+</details>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="/assets/gen-gains.js"></script>
+<script src="/assets/gen-gains-m.js"></script>

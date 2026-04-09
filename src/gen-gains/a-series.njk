@@ -1,0 +1,60 @@
+---
+layout: base.njk
+title: "A-Series Generational Gains"
+description: "Track A-series Apple Silicon performance gains across generations — CPU single/multi-thread, GPU raster and ray tracing, neural engine, power efficiency, and die size."
+permalink: "gen-gains/a-series/"
+---
+
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+
+{{ breadcrumbs([
+  { label: "Compare", url: "/compare/custom/" },
+  { label: "A-Series Generational Gains" }
+]) }}
+
+<h1>A-Series Generational Gains</h1>
+<p>
+  How much faster is each generation of Apple Silicon? These charts track
+  CPU, GPU, neural engine, efficiency, and die-size trends across the
+  A-series family. Data comes from
+  <a href="https://browser.geekbench.com/ios-benchmarks">Geekbench 6</a>
+  averages and published specifications. Each bar is annotated with the
+  percentage gain over the previous generation.
+</p>
+<p>
+  Also available: <a href="/gen-gains/m-series/">M-Series Generational Gains</a>
+</p>
+
+<p>
+  Flagship A-series chips from A14 to A19 Pro. Where both standard and
+  Pro variants exist, the Pro is used. Efficiency is estimated at a
+  typical iPhone thermal budget of ~5 W. Hardware ray tracing arrived
+  with A17 Pro.
+</p>
+
+<div class="gen-gains-grid">
+  <div class="gen-gains-card"><canvas id="a-single-core"></canvas></div>
+  <div class="gen-gains-card"><canvas id="a-multi-core"></canvas></div>
+  <div class="gen-gains-card"><canvas id="a-efficiency"></canvas></div>
+  <div class="gen-gains-card"><canvas id="a-die-size"></canvas></div>
+  <div class="gen-gains-card"><canvas id="a-gpu-raster"></canvas></div>
+  <div class="gen-gains-card"><canvas id="a-gpu-rt"></canvas></div>
+  <div class="gen-gains-card"><canvas id="a-neural"></canvas></div>
+  <div class="gen-gains-card"><canvas id="a-mem-bw"></canvas></div>
+</div>
+
+<details>
+  <summary>Data sources &amp; methodology</summary>
+  <ul>
+    <li><strong>CPU scores</strong> — Geekbench 6 averages from <a href="https://browser.geekbench.com/ios-benchmarks">browser.geekbench.com</a>.</li>
+    <li><strong>GPU Raster</strong> — Geekbench 6 Metal compute score.</li>
+    <li><strong>GPU RT</strong> — Relative score. A17 Pro is the baseline (100). Earlier chips lacked hardware ray tracing. Gains based on Apple's published claims and independent benchmarks.</li>
+    <li><strong>Power Efficiency</strong> — Single-core score divided by estimated sustained power draw (5 W for iPhone).</li>
+    <li><strong>Die Size</strong> — Published die area in mm² from teardown reports and Apple disclosures.</li>
+    <li><strong>Neural Engine</strong> — Peak TOPS as published by Apple.</li>
+  </ul>
+</details>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="/assets/gen-gains.js"></script>
+<script src="/assets/gen-gains-a.js"></script>
