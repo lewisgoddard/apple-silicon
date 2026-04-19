@@ -672,6 +672,12 @@ li {
   color: var(--color-text);
 }
 
+.home-card-name svg {
+  max-height: 1.5rem;
+  vertical-align: text-bottom;
+  fill: var(--color-text);
+}
+
 .home-card-desc {
   font-size: 0.85rem;
   color: var(--color-text-muted);
@@ -706,6 +712,9 @@ li {
 .home-card--custom .home-card-name {
   color: #0071e3;
 }
+.home-card--custom .home-card-name svg {
+  fill: #0071e3;
+}
 
 .home-card--video {
   border-color: #9b59b6;
@@ -716,6 +725,9 @@ li {
 }
 .home-card--video .home-card-name {
   color: #9b59b6;
+}
+.home-card--video .home-card-name svg {
+  fill: #9b59b6;
 }
 
 .home-card--mlai {
@@ -728,6 +740,9 @@ li {
 .home-card--mlai .home-card-name {
   color: #e67e22;
 }
+.home-card--mlai .home-card-name svg {
+  fill: #e67e22;
+}
 
 .home-card--gaming {
   border-color: #27ae60;
@@ -738,6 +753,9 @@ li {
 }
 .home-card--gaming .home-card-name {
   color: #27ae60;
+}
+.home-card--gaming .home-card-name svg {
+  fill: #27ae60;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -751,6 +769,9 @@ li {
   .home-card--custom .home-card-name {
     color: #2997ff;
   }
+  .home-card--custom .home-card-name svg {
+    fill: #2997ff;
+  }
 
   .home-card--video {
     border-color: #bf7ddc;
@@ -761,6 +782,9 @@ li {
   }
   .home-card--video .home-card-name {
     color: #bf7ddc;
+  }
+  .home-card--video .home-card-name svg {
+    fill: #bf7ddc;
   }
 
   .home-card--mlai {
@@ -773,6 +797,9 @@ li {
   .home-card--mlai .home-card-name {
     color: #f0a94e;
   }
+  .home-card--mlai .home-card-name svg {
+    fill: #f0a94e;
+  }
 
   .home-card--gaming {
     border-color: #5de89d;
@@ -783,6 +810,9 @@ li {
   }
   .home-card--gaming .home-card-name {
     color: #5de89d;
+  }
+  .home-card--gaming .home-card-name svg {
+    fill: #5de89d;
   }
 }
 
