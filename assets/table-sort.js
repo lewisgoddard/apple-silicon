@@ -2,7 +2,12 @@
   "use strict";
 
   /* Specs where a lower number is better */
-  var lowerIsBetter = ["Process (nm)", "Die Size (mm²)"];
+  var lowerIsBetter = [
+    "Process node (nm)",
+    "Die size (mm²)",
+    "Process (nm)",
+    "Die Size (mm²)",
+  ];
 
   /* Series priority for default column ordering (lower = shown first) */
   var seriesOrder = {
