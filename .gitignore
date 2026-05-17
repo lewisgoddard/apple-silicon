@@ -1,3 +1,4 @@
 # Ignore build and dependency directories
 /_site/
 /node_modules/
+.claude/settings.local.json

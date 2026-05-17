@@ -279,7 +279,7 @@
     memory_bus_width_bits: 256
     memory_type: "LPDDR5X-8533"
     memory_bandwidth_gb_s: 273
-    memory_options: [24, 48, 64]
+    memory_options: [24, 48]
     release_date: "2024-11-08"
 - id: m4-pro-12-16
   name: "M4 Pro"
@@ -306,7 +306,7 @@
     memory_bus_width_bits: 256
     memory_type: "LPDDR5X-8533"
     memory_bandwidth_gb_s: 273
-    memory_options: [24, 48, 64]
+    memory_options: [24, 48]
     release_date: "2024-11-08"
 - id: m4-10-10
   name: "M4"
@@ -457,7 +457,7 @@
     memory_channel_width_bits: 128
     memory_type: "LPDDR5-6400"
     memory_bandwidth_gb_s: 819.2
-    memory_options: [96, 256]
+    memory_options: [96]
     process_nm: 3
     transistor_count_billion: 184
     release_date: "2025-03-12"
@@ -490,7 +490,7 @@
     memory_channel_width_bits: 128
     memory_type: "LPDDR5-6400"
     memory_bandwidth_gb_s: 819.2
-    memory_options: [96, 256]
+    memory_options: [96]
     process_nm: 3
     transistor_count_billion: 184
     release_date: "2025-03-12"
