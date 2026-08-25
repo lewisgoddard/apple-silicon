@@ -22,6 +22,8 @@
     memory_type: "LPDDR5X-9600 / LPDDR5X-10667"
     memory_bandwidth_gb_s: "153.6 – 170.7" # 153 GB/s at 16 GB, 170 GB/s at 24/32 GB
     memory_options: [16, 24, 32]
+    process_nm: 2
+    release_date: "2026-09-22"
 - id: m5-ultra-36-80
   name: "M5 Ultra"
   specs:
@@ -50,6 +52,7 @@
     memory_bandwidth_gb_s: 1228.8
     memory_options: [96, 256, 512] # 512 GB from late October 2026
     process_nm: 3
+    release_date: "2026-09-22"
 - id: m5-ultra-30-64
   name: "M5 Ultra"
   specs:
@@ -78,6 +81,7 @@
     memory_bandwidth_gb_s: 1228.8
     memory_options: [96, 256]
     process_nm: 3
+    release_date: "2026-09-22"
 - id: m5-max-18-40
   name: "M5 Max"
   specs:

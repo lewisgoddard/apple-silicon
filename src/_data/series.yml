@@ -5,6 +5,7 @@
     - id: m6
       name: "M6"
       description: "The latest generation of Apple silicon for Macs, with a three-tier CPU and a dual Neural Engine."
+      process_nm: "TSMC N2"
       variants: ["m6-12-12"]
     - id: m5-ultra
       name: "M5 Ultra"
