@@ -1,0 +1,45 @@
+---
+layout: base.njk
+title: "All Chips"
+description: "Every Apple Silicon chip, grouped by series and generation — M, A, S, and the supporting silicon that surrounds them."
+permalink: "chips/index.html"
+---
+
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+
+{{ breadcrumbs([
+  { label: "All Chips" }
+]) }}
+
+<h1>All Chips</h1>
+<p>
+  Every generation of Apple Silicon, grouped by series. Each family page compares
+  the tiers within that generation; each series page covers the whole line.
+</p>
+
+{% for seriesItem in collections.seriesCollection %}
+  {% set gens = [] %}
+  {% for gen in collections.generationPagesCollection %}
+    {% if gen.seriesId == seriesItem.id %}{% set _ = gens.push(gen) %}{% endif %}
+  {% endfor %}
+  {% if gens | length > 0 %}
+    <h2><a href="/series/{{ seriesItem.id | lower }}/">{{ seriesItem.name }}</a></h2>
+    <p>{{ seriesItem.description }}</p>
+    <div class="device-grid">
+      {% for gen in gens %}
+        {# Nunjucks has no map(attribute=…), so collect the names explicitly #}
+        {% set tierNames = [] %}
+        {% for t in gen.tiers %}{% set _ = tierNames.push(t.name) %}{% endfor %}
+        {# The newest M or A generation is what most visitors are here for #}
+        {% set isCurrentFlagship = loop.first and (seriesItem.id == "M" or seriesItem.id == "A") %}
+        <a href="/chips/{{ gen.id | lower }}/" class="device-grid-card{% if isCurrentFlagship %} nav-hl-custom{% endif %}">
+          <span class="device-grid-name">{{ gen.id | familyLabel }}</span>
+          <span class="device-grid-chips">{{ gen.tiers | length }} tier{{ "s" if gen.tiers | length != 1 }}</span>
+          {% if tierNames | length > 1 %}
+            <span class="device-grid-range">{{ tierNames | join(", ") }}</span>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endfor %}

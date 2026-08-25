@@ -87,23 +87,3 @@ description: "A comprehensive reference for Apple Silicon technical specificatio
     <span class="home-card-desc">Current AirPods lineup</span>
   </a>
 </div>
-
-<h2>All Devices</h2>
-<div class="home-grid home-grid--faded">
-  {% for category in collections.devicesCollection %}
-    <a href="/devices/{{ category.id | lower }}/" class="home-card">
-      <span class="home-card-name">{{ category.name }}</span>
-      <span class="home-card-desc">{{ category.description }}</span>
-    </a>
-  {% endfor %}
-</div>
-
-<h2>Chip Series</h2>
-<div class="home-grid home-grid--faded">
-  {% for seriesItem in collections.seriesCollection %}
-    <a href="/series/{{ seriesItem.id | lower }}/" class="home-card">
-      <span class="home-card-name">{{ seriesItem.name }}</span>
-      <span class="home-card-desc">{{ seriesItem.description }}</span>
-    </a>
-  {% endfor %}
-</div>

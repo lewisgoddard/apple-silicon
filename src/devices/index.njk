@@ -1,0 +1,42 @@
+---
+layout: base.njk
+title: "All Devices"
+description: "Every Apple device tracked here, grouped by product line, with the Apple Silicon inside each one."
+permalink: "devices/index.html"
+---
+
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+
+{{ breadcrumbs([
+  { label: "All Devices" }
+]) }}
+
+<h1>All Devices</h1>
+<p>
+  Every product line tracked here. Follow a line to see each model and the
+  Apple Silicon it shipped with.
+</p>
+
+{% for category in collections.devicesCollection %}
+  <h2><a href="/devices/{{ category.id | lower }}/">{{ category.name }}</a></h2>
+  <p>{{ category.description }}</p>
+  <div class="device-grid">
+    {% if category.groups %}
+      {% for group in category.groups %}
+        <a href="/devices/{{ category.id | lower }}/{{ group.id | lower }}/" class="device-grid-card{% if group.deprecated %} device-grid-card--deprecated{% endif %}">
+          <span class="device-grid-name">{{ group.name }}</span>
+          <span class="device-grid-chips">{{ group.devices | length }} model{{ "s" if group.devices | length != 1 }}</span>
+          {% if group.deprecated %}<span class="device-grid-discontinued">Discontinued</span>{% endif %}
+        </a>
+      {% endfor %}
+    {% else %}
+      {% for device in category.devices %}
+        <a href="/devices/{{ category.id | lower }}/{{ device.id | lower }}/" class="device-grid-card{% if device.deprecated %} device-grid-card--deprecated{% endif %}">
+          <span class="device-grid-name">{{ device.name }}</span>
+          <span class="device-grid-chips">{{ device.variants | length }} chip{{ "s" if device.variants | length != 1 }}</span>
+          {% if device.deprecated %}<span class="device-grid-discontinued">Discontinued</span>{% endif %}
+        </a>
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endfor %}
