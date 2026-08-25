@@ -1,4 +1,28 @@
 ---
 permalink: "api/search.json"
 ---
-[{% for chip in collections.chipPagesCollection %}{"type":"chip","id":"{{ chip.id }}","name":"{{ chip.name }}","detail":"{% if chip.specs.cpu_cores and chip.specs.gpu_cores %}{{ chip.specs.cpu_cores }}-core CPU / {{ chip.specs.gpu_cores }}-core GPU{% elif chip.specs.cpu_cores %}{{ chip.specs.cpu_cores }}-core CPU{% else %}{{ chip.rank.rankDescription if chip.rank and chip.rank.rankDescription else chip.name }}{% endif %}","url":"{{ chip.url }}"}{% if not loop.last or collections.devicePagesCollection | length > 0 %},{% endif %}{% endfor %}{% for device in collections.devicePagesCollection %}{"type":"device","id":"{{ device.id }}","name":"{{ device.name }}","detail":"{{ device.categoryName }}{% if device.variants %} · {{ device.variants | length }} chip{{ 's' if device.variants | length != 1 }}{% endif %}","url":"/devices/{{ device.categoryId | lower }}/{{ device.id | lower }}/"}{% if not loop.last %},{% endif %}{% endfor %}]
+{#- Values are JSON-encoded with `dump`, not HTML-escaped: this is a JSON API,
+    and the client escapes for HTML itself when it renders a result. -#}
+[
+{%- for chip in collections.chipPagesCollection -%}
+{%- if chip.specs.cpu_cores and chip.specs.gpu_cores -%}
+{%- set detail = chip.specs.cpu_cores ~ "-core CPU / " ~ chip.specs.gpu_cores ~ "-core GPU" -%}
+{%- elif chip.specs.cpu_cores -%}
+{%- set detail = chip.specs.cpu_cores ~ "-core CPU" -%}
+{%- elif chip.rank and chip.rank.rankDescription -%}
+{%- set detail = chip.rank.rankDescription -%}
+{%- else -%}
+{%- set detail = chip.name -%}
+{%- endif -%}
+{"type":"chip","id":{{ chip.id | dump | safe }},"name":{{ chip.name | dump | safe }},"detail":{{ detail | dump | safe }},"url":{{ chip.url | dump | safe }}}
+{%- if not loop.last or collections.devicePagesCollection | length > 0 %},{% endif -%}
+{%- endfor -%}
+{%- for device in collections.devicePagesCollection -%}
+{%- set detail = device.categoryName -%}
+{%- if device.variants -%}
+{%- set detail = detail ~ " · " ~ (device.variants | length) ~ " chip" ~ ("s" if device.variants | length != 1 else "") -%}
+{%- endif -%}
+{"type":"device","id":{{ device.id | dump | safe }},"name":{{ device.name | dump | safe }},"detail":{{ detail | dump | safe }},"url":{{ device.url | dump | safe }}}
+{%- if not loop.last %},{% endif -%}
+{%- endfor -%}
+]

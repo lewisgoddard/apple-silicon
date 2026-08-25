@@ -25,6 +25,6 @@ eleventyExcludeFromCollections: true
   <url><loc>{{ site.url }}/devices/{{ cat.id | lower }}/</loc></url>
   {% endfor %}
   {% for d in collections.devicePagesCollection %}
-  <url><loc>{{ site.url }}/devices/{{ d.categoryId | lower }}/{{ d.id | lower }}/</loc></url>
+  <url><loc>{{ site.url }}{{ d.url }}</loc></url>
   {% endfor %}
 </urlset>

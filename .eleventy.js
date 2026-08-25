@@ -162,6 +162,9 @@ export default function (eleventyConfig) {
         ...device,
         categoryId: category.id,
         categoryName: category.name,
+        // Canonical page URL, including the group segment for grouped
+        // categories — hand-built URLs elsewhere kept dropping it.
+        url: deviceUrl(category.id, group, device.id).toLowerCase(),
         generationGroups,
       };
 
