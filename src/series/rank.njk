@@ -13,10 +13,9 @@ eleventyComputed:
 {% from "macros/breadcrumbs.njk" import breadcrumbs %}
 {% from "macros/gen-nav.njk" import genNav %}
 
-{% set genName = rank.name | replace(" Ultra", "") | replace(" Max", "") | replace(" Pro", "") %}
 {{ breadcrumbs([
   { label: rank.seriesName, url: "/series/" + (rank.seriesId | lower) + "/" },
-  { label: genName + " Family", url: "/chips/" + (rank.id | genId | lower) + "/" },
+  { label: (rank.id | familyLabel) + " Family", url: "/chips/" + (rank.id | genId | lower) + "/" },
   { label: rank.name }
 ]) }}
 

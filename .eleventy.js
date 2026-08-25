@@ -390,7 +390,7 @@ export default function (eleventyConfig) {
 
   // Individual chip variant pages, e.g. /chips/m4/pro/14-20/
   // Each chip is enriched with the list of devices that use it.
-  eleventyConfig.addCollection("chipPagesCollection", function () {
+  function buildChipPages() {
     const chipsM = loadYAML("chips-m.yml");
     const chipsA = loadYAML("chips-a.yml");
     const chipsS = loadYAML("chips-s.yml");
@@ -444,6 +444,7 @@ export default function (eleventyConfig) {
           chipRankMap[chipId] = {
             rankId: rank.id,
             rankName: rank.name,
+            rankDescription: rank.description,
             seriesId: series.id,
           };
         });
@@ -467,21 +468,52 @@ export default function (eleventyConfig) {
       );
     }
 
-    return allChips.map((chip) => ({
-      ...chip,
-      groupedSpecs: buildGroupedSpecs(chip.specs || {}, specDefs.groups),
-      devices: (chipDeviceMap[chip.id] || []).filter((d) => {
-        if (d.deprecated) return false;
-        const key =
-          d.categoryId + "/" + (d.groupId ? d.groupId + "/" : "") + d.id;
-        return (
-          deviceCurrentMapForPages[key] &&
-          deviceCurrentMapForPages[key].has(chip.id)
-        );
-      }),
-      rank: chipRankMap[chip.id] || null,
-    }));
-  });
+    return allChips.map((chip) => {
+      const rank = chipRankMap[chip.id] || null;
+      const genId = chip.id.match(/^([a-z]\d+)/)?.[1] || chip.id;
+      const variantSlug = chip.id.match(/(\d+-\d+)$/)?.[1] || chip.id;
+      // Chips with no "cpu-gpu" suffix (N1, C1, R1, S-series, …) are the sole
+      // member of their rank, so the rank page already says everything a
+      // variant page would. Point at the rank page and skip generating one.
+      const hasOwnPage = variantSlug !== chip.id;
+      let url;
+      if (hasOwnPage) {
+        const tier =
+          chip.id.match(/^[a-z]\d+(?:-(ultra|max|pro|x|z))?-\d+-\d+$/)?.[1] ||
+          "base";
+        url = `/chips/${genId}/${tier}/${variantSlug}/`.toLowerCase();
+      } else {
+        const rankTier =
+          rank?.rankId?.match(/^[a-z]\d+(?:-(.+))?$/)?.[1] || "base";
+        url = `/chips/${genId}/${rankTier}/`.toLowerCase();
+      }
+
+      return {
+        ...chip,
+        groupedSpecs: buildGroupedSpecs(chip.specs || {}, specDefs.groups),
+        devices: (chipDeviceMap[chip.id] || []).filter((d) => {
+          if (d.deprecated) return false;
+          const key =
+            d.categoryId + "/" + (d.groupId ? d.groupId + "/" : "") + d.id;
+          return (
+            deviceCurrentMapForPages[key] &&
+            deviceCurrentMapForPages[key].has(chip.id)
+          );
+        }),
+        rank,
+        hasOwnPage,
+        url,
+      };
+    });
+  }
+
+  // Every chip, each carrying its canonical `url` (variant page or rank page).
+  eleventyConfig.addCollection("chipPagesCollection", buildChipPages);
+
+  // Only the chips that warrant their own variant page.
+  eleventyConfig.addCollection("chipVariantPagesCollection", () =>
+    buildChipPages().filter((chip) => chip.hasOwnPage),
+  );
 
   // Build per-generation comparison pages (e.g. "M4 Family" with M4, M4 Pro,
   // M4 Max columns, each merging variant specs into ranges).
@@ -810,6 +842,14 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("genId", function (rankId) {
     const match = (rankId || "").match(/^([a-z]\d+)/);
     return match ? match[1] : rankId;
+  });
+
+  // Family label for a rank id, e.g. "m5-ultra" → "M5", "c1-x" → "C1",
+  // "a16" → "A16". Derived from the generation id so it can't drift from the
+  // family URL the label links to.
+  eleventyConfig.addFilter("familyLabel", function (rankId) {
+    const match = (rankId || "").match(/^([a-z]\d+)/);
+    return (match ? match[1] : rankId || "").toUpperCase();
   });
 
   // Extract tier slug from a rank id, e.g. "m1-pro" → "pro", "m1" → "base"

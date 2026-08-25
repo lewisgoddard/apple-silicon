@@ -18,8 +18,8 @@ eleventyExcludeFromCollections: true
   {% for rank in collections.rankPagesCollection %}
   <url><loc>{{ site.url }}/chips/{{ rank.id | genId | lower }}/{{ rank.id | tierSlug | lower }}/</loc></url>
   {% endfor %}
-  {% for chip in collections.chipPagesCollection %}
-  <url><loc>{{ site.url }}/chips/{{ chip.id | genId | lower }}/{{ chip.id | chipTier | lower }}/{{ chip.id | chipVariant }}/</loc></url>
+  {% for chip in collections.chipVariantPagesCollection %}
+  <url><loc>{{ site.url }}{{ chip.url }}</loc></url>
   {% endfor %}
   {% for cat in collections.devicesCollection %}
   <url><loc>{{ site.url }}/devices/{{ cat.id | lower }}/</loc></url>
