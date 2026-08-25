@@ -20,6 +20,8 @@
   --color-group-header: #f0f0f3;
   --radius: 8px;
   --max-width: 1440px;
+  /* Matches main's horizontal padding; used by full-bleed breakouts */
+  --page-gutter: 1.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -463,6 +465,12 @@ li {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin: 1rem 0 2rem;
+  /* Break out of main's max-width so a wide table can use the whole viewport
+     before it has to scroll. The matching padding puts the content box back
+     where it was, so a table narrower than the page still lines up with the
+     prose above it. Both resolve to 0 once the viewport is under --max-width. */
+  margin-inline: calc(50% - 50vw + var(--page-gutter));
+  padding-inline: calc(50vw - 50% - var(--page-gutter));
 }
 
 .compare-table {
@@ -1119,6 +1127,10 @@ footer {
 
 /* ===== Responsive ===== */
 @media (max-width: 640px) {
+  :root {
+    --page-gutter: 1rem;
+  }
+
   h1 {
     font-size: 1.5rem;
   }
