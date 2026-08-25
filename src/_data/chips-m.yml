@@ -19,8 +19,8 @@
     memory_bus_width_bits: 128
     memory_channels: 8
     memory_channel_width_bits: 16
-    memory_type: "LPDDR5X-9600 / LPDDR5X-10667"
-    memory_bandwidth_gb_s: "153.6 – 170.7" # 153 GB/s at 16 GB, 170 GB/s at 24/32 GB
+    memory_type: "LPDDR5X-10667"
+    memory_bandwidth_gb_s: 170.7 # 16 GB configs are limited to 153 GB/s
     memory_options: [16, 24, 32]
     process_nm: 2
     release_date: "2026-09-22"
