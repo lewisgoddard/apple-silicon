@@ -191,6 +191,9 @@ export default function (eleventyConfig) {
         entry.groupName = group.name;
       }
 
+      // A device is discontinued if it says so, or its whole group is.
+      entry.discontinued = !!(device.deprecated || (group && group.deprecated));
+
       pages.push(entry);
     }
     return pages;

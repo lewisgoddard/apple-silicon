@@ -330,6 +330,13 @@ nav {
 .search-result-icon {
   font-size: 1.1rem;
   flex-shrink: 0;
+  /* Reserve one fixed box per icon so every result's text starts at the same
+     x, whatever the glyph's own advance width, and centre the glyph in it. */
+  width: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 .search-result-text {
