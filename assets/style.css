@@ -22,6 +22,8 @@
   --max-width: 1440px;
   /* Matches main's horizontal padding; used by full-bleed breakouts */
   --page-gutter: 1.5rem;
+  /* Width of the normal text column, i.e. main's content box */
+  --prose-width: calc(min(var(--max-width), 100vw) - 2 * var(--page-gutter));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -470,11 +472,17 @@ li {
      where it was, so a table narrower than the page still lines up with the
      prose above it. Both resolve to 0 once the viewport is under --max-width. */
   margin-inline: calc(50% - 50vw + var(--page-gutter));
-  padding-inline: calc(50vw - 50% - var(--page-gutter));
+  /* Start padding only. Trailing padding counts toward scrollable overflow, so
+     it would force a scrollbar even when the table visibly fits. */
+  padding-inline-start: calc(50vw - 50% - var(--page-gutter));
+  padding-inline-end: 0;
 }
 
 .compare-table {
-  width: 100%;
+  /* Grow to fit the content, but never narrower than the text column, so a
+     small table still lines up with the prose instead of shrink-wrapping. */
+  width: max-content;
+  min-width: var(--prose-width);
   border-collapse: collapse;
   font-size: 0.9rem;
   white-space: nowrap;
