@@ -4,7 +4,12 @@
   {% set items = [] %}
 
   {% if s.cpu_cores %}
-    {% set items = items.concat([{ value: s.cpu_cores, label: "CPU Cores", sub: (s.performance_cores ~ "P + " ~ s.efficiency_cores ~ "E") if s.performance_cores and s.efficiency_cores else "" }]) %}
+    {# Core breakdown adapts to the tiers a chip actually has: super, performance, efficiency #}
+    {% set cpuParts = [] %}
+    {% if s.super_cores %}{% set cpuParts = cpuParts.concat([s.super_cores ~ "S"]) %}{% endif %}
+    {% if s.performance_cores %}{% set cpuParts = cpuParts.concat([s.performance_cores ~ "P"]) %}{% endif %}
+    {% if s.efficiency_cores %}{% set cpuParts = cpuParts.concat([s.efficiency_cores ~ "E"]) %}{% endif %}
+    {% set items = items.concat([{ value: s.cpu_cores, label: "CPU Cores", sub: cpuParts | join(" + ") }]) %}
   {% endif %}
 
   {% if s.gpu_cores %}
