@@ -113,6 +113,15 @@ export default function (eleventyConfig) {
     const categories = loadYAML("devices.yml");
     const seriesList = loadYAML("series.yml");
 
+    const chipRankNameMap = {};
+    (seriesList || []).forEach((s) => {
+      (s.ranks || []).forEach((r) => {
+        (r.variants || []).forEach((chipId) => {
+          chipRankNameMap[chipId] = r.name;
+        });
+      });
+    });
+
     // Build an ordered list of generation ids (newest first) across all series
     const genOrder = [];
     (seriesList || []).forEach((s) => {
@@ -158,10 +167,19 @@ export default function (eleventyConfig) {
           isCurrent: idx === 0,
         }));
 
+      // Chip family names this device has shipped with ("M5 Max", "N1", …),
+      // so search can match a device by the silicon inside it.
+      const chipNames = [];
+      (device.variants || []).forEach((chipId) => {
+        const name = chipRankNameMap[chipId];
+        if (name && !chipNames.includes(name)) chipNames.push(name);
+      });
+
       const entry = {
         ...device,
         categoryId: category.id,
         categoryName: category.name,
+        chipNames,
         // Canonical page URL, including the group segment for grouped
         // categories — hand-built URLs elsewhere kept dropping it.
         url: deviceUrl(category.id, group, device.id).toLowerCase(),

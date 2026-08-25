@@ -34,7 +34,19 @@
     var scored = [];
 
     searchData.forEach(function (item) {
-      var haystack = normalize(item.name + " " + item.detail + " " + item.id);
+      /* keywords carry the chip names inside a device; type lets a query say
+         "device" or "chip" to filter by kind. Neither is displayed. */
+      var haystack = normalize(
+        item.name +
+          " " +
+          item.detail +
+          " " +
+          item.id +
+          " " +
+          (item.keywords || "") +
+          " " +
+          item.type,
+      );
       var allMatch = words.every(function (w) {
         return haystack.indexOf(w) !== -1;
       });
