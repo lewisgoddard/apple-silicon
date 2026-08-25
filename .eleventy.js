@@ -51,7 +51,12 @@ function mergeChipSpecs(specsArray) {
       const max = Math.max(...values);
       merged[key] = `${min} – ${max}`;
     } else if (values.every((v) => Array.isArray(v))) {
-      merged[key] = [...new Set(values.flat())];
+      // Union in variant order would leave a single-config outlier last
+      // (e.g. M5 Max: [48, 64, 128] + [36] → "48 64 128 36").
+      const union = [...new Set(values.flat())];
+      merged[key] = union.every((v) => typeof v === "number")
+        ? union.sort((a, b) => a - b)
+        : union;
     } else {
       const unique = [...new Set(values.map(String))];
       merged[key] = unique.join(" / ");

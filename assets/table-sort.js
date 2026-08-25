@@ -60,6 +60,36 @@
     return isNaN(num) ? null : num;
   }
 
+  /**
+   * Split a cell into its individual values. <br> contributes no whitespace to
+   * textContent, so a multi-value cell would otherwise concatenate into one
+   * meaningless number ("48","64","128","36" → 486412836).
+   */
+  function cellLines(cell) {
+    var lines = [];
+    var current = "";
+    cell.childNodes.forEach(function (node) {
+      if (node.nodeName === "BR") {
+        lines.push(current);
+        current = "";
+      } else {
+        current += node.textContent || "";
+      }
+    });
+    lines.push(current);
+    return lines;
+  }
+
+  /* Numeric value for a cell; multi-value cells compare on their largest. */
+  function parseCell(cell) {
+    var best = null;
+    cellLines(cell).forEach(function (line) {
+      var v = parseNumeric(line);
+      if (v !== null && (best === null || v > best)) best = v;
+    });
+    return best;
+  }
+
   /* ── Best / worst value highlighting ────────────────────────── */
 
   function highlightBestWorst(table) {
@@ -79,7 +109,7 @@
       var entries = [];
 
       for (var i = 1; i < cells.length; i++) {
-        var val = parseNumeric(cells[i].textContent);
+        var val = parseCell(cells[i]);
         if (val !== null) entries.push({ cell: cells[i], value: val });
       }
 
@@ -120,7 +150,7 @@
     /* Build an index array for columns 1…n-1, then sort it. */
     var cols = [];
     for (var i = 1; i < colCount; i++) {
-      cols.push({ pos: i, value: parseNumeric(refCells[i].textContent) });
+      cols.push({ pos: i, value: parseCell(refCells[i]) });
     }
 
     cols.sort(function (a, b) {
@@ -167,7 +197,7 @@
       var cells = row.querySelectorAll("td");
       var hasNumeric = false;
       for (var i = 1; i < cells.length; i++) {
-        if (parseNumeric(cells[i].textContent) !== null) {
+        if (parseCell(cells[i]) !== null) {
           hasNumeric = true;
           break;
         }
