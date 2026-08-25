@@ -328,6 +328,12 @@ nav {
 }
 
 .search-result-icon {
+  /* Colour-emoji fonts first: the body stack's "Segoe UI" carries monochrome
+     glyphs for ⚙ (U+2699) and 🗂 (U+1F5C2) and would otherwise win, even with
+     the U+FE0F emoji-presentation selector. */
+  font-family:
+    "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji",
+    "Segoe UI Symbol", sans-serif;
   font-size: 1.1rem;
   flex-shrink: 0;
   /* Reserve one fixed box per icon so every result's text starts at the same

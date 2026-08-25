@@ -4,9 +4,9 @@
   // Result-kind icons: silicon narrows from series → family → tier → chip
   var ICONS = {
     series: "📚",
-    family: "🗂",
+    family: "🗂️",
     tier: "🧩",
-    chip: "⚙",
+    chip: "⚙️",
     device: "💻",
     page: "📄",
   };
@@ -74,6 +74,9 @@
 
       // Boost silicon pages over devices and standalone pages
       if (SILICON[item.type]) score += 0.1;
+
+      // Per-entry ranking weight from the index (product line, discontinued …)
+      score += item.weight || 0;
 
       scored.push({ item: item, score: score });
     });

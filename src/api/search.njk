@@ -8,6 +8,14 @@ eleventyExcludeFromCollections: true
     Entry order matters — search.js sorts by score with a stable sort, so ties
     fall back to this order. Broader pages come first: family → tier → variant.
 -#}
+{#- Ranking weights, added to the client's match score. Flagship lines outrank
+    niche ones, and anything discontinued sinks below its current siblings. -#}
+{%- set CATEGORY_WEIGHT = {
+  "mac": 1.2, "iphone": 1.0, "ipad": 0.6, "watch": 0.5, "airpods": 0.4,
+  "vision": 0.4, "homepod": 0.3, "apple-tv": 0.3, "display": 0
+} -%}
+{%- set DISCONTINUED_PENALTY = 0.8 -%}
+
 {%- set results = [] -%}
 
 {#- Chip family pages, e.g. /chips/m5/ -#}
@@ -65,9 +73,12 @@ eleventyExcludeFromCollections: true
   {%- if device.variants -%}
     {%- set detail = detail ~ " · " ~ (device.variants | length) ~ " chip" ~ ("s" if device.variants | length != 1 else "") -%}
   {%- endif -%}
+  {%- set weight = CATEGORY_WEIGHT[device.categoryId] if CATEGORY_WEIGHT[device.categoryId] is defined else 0.3 -%}
+  {%- if device.discontinued -%}{%- set weight = weight - DISCONTINUED_PENALTY -%}{%- endif -%}
   {%- set _ = results.push({
     type: "device", id: device.id, name: device.name, detail: detail,
     keywords: device.chipNames | join(" "),
+    weight: weight | round(2),
     url: device.url
   }) -%}
 {%- endfor -%}
@@ -82,6 +93,7 @@ eleventyExcludeFromCollections: true
       id: u,
       name: p.data.title if p.data.title else "Apple Silicon Specs",
       detail: p.data.description if p.data.description else "",
+      weight: 1.0 if u.startsWith("/current/") else 0.5,
       url: u
     }) -%}
   {%- endif -%}
