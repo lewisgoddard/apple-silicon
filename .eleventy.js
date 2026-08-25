@@ -785,6 +785,9 @@ export default function (eleventyConfig) {
           categoryName: category.name,
           groupId: group ? group.id : null,
           groupName: group ? group.name : null,
+          // This list is deliberately historical, so callers need to know
+          // which entries are no longer sold.
+          deprecated: !!(device.deprecated || (group && group.deprecated)),
           url: deviceUrl(category.id, group, device.id),
         });
       }

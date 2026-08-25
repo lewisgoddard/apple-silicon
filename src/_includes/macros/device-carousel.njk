@@ -1,12 +1,13 @@
 {# _includes/macros/device-carousel.njk #}
 {% macro deviceCarousel(devices) %}
 {% if devices and devices | length > 0 %}
-  <h2>Available in</h2>
+  <h2>All Devices, Including Discontinued</h2>
   <div class="device-carousel">
     {% for device in devices %}
-      <a class="device-card" href="{{ device.url }}">
+      <a class="device-card{% if device.deprecated %} device-card--deprecated{% endif %}" href="{{ device.url }}">
         <span class="device-card-name">{{ device.name }}</span>
         <span class="device-card-category">{{ device.categoryName }}</span>
+        {% if device.deprecated %}<span class="device-grid-discontinued">Discontinued</span>{% endif %}
       </a>
     {% endfor %}
   </div>

@@ -576,6 +576,11 @@ li {
   transition: background 0.15s;
 }
 
+/* Matches .device-grid-card--deprecated, since the carousel is a history list */
+.device-card--deprecated {
+  opacity: 0.6;
+}
+
 .device-card:hover {
   background: var(--color-surface);
 }
