@@ -2,9 +2,19 @@
   name: "M Series"
   description: "Apple silicon for Macs and high-performance devices"
   ranks:
+    - id: m6
+      name: "M6"
+      description: "The latest generation of Apple silicon for Macs, with a three-tier CPU and a dual Neural Engine."
+      variants: ["m6-12-12"]
+    - id: m5-ultra
+      name: "M5 Ultra"
+      description: "Top-tier member of the M5 family, two M5 Max dies joined by UltraFusion"
+      process_nm: "TSMC N3P"
+      cpu_isa: "ARMv9"
+      variants: ["m5-ultra-36-80", "m5-ultra-30-64"]
     - id: m5-max
       name: "M5 Max"
-      description: "Top-tier member of the M5 family"
+      description: "High-end member of the M5 family"
       process_nm: "TSMC N3P"
       cpu_isa: "ARMv9"
       variants: ["m5-max-18-40", "m5-max-18-32"]
@@ -16,7 +26,7 @@
       variants: ["m5-pro-18-20", "m5-pro-15-16"]
     - id: m5
       name: "M5"
-      description: "The latest generation of Apple silicon for Macs, iPads, and Vision Pro devices."
+      description: "Base-tier member of the M5 family, used in Macs, iPads, and Vision Pro devices."
       process_nm: "TSMC N3P"
       cpu_isa: "ARMv9"
       variants: ["m5-10-10", "m5-9-10", "m5-10-8"]

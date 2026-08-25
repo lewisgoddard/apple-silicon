@@ -112,6 +112,9 @@
       section: "desktop"
       variants:
         [
+          "m6-12-12",
+          "m5-pro-18-20",
+          "m5-pro-15-16",
           "m4-pro-14-20",
           "m4-pro-12-16",
           "m4-10-10",
@@ -125,6 +128,10 @@
       section: "desktop"
       variants:
         [
+          "m5-ultra-36-80",
+          "m5-ultra-30-64",
+          "m5-max-18-40",
+          "m5-max-18-32",
           "m4-max-16-40",
           "m4-max-14-32",
           "m3-ultra-32-80",

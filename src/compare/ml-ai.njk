@@ -38,7 +38,7 @@ permalink: "compare/ml-ai/"
 ]) }}
 
 <h2>Desktops</h2>
-<p>For larger models and training workloads, desktop Macs offer more memory headroom. The M3 Ultra in the Mac Studio supports up to 256 GB unified memory. If your models fit in 128 GB, the M4 Max delivers better per-TOPS performance at a lower price. The M4 in the iMac and Mac mini is suitable for inference on smaller models (up to ~13B parameters).</p>
+<p>For larger models and training workloads, desktop Macs offer more memory headroom. The M5 Ultra in the Mac Studio supports up to 512 GB of unified memory on 1.2 TB/s of bandwidth — enough for the largest local models. If your models fit in 128 GB, the M5 Max costs considerably less. The Mac mini's M5 Pro reaches 64 GB, while its base M6 pairs a dual 16-core Neural Engine with up to 32 GB — suitable for inference on smaller models, as is the iMac's M4.</p>
 
 {% set desktopChipIds = getCurrentChips("mac", "desktop") %}
 {% set desktopChips = getChips(desktopChipIds, collections) %}

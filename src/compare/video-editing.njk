@@ -22,7 +22,7 @@ permalink: "compare/video-editing/"
 </p>
 
 <h2>Laptops</h2>
-<p>The M5 Max is the laptop video editing champion: 2 ProRes engines, 2 video encode/decode engines, and 614 GB/s memory bandwidth for buttery 8K ProRes timelines. The M5 Pro halves the media engines but is more than enough for 4K ProRes and multicam H.264/HEVC. The base M5 and A18 Pro have a single engine each—fine for straightforward 4K editing but will be substantially slower on heavy exports.</p>
+<p>The M5 Max is the laptop video editing champion: 2 ProRes engines, 2 video encode engines, and 614 GB/s memory bandwidth for buttery 8K ProRes timelines. The M5 Pro halves the media engines but is more than enough for 4K ProRes and multicam H.264/HEVC. The base M5 and A18 Pro have a single engine each—fine for straightforward 4K editing but will be substantially slower on heavy exports.</p>
 
 {% set laptopChipIds = getCurrentChips("mac", "laptop") %}
 {% set laptopChips = getChips(laptopChipIds, collections) %}
@@ -43,7 +43,7 @@ permalink: "compare/video-editing/"
 ]) }}
 
 <h2>Desktops</h2>
-<p>The M3 Ultra in the Mac Studio doubles up to 4 ProRes engines and 4 video encode/decode engines—the best option for 8K multicam or high-volume ProRes rendering. The M4 Max in the Mac Studio is the sweet spot for most professional 4K–6K workflows with 2 of each engine. The M4 in the iMac and Mac mini handles casual editing well but will bottleneck on heavier exports.</p>
+<p>The M5 Ultra in the Mac Studio doubles up to 4 ProRes engines and 4 video encode engines—the best option for 8K multicam or high-volume ProRes rendering. The M5 Max is the sweet spot for most professional 4K–6K workflows, with two encode and two ProRes engines. The M6 in the Mac mini and the M4 in the iMac each carry a single video encode, decode, and ProRes engine — fine for casual editing, but they will bottleneck on heavier exports.</p>
 
 {% set desktopChipIds = getCurrentChips("mac", "desktop") %}
 {% set desktopChips = getChips(desktopChipIds, collections) %}
