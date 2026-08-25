@@ -2,49 +2,51 @@
    Renders a device-grid from a list of device objects.
    Each device needs: name, variants, and either url or id (with baseUrl provided).
    Deprecated devices are rendered last with a "Discontinued" badge.
+   Devices with no chip data are rendered unlinked — they have no page.
 #}
+
+{% macro deviceCardContent(device, collections, deprecated) %}
+  <span class="device-grid-name">{{ device.name }}</span>
+  {% if device.variants and device.variants | length > 0 %}
+    {% set deviceSocVariants = device.variants | primaryChips %}
+    {% set chipItems = getChips(deviceSocVariants, collections) %}
+    <span class="device-grid-chips">{{ deviceSocVariants | length }} chip{{ "s" if deviceSocVariants | length != 1 }}</span>
+    {% if chipItems | length == 1 %}
+      <span class="device-grid-range">{{ chipItems[0].name }} ({{ chipItems[0].specs.cpu_cores }}c CPU / {{ chipItems[0].specs.gpu_cores }}c GPU)</span>
+    {% else %}
+      <span class="device-grid-range">{{ getChipRange(deviceSocVariants, collections) }}</span>
+    {% endif %}
+  {% else %}
+    <span class="device-grid-chips">No chip data yet</span>
+  {% endif %}
+  {% if deprecated %}
+    <span class="device-grid-discontinued">Discontinued</span>
+  {% endif %}
+{% endmacro %}
+
+{% macro deviceCard(device, collections, baseUrl, deprecated) %}
+  {% set hasChips = device.variants and device.variants | length > 0 %}
+  {% set cardClass = "device-grid-card" + (" device-grid-card--deprecated" if deprecated else "") + ("" if hasChips else " device-grid-card--empty") %}
+  {% if hasChips %}
+    {% set href = device.url if device.url else (baseUrl + device.id + "/") %}
+    <a href="{{ href }}" class="{{ cardClass }}">{{ deviceCardContent(device, collections, deprecated) }}</a>
+  {% else %}
+    {# No variants means no device page was generated, so there is nothing to link to #}
+    <div class="{{ cardClass }}">{{ deviceCardContent(device, collections, deprecated) }}</div>
+  {% endif %}
+{% endmacro %}
+
 {% macro deviceGrid(devices, collections, baseUrl) %}
 {% if devices and devices | length > 0 %}
   <div class="device-grid">
     {% for device in devices %}
       {% if not device.deprecated %}
-        {% set href = device.url if device.url else (baseUrl + device.id + "/") %}
-        <a href="{{ href }}" class="device-grid-card{% if not device.variants or device.variants | length == 0 %} device-grid-card--empty{% endif %}">
-          <span class="device-grid-name">{{ device.name }}</span>
-          {% if device.variants and device.variants | length > 0 %}
-            {% set deviceSocVariants = device.variants | primaryChips %}
-            {% set chipItems = getChips(deviceSocVariants, collections) %}
-            <span class="device-grid-chips">{{ deviceSocVariants | length }} chip{{ "s" if deviceSocVariants | length != 1 }}</span>
-            {% if chipItems | length == 1 %}
-              <span class="device-grid-range">{{ chipItems[0].name }} ({{ chipItems[0].specs.cpu_cores }}c CPU / {{ chipItems[0].specs.gpu_cores }}c GPU)</span>
-            {% else %}
-              <span class="device-grid-range">{{ getChipRange(deviceSocVariants, collections) }}</span>
-            {% endif %}
-          {% else %}
-            <span class="device-grid-chips">No chip data yet</span>
-          {% endif %}
-        </a>
+        {{ deviceCard(device, collections, baseUrl, false) }}
       {% endif %}
     {% endfor %}
     {% for device in devices %}
       {% if device.deprecated %}
-        {% set href = device.url if device.url else (baseUrl + device.id + "/") %}
-        <a href="{{ href }}" class="device-grid-card device-grid-card--deprecated{% if not device.variants or device.variants | length == 0 %} device-grid-card--empty{% endif %}">
-          <span class="device-grid-name">{{ device.name }}</span>
-          {% if device.variants and device.variants | length > 0 %}
-            {% set deviceSocVariants = device.variants | primaryChips %}
-            {% set chipItems = getChips(deviceSocVariants, collections) %}
-            <span class="device-grid-chips">{{ deviceSocVariants | length }} chip{{ "s" if deviceSocVariants | length != 1 }}</span>
-            {% if chipItems | length == 1 %}
-              <span class="device-grid-range">{{ chipItems[0].name }} ({{ chipItems[0].specs.cpu_cores }}c CPU / {{ chipItems[0].specs.gpu_cores }}c GPU)</span>
-            {% else %}
-              <span class="device-grid-range">{{ getChipRange(deviceSocVariants, collections) }}</span>
-            {% endif %}
-          {% else %}
-            <span class="device-grid-chips">No chip data yet</span>
-          {% endif %}
-          <span class="device-grid-discontinued">Discontinued</span>
-        </a>
+        {{ deviceCard(device, collections, baseUrl, true) }}
       {% endif %}
     {% endfor %}
   </div>
