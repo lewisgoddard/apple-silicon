@@ -25,7 +25,11 @@
   // Load search index on first focus
   var loaded = false;
   input.addEventListener("focus", function () {
-    if (loaded) return;
+    if (loaded) {
+      // The box may already hold a value (browser-restored, back navigation)
+      runSearch();
+      return;
+    }
     loaded = true;
     fetch("/api/search.json")
       .then(function (r) {
@@ -33,6 +37,8 @@
       })
       .then(function (data) {
         searchData = data;
+        // Show results for anything typed before the index finished loading
+        if (document.activeElement === input) runSearch();
       });
   });
 
@@ -104,7 +110,9 @@
         '" class="search-result" data-index="' +
         i +
         '">' +
-        '<span class="search-result-icon">' +
+        '<span class="search-result-icon' +
+        (item.discontinued ? " search-result-icon--discontinued" : "") +
+        '">' +
         icon +
         "</span>" +
         '<span class="search-result-text">' +
@@ -147,13 +155,22 @@
     activeIndex = idx;
   }
 
-  input.addEventListener("input", function () {
-    var items = search(input.value);
-    render(items);
-  });
+  function runSearch() {
+    render(search(input.value));
+  }
+
+  input.addEventListener("input", runSearch);
 
   input.addEventListener("keydown", function (e) {
-    if (!visible) return;
+    if (!visible) {
+      // Nothing on screen yet — Enter or ArrowDown reveals results for the
+      // text already in the box rather than doing nothing at all.
+      if (e.key === "Enter" || e.key === "ArrowDown") {
+        e.preventDefault();
+        runSearch();
+      }
+      return;
+    }
     var items = results.querySelectorAll(".search-result");
     if (e.key === "ArrowDown") {
       e.preventDefault();

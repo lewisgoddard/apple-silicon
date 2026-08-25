@@ -79,6 +79,7 @@ eleventyExcludeFromCollections: true
     type: "device", id: device.id, name: device.name, detail: detail,
     keywords: device.chipNames | join(" "),
     weight: weight | round(2),
+    discontinued: device.discontinued,
     url: device.url
   }) -%}
 {%- endfor -%}

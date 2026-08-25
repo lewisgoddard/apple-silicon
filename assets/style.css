@@ -345,6 +345,11 @@ nav {
   line-height: 1;
 }
 
+/* Discontinued devices read as monochrome so current products stand out */
+.search-result-icon--discontinued {
+  filter: grayscale(1);
+}
+
 .search-result-text {
   display: flex;
   flex-direction: column;
