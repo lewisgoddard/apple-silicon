@@ -120,26 +120,19 @@
         </div>
 
         <div class="footer-col footer-col--wide">
-          <h2>M-Series Chips</h2>
-          <ul class="footer-list--inline">
-            {% set gens = [] %}
-            {% for gen in collections.generationPagesCollection %}
-              {% if gen.seriesId == "M" %}{% set _ = gens.push(gen) %}{% endif %}
-            {% endfor %}
-            {% for gen in gens %}
-              <li><a href="/chips/{{ gen.id | lower }}/"{% if gen.onSale %} class="nav-hl-custom"{% endif %}>{{ gen.id | familyLabel }}</a></li>
-            {% endfor %}
-          </ul>
-          <h2>A-Series Chips</h2>
-          <ul class="footer-list--inline">
-            {% set gens = [] %}
-            {% for gen in collections.generationPagesCollection %}
-              {% if gen.seriesId == "A" %}{% set _ = gens.push(gen) %}{% endif %}
-            {% endfor %}
-            {% for gen in gens %}
-              <li><a href="/chips/{{ gen.id | lower }}/"{% if gen.onSale %} class="nav-hl-custom"{% endif %}>{{ gen.id | familyLabel }}</a></li>
-            {% endfor %}
-          </ul>
+          {# One block per flagship series; add an id here to list another #}
+          {% for sid in ["M", "A", "S", "H"] %}
+            <h2>{{ sid }}-Series Chips</h2>
+            <ul class="footer-list--inline">
+              {% set gens = [] %}
+              {% for gen in collections.generationPagesCollection %}
+                {% if gen.seriesId == sid %}{% set _ = gens.push(gen) %}{% endif %}
+              {% endfor %}
+              {% for gen in gens %}
+                <li><a href="/chips/{{ gen.id | lower }}/"{% if gen.onSale %} class="nav-hl-custom"{% endif %}>{{ gen.id | familyLabel }}</a></li>
+              {% endfor %}
+            </ul>
+          {% endfor %}
         </div>
       </nav>
       <p class="footer-note">

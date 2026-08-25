@@ -108,8 +108,11 @@ nav {
 }
 
 /* ===== Nav Dropdowns ===== */
+/* The dropdown duplicates the inline links, so it only earns its place once
+   those collapse at the narrow breakpoint. */
 .nav-dropdown {
   position: relative;
+  display: none;
 }
 
 .nav-dropdown-toggle {
@@ -438,6 +441,11 @@ ol {
 
 li {
   margin-bottom: 0.35rem;
+}
+
+/* Prose spacing only — nav items are laid out by flex and sit too high with it */
+.nav-links li {
+  margin-bottom: 0;
 }
 
 /* ===== Comparison Tables ===== */
@@ -1129,6 +1137,15 @@ footer {
 
   .nav-collapse {
     display: none;
+  }
+
+  /* Dividers only separate the inline links, which are hidden here */
+  .nav-divider {
+    display: none;
+  }
+
+  .nav-dropdown {
+    display: list-item;
   }
 
   .nav-show-narrow {
