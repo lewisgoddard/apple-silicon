@@ -520,23 +520,18 @@ li {
 
 /* ===== Device Carousel ===== */
 .device-carousel {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 1rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 0.5rem 0 1rem;
-  -webkit-overflow-scrolling: touch;
+  margin-top: 1rem;
 }
 
 .device-card {
-  flex: 0 0 auto;
-  min-width: 160px;
   padding: 1rem 1.25rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   text-decoration: none;
   color: inherit;
-  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -856,6 +851,7 @@ li {
 .breadcrumbs li:not(:last-child)::after {
   content: "/";
   margin-left: 0.4rem;
+  margin-right: 0.2rem;
   color: var(--color-border);
 }
 

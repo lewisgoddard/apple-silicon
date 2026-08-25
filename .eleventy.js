@@ -650,6 +650,14 @@ export default function (eleventyConfig) {
           seriesName: series.name,
           mergedChips,
           allVariants: gen.tiers.flatMap((t) => t.variants || []),
+          // Links to each tier's own page, so a family page navigates down as
+          // well as sideways to the previous/next generation.
+          tiers: mergedChips.map((tier) => ({
+            name: tier.name,
+            url: `/chips/${gen.id}/${
+              tier.id.match(/^[a-z]\d+(?:-(.+))?$/)?.[1] || "base"
+            }/`.toLowerCase(),
+          })),
         });
       });
     });

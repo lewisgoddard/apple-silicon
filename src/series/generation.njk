@@ -20,7 +20,7 @@ eleventyComputed:
 
 <h1>{{ gen.name }}</h1>
 
-{{ genNav(gen.prevGen, gen.nextGen) }}
+{{ genNav(gen.prevGen, gen.nextGen, gen.tiers, "Tiers:") }}
 
 {% from "macros/compare-table.njk" import compareTable %}
 {% from "macros/device-carousel.njk" import deviceCarousel %}

@@ -6,8 +6,8 @@ pagination:
   alias: rank
 permalink: "chips/{{ rank.id | genId | lower }}/{{ rank.id | tierSlug | lower }}/index.html"
 eleventyComputed:
-  title: "{{ rank.name }} Variants"
-  description: "Compare all {{ rank.name }} chip variants."
+  title: "{{ rank.name }}{% if rank.variants | length > 1 %} Variants{% endif %}"
+  description: "{% if rank.variants | length > 1 %}Compare all {{ rank.name }} chip variants.{% else %}{{ rank.description }}{% endif %}"
 ---
 
 {% from "macros/breadcrumbs.njk" import breadcrumbs %}
@@ -31,7 +31,10 @@ eleventyComputed:
 {% from "macros/device-carousel.njk" import deviceCarousel %}
 
 {% if rank.variants and rank.variants | length > 0 %}
-  <p>{{ rank.variants | length }} variant{{ "s" if rank.variants | length != 1 }}</p>
+  {# A single-variant rank is that chip's own page, so the count adds nothing #}
+  {% if rank.variants | length > 1 %}
+    <p>{{ rank.variants | length }} variants</p>
+  {% endif %}
   {% set items = getChips(rank.variants, collections) %}
   {{ compareTable(items) }}
 
