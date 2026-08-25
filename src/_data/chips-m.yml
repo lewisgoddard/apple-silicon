@@ -300,7 +300,7 @@
     npu_cores: 16
     npu_tops: 38
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
-    video_decode: 2
+    video_decode: 1
     video_encode: 2
     prores_engines: 2
     av1_decode: 1
@@ -325,7 +325,7 @@
     npu_cores: 16
     npu_tops: 38
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
-    video_decode: 2
+    video_decode: 1
     video_encode: 2
     prores_engines: 2
     av1_decode: 1
@@ -528,7 +528,7 @@
     npu_cores: 32
     npu_tops: 36
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
-    video_decode: 4
+    video_decode: 2
     video_encode: 4
     prores_engines: 4
     av1_decode: 2
@@ -561,7 +561,7 @@
     npu_cores: 32
     npu_tops: 36
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
-    video_decode: 4
+    video_decode: 2
     video_encode: 4
     prores_engines: 4
     av1_decode: 2
@@ -594,7 +594,7 @@
     npu_cores: 16
     npu_tops: 18
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
-    video_decode: 2
+    video_decode: 1
     video_encode: 2
     prores_engines: 2
     av1_decode: 1
@@ -627,7 +627,7 @@
     npu_cores: 16
     npu_tops: 18
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
-    video_decode: 2
+    video_decode: 1
     video_encode: 2
     prores_engines: 2
     av1_decode: 1
@@ -824,7 +824,7 @@
     npu_cores: 32
     npu_tops: 31.6
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
-    video_decode: 4
+    video_decode: 2
     video_encode: 4
     prores_engines: 4
     memory_bus_width_bits: 1024
@@ -855,7 +855,7 @@
     npu_cores: 32
     npu_tops: 31.6
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
-    video_decode: 4
+    video_decode: 2
     video_encode: 4
     prores_engines: 4
     memory_bus_width_bits: 1024
@@ -886,7 +886,7 @@
     npu_cores: 16
     npu_tops: 15.8
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
-    video_decode: 2
+    video_decode: 1
     video_encode: 2
     prores_engines: 2
     memory_bus_width_bits: 512
@@ -917,7 +917,7 @@
     npu_cores: 16
     npu_tops: 15.8
     hardware_acceleration: ["H264", "HEVC", "ProRes", "ProRes RAW"]
-    video_decode: 2
+    video_decode: 1
     video_encode: 2
     prores_engines: 2
     memory_bus_width_bits: 512
