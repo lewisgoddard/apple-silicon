@@ -433,7 +433,7 @@
   ranks:
     - id: n1
       name: "N1"
-      description: "Wi-Fi 7, Bluetooth 6, and Thread chip for iPhone 17 series and M5 iPad Pro"
+      description: "Wi-Fi 7, Bluetooth 6, and Thread chip for the iPhone 17 series, M5 iPad Pro, and current Macs"
       variants: ["n1"]
 - id: R
   name: "R Series"
