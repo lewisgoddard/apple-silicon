@@ -5,6 +5,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* Underlines break around descenders rather than striking through them */
+  text-decoration-skip-ink: auto;
 }
 
 :root {
@@ -357,9 +359,15 @@ a.device-grid-card.nav-hl-custom {
   line-height: 1;
 }
 
-/* Discontinued devices read as monochrome so current products stand out */
-.search-result-icon--discontinued {
+/* Discontinued devices recede: monochrome icon and faded text, so current
+   products stand out. Fading .search-result-text rather than its children
+   keeps the row's hover and active backgrounds at full strength. */
+.search-result--discontinued .search-result-icon {
   filter: grayscale(1);
+}
+
+.search-result--discontinued .search-result-text {
+  opacity: 0.65;
 }
 
 .search-result-text {
@@ -1061,7 +1069,8 @@ footer {
 }
 
 /* Short labels (M6, A19 …) read better wrapped across the column */
-.footer-list--inline {
+/* Needs .footer-col to outrank `.footer-col ul`, which sets column direction */
+.footer-col ul.footer-list--inline {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.35rem 0.9rem;

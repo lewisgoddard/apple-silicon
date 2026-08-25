@@ -108,6 +108,11 @@
             <li><a href="/compare/gaming/" class="nav-hl-gaming">Gaming</a></li>
             <li><a href="/compare/custom/" class="nav-hl-custom">Custom Comparison</a></li>
           </ul>
+          <h2>Generational Gains</h2>
+          <ul>
+            <li><a href="/gen-gains/m-series/">M-Series Generational Gains</a></li>
+            <li><a href="/gen-gains/a-series/">A-Series Generational Gains</a></li>
+          </ul>
         </div>
 
         <div class="footer-col">
@@ -123,14 +128,6 @@
         </div>
 
         <div class="footer-col">
-          <h2>Generational Gains</h2>
-          <ul>
-            <li><a href="/gen-gains/m-series/">M-Series Generational Gains</a></li>
-            <li><a href="/gen-gains/a-series/">A-Series Generational Gains</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
           <h2><a href="/devices/">Devices by Product</a></h2>
           <ul>
             {% for cat in collections.devicesCollection %}
@@ -142,8 +139,9 @@
         <div class="footer-col">
           <h2><a href="/chips/">Chips by Series</a></h2>
           <ul>
+            {# M and A are the flagship lines, highlighted as they are in the nav #}
             {% for s in collections.seriesCollection %}
-              <li><a href="/series/{{ s.id | lower }}/">{{ s.name }}</a></li>
+              <li><a href="/series/{{ s.id | lower }}/"{% if s.id == "M" or s.id == "A" %} class="nav-hl-custom"{% endif %}>{{ s.name }}</a></li>
             {% endfor %}
           </ul>
         </div>

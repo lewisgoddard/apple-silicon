@@ -107,12 +107,12 @@
       html +=
         '<a href="' +
         item.url +
-        '" class="search-result" data-index="' +
+        '" class="search-result' +
+        (item.discontinued ? " search-result--discontinued" : "") +
+        '" data-index="' +
         i +
         '">' +
-        '<span class="search-result-icon' +
-        (item.discontinued ? " search-result-icon--discontinued" : "") +
-        '">' +
+        '<span class="search-result-icon">' +
         icon +
         "</span>" +
         '<span class="search-result-text">' +
