@@ -730,16 +730,6 @@ export default function (eleventyConfig) {
     const chips = collections.chipsCollection || [];
     const found = [];
 
-    // Debug output to help trace builds when getChips is invoked.
-    try {
-      const idsPreview = Array.isArray(ids) ? ids.join(",") : String(ids);
-      console.log(
-        `[getChips] called with ids=[${idsPreview}] (chips available=${chips.length})`,
-      );
-    } catch (e) {
-      // Avoid throwing during template rendering
-    }
-
     (ids || []).forEach((id) => {
       // Search through every chip entry for a matching id.
       // A chip file will have a list of top-level chip objects with an `id`.
@@ -750,15 +740,6 @@ export default function (eleventyConfig) {
         }
       });
     });
-
-    try {
-      const foundIds = found.map((c) => c.id).join(",");
-      console.log(
-        `[getChips] returning ${found.length} chip(s): [${foundIds}]`,
-      );
-    } catch (e) {
-      // swallow errors from logging
-    }
 
     return found;
   });

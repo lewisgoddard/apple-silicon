@@ -1,0 +1,13 @@
+{
+  // Without this file `wrangler deploy` runs its first-run setup wizard, which
+  // auto-accepts in CI and re-runs the build command a second time.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "apple-silicon",
+  "compatibility_date": "2026-08-20",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "_site"
+  }
+}
