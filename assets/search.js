@@ -69,7 +69,8 @@
     activeIndex = -1;
     var html = "";
     items.forEach(function (item, i) {
-      var icon = item.type === "chip" ? "⚙" : "💻";
+      var icon =
+        item.type === "chip" ? "⚙" : item.type === "page" ? "📄" : "💻";
       html +=
         '<a href="' +
         item.url +

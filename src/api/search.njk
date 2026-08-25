@@ -1,28 +1,87 @@
 ---
 permalink: "api/search.json"
+eleventyExcludeFromCollections: true
 ---
-{#- Values are JSON-encoded with `dump`, not HTML-escaped: this is a JSON API,
-    and the client escapes for HTML itself when it renders a result. -#}
-[
+{#- Search index. Values are JSON-encoded with `dump`, not HTML-escaped: this is
+    a JSON API, and the client escapes for HTML itself when rendering a result.
+
+    Entry order matters — search.js sorts by score with a stable sort, so ties
+    fall back to this order. Broader pages come first: family → tier → variant.
+-#}
+{%- set results = [] -%}
+
+{#- Chip family pages, e.g. /chips/m5/ -#}
+{%- for gen in collections.generationPagesCollection -%}
+  {%- set tierNames = [] -%}
+  {%- for t in gen.tiers -%}{%- set _ = tierNames.push(t.name) -%}{%- endfor -%}
+  {%- set _ = results.push({
+    type: "chip", id: gen.id, name: gen.name,
+    detail: tierNames | join(", "),
+    url: "/chips/" + (gen.id | lower) + "/"
+  }) -%}
+{%- endfor -%}
+
+{#- Chip tier pages, e.g. /chips/m5/max/. Skipped only when a rank holds one
+    chip that has no variant page of its own (N1, C1, S-series …) — for those
+    the chip entry below already points at this very URL. -#}
+{%- for rank in collections.rankPagesCollection -%}
+  {%- set soleChipIsThisPage = rank.variants | length == 1 and (rank.variants[0] | chipVariant) == rank.variants[0] -%}
+  {%- if not soleChipIsThisPage -%}
+    {%- set _ = results.push({
+      type: "chip", id: rank.id, name: rank.name,
+      detail: rank.description if rank.description else (rank.variants | length + " variants"),
+      url: "/chips/" + (rank.id | genId | lower) + "/" + (rank.id | tierSlug | lower) + "/"
+    }) -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{#- Individual chips -#}
 {%- for chip in collections.chipPagesCollection -%}
-{%- if chip.specs.cpu_cores and chip.specs.gpu_cores -%}
-{%- set detail = chip.specs.cpu_cores ~ "-core CPU / " ~ chip.specs.gpu_cores ~ "-core GPU" -%}
-{%- elif chip.specs.cpu_cores -%}
-{%- set detail = chip.specs.cpu_cores ~ "-core CPU" -%}
-{%- elif chip.rank and chip.rank.rankDescription -%}
-{%- set detail = chip.rank.rankDescription -%}
-{%- else -%}
-{%- set detail = chip.name -%}
-{%- endif -%}
-{"type":"chip","id":{{ chip.id | dump | safe }},"name":{{ chip.name | dump | safe }},"detail":{{ detail | dump | safe }},"url":{{ chip.url | dump | safe }}}
-{%- if not loop.last or collections.devicePagesCollection | length > 0 %},{% endif -%}
+  {%- if chip.specs.cpu_cores and chip.specs.gpu_cores -%}
+    {%- set detail = chip.specs.cpu_cores ~ "-core CPU / " ~ chip.specs.gpu_cores ~ "-core GPU" -%}
+  {%- elif chip.specs.cpu_cores -%}
+    {%- set detail = chip.specs.cpu_cores ~ "-core CPU" -%}
+  {%- elif chip.rank and chip.rank.rankDescription -%}
+    {%- set detail = chip.rank.rankDescription -%}
+  {%- else -%}
+    {%- set detail = chip.name -%}
+  {%- endif -%}
+  {%- set _ = results.push({
+    type: "chip", id: chip.id, name: chip.name, detail: detail, url: chip.url
+  }) -%}
 {%- endfor -%}
+
+{#- Series overview pages, e.g. /series/m/ -#}
+{%- for s in collections.seriesCollection -%}
+  {%- set _ = results.push({
+    type: "chip", id: s.id, name: s.name, detail: s.description,
+    url: "/series/" + (s.id | lower) + "/"
+  }) -%}
+{%- endfor -%}
+
+{#- Devices -#}
 {%- for device in collections.devicePagesCollection -%}
-{%- set detail = device.categoryName -%}
-{%- if device.variants -%}
-{%- set detail = detail ~ " · " ~ (device.variants | length) ~ " chip" ~ ("s" if device.variants | length != 1 else "") -%}
-{%- endif -%}
-{"type":"device","id":{{ device.id | dump | safe }},"name":{{ device.name | dump | safe }},"detail":{{ detail | dump | safe }},"url":{{ device.url | dump | safe }}}
-{%- if not loop.last %},{% endif -%}
+  {%- set detail = device.categoryName -%}
+  {%- if device.variants -%}
+    {%- set detail = detail ~ " · " ~ (device.variants | length) ~ " chip" ~ ("s" if device.variants | length != 1 else "") -%}
+  {%- endif -%}
+  {%- set _ = results.push({
+    type: "device", id: device.id, name: device.name, detail: detail, url: device.url
+  }) -%}
 {%- endfor -%}
-]
+
+{#- Standalone pages: comparisons, current lineups, gen-gains, home -#}
+{%- for p in collections.all -%}
+  {%- set u = p.url -%}
+  {%- if u == "/" or u.startsWith("/compare/") or u.startsWith("/current/") or u.startsWith("/gen-gains/") -%}
+    {%- set _ = results.push({
+      type: "page",
+      id: u,
+      name: p.data.title if p.data.title else "Apple Silicon Specs",
+      detail: p.data.description if p.data.description else "",
+      url: u
+    }) -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{{ results | dump | safe }}
