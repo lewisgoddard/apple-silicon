@@ -30,8 +30,8 @@ permalink: "chips/index.html"
         {# Nunjucks has no map(attribute=…), so collect the names explicitly #}
         {% set tierNames = [] %}
         {% for t in gen.tiers %}{% set _ = tierNames.push(t.name) %}{% endfor %}
-        {# The newest M or A generation is what most visitors are here for #}
-        {% set isCurrentFlagship = loop.first and (seriesItem.id == "M" or seriesItem.id == "A") %}
+        {# M/A generations you can still buy today #}
+        {% set isCurrentFlagship = gen.onSale and (seriesItem.id == "M" or seriesItem.id == "A") %}
         <a href="/chips/{{ gen.id | lower }}/" class="device-grid-card{% if isCurrentFlagship %} nav-hl-custom{% endif %}">
           <span class="device-grid-name">{{ gen.id | familyLabel }}</span>
           <span class="device-grid-chips">{{ gen.tiers | length }} tier{{ "s" if gen.tiers | length != 1 }}</span>

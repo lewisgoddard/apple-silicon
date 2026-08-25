@@ -359,21 +359,6 @@
       process_nm: "Samsung 45nm"
       cpu_isa: "ARMv7-A"
       variants: ["a4-1-1"]
-- id: T
-  name: "T Series"
-  description: "Apple silicon security and controller chips for Intel-based Macs"
-  ranks:
-    - id: t2
-      name: "T2"
-      description: "Security chip with A10-derived CPU, Secure Enclave, and hardware encryption for Intel Macs"
-      process_nm: "TSMC 16nm"
-      cpu_isa: "ARMv8-A"
-      variants: ["t2"]
-    - id: t1
-      name: "T1"
-      description: "First Apple security chip, derived from S2, drives SMC and Touch ID in MacBook Pro with Touch Bar"
-      cpu_isa: "ARMv7"
-      variants: ["t1"]
 - id: C
   name: "C Series"
   description: "Apple cellular modem chips for iPhone and iPad"
@@ -388,34 +373,6 @@
       description: "Apple's first in-house cellular modem, supporting 5G sub-6 GHz, Gigabit LTE, and UMTS/HSPA+"
       process_nm: "TSMC N4"
       variants: ["c1"]
-- id: U
-  name: "U Series"
-  description: "Apple ultra-wideband (UWB) radio systems in package"
-  ranks:
-    - id: u2
-      name: "U2"
-      description: "Second-generation Ultra Wideband chip, used in iPhone 15 and newer, Apple Watch Series 9 and newer, AirTag 2nd gen"
-      variants: ["u2"]
-    - id: u1
-      name: "U1"
-      description: "First-generation Ultra Wideband chip, used in iPhone 11 through 14, Apple Watch Series 6-8, AirTag 1st gen, HomePod Mini"
-      variants: ["u1"]
-- id: W
-  name: "W Series"
-  description: "Apple wireless connectivity SoCs for Apple Watch and AirPods"
-  ranks:
-    - id: w3
-      name: "W3"
-      description: "Wireless connectivity chip with Bluetooth 5.0/5.3, integrated into Apple Watch Series 4 and newer"
-      variants: ["w3"]
-    - id: w2
-      name: "W2"
-      description: "Wireless connectivity chip with Bluetooth 4.2, integrated into Apple Watch Series 3"
-      variants: ["w2"]
-    - id: w1
-      name: "W1"
-      description: "Bluetooth 4.2 SoC for AirPods (1st gen) and select Beats headphones"
-      variants: ["w1"]
 - id: H
   name: "H Series"
   description: "Apple Bluetooth and audio processing SoCs for AirPods and headphones"
@@ -510,3 +467,46 @@
       description: "Apple's first System in Package for Apple Watch"
       cpu_isa: "ARMv7k"
       variants: ["s1"]
+- id: T
+  name: "T Series"
+  description: "Apple silicon security and controller chips for Intel-based Macs"
+  ranks:
+    - id: t2
+      name: "T2"
+      description: "Security chip with A10-derived CPU, Secure Enclave, and hardware encryption for Intel Macs"
+      process_nm: "TSMC 16nm"
+      cpu_isa: "ARMv8-A"
+      variants: ["t2"]
+    - id: t1
+      name: "T1"
+      description: "First Apple security chip, derived from S2, drives SMC and Touch ID in MacBook Pro with Touch Bar"
+      cpu_isa: "ARMv7"
+      variants: ["t1"]
+- id: U
+  name: "U Series"
+  description: "Apple ultra-wideband (UWB) radio systems in package"
+  ranks:
+    - id: u2
+      name: "U2"
+      description: "Second-generation Ultra Wideband chip, used in iPhone 15 and newer, Apple Watch Series 9 and newer, AirTag 2nd gen"
+      variants: ["u2"]
+    - id: u1
+      name: "U1"
+      description: "First-generation Ultra Wideband chip, used in iPhone 11 through 14, Apple Watch Series 6-8, AirTag 1st gen, HomePod Mini"
+      variants: ["u1"]
+- id: W
+  name: "W Series"
+  description: "Apple wireless connectivity SoCs for Apple Watch and AirPods"
+  ranks:
+    - id: w3
+      name: "W3"
+      description: "Wireless connectivity chip with Bluetooth 5.0/5.3, integrated into Apple Watch Series 4 and newer"
+      variants: ["w3"]
+    - id: w2
+      name: "W2"
+      description: "Wireless connectivity chip with Bluetooth 4.2, integrated into Apple Watch Series 3"
+      variants: ["w2"]
+    - id: w1
+      name: "W1"
+      description: "Bluetooth 4.2 SoC for AirPods (1st gen) and select Beats headphones"
+      variants: ["w1"]

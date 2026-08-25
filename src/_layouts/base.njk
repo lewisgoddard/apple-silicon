@@ -61,33 +61,6 @@
           <li class="nav-collapse"><a href="/current/macs/">Macs</a></li>
           <li class="nav-collapse"><a href="/current/iphones/">iPhones</a></li>
           <li class="nav-collapse"><a href="/current/ipads/">iPads</a></li>
-          <li class="nav-divider" aria-hidden="true"></li>
-          <li class="nav-dropdown">
-            <button class="nav-dropdown-toggle" aria-expanded="false">Historical <span aria-hidden="true">&#9662;</span></button>
-            <div class="nav-dropdown-panel nav-dropdown-2col">
-              <span class="nav-dropdown-section">Devices</span>
-              <a href="/devices/mac/">Mac</a>
-              <a href="/devices/ipad/">iPad</a>
-              <a href="/devices/iphone/">iPhone</a>
-              <a href="/devices/watch/">Apple Watch</a>
-              <a href="/devices/airpods/">AirPods</a>
-              <a href="/devices/homepod/">HomePod</a>
-              <a href="/devices/apple-tv/4k/">Apple TV</a>
-              <a href="/devices/vision/">Apple Vision</a>
-              <a href="/devices/display/">Studio Display</a>
-              <span class="nav-dropdown-section">Series</span>
-              <a href="/series/m/" class="nav-hl-custom">M Series</a>
-              <a href="/series/a/" class="nav-hl-custom">A Series</a>
-              <a href="/series/s/">S Series</a>
-              <a href="/series/r/">R Series</a>
-              <a href="/series/h/">H Series</a>
-              <a href="/series/n/">N Series</a>
-              <a href="/series/w/">W Series</a>
-              <a href="/series/u/">U Series</a>
-              <a href="/series/c/">C Series</a>
-              <a href="/series/t/">T Series</a>
-            </div>
-          </li>
         </ul>
         <div class="search-wrapper">
           <input type="search" id="site-search" placeholder="Search chips & devices…  /" autocomplete="off" />
@@ -139,8 +112,8 @@
         <div class="footer-col">
           <h2><a href="/chips/">Chips by Series</a></h2>
           <ul>
-            {# M and A are the flagship lines, highlighted as they are in the nav #}
-            {% for s in collections.seriesCollection %}
+            {# Fully alphabetical here — M and A are highlighted rather than hoisted #}
+            {% for s in collections.seriesCollection | sort(false, false, "id") %}
               <li><a href="/series/{{ s.id | lower }}/"{% if s.id == "M" or s.id == "A" %} class="nav-hl-custom"{% endif %}>{{ s.name }}</a></li>
             {% endfor %}
           </ul>
@@ -154,7 +127,7 @@
               {% if gen.seriesId == "M" %}{% set _ = gens.push(gen) %}{% endif %}
             {% endfor %}
             {% for gen in gens %}
-              <li><a href="/chips/{{ gen.id | lower }}/"{% if loop.first %} class="nav-hl-custom"{% endif %}>{{ gen.id | familyLabel }}</a></li>
+              <li><a href="/chips/{{ gen.id | lower }}/"{% if gen.onSale %} class="nav-hl-custom"{% endif %}>{{ gen.id | familyLabel }}</a></li>
             {% endfor %}
           </ul>
           <h2>A-Series Chips</h2>
@@ -164,7 +137,7 @@
               {% if gen.seriesId == "A" %}{% set _ = gens.push(gen) %}{% endif %}
             {% endfor %}
             {% for gen in gens %}
-              <li><a href="/chips/{{ gen.id | lower }}/"{% if loop.first %} class="nav-hl-custom"{% endif %}>{{ gen.id | familyLabel }}</a></li>
+              <li><a href="/chips/{{ gen.id | lower }}/"{% if gen.onSale %} class="nav-hl-custom"{% endif %}>{{ gen.id | familyLabel }}</a></li>
             {% endfor %}
           </ul>
         </div>

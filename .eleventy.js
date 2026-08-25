@@ -577,7 +577,9 @@ export default function (eleventyConfig) {
     for (const { category, group, device } of iterateAllDevices(
       genCategories,
     )) {
-      if (device.deprecated) continue;
+      // A whole group can be discontinued (iPhone 15 and older, Apple TV HD)
+      // without each device being flagged individually.
+      if (device.deprecated || (group && group.deprecated)) continue;
       (device.variants || []).forEach((chipId) => {
         if (!genChipDeviceMap[chipId]) genChipDeviceMap[chipId] = [];
         genChipDeviceMap[chipId].push({
@@ -678,6 +680,9 @@ export default function (eleventyConfig) {
           seriesId: series.id,
           seriesName: series.name,
           mergedChips,
+          // Still on sale: some tier of this generation is the current chip in
+          // a device you can buy today.
+          onSale: mergedChips.some((t) => t.devices && t.devices.length > 0),
           allVariants: gen.tiers.flatMap((t) => t.variants || []),
           // Links to each tier's own page, so a family page navigates down as
           // well as sideways to the previous/next generation.
