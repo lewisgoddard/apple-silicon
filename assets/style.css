@@ -203,59 +203,71 @@ nav {
   margin: 0.15rem 0.25rem;
 }
 
-/* Comparison nav highlights */
-.nav-links a.nav-hl-custom {
-  color: #0071e3;
-}
-.nav-links a.nav-hl-video {
-  color: #9b59b6;
-}
-.nav-links a.nav-hl-mlai {
-  color: #e67e22;
-}
-.nav-links a.nav-hl-gaming {
-  color: #27ae60;
-}
-
-.nav-links a.nav-hl-custom:hover {
-  color: #0077ed;
-}
-.nav-links a.nav-hl-video:hover {
-  color: #a96bc8;
-}
-.nav-links a.nav-hl-mlai:hover {
-  color: #f39c12;
-}
-.nav-links a.nav-hl-gaming:hover {
-  color: #2ecc71;
+/* Comparison highlights — one palette, used by the nav, the footer site map
+   and highlighted cards, so the four accents can never drift apart. */
+:root {
+  --hl-custom: #0071e3;
+  --hl-custom-hover: #0077ed;
+  --hl-video: #9b59b6;
+  --hl-video-hover: #a96bc8;
+  --hl-mlai: #e67e22;
+  --hl-mlai-hover: #f39c12;
+  --hl-gaming: #27ae60;
+  --hl-gaming-hover: #2ecc71;
 }
 
 @media (prefers-color-scheme: dark) {
-  .nav-links a.nav-hl-custom {
-    color: #2997ff;
+  :root {
+    --hl-custom: #2997ff;
+    --hl-custom-hover: #66b3ff;
+    --hl-video: #bf7ddc;
+    --hl-video-hover: #d4a3ec;
+    --hl-mlai: #f0a94e;
+    --hl-mlai-hover: #f7c77e;
+    --hl-gaming: #5de89d;
+    --hl-gaming-hover: #88f0ba;
   }
-  .nav-links a.nav-hl-video {
-    color: #bf7ddc;
-  }
-  .nav-links a.nav-hl-mlai {
-    color: #f0a94e;
-  }
-  .nav-links a.nav-hl-gaming {
-    color: #5de89d;
-  }
+}
 
-  .nav-links a.nav-hl-custom:hover {
-    color: #66b3ff;
-  }
-  .nav-links a.nav-hl-video:hover {
-    color: #d4a3ec;
-  }
-  .nav-links a.nav-hl-mlai:hover {
-    color: #f7c77e;
-  }
-  .nav-links a.nav-hl-gaming:hover {
-    color: #88f0ba;
-  }
+.nav-links a.nav-hl-custom,
+.footer-col a.nav-hl-custom,
+a.device-grid-card.nav-hl-custom .device-grid-name {
+  color: var(--hl-custom);
+}
+.nav-links a.nav-hl-video,
+.footer-col a.nav-hl-video {
+  color: var(--hl-video);
+}
+.nav-links a.nav-hl-mlai,
+.footer-col a.nav-hl-mlai {
+  color: var(--hl-mlai);
+}
+.nav-links a.nav-hl-gaming,
+.footer-col a.nav-hl-gaming {
+  color: var(--hl-gaming);
+}
+
+.nav-links a.nav-hl-custom:hover,
+.footer-col a.nav-hl-custom:hover,
+a.device-grid-card.nav-hl-custom:hover .device-grid-name {
+  color: var(--hl-custom-hover);
+}
+.nav-links a.nav-hl-video:hover,
+.footer-col a.nav-hl-video:hover {
+  color: var(--hl-video-hover);
+}
+.nav-links a.nav-hl-mlai:hover,
+.footer-col a.nav-hl-mlai:hover {
+  color: var(--hl-mlai-hover);
+}
+.nav-links a.nav-hl-gaming:hover,
+.footer-col a.nav-hl-gaming:hover {
+  color: var(--hl-gaming-hover);
+}
+
+/* A highlighted card gets a tinted border to match its accent */
+a.device-grid-card.nav-hl-custom {
+  border-color: color-mix(in srgb, var(--hl-custom) 45%, var(--color-border));
 }
 
 /* Items that collapse into dropdowns on narrow screens */
@@ -1007,10 +1019,69 @@ li {
 /* ===== Footer ===== */
 footer {
   border-top: 1px solid var(--color-border);
-  padding: 1.5rem;
-  text-align: center;
+  padding: 2.5rem 1.5rem 1.5rem;
   font-size: 0.85rem;
   color: var(--color-text-muted);
+}
+
+/* Footer site map — carries the full navigation so the header can stay light */
+.footer-nav {
+  max-width: var(--max-width);
+  margin: 0 auto 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.75rem 2rem;
+  align-items: start;
+}
+
+.footer-col--wide {
+  grid-column: span 2;
+}
+
+.footer-col h2 {
+  margin: 0 0 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+}
+
+.footer-col h2 + ul + h2 {
+  margin-top: 1.25rem;
+}
+
+.footer-col ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* Short labels (M6, A19 …) read better wrapped across the column */
+.footer-list--inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+}
+
+.footer-col a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.footer-col a:hover,
+.footer-col a:focus-visible {
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+.footer-note {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center;
 }
 
 /* ===== Responsive ===== */

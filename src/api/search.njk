@@ -88,7 +88,7 @@ eleventyExcludeFromCollections: true
     deliberately excluded — it is not a destination worth searching for. -#}
 {%- for p in collections.all -%}
   {%- set u = p.url -%}
-  {%- if u.startsWith("/compare/") or u.startsWith("/current/") or u.startsWith("/gen-gains/") -%}
+  {%- if u == "/devices/" or u == "/chips/" or u.startsWith("/compare/") or u.startsWith("/current/") or u.startsWith("/gen-gains/") -%}
     {%- set _ = results.push({
       type: "page",
       id: u,

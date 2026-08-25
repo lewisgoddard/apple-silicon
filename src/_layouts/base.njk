@@ -99,7 +99,79 @@
       {{ content | safe }}
     </main>
     <footer>
-      <p>
+      <nav class="footer-nav" aria-label="Site map">
+        <div class="footer-col">
+          <h2>Compare</h2>
+          <ul>
+            <li><a href="/compare/video-editing/" class="nav-hl-video">Video Editing</a></li>
+            <li><a href="/compare/ml-ai/" class="nav-hl-mlai">ML / AI</a></li>
+            <li><a href="/compare/gaming/" class="nav-hl-gaming">Gaming</a></li>
+            <li><a href="/compare/custom/" class="nav-hl-custom">Custom Comparison</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h2>Current Lineups</h2>
+          <ul>
+            <li><a href="/current/macbooks/">MacBooks</a></li>
+            <li><a href="/current/macs/">Mac Desktops</a></li>
+            <li><a href="/current/iphones/">iPhones</a></li>
+            <li><a href="/current/ipads/">iPads</a></li>
+            <li><a href="/current/watches/">Apple Watches</a></li>
+            <li><a href="/current/airpods/">AirPods</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h2>Generational Gains</h2>
+          <ul>
+            <li><a href="/gen-gains/m-series/">M-Series Generational Gains</a></li>
+            <li><a href="/gen-gains/a-series/">A-Series Generational Gains</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h2><a href="/devices/">Devices by Product</a></h2>
+          <ul>
+            {% for cat in collections.devicesCollection %}
+              <li><a href="/devices/{{ cat.id | lower }}/">{{ cat.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h2><a href="/chips/">Chips by Series</a></h2>
+          <ul>
+            {% for s in collections.seriesCollection %}
+              <li><a href="/series/{{ s.id | lower }}/">{{ s.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="footer-col footer-col--wide">
+          <h2>M-Series Chips</h2>
+          <ul class="footer-list--inline">
+            {% set gens = [] %}
+            {% for gen in collections.generationPagesCollection %}
+              {% if gen.seriesId == "M" %}{% set _ = gens.push(gen) %}{% endif %}
+            {% endfor %}
+            {% for gen in gens %}
+              <li><a href="/chips/{{ gen.id | lower }}/"{% if loop.first %} class="nav-hl-custom"{% endif %}>{{ gen.id | familyLabel }}</a></li>
+            {% endfor %}
+          </ul>
+          <h2>A-Series Chips</h2>
+          <ul class="footer-list--inline">
+            {% set gens = [] %}
+            {% for gen in collections.generationPagesCollection %}
+              {% if gen.seriesId == "A" %}{% set _ = gens.push(gen) %}{% endif %}
+            {% endfor %}
+            {% for gen in gens %}
+              <li><a href="/chips/{{ gen.id | lower }}/"{% if loop.first %} class="nav-hl-custom"{% endif %}>{{ gen.id | familyLabel }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </nav>
+      <p class="footer-note">
         Apple Silicon Specs — a community reference.
         <a href="https://github.com/eustasy/apple-silicon">Corrections and contributions welcome</a>.
       </p>
