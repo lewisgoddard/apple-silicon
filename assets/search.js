@@ -1,6 +1,19 @@
 (function () {
   "use strict";
 
+  // Result-kind icons: silicon narrows from series → family → tier → chip
+  var ICONS = {
+    series: "📚",
+    family: "🗂",
+    tier: "🧩",
+    chip: "⚙",
+    device: "💻",
+    page: "📄",
+  };
+
+  // Kinds that describe silicon, boosted over devices and standalone pages
+  var SILICON = { series: 1, family: 1, tier: 1, chip: 1 };
+
   var searchData = [];
   var input = document.getElementById("site-search");
   var results = document.getElementById("search-results");
@@ -59,8 +72,8 @@
       else if (nameLower.indexOf(q) !== -1) score = 2;
       else score = 1;
 
-      // Boost chips over devices for tiebreaking
-      if (item.type === "chip") score += 0.1;
+      // Boost silicon pages over devices and standalone pages
+      if (SILICON[item.type]) score += 0.1;
 
       scored.push({ item: item, score: score });
     });
@@ -81,8 +94,7 @@
     activeIndex = -1;
     var html = "";
     items.forEach(function (item, i) {
-      var icon =
-        item.type === "chip" ? "⚙" : item.type === "page" ? "📄" : "💻";
+      var icon = ICONS[item.type] || "💻";
       html +=
         '<a href="' +
         item.url +
