@@ -406,6 +406,13 @@ main {
 }
 
 /* ===== Typography ===== */
+/* Headings are short enough for the browser to balance every line */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
 h1 {
   font-size: 2rem;
   font-weight: 700;
@@ -423,6 +430,9 @@ h2 {
 p {
   margin-bottom: 1rem;
   color: var(--color-text);
+  max-width: 75ch;
+  /* Stops a paragraph ending on a lone orphan word */
+  text-wrap: pretty;
 }
 
 a {
@@ -880,6 +890,7 @@ li {
 /* ===== Breadcrumbs ===== */
 .breadcrumbs {
   margin-bottom: 1rem;
+  padding-left: 0;
 }
 
 .breadcrumbs ol {
