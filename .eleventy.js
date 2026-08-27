@@ -145,6 +145,9 @@ export default function (eleventyConfig) {
     for (const { category, group, device } of iterateAllDevices(categories)) {
       if (!device.name || !device.variants || !device.variants.length) continue;
 
+      // A device is discontinued if it says so, or its whole group is.
+      const discontinued = !!(device.deprecated || (group && group.deprecated));
+
       // Group variants by generation
       const genMap = {};
       (device.variants || []).forEach((chipId) => {
@@ -164,7 +167,9 @@ export default function (eleventyConfig) {
           genId: gid,
           label: genLabel(gid),
           chipIds: genMap[gid],
-          isCurrent: idx === 0,
+          // Only a device still on sale has a "current" generation — a
+          // discontinued one shipped its last chip, it didn't ship the newest.
+          isCurrent: idx === 0 && !discontinued,
         }));
 
       // Chip family names this device has shipped with ("M5 Max", "N1", …),
@@ -191,8 +196,7 @@ export default function (eleventyConfig) {
         entry.groupName = group.name;
       }
 
-      // A device is discontinued if it says so, or its whole group is.
-      entry.discontinued = !!(device.deprecated || (group && group.deprecated));
+      entry.discontinued = discontinued;
 
       pages.push(entry);
     }
