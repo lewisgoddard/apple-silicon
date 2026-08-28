@@ -2,7 +2,7 @@
 layout: base.njk
 pagination:
   data: collections.newsPosts
-  size: 5
+  size: 20
   alias: posts
   reverse: false
 permalink: "{% if pagination.pageNumber == 0 %}news/index.html{% else %}news/page/{{ pagination.pageNumber + 1 }}/index.html{% endif %}"
