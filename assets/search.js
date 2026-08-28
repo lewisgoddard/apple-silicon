@@ -8,6 +8,7 @@
     tier: "🧩",
     chip: "⚙️",
     device: "💻",
+    news: "📰",
     page: "📄",
   };
 

@@ -1,0 +1,43 @@
+---
+layout: base.njk
+pagination:
+  data: collections.newsPosts
+  size: 5
+  alias: posts
+  reverse: false
+permalink: "{% if pagination.pageNumber == 0 %}news/index.html{% else %}news/page/{{ pagination.pageNumber + 1 }}/index.html{% endif %}"
+eleventyComputed:
+  title: "News{% if pagination.pageNumber > 0 %} · Page {{ pagination.pageNumber + 1 }}{% endif %}"
+  description: "Apple Silicon news — new chips, what changed inside them, and which products they ship in."
+---
+
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+{% from "macros/post-list.njk" import postSnippets %}
+
+{{ breadcrumbs([
+  { label: "News", url: "/news/" },
+  { label: "Page " + (pagination.pageNumber + 1) }
+] if pagination.pageNumber > 0 else [
+  { label: "News" }
+]) }}
+
+<h1>News</h1>
+<p>New chips, what changed inside them, and which products they ship in.</p>
+
+{{ postSnippets(posts) }}
+
+{% if pagination.href.previous or pagination.href.next %}
+<nav class="post-pagination" aria-label="Pagination">
+  {% if pagination.href.previous %}
+    <a class="post-pagination-prev" href="{{ pagination.href.previous }}">← Newer</a>
+  {% else %}
+    <span class="post-pagination-prev"></span>
+  {% endif %}
+  <span class="post-pagination-count">Page {{ pagination.pageNumber + 1 }} of {{ pagination.pages | length }}</span>
+  {% if pagination.href.next %}
+    <a class="post-pagination-next" href="{{ pagination.href.next }}">Older →</a>
+  {% else %}
+    <span class="post-pagination-next"></span>
+  {% endif %}
+</nav>
+{% endif %}

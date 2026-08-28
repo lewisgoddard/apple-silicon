@@ -24,6 +24,7 @@ eleventyComputed:
 
 {% from "macros/compare-table.njk" import compareTable %}
 {% from "macros/device-carousel.njk" import deviceCarousel %}
+{% from "macros/post-list.njk" import relatedPostList %}
 
 {% if gen.mergedChips and gen.mergedChips | length > 0 %}
   <p>Comparing {{ gen.mergedChips | length }} tier{{ "s" if gen.mergedChips | length != 1 }}. Where a tier has multiple variants, values show the range across all configurations.</p>
@@ -32,3 +33,5 @@ eleventyComputed:
   {% set devices = getDevicesForChips(gen.allVariants) %}
   {{ deviceCarousel(devices) }}
 {% endif %}
+
+{{ relatedPostList(relatedPosts(collections, gen.id, 3)) }}

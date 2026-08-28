@@ -29,4 +29,8 @@ eleventyExcludeFromCollections: true
   {% for d in collections.devicePagesCollection %}
   <url><loc>{{ site.url }}{{ d.url }}</loc></url>
   {% endfor %}
+  <url><loc>{{ site.url }}/news/</loc></url>
+  {% for post in collections.newsPosts %}
+  <url><loc>{{ site.url }}{{ post.url }}</loc></url>
+  {% endfor %}
 </urlset>

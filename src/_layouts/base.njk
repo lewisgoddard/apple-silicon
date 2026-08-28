@@ -81,14 +81,6 @@
             <li><a href="/compare/gaming/" class="nav-hl-gaming">Gaming</a></li>
             <li><a href="/compare/custom/" class="nav-hl-custom">Custom Comparison</a></li>
           </ul>
-          <h2>Generational Gains</h2>
-          <ul>
-            <li><a href="/gen-gains/m-series/">M-Series Generational Gains</a></li>
-            <li><a href="/gen-gains/a-series/">A-Series Generational Gains</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
           <h2>Current Lineups</h2>
           <ul>
             <li><a href="/current/macbooks/">MacBooks</a></li>
@@ -97,6 +89,20 @@
             <li><a href="/current/ipads/">iPads</a></li>
             <li><a href="/current/watches/">Apple Watches</a></li>
             <li><a href="/current/airpods/">AirPods</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h2>Generational Gains</h2>
+          <ul>
+            <li><a href="/gen-gains/m-series/">M-Series Generational Gains</a></li>
+            <li><a href="/gen-gains/a-series/">A-Series Generational Gains</a></li>
+          </ul>
+          <h2><a href="/news/">News</a></h2>
+          <ul>
+            {% for post in (collections.newsPosts or []).slice(0, 3) %}
+              <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
+            {% endfor %}
           </ul>
         </div>
 

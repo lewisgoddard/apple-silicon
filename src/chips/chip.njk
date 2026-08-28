@@ -45,6 +45,7 @@ eleventyComputed:
 {% from "macros/device-carousel.njk" import deviceCarousel %}
 {% from "macros/breadcrumbs.njk" import breadcrumbs %}
 {% from "macros/spec-card.njk" import specCard %}
+{% from "macros/post-list.njk" import relatedPostList %}
 
 {{ breadcrumbs([
   { label: chip.rank.seriesId + " Series" if chip.rank else "Series", url: "/series/" + (chip.rank.seriesId | lower if chip.rank else "m") + "/" },
@@ -105,3 +106,5 @@ eleventyComputed:
 </div>
 
 {{ deviceCarousel(chip.devices) }}
+
+{{ relatedPostList(relatedPosts(collections, chip.id, 3)) }}

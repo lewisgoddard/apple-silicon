@@ -15,6 +15,10 @@ eleventyExcludeFromCollections: true
   "vision": 0.4, "homepod": 0.3, "apple-tv": 0.3, "display": 0
 } -%}
 {%- set DISCONTINUED_PENALTY = 0.8 -%}
+{#- News sits below the reference pages it is about: searching "M6" should land
+    on the chip, not the write-up. Negative, so it still surfaces when nothing
+    else matches the words. -#}
+{%- set NEWS_WEIGHT = -0.5 -%}
 
 {%- set results = [] -%}
 
@@ -81,6 +85,24 @@ eleventyExcludeFromCollections: true
     weight: weight | round(2),
     discontinued: device.discontinued,
     url: device.url
+  }) -%}
+{%- endfor -%}
+
+{#- News posts. `detail` is just the date, which is what tells two posts apart
+    in a narrow dropdown; the summary and the hardware each post covers ride
+    along in `keywords`, searchable but not shown. So "mac studio" finds the
+    M5 Ultra write-up even though neither word is in its title. -#}
+{%- for post in collections.newsPosts -%}
+  {%- set labels = [] -%}
+  {%- for category in post.data.categories | resolveCategories -%}
+    {%- set _ = labels.push(category.label) -%}
+  {%- endfor -%}
+  {%- set _ = results.push({
+    type: "news", id: post.data.page.fileSlug, name: post.data.title,
+    detail: post.date | postDate,
+    keywords: post.data.summary ~ " " ~ (labels | join(" ")),
+    weight: NEWS_WEIGHT,
+    url: post.url
   }) -%}
 {%- endfor -%}
 

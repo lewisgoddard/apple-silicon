@@ -27,6 +27,7 @@ eleventyComputed:
 
 {% from "macros/breadcrumbs.njk" import breadcrumbs %}
 {% from "macros/compare-table.njk" import compareTable %}
+{% from "macros/post-list.njk" import relatedPostList %}
 
 {% if device.groupId %}
 {{ breadcrumbs([
@@ -79,3 +80,6 @@ eleventyComputed:
     {% endfor %}
   {% endif %}
 {% endif %}
+
+{% set deviceKey = (device.categoryId + "/" + (device.groupId + "/" if device.groupId else "") + device.id) | lower %}
+{{ relatedPostList(relatedPosts(collections, deviceKey, 3)) }}

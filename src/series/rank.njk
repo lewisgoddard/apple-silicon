@@ -29,6 +29,7 @@ eleventyComputed:
 
 {% from "macros/compare-table.njk" import compareTable %}
 {% from "macros/device-carousel.njk" import deviceCarousel %}
+{% from "macros/post-list.njk" import relatedPostList %}
 
 {% if rank.variants and rank.variants | length > 0 %}
   {# A single-variant rank is that chip's own page, so the count adds nothing #}
@@ -41,3 +42,5 @@ eleventyComputed:
   {% set devices = getDevicesForChips(rank.variants) %}
   {{ deviceCarousel(devices) }}
 {% endif %}
+
+{{ relatedPostList(relatedPosts(collections, rank.id, 3)) }}

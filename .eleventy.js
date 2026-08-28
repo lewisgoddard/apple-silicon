@@ -1073,6 +1073,196 @@ export default function (eleventyConfig) {
     },
   );
 
+  // ===== News =====
+  //
+  // Posts live in src/news/posts/*.md. Each carries a `categories` list naming
+  // hardware the site already documents, and that one field does both jobs:
+  // it renders as links back to those pages, and it is what a hardware page
+  // matches on to pull in its own recent posts.
+  //
+  // Six id shapes, most specific first:
+  //   "mac/mac-mini"   device        "iphone/17"  device group
+  //   "mac"            category      "m5-ultra-36-80" chip variant
+  //   "m5-ultra"       tier          "m5"         generation      "m" series
+  //
+  // Every id records its parent, so a post and a page are related when either
+  // id sits on the other's ancestor chain. A post tagged `m5-ultra` therefore
+  // shows on the M5 Ultra variant pages below it and the M5 family and M
+  // series pages above it, but never on an unrelated M1 page — which a plain
+  // "shares an ancestor" test would wrongly match through the series root.
+  let categoryIndexCache = null;
+  function buildCategoryIndex() {
+    if (categoryIndexCache) return categoryIndexCache;
+    const index = {};
+    const seriesList = loadYAML("series.yml");
+    const categories = loadYAML("devices.yml");
+
+    (seriesList || []).forEach((series) => {
+      const seriesId = (series.id || "").toLowerCase();
+      index[seriesId] = {
+        label: series.name,
+        url: `/series/${seriesId}/`,
+        parent: null,
+      };
+      (series.ranks || []).forEach((rank) => {
+        const genId = (rank.id || "").match(/^([a-z]\d+)/)?.[1];
+        if (!genId) return;
+        if (!index[genId]) {
+          index[genId] = {
+            label: `${genLabelFor(genId)} Family`,
+            url: `/chips/${genId}/`,
+            parent: seriesId,
+          };
+        }
+        // A base tier's id IS the generation id (`m6`, `n1`). Both pages
+        // exist, but the family page compares every tier, so a bare id keeps
+        // pointing there rather than being overwritten with a self-parent.
+        if (rank.id !== genId) {
+          const tier = rank.id.match(/^[a-z]\d+(?:-(.+))?$/)?.[1] || "base";
+          index[rank.id] = {
+            label: rank.name,
+            url: `/chips/${genId}/${tier}/`,
+            parent: genId,
+          };
+        }
+        // Filled in below — the chip pages own the canonical variant URL.
+        (rank.variants || []).forEach((chipId) => {
+          if (chipId === rank.id) return; // sole variant, already a node
+          index[chipId] = { parent: rank.id };
+        });
+      });
+    });
+
+    // Single-variant tiers (N1, C1, …) have no variant page of their own, so
+    // take each chip's canonical URL from the chip pages rather than rebuild it.
+    buildChipPages().forEach((chip) => {
+      // Single-chip series (N1, C1, …) already resolved as a generation.
+      if (index[chip.id] && index[chip.id].url) return;
+      const specs = chip.specs || {};
+      const cores =
+        specs.cpu_cores && specs.gpu_cores
+          ? ` ${specs.cpu_cores}c/${specs.gpu_cores}c`
+          : "";
+      index[chip.id] = {
+        ...(index[chip.id] || { parent: null }),
+        label: `${chip.name}${cores}`,
+        url: chip.url,
+      };
+    });
+
+    for (const category of categories || []) {
+      const categoryId = (category.id || "").toLowerCase();
+      index[categoryId] = {
+        label: category.name,
+        url: `/devices/${categoryId}/`,
+        parent: null,
+      };
+      for (const group of category.groups || []) {
+        const groupKey = `${categoryId}/${(group.id || "").toLowerCase()}`;
+        index[groupKey] = {
+          label: group.name,
+          url: `/devices/${groupKey}/`,
+          parent: categoryId,
+        };
+      }
+    }
+    for (const { category, group, device } of iterateAllDevices(categories)) {
+      const categoryId = (category.id || "").toLowerCase();
+      const parent = group
+        ? `${categoryId}/${(group.id || "").toLowerCase()}`
+        : categoryId;
+      const key = `${parent}/${(device.id || "").toLowerCase()}`;
+      index[key] = { label: device.name, url: `/devices/${key}/`, parent };
+    }
+
+    categoryIndexCache = index;
+    return index;
+  }
+
+  // "m5" → "M5". Generation ids are a letter plus a number.
+  function genLabelFor(genId) {
+    return genId.replace(/^([a-z])/, (c) => c.toUpperCase());
+  }
+
+  // An id plus every ancestor above it, e.g.
+  // "m5-ultra-36-80" → ["m5-ultra-36-80", "m5-ultra", "m5", "m"].
+  // An unknown id yields [], so it can never match anything.
+  function categoryChain(id) {
+    const index = buildCategoryIndex();
+    const chain = [];
+    let current = String(id).toLowerCase();
+    while (current && index[current] && !chain.includes(current)) {
+      chain.push(current);
+      current = index[current].parent;
+    }
+    return chain;
+  }
+
+  // Newest first. Posts are tagged `post` by src/news/posts/posts.11tydata.js.
+  eleventyConfig.addCollection("newsPosts", function (collectionApi) {
+    return collectionApi
+      .getFilteredByTag("post")
+      .slice()
+      .sort((a, b) => b.date - a.date);
+  });
+
+  // Turn a post's `categories` ids into { label, url } links. An id that does
+  // not name real hardware is dropped with a warning rather than linked to a
+  // 404 — the ids are hand-written, so typos need to be loud.
+  eleventyConfig.addFilter("resolveCategories", function (ids) {
+    const index = buildCategoryIndex();
+    return (ids || [])
+      .map((id) => {
+        const key = String(id).toLowerCase();
+        const entry = index[key];
+        if (!entry || !entry.url) {
+          console.warn(`[news] unknown category id "${id}"`);
+          return null;
+        }
+        return { id: key, label: entry.label, url: entry.url };
+      })
+      .filter(Boolean);
+  });
+
+  // Recent posts for one hardware page. `pageIds` is that page's own id (or
+  // ids); a post matches when its category is an ancestor or a descendant.
+  eleventyConfig.addNunjucksGlobal(
+    "relatedPosts",
+    function (collections, pageIds, limit) {
+      const scopes = (Array.isArray(pageIds) ? pageIds : [pageIds])
+        .filter(Boolean)
+        .map((id) => String(id).toLowerCase());
+      if (!scopes.length) return [];
+      const scopeChains = scopes.map(categoryChain);
+
+      const matches = (collections.newsPosts || []).filter((post) =>
+        (post.data.categories || []).some((categoryId) => {
+          const postChain = categoryChain(categoryId);
+          if (!postChain.length) return false;
+          return scopes.some(
+            (scope, i) =>
+              postChain.includes(scope) ||
+              scopeChains[i].includes(postChain[0]),
+          );
+        }),
+      );
+      return limit ? matches.slice(0, limit) : matches;
+    },
+  );
+
+  const postDateFormat = new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+  eleventyConfig.addFilter("postDate", (d) =>
+    postDateFormat.format(new Date(d)),
+  );
+  eleventyConfig.addFilter("isoDate", (d) =>
+    new Date(d).toISOString().slice(0, 10),
+  );
+
   // Return directory configuration so Eleventy processes files from `src/`
   return {
     dir: {

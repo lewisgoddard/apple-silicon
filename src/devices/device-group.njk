@@ -13,6 +13,7 @@ eleventyComputed:
 {% from "macros/breadcrumbs.njk" import breadcrumbs %}
 {% from "macros/compare-table.njk" import compareTable %}
 {% from "macros/device-grid.njk" import deviceGrid %}
+{% from "macros/post-list.njk" import relatedPostList %}
 
 {{ breadcrumbs([
   { label: group.categoryName, url: "/devices/" + (group.categoryId | lower) + "/" },
@@ -32,3 +33,6 @@ eleventyComputed:
     {{ compareTable(items) }}
   {% endif %}
 {% endif %}
+
+{% set groupKey = (group.categoryId + "/" + group.id) | lower %}
+{{ relatedPostList(relatedPosts(collections, groupKey, 3)) }}

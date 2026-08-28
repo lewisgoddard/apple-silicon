@@ -1,0 +1,47 @@
+{# _includes/macros/post-list.njk #}
+
+{# One post as a short snippet: date, title, summary. Used on the homepage
+   and on the /news/ archive, which differ only in how many they show. #}
+{% macro postSnippet(post) %}
+<a href="{{ post.url }}" class="post-snippet">
+  <time class="post-snippet-date" datetime="{{ post.date | isoDate }}">{{ post.date | postDate }}</time>
+  <span class="post-snippet-title">{{ post.data.title }}</span>
+  <span class="post-snippet-summary">{{ post.data.summary }}</span>
+</a>
+{% endmacro %}
+
+{% macro postSnippets(posts) %}
+<div class="post-snippets">
+  {% for post in posts %}{{ postSnippet(post) }}{% endfor %}
+</div>
+{% endmacro %}
+
+{# The hardware a post is about, as links back into the reference. #}
+{% macro postCategories(categories) %}
+{% if categories and categories | length > 0 %}
+<footer class="post-categories">
+  <span class="post-categories-label">Covers</span>
+  <ul>
+    {% for category in categories %}
+      <li><a href="{{ category.url }}">{{ category.label }}</a></li>
+    {% endfor %}
+  </ul>
+</footer>
+{% endif %}
+{% endmacro %}
+
+{# Recent posts about this chip / generation / device. Renders nothing when
+   there are none, so hardware pages can call it unconditionally. #}
+{% macro relatedPostList(posts, heading) %}
+{% if posts and posts | length > 0 %}
+<h2>{{ heading if heading else "News" }}</h2>
+<ul class="post-related">
+  {% for post in posts %}
+    <li>
+      <time datetime="{{ post.date | isoDate }}">{{ post.date | postDate }}</time>
+      <a href="{{ post.url }}">{{ post.data.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endmacro %}

@@ -1316,3 +1316,193 @@ footer {
   border-radius: var(--radius);
   padding: 1rem;
 }
+
+/* ===== Blog ===== */
+.home-more {
+  font-size: 0.85rem;
+  font-weight: 400;
+  margin-left: 0.75rem;
+  vertical-align: middle;
+}
+
+/* Snippet list — the homepage and the archive share this. */
+.post-snippets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.post-snippet {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 0.15rem 1.25rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+
+.post-snippet:hover {
+  background: var(--color-surface);
+}
+
+.post-snippet-date {
+  grid-row: 1 / span 2;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  padding-top: 0.15rem;
+}
+
+.post-snippet-title {
+  font-weight: 600;
+  color: var(--color-link);
+}
+
+.post-snippet-summary {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 640px) {
+  .post-snippet {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+
+  .post-snippet-date {
+    grid-row: auto;
+    padding-top: 0;
+  }
+}
+
+/* Single post */
+.post {
+  max-width: 46rem;
+}
+
+.post-meta {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+}
+
+.post h3 {
+  margin-top: 2rem;
+}
+
+.post table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.25rem 0;
+  font-size: 0.9rem;
+}
+
+.post th,
+.post td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.post thead th {
+  background: var(--color-group-header);
+  font-weight: 600;
+}
+
+/* Markdown tables can outgrow the column on narrow screens. */
+@media (max-width: 640px) {
+  .post table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+.post-categories {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.post-categories-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.post-categories ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.post-categories a {
+  display: inline-block;
+  font-size: 0.85rem;
+  padding: 0.15rem 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.post-categories a:hover {
+  background: var(--color-surface);
+}
+
+.post-back {
+  margin-top: 2rem;
+}
+
+/* Recent posts attached to a chip / generation / device page */
+.post-related {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.post-related li {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.post-related time {
+  flex: 0 0 9rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 640px) {
+  .post-related li {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+}
+
+.post-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.post-pagination-count {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}

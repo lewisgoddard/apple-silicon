@@ -1,0 +1,24 @@
+---
+layout: base.njk
+---
+
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+{% from "macros/post-list.njk" import postCategories, relatedPostList %}
+
+{{ breadcrumbs([
+  { label: "News", url: "/news/" },
+  { label: title }
+]) }}
+
+<article class="post">
+  <h1>{{ title }}</h1>
+  <p class="post-meta">
+    <time datetime="{{ page.date | isoDate }}">{{ page.date | postDate }}</time>
+  </p>
+
+  {{ content | safe }}
+
+  {{ postCategories(categories | resolveCategories) }}
+</article>
+
+<p class="post-back"><a href="/news/">← All news</a></p>

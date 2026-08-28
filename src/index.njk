@@ -10,6 +10,13 @@ description: "A comprehensive reference for Apple Silicon technical specificatio
   from the A4 in 2010, to the M1 in 2020, to the latest generation.
 </p>
 
+{% from "macros/post-list.njk" import postSnippets %}
+{% set latest = (collections.newsPosts or []).slice(0, 3) %}
+{% if latest | length > 0 %}
+<h2>Latest News <a class="home-more" href="/news/">All news →</a></h2>
+{{ postSnippets(latest) }}
+{% endif %}
+
 <h2>Generational Gains</h2>
 <div class="home-grid home-grid--wide">
   <a href="/gen-gains/m-series/" class="home-card">
